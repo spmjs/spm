@@ -4,6 +4,7 @@ var assert = require('assert'),
 
 var comments = fs.readFileSync(__dirname + '/transport.js', 'utf8');
 var o = annotation.parse(comments);
+console.log(o);
 assert.equal(o.name[0], 'KISSY');
 assert.equal(o.author[0], 'lifesinger');
 assert.equal(o.author[1], 'yiminghe');
