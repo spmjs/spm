@@ -1900,7 +1900,7 @@ build time: ${build.time}
                 return;
             }
 
-            // 有尚未 attached 的模块
+            // 有尚未 attached 的���块
             S.each(modNames, function(modName) {
                 // 从 name 开始调用，防止不存在模块
                 self.__attachModByName(modName, function() {
@@ -2132,7 +2132,7 @@ build time: ${build.time}
             }
         }
         /**
-         * 一定要正则化，防止出现 ../ 等相对路径
+         * 一定要正则化，���止出现 ../ 等相对路径
          * 考虑本地路径
          */
         if (!base.match(/^(http(s)?)|(file):/i)
