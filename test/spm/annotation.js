@@ -2,7 +2,7 @@ var assert = require('assert'),
     annotation = require('../../lib/annotation'),
     fs = require('fs');
 
-var comments = fs.readFileSync(__dirname + '/annotation-spec.js', 'utf8');
+var comments = fs.readFileSync(__dirname + '/spec.js', 'utf8');
 var o = annotation.parse(comments);
 console.log(o);
 assert.equal(o.name[0], 'KISSY');
