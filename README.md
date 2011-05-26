@@ -23,4 +23,4 @@ Usage
     sbuild some_directory [--combo [all]] [-r]
     sbuild clear
 
-    snode filename.js [--base path/to/seajs/build]
+    snode filename.js [--base path/to/spm/bin]
