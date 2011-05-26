@@ -4,6 +4,7 @@
  * @desc jQuery is a new kind of JavaScript Library.
  * @url http://jquery.com/
  * @tags dom,event
+ * @version 1.6.1
  *
  * @src http://code.jquery.com/jquery-1.6.1.js
  * @min http://code.jquery.com/jquery-1.6.1.min.js
