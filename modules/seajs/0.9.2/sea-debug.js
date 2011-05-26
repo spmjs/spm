@@ -1,7 +1,7 @@
 /*
-Copyright 2011, SeaJS v0.9.1
+Copyright 2011, SeaJS v1.0.0dev
 MIT Licensed
-build time: May 22 23:10
+build time: ${build.time}
 */
 
 
@@ -21,7 +21,7 @@ this.seajs = { _seajs: this.seajs };
  * @type {string} The version of the framework. It will be replaced
  * with "major.minor.patch" when building.
  */
-seajs.version = '%VERSION%';
+seajs.version = '1.0.0dev';
 
 
 // Module status：
@@ -39,7 +39,13 @@ seajs._data = {
   /**
    * The configuration data.
    */
-  config: {},
+  config: {
+    /**
+     * Debug mode. It will be turned off automatically when compressing.
+     * @const
+     */
+    debug: '%DEBUG%'
+  },
 
   /**
    * Modules that have been memoize()d.
@@ -214,14 +220,17 @@ seajs._fn = {};
    * Normalizes an url.
    */
   function normalize(url) {
-    url = stripUrlArgs(realpath(url));
 
     // Adds the default '.js' extension except that the url ends with #.
     if (/#$/.test(url)) {
       url = url.slice(0, -1);
     }
-    else if (!(/\.(?:css|js)$/.test(url))) {
-      url += '.js';
+    else {
+      url = stripUrlArgs(realpath(url));
+
+      if (!(/\.(?:css|js)$/.test(url))) {
+        url += '.js';
+      }
     }
 
     return url;
@@ -257,25 +266,32 @@ seajs._fn = {};
   var aliasRegCache = {};
 
   /**
-   * Parses alias in the module id.
+   * Parses alias in the module id. Only parse the prefix and suffix.
    */
   function parseAlias(id) {
     var alias = config['alias'];
 
-    if (alias) {
-      id = '/' + id + '/';
-      for (var p in alias) {
-        if (alias.hasOwnProperty(p)) {
-          if (!aliasRegCache[p]) {
-            aliasRegCache[p] = new RegExp('/' + p + '/');
-          }
-          id = id.replace(aliasRegCache[p], '/' + alias[p] + '/');
-        }
+    var parts = id.split('/');
+    var last = parts.length - 1;
+
+    parse(parts, 0);
+    if (last) parse(parts, last);
+
+    function parse(parts, i) {
+      var part = parts[i];
+      var m;
+
+      if (alias && alias.hasOwnProperty(part)) {
+        parts[i] = alias[part];
       }
-      id = id.slice(1, -1);
+      // jquery:1.6.1 => jquery/1.6.1/jquery
+      // jquery:1.6.1-debug => jquery/1.6.1/jquery-debug
+      else if ((m = part.match(/(.+):([\d\.]+)(-debug)?/))) {
+        parts[i] = m[1] + '/' + m[2] + '/' + m[1] + (m[3] ? m[3] : '');
+      }
     }
 
-    return id;
+    return parts.join('/');
   }
 
 
@@ -283,7 +299,7 @@ seajs._fn = {};
    * Gets the host portion from url.
    */
   function getHost(url) {
-    return url.replace(/^(\w+:\/\/[^/]+)\/?.*$/, '$1');
+    return url.replace(/^(\w+:\/\/[^/]*)\/?.*$/, '$1');
   }
 
 
@@ -295,14 +311,17 @@ seajs._fn = {};
    * Converts id to uri.
    * @param {string} id The module id.
    * @param {string=} refUrl The referenced uri for relative id.
+   * @param {boolean=} noAlias When set to true, don't pass alias.
    */
-  function id2Uri(id, refUrl) {
+  function id2Uri(id, refUrl, noAlias) {
     // only run once.
     if (id2UriCache[id]) {
       return id;
     }
 
-    id = parseAlias(id);
+    if (!noAlias) {
+      id = parseAlias(id);
+    }
     refUrl = refUrl || pageUrl;
 
     var ret;
@@ -323,13 +342,25 @@ seajs._fn = {};
     }
     // top-level id
     else {
-      ret = config.base + '/' + id;
+      ret = getConfigBase() + '/' + id;
     }
 
     ret = normalize(ret);
     id2UriCache[ret] = true;
 
     return ret;
+  }
+
+
+  function getConfigBase() {
+    if (!config.base) {
+      util.error({
+        message: 'the config.base is empty',
+        from: 'id2Uri',
+        type: 'error'
+      });
+    }
+    return config.base;
   }
 
 
@@ -360,7 +391,7 @@ seajs._fn = {};
     var uri;
     // define('id', [], fn)
     if (id) {
-      uri = id2Uri(id, url);
+      uri = id2Uri(id, url, true);
     } else {
       uri = url;
     }
@@ -371,7 +402,9 @@ seajs._fn = {};
     // guest module in package
     if (id && url !== uri) {
       var host = memoizedMods[url];
-      augmentPackageHostDeps(host.dependencies, mod.dependencies);
+      if (host) {
+        augmentPackageHostDeps(host.dependencies, mod.dependencies);
+      }
     }
   }
 
@@ -392,8 +425,8 @@ seajs._fn = {};
   /**
    * For example:
    *  sbuild host.js --combo
-   *   define('host', ['./guest'], ...)
-   *   define('guest', ['jquery'], ...)
+   *   define('./host', ['./guest'], ...)
+   *   define('./guest', ['jquery'], ...)
    * The jquery is not combined to host.js, so we should add jquery
    * to host.dependencies
    */
@@ -408,13 +441,19 @@ seajs._fn = {};
 
   util.dirname = dirname;
   util.restoreUrlArgs = restoreUrlArgs;
-  util.pageUrl = pageUrl;
 
   util.id2Uri = id2Uri;
   util.ids2Uris = ids2Uris;
 
   util.memoize = memoize;
   util.getUnMemoized = getUnMemoized;
+
+  if (data.config.debug) {
+    util.realpath = realpath;
+    util.normalize = normalize;
+    util.parseAlias = parseAlias;
+    util.getHost = getHost;
+  }
 
 })(seajs._util, seajs._data, this);
 
@@ -973,13 +1012,6 @@ seajs._fn = {};
   var config = data.config;
 
 
-  /**
-   * Debug mode. It will be turned off automatically when compressing.
-   * @const
-   */
-  config.debug = '%DEBUG%';
-
-
   // Async inserted script.
   var loaderScript = document.getElementById('seajsnode');
 
@@ -989,9 +1021,19 @@ seajs._fn = {};
     loaderScript = scripts[scripts.length - 1];
   }
 
-  // When script is inline code, src is pageUrl.
-  var src = util.getScriptAbsoluteSrc(loaderScript) || util.pageUrl;
-  config.base = util.dirname(src);
+  var src = util.getScriptAbsoluteSrc(loaderScript);
+  if (src) {
+    src = util.dirname(src);
+    // When src is "http://test.com/libs/seajs/1.0.0/sea.js", redirect base
+    // to "http://test.com/libs/"
+    var match = src.match(/^(.+\/)seajs\/[\d\.]+\/$/);
+    if (match) {
+      src = match[1];
+    }
+    config.base = src;
+  }
+  // When script is inline code, src is empty.
+
 
   config.main = loaderScript.getAttribute('data-main') || '';
 
