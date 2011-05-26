@@ -1,5 +1,5 @@
 
-define('jquery',[],function(require,exports,module) {
+define([],function(require,exports,module) {
 /*!
  * jQuery JavaScript Library v1.6.1
  * http://jquery.com/

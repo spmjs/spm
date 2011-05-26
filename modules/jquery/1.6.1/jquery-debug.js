@@ -1,5 +1,5 @@
 
-define('jquery-debug', [], function(require,exports,module) {
+define([], function(require, exports, module) {
 /*!
  * jQuery JavaScript Library v1.6.1
  * http://jquery.com/
@@ -8937,5 +8937,5 @@ jQuery.each([ "Height", "Width" ], function( i, name ) {
 window.jQuery = window.$ = jQuery;
 })(window);
 
-module.exports=$.noConflict(true);
+module.exports = $.noConflict(true);
 });

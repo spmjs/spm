@@ -1,5 +1,11 @@
 
-define('backbone-debug', ['underscore-debug', 'jquery-debug'], function(require, exports) {
+define(['underscore', 'jquery'], function(require, exports) {
+
+  var previousUnderscore = this._;
+  var previousJQuery = this.jQuery;
+  this._ = require('underscore');
+  this.jQuery = require('jquery');
+
 //     Backbone.js 0.3.3
 //     (c) 2010 Jeremy Ashkenas, DocumentCloud Inc.
 //     Backbone may be freely distributed under the MIT license.
@@ -28,7 +34,7 @@ define('backbone-debug', ['underscore-debug', 'jquery-debug'], function(require,
   if (!_ && (typeof require !== 'undefined')) _ = require("underscore")._;
 
   // For Backbone's purposes, either jQuery or Zepto owns the `$` variable.
-  var $ = require('jquery') || this.Zepto;
+  var $ = this.jQuery || this.Zepto;
 
   // Turn on `emulateHTTP` to use support legacy HTTP servers. Setting this option will
   // fake `"PUT"` and `"DELETE"` requests via the `_method` parameter and set a
@@ -1011,4 +1017,7 @@ define('backbone-debug', ['underscore-debug', 'jquery-debug'], function(require,
   };
 
 })();
+
+  this._ = previousUnderscore;
+  this.jQuery = previousJQuery;
 });

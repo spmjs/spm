@@ -14,7 +14,7 @@ build time: May 22 23:10
  *   - http://developer.yahoo.com/yui/3/api/QueryString.html
  */
 
-define(function() {
+define([], function() {
 
   var querystring = {};
 
