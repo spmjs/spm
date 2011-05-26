@@ -1577,7 +1577,7 @@ build time: ${build.time}
 
                         } else {
                             //载入 css 不需要这步了
-                            //标准浏览器下：外部脚本执行后立即触发该脚本的 load 事件,ie9 还是不行
+                            //标准浏览器下：外部脚本执行后立即触发该脚���的 load 事件,ie9 还是不行
                             if (self.__currentModule) {
                                 S.log("standard browser get modname after load : " + mod.name);
                                 self.__registerModule(mod.name, self.__currentModule.def,
