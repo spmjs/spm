@@ -1,6 +1,7 @@
 
 define([], function(require, exports, module) {
-//     Underscore.js 1.1.6
+
+  //     Underscore.js 1.1.6
 //     (c) 2011 Jeremy Ashkenas, DocumentCloud Inc.
 //     Underscore is freely distributable under the MIT license.
 //     Portions of Underscore are inspired or borrowed from Prototype,
@@ -807,4 +808,8 @@ define([], function(require, exports, module) {
   };
 
 })();
+
+
+  module.exports = _;
+  _._ = _;
 });

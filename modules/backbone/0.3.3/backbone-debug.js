@@ -1,12 +1,12 @@
 
-define(['underscore', 'jquery'], function(require, exports) {
+define(["underscore","jquery"], function(require, exports, module) {
 
   var previousUnderscore = this._;
   var previousJQuery = this.jQuery;
   this._ = require('underscore');
   this.jQuery = require('jquery');
 
-//     Backbone.js 0.3.3
+  //     Backbone.js 0.3.3
 //     (c) 2010 Jeremy Ashkenas, DocumentCloud Inc.
 //     Backbone may be freely distributed under the MIT license.
 //     For all details and documentation:
@@ -33,7 +33,15 @@ define(['underscore', 'jquery'], function(require, exports) {
   var _ = this._;
   if (!_ && (typeof require !== 'undefined')) _ = require("underscore")._;
 
-  // For Backbone's purposes, either jQuery or Zepto owns the `$` variable.
+  // For Backbone's purposes, either jQuery or Zepto owns the `
+define(function(require, exports, module) {
+
+  var previousUnderscore = this._;
+  var previousJQuery = this.jQuery;
+  this._ = require('underscore');
+  this.jQuery = require('jquery');
+
+   variable.
   var $ = this.jQuery || this.Zepto;
 
   // Turn on `emulateHTTP` to use support legacy HTTP servers. Setting this option will
@@ -655,7 +663,12 @@ define(['underscore', 'jquery'], function(require, exports) {
     // against the current location fragment.
     _routeToRegExp : function(route) {
       route = route.replace(namedParam, "([^\/]*)").replace(splatParam, "(.*?)");
-      return new RegExp('^' + route + '$');
+      return new RegExp('^' + route + '
+
+  this._ = previousUnderscore;
+  this.jQuery = previousJQuery;
+});
+);
     },
 
     // Given a route, and a URL fragment that it matches, return the array of
@@ -786,7 +799,15 @@ define(['underscore', 'jquery'], function(require, exports) {
     // The default `tagName` of a View's element is `"div"`.
     tagName : 'div',
 
-    // Attach the `selectorDelegate` function as the `$` property.
+    // Attach the `selectorDelegate` function as the `
+define(function(require, exports, module) {
+
+  var previousUnderscore = this._;
+  var previousJQuery = this.jQuery;
+  this._ = require('underscore');
+  this.jQuery = require('jquery');
+
+   property.
     $       : selectorDelegate,
 
     // Initialize is an empty function by default. Override it with your own
@@ -1017,6 +1038,7 @@ define(['underscore', 'jquery'], function(require, exports) {
   };
 
 })();
+
 
   this._ = previousUnderscore;
   this.jQuery = previousJQuery;
