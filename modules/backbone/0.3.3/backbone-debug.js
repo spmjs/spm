@@ -33,15 +33,7 @@ define(["underscore","jquery"], function(require, exports, module) {
   var _ = this._;
   if (!_ && (typeof require !== 'undefined')) _ = require("underscore")._;
 
-  // For Backbone's purposes, either jQuery or Zepto owns the `
-define(function(require, exports, module) {
-
-  var previousUnderscore = this._;
-  var previousJQuery = this.jQuery;
-  this._ = require('underscore');
-  this.jQuery = require('jquery');
-
-   variable.
+  // For Backbone's purposes, either jQuery or Zepto owns the `$` variable.
   var $ = this.jQuery || this.Zepto;
 
   // Turn on `emulateHTTP` to use support legacy HTTP servers. Setting this option will
@@ -663,12 +655,7 @@ define(function(require, exports, module) {
     // against the current location fragment.
     _routeToRegExp : function(route) {
       route = route.replace(namedParam, "([^\/]*)").replace(splatParam, "(.*?)");
-      return new RegExp('^' + route + '
-
-  this._ = previousUnderscore;
-  this.jQuery = previousJQuery;
-});
-);
+      return new RegExp('^' + route + '$');
     },
 
     // Given a route, and a URL fragment that it matches, return the array of
@@ -799,15 +786,7 @@ define(function(require, exports, module) {
     // The default `tagName` of a View's element is `"div"`.
     tagName : 'div',
 
-    // Attach the `selectorDelegate` function as the `
-define(function(require, exports, module) {
-
-  var previousUnderscore = this._;
-  var previousJQuery = this.jQuery;
-  this._ = require('underscore');
-  this.jQuery = require('jquery');
-
-   property.
+    // Attach the `selectorDelegate` function as the `$` property.
     $       : selectorDelegate,
 
     // Initialize is an empty function by default. Override it with your own
