@@ -1,7 +1,7 @@
 
 define([], function(require, exports, module) {
 
-  /*!
+/*!
  * jQuery JavaScript Library v1.6.1
  * http://jquery.com/
  *
@@ -2503,7 +2503,7 @@ var hasOwn = Object.prototype.hasOwnProperty,
 	rspaces = / /g,
 	rescape = /[^\w\s.|`]/g,
 	fcleanup = function( nm ) {
-		return nm.replace(rescape, "\\/*{{code}}*/");
+		return nm.replace(rescape, "\\$&");
 	};
 
 /*
@@ -4883,7 +4883,7 @@ if ( document.querySelectorAll ) {
 					if ( !old ) {
 						context.setAttribute( "id", nid );
 					} else {
-						nid = nid.replace( /'/g, "\\/*{{code}}*/" );
+						nid = nid.replace( /'/g, "\\$&" );
 					}
 					if ( relativeHierarchySelector && hasParent ) {
 						context = context.parentNode;

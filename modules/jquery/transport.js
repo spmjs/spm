@@ -11,7 +11,7 @@
  */
 define(function(require, exports, module) {
 
-  /*{{code}}*/
+/*{{code}}*/
 
   module.exports = $.noConflict(true);
   exports.version = $.jquery;

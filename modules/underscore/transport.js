@@ -12,7 +12,7 @@
  */
 define(function(require, exports, module) {
 
-  /*{{code}}*/
+/*{{code}}*/
 
   module.exports = _;
   _._ = _;

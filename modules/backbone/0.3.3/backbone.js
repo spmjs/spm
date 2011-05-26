@@ -6,7 +6,7 @@ define(["underscore","jquery"], function(require, exports, module) {
   this._ = require('underscore');
   this.jQuery = require('jquery');
 
-  // Backbone.js 0.3.3
+// Backbone.js 0.3.3
 // (c) 2010 Jeremy Ashkenas, DocumentCloud Inc.
 // Backbone may be freely distributed under the MIT license.
 // For all details and documentation:

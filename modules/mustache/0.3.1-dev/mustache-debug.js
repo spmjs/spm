@@ -1,7 +1,7 @@
 
 define([], function(require, exports, module) {
 
-  /*
+/*
   mustache.js — Logic-less templates in JavaScript
 
   See http://mustache.github.com/ for more info.

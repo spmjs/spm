@@ -17,7 +17,7 @@ define(function(require, exports, module) {
   this._ = require('underscore');
   this.jQuery = require('jquery');
 
-  /*{{code}}*/
+/*{{code}}*/
 
   this._ = previousUnderscore;
   this.jQuery = previousJQuery;
