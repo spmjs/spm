@@ -1,7 +1,7 @@
 /**
  * @name jquery
- * @author John Resig
  * @desc jQuery is a new kind of JavaScript Library.
+ * @author John Resig
  * @url http://jquery.com/
  * @tags dom,event
  * @version 1.6.1
@@ -14,5 +14,4 @@ define(function(require, exports, module) {
 /*{{code}}*/
 
   module.exports = $.noConflict(true);
-  exports.version = $.jquery;
 });

@@ -1,8 +1,13 @@
 /**
- * @name backbone
+ * @name Backbone
+ *
+ * @desc Backbone supplies structure to JavaScript-heavy applications by
+ *       providing models with key-value binding and custom events,
+ *       collections with a rich API of enumerable functions, views with
+ *       declarative event handling, and connects it all to your existing
+ *       application over a RESTful JSON interface.
+ *
  * @author jashkenas
- * @desc
- * Backbone supplies structure to JavaScript-heavy applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing application over a RESTful JSON interface.
  * @url http://documentcloud.github.com/backbone/
  * @tags MVC framework
  * @version 0.3.3

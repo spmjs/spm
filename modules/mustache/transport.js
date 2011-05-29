@@ -1,10 +1,10 @@
 /**
  * @name mustache
- * @author John Resig
- * @desc Logic-less templates in JavaScript
+ * @desc Logic-less templates in JavaScript.
+ * @author Jan Lehnardt
  * @url http://mustache.github.com/
  * @tags template
- * @version 0.3.1-dev
+ * @version 0.3.1
  *
  * @src https://github.com/janl/mustache.js/raw/master/mustache.js
  */

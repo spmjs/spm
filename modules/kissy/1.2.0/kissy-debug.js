@@ -1503,7 +1503,7 @@ build time: ${build.time}
             var src = re.src;
             S.log("interactive src :" + src);
             //注意：模块名不包含后缀名以及参数，所以去除
-            //系统模块去除系统路���
+            //系统模块去除系统路径
             if (src.lastIndexOf(self.Config.base, 0) == 0) {
                 return utils.removePostfix(src.substring(self.Config.base.length));
             }
@@ -1577,7 +1577,7 @@ build time: ${build.time}
 
                         } else {
                             //载入 css 不需要这步了
-                            //标准浏览器下：外部脚本执行后立即触发该脚���的 load 事件,ie9 还是不行
+                            //标准浏览器下：外部脚本执行后立即触发该脚本的 load 事件,ie9 还是不行
                             if (self.__currentModule) {
                                 S.log("standard browser get modname after load : " + mod.name);
                                 self.__registerModule(mod.name, self.__currentModule.def,
@@ -1722,7 +1722,7 @@ build time: ${build.time}
  *
  * compatibility
  *
- * 1. 保持兼容性，不得已而为之
+ * 1. 保持兼容性，不得已而为���
  *      支持 { host : }
  *      如果 requires 都已经 attached，支持 add 后立即 attach
  *      支持 { attach : false } 显示控制 add 时是否 attach
@@ -2016,7 +2016,7 @@ build time: ${build.time}
                     r = newRequires[i] = utils.normalDepModuleName(mod.name, r);
                     var rMod = mods[r],
                         inA = S.inArray(r, requires);
-                    //已经处理过了或将要处理
+                    //已经处理过了或将���处理
                     if (rMod && rMod.status === ATTACHED
                         //已经正在处理了
                         || inA) {
@@ -3855,7 +3855,7 @@ KISSY.add('dom/offset', function(S, DOM, UA, undefined) {
 
                 // 根据情况将 elem 定位到 container 视窗中
                 // 1. 当 eh > ch 时，优先显示 elem 的顶部，对用户来说，这样更合理
-                // 2. 当 t < ct 时���elem 在 container 视窗上方，优先顶部对齐
+                // 2. 当 t < ct 时，elem 在 container 视窗上方，优先顶部对齐
                 // 3. 当 b > cb 时，elem 在 container 视窗下方，优先底部对齐
                 // 4. 其它情况下，elem 已经在 container 视窗中，无需任何操作
                 if (eh > ch || t < ct || top) {
@@ -4297,7 +4297,7 @@ KISSY.add('dom/style', function(S, DOM, UA, undefined) {
  *  - 非 webkit 下，jQuery.css paddingLeft 返回 style 值， padding-left 返回 computedStyle 值，
  *    返回的值不同。KISSY 做了统一，更符合预期。
  *
- *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍���入，gecko 下直接输出 float 值。
+ *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍五入，gecko 下直接输出 float 值。
  *
  *  - color: blue 继承值，getComputedStyle, 在 ie 下返回 blue, opera 返回 #0000ff, 其它浏览器
  *    返回 rgb(0, 0, 255)
@@ -5802,7 +5802,7 @@ KISSY.add('node/nodelist', function(S, DOM,Node,undefined) {
  *   - each 方法传给 fn 的 this, 在 jQuery 里指向原生对象，这样可以避免性能问题。
  *     但从用户角度讲，this 的第一直觉是 $(this), kissy 和 yui3 保持一致，牺牲
  *     性能，以易用为首。
- *   - 有了 each 方法，似乎不再需要 import 所有 dom 方���，意义不大。
+ *   - 有了 each 方法，似乎不再需要 import 所有 dom 方法，意义���大。
  *   - dom 是低级 api, node 是中级 api, 这是分层的一个原因。还有一个原因是，如果
  *     直接在 node 里实现 dom 方法，则不大好将 dom 的方法耦合到 nodelist 里。可
  *     以说，技术成本会制约 api 设计。
@@ -5870,7 +5870,7 @@ KISSY.add('node/attach', function(S, DOM, Event, Node, NodeList, undefined) {
 
                         default:
                             return function() {
-                                // 有非 undefined 返回值时，直接 return 返回值；没返回值���，return this, 以支持链式调用。
+                                // 有非 undefined 返回值时，直接 return 返回值；没返回值时，return this, 以支持链式调用。
                                 var elems = this[isNodeList ? GET_DOM_NODES : GET_DOM_NODE](),
                                     ret = fn.apply(DOM, [elems].concat(S.makeArray(arguments)));
                                 return ret === undefined ? this : ret;
@@ -6787,7 +6787,7 @@ KISSY.add('ajax/impl', function(S, Event, S_JSON, undef) {
             // IE 中如果请求一个缓存住的页面，会出现如下状况 (jQuery 中未考虑,此处也不作处理)：
             // 		请求一个页面成功，但头输出为 404, ie6/8 下检测为 200, ie7/ff/chrome/opera 检测为 404
             // 		请求一个不存在的页面，ie 均检测为 200 ,ff/chrome/opera检测为 404
-            // 		请求一个不存在的页面，ie6/7 的 statusText为 'Not Found'，ie8 的��� 'OK', statusText 是可以被程序赋值的
+            // 		请求一个不存在的页面，ie6/7 的 statusText为 'Not Found'，ie8 的为 'OK', statusText 是���以被程序赋值的
             return xhr.status >= 200 && xhr.status < 300 ||
                 xhr.status === 304 || xhr.status === 1223;
         } catch(e) {
@@ -6880,7 +6880,7 @@ KISSY.add('anim/easing', function(S) {
     // Preview: http://www.robertpenner.com/easing/easing_demo.html
 
     /**
-     * 和 YUI 的 Easing 相比，S.Easing 进行了归一化处理，参数调整为：
+     * 和 YUI 的 Easing 相比���S.Easing 进行了归一化处理，参数调整为：
      * @param {Number} t Time value used to compute current value  保留 0 =< t <= 1
      * @param {Number} b Starting value  b = 0
      * @param {Number} c Delta between start and end values  c = 1
@@ -8428,4 +8428,5 @@ KISSY.use('core');
 
 
   module.exports = KISSY;
+  try { delete this.KISSY; } catch(ex) { this.KISSY = undefined; }
 });

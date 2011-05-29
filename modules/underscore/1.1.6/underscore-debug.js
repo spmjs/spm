@@ -810,6 +810,4 @@ define([], function(require, exports, module) {
 })();
 
 
-  module.exports = _;
-  _._ = _;
 });

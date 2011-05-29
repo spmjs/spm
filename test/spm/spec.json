@@ -1,9 +1,13 @@
 /**
  * @name KISSY
+ * @author lifesinger
+ * @author yiminghe
+ * @author TaobaoUED f2es
  * @desc An Enjoyable UI Library.
- * @author Taobao UED
+ *       小巧灵活、简洁实用、愉悦编码、快乐开发
  * @url http://kissyui.com/
  * @tags dom,event,library,ui library
+ * @tags all in one
  * @version 1.2.0
  *
  * @src http://a.tbcdn.cn/s/kissy/1.2.0/kissy.js

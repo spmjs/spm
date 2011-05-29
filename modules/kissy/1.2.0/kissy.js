@@ -158,4 +158,5 @@ KISSY.add("core",function(b,c,n,g,e,f,a,d,l,m){a.getScript=b.getScript;c={UA:c,D
 
 
   module.exports = KISSY;
+  try { delete this.KISSY; } catch(ex) { this.KISSY = undefined; }
 });

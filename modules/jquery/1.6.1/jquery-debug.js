@@ -8940,5 +8940,4 @@ window.jQuery = window.$ = jQuery;
 
 
   module.exports = $.noConflict(true);
-  exports.version = $.jquery;
 });
