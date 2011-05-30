@@ -28,8 +28,8 @@ out = combo.run(getFile('define-json/program'));
 assert.ok(out.indexOf('define("./program",["./array","./object","./primitive"]') !== -1);
 assert.ok(out.indexOf('define("./array",[]') !== -1);
 
-out = combo.run(getFile('top-level/program', '', true));
-//assert.ok(out.indexOf('define("./program",["./array","./object","./primitive"]') === 0);
+out = combo.run(getFile('top-level/program'), '', true);
+assert.ok(out.indexOf('define("/querystring/1.0.0/querystring",[],function') !== -1);
 
 
 // Helpers
