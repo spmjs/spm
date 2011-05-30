@@ -1,5 +1,5 @@
 var assert = require('assert'),
-    annotation = require('../../lib/annotation'),
+    annotation = require('../../lib/spm/annotation'),
     fs = require('fs'), path = require('path');
 
 var comments = fs.readFileSync(path.join(__dirname, 'spec.json'), 'utf8');

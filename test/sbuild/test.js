@@ -2,19 +2,18 @@
 /**
  * @fileoverview Test Cases for sbuild.
  * @usage
- *   cd test/sbuild
- *   node test.js
+ *   node path/to/test.js
  */
 
 var path = require('path');
 var assert = require('assert');
 
 
-var extract = require('../../lib/extract');
+var extract = require('../../lib/sbuild/extract');
 assert.ok(extract.run(getFile('math/program')).indexOf('define([ "./increment" ]') === 0);
 
 
-var combo = require('../../lib/combo');
+var combo = require('../../lib/sbuild/combo');
 
 var out = combo.run(getFile('math/program'));
 assert.ok(out.indexOf('define("./program",["./increment"]') !== -1);
