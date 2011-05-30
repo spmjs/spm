@@ -32,6 +32,9 @@ out = combo.run(getFile('top-level/program'), '', true);
 assert.ok(out.indexOf('define("querystring/1.0.0/querystring",[],function') !== -1);
 
 
+console.log('\033[32m  All PASSED!\033[0m');
+
+
 // Helpers
 function getFile(file) {
   return path.join(__dirname, file);
