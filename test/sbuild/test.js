@@ -38,7 +38,7 @@ assert.ok(out.indexOf('define("./array",[]') !== -1);
 
 console.log('\033[36m    test top-level: \033[0m');
 out = combo.run(getFile('top-level/program'), '', true);
-assert.ok(out.indexOf('define("querystring/1.0.0/querystring",[],function') !== -1);
+assert.ok(out.indexOf('define("querystring/1.0.0/querystring",[]') !== -1);
 
 
 console.log('\033[36m    test config-alias: \033[0m');
