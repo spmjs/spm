@@ -17,10 +17,7 @@ Usage
 ------
 
     sbuild --help
-    sbuild a.js [--combo [all]]
-    sbuild a.js b.js [--combo [all]]
-    sbuild *.js [--combo [all]]
-    sbuild some_directory [--combo [all]] [-r]
-    sbuild clear
 
-    snode filename.js [--base path/to/spm/bin]
+    snode --help
+
+    spm --help
