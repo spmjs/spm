@@ -1,7 +1,7 @@
 /*
-Copyright 2011, SeaJS v1.0.0dev
+Copyright 2011, SeaJS v0.9.2
 MIT Licensed
-build time: ${build.time}
+build time: May 31 11:51
 */
 
 
@@ -21,7 +21,7 @@ this.seajs = { _seajs: this.seajs };
  * @type {string} The version of the framework. It will be replaced
  * with "major.minor.patch" when building.
  */
-seajs.version = '1.0.0dev';
+seajs.version = '0.9.2';
 
 
 // Module status：
@@ -78,6 +78,7 @@ seajs._fn = {};
 (function(util) {
 
   var toString = Object.prototype.toString;
+  var AP = Array.prototype;
 
 
   util.isString = function(val) {
@@ -96,16 +97,53 @@ seajs._fn = {};
 
 
   util.indexOf = Array.prototype.indexOf ?
-      function(array, item) {
-        return array.indexOf(item);
+      function(arr, item) {
+        return arr.indexOf(item);
       } :
-      function(array, item) {
-        for (var i = 0, l = array.length; i < l; i++) {
-          if (array[i] === item) {
+      function(arr, item) {
+        for (var i = 0, len = arr.length; i < len; i++) {
+          if (arr[i] === item) {
             return i;
           }
         }
         return -1;
+      };
+
+
+  var forEach = util.each = function(arr, fn) {
+    var val, i = 0, len = arr.length;
+    for (val = arr[0];
+         i < len && fn(val, i, arr) !== false;
+         val = arr[++i]) {
+    }
+  };
+
+
+  util.map = AP.map ?
+      function(arr, fn) {
+        return arr.map(fn);
+      } :
+      function(arr, fn) {
+        var ret = [];
+        forEach(arr, function(item, i, arr) {
+          ret.push(fn(item, i, arr));
+        });
+        return ret;
+      };
+
+
+  util.filter = AP.filter ?
+      function(arr, fn) {
+        return arr.filter(fn);
+      } :
+      function(arr, fn) {
+        var ret = [];
+        forEach(arr, function(item, i, arr) {
+          if (fn(item, i, arr)) {
+            ret.push(item);
+          }
+        });
+        return ret;
       };
 
 
@@ -220,50 +258,19 @@ seajs._fn = {};
    * Normalizes an url.
    */
   function normalize(url) {
+    url = realpath(url);
 
     // Adds the default '.js' extension except that the url ends with #.
     if (/#$/.test(url)) {
       url = url.slice(0, -1);
     }
-    else {
-      url = stripUrlArgs(realpath(url));
-
-      if (!(/\.(?:css|js)$/.test(url))) {
-        url += '.js';
-      }
+    else if (url.indexOf('?') === -1 && !/\.(?:css|js)$/.test(url)) {
+      url += '.js';
     }
 
     return url;
   }
 
-
-  /**
-   * Url args cache.
-   * { uri: args, ... }
-   */
-  var urlArgs = {};
-
-  /**
-   * Strips off the args from url and caches it.
-   */
-  function stripUrlArgs(url) {
-    var m = url.match(/^([^?]+)(\?.*)$/);
-    if (m) {
-      url = m[1];
-      urlArgs[url] = m[2];
-    }
-    return url;
-  }
-
-  /**
-   * Restores the args for url.
-   */
-  function restoreUrlArgs(url) {
-    return url + (urlArgs[url] || '');
-  }
-
-
-  var aliasRegCache = {};
 
   /**
    * Parses alias in the module id. Only parse the prefix and suffix.
@@ -370,13 +377,9 @@ seajs._fn = {};
    * @param {string=} refUri The referenced uri for relative id.
    */
   function ids2Uris(ids, refUri) {
-    var uris = [];
-
-    for (var i = 0, len = ids.length; i < len; i++) {
-      uris[i] = id2Uri(ids[i], refUri);
-    }
-
-    return uris;
+    return util.map(ids, function(id) {
+      return id2Uri(id, refUri);
+    });
   }
 
 
@@ -386,9 +389,8 @@ seajs._fn = {};
    * Caches mod info to memoizedMods.
    */
   function memoize(id, url, mod) {
-    url = stripUrlArgs(url);
-
     var uri;
+
     // define('id', [], fn)
     if (id) {
       uri = id2Uri(id, url, true);
@@ -397,7 +399,7 @@ seajs._fn = {};
     }
 
     mod.dependencies = ids2Uris(mod.dependencies, uri);
-    data.memoizedMods[uri] = mod;
+    memoizedMods[uri] = mod;
 
     // guest module in package
     if (id && url !== uri) {
@@ -409,18 +411,58 @@ seajs._fn = {};
   }
 
   /**
-   * Removes the memoize()d uris from input.
+   * Set mod.ready to true when all the requires of the module is loaded.
    */
-  function getUnMemoized(uris) {
-    var ret = [];
-    for (var i = 0; i < uris.length; i++) {
-      var uri = uris[i];
-      if (!memoizedMods[uri]) {
-        ret.push(uri);
+  function setReadyState(uris) {
+    util.each(uris, function(uri) {
+      if (memoizedMods[uri]) {
+        memoizedMods[uri].ready = true;
+      }
+    });
+  }
+
+  /**
+   * Removes the "ready = true" uris from input.
+   */
+  function getUnReadyUris(uris) {
+    return util.filter(uris, function(uri) {
+      var mod = memoizedMods[uri];
+      return !mod || !mod.ready;
+    });
+  }
+
+  /**
+   * if a -> [b -> [c -> [a, e], d]]
+   * call removeMemoizedCyclicUris(c, [a, e])
+   * return [e]
+   */
+  function removeCyclicWaitingUris(uri, deps) {
+    return util.filter(deps, function(dep) {
+      return !isCyclicWaiting(memoizedMods[dep], uri);
+    });
+  }
+
+  function isCyclicWaiting(mod, uri) {
+    if (!mod || mod.ready) {
+      return false;
+    }
+
+    var deps = mod.dependencies || [];
+    if (deps.length) {
+      if (util.indexOf(deps, uri) !== -1) {
+        return true;
+      } else {
+        for (var i = 0; i < deps.length; i++) {
+          if (isCyclicWaiting(memoizedMods[deps[i]], uri)) {
+            return true;
+          }
+        }
+        return false;
       }
     }
-    return ret;
+    return false;
   }
+
 
   /**
    * For example:
@@ -431,22 +473,23 @@ seajs._fn = {};
    * to host.dependencies
    */
   function augmentPackageHostDeps(hostDeps, guestDeps) {
-    for (var i = 0; i < guestDeps.length; i++) {
-      if (util.indexOf(hostDeps, guestDeps[i]) === -1) {
-        hostDeps.push(guestDeps[i]);
+    util.each(guestDeps, function(guestDep) {
+      if (util.indexOf(hostDeps, guestDep) === -1) {
+        hostDeps.push(guestDep);
       }
-    }
+    });
   }
 
 
   util.dirname = dirname;
-  util.restoreUrlArgs = restoreUrlArgs;
 
   util.id2Uri = id2Uri;
   util.ids2Uris = ids2Uris;
 
   util.memoize = memoize;
-  util.getUnMemoized = getUnMemoized;
+  util.setReadyState = setReadyState;
+  util.getUnReadyUris = getUnReadyUris;
+  util.removeCyclicWaitingUris = removeCyclicWaitingUris;
 
   if (data.config.debug) {
     util.realpath = realpath;
@@ -630,6 +673,21 @@ seajs._fn = {};
         node.getAttribute('src', 4);
   };
 
+
+  var noCacheTimeStamp = 'seajs-timestamp=' + util.now();
+
+  util.addNoCacheTimeStamp = function(url) {
+    return url + (url.indexOf('?') === -1 ? '?' : '&') + noCacheTimeStamp;
+  };
+
+  util.removeNoCacheTimeStamp = function(url) {
+    var ret = url;
+    if (url.indexOf(noCacheTimeStamp) !== -1) {
+      ret = url.replace(noCacheTimeStamp, '').slice(0, -1);
+    }
+    return ret;
+  };
+
 })(seajs._util, seajs._data);
 
 /**
@@ -664,15 +722,13 @@ seajs._fn = {};
     }
 
     // normalize
-    ids = util.ids2Uris(ids, this.uri);
+    var uris = util.ids2Uris(ids, this.uri);
 
     // 'this' may be seajs or module, due to seajs.boot() or module.load().
-    provide.call(this, ids, function(require) {
-      var args = [];
-
-      for (var i = 0; i < ids.length; i++) {
-        args[i] = require(ids[i]);
-      }
+    provide.call(this, uris, function(require) {
+      var args = util.map(uris, function(uri) {
+        return require(uri);
+      });
 
       if (callback) {
         callback.apply(global, args);
@@ -691,42 +747,55 @@ seajs._fn = {};
    */
   function provide(uris, callback, noRequire) {
     var that = this;
-    var _uris = util.getUnMemoized(uris);
+    var unReadyUris = util.getUnReadyUris(uris);
 
-    if (_uris.length === 0) {
-      return cb();
+    if (unReadyUris.length === 0) {
+      return onProvide();
     }
 
-    for (var i = 0, n = _uris.length, remain = n; i < n; i++) {
+    for (var i = 0, n = unReadyUris.length, remain = n; i < n; i++) {
       (function(uri) {
 
-        fetch(uri, function() {
+        if (memoizedMods[uri]) {
+          onLoad();
+        } else {
+          fetch(uri, onLoad);
+        }
+
+        function onLoad() {
           var deps = (memoizedMods[uri] || 0).dependencies || [];
           var m = deps.length;
 
           if (m) {
-            remain += m;
-
-            provide(deps, function() {
-              remain -= m;
-              if (remain === 0) cb();
-            }, true);
+            // if a -> [b -> [c -> [a, e], d]]
+            // when use(['a', 'b'])
+            // should remove a from c.deps
+            deps = util.removeCyclicWaitingUris(uri, deps);
+            m = deps.length;
           }
 
-          if (--remain === 0) cb();
-        });
+          if (m) {
+            remain += m;
+            provide(deps, function() {
+              remain -= m;
+              if (remain === 0) onProvide();
+            }, true);
+          }
+          if (--remain === 0) onProvide();
+        }
 
-      })(_uris[i]);
+      })(unReadyUris[i]);
     }
 
-    function cb() {
+    function onProvide() {
+      util.setReadyState(unReadyUris);
+
       if (callback) {
         var require;
 
         if (!noRequire) {
           require = fn.createRequire({
-            uri: that.uri,
-            deps: uris
+            uri: that.uri
           });
         }
 
@@ -762,11 +831,9 @@ seajs._fn = {};
     function cb() {
 
       if (data.pendingMods) {
-
-        for (var i = 0; i < data.pendingMods.length; i++) {
-          var pendingMod = data.pendingMods[i];
+        util.each(data.pendingMods, function(pendingMod) {
           util.memoize(pendingMod.id, uri, pendingMod);
-        }
+        });
 
         data.pendingMods = [];
       }
@@ -791,17 +858,14 @@ seajs._fn = {};
   }
 
 
-  var timestamp = util.now();
-
   function getUrl(uri) {
-    var url = util.restoreUrlArgs(uri);
+    var url = uri;
 
     // When debug is 2, a unique timestamp will be added to each URL.
     // This can be useful during testing to prevent the browser from
     // using a cached version of the file.
     if (data.config.debug == 2) {
-      url += (url.indexOf('?') === -1 ? '?' : '') +
-          'seajs-timestamp=' + timestamp;
+      url = util.addNoCacheTimeStamp(url);
     }
 
     return url;
@@ -849,6 +913,10 @@ seajs._fn = {};
       var script = util.getInteractiveScript();
       if (script) {
         url = util.getScriptAbsoluteSrc(script);
+        // remove no cache timestamp
+        if (data.config.debug == 2) {
+          url = util.removeNoCacheTimeStamp(url);
+        }
       }
 
       // In IE6-9, if the script is in the cache, the "interactive" mode
@@ -966,6 +1034,7 @@ seajs._fn = {};
     mod.load = fn.load;
     delete mod.id; // just keep mod.uri
     delete mod.factory; // free
+    delete mod.ready; // free
 
     if (util.isFunction(factory)) {
       checkPotentialErrors(factory, mod.uri);
