@@ -37,8 +37,8 @@ assert.ok(out.indexOf('define("./array",[]') !== -1);
 
 
 console.log('\033[36m    test top-level: \033[0m');
-//out = combo.run(getFile('top-level/program'), '', true);
-//assert.ok(out.indexOf('define("querystring/1.0.0/querystring",[],function') !== -1);
+out = combo.run(getFile('top-level/program'), '', true);
+assert.ok(out.indexOf('define("querystring/1.0.0/querystring",[],function') !== -1);
 
 
 console.log('\033[36m    test config-alias: \033[0m');
@@ -49,10 +49,13 @@ console.log(deps);
 
 assert.ok(deps[0] === './sub/increment.js?t=20110530');
 assert.ok(deps[1] === 'querystring/1.0.0/querystring');
-assert.ok(deps[2] === './sub/lib/math');
+assert.ok(deps[2] === './lib/math');
 
 out = combo.run(getFile('config-alias/program'), '', true);
-//assert.ok(out.indexOf('define("querystring/1.0.0/querystring",[],function') !== -1);
+assert.ok(out.indexOf('define("./program",["./sub/increment","querystring:1.0.0"]') !== -1);
+assert.ok(out.indexOf('define("./sub/increment",["lib/math"]') !== -1);
+assert.ok(out.indexOf('define("./sub/lib/math",[]') !== -1);
+assert.ok(out.indexOf('define("querystring/1.0.0/querystring",[]') !== -1);
 
 
 console.log('\033[32m  All PASSED!\033[0m');
