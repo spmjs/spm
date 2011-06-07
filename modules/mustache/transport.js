@@ -1,12 +1,7 @@
 /**
- * @name mustache
- * @desc Logic-less templates in JavaScript.
- * @author Jan Lehnardt
- * @url http://mustache.github.com/
- * @tags template
- * @version 0.3.1
+ * @package https://raw.github.com/janl/mustache.js/master/lib/package.json
  *
- * @src https://github.com/janl/mustache.js/raw/master/mustache.js
+ * @src https://raw.github.com/janl/mustache.js/master/mustache.js
  */
 define(function(require, exports, module) {
 
