@@ -6,6 +6,9 @@ define(function(require) {
     return .5 - Math.random();
   });
 
+  data.forEach(function(o, idx) {
+    o.size = (o.size / 1024).toFixed(1) + 'K';
+  });
 
   function $(id) {
     return document.getElementById(id);
