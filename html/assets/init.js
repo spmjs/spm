@@ -21,14 +21,14 @@ define(function(require) {
   function find(tag) {
     if (!tag) return data;
     var results = [], i = data.length;
-    while (i--) if (data[i].tags.indexOf(tag) > -1) results.push(data[i]);
+    while (i--) if (data[i].keywords.indexOf(tag) > -1) results.push(data[i]);
     return results;
   }
 
   function render(results) {
     var html = [], i = results.length;
     while (i--) {
-      html.push(t('<li><a href="{url}"><div class="size">{size}</div><h3>{name}</h3>{desc}</a></li>', results[i]));
+      html.push(t('<li><a href="{homepage}"><div class="size">{size}</div><h3>{name}</h3>{description}</a></li>', results[i]));
     }
     $('results').innerHTML = html.join('');
   }

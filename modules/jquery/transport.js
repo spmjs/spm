@@ -1,9 +1,9 @@
 /**
  * @name jquery
- * @desc jQuery is a new kind of JavaScript Library.
+ * @description jQuery is a new kind of JavaScript Library.
  * @author John Resig
- * @url http://jquery.com/
- * @tags dom,event
+ * @homepage http://jquery.com/
+ * @keywords dom,event
  * @version 1.6.1
  *
  * @src http://code.jquery.com/jquery-1.6.1.js

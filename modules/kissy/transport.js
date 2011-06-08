@@ -1,9 +1,9 @@
 /**
  * @name KISSY
- * @desc An Enjoyable UI Library.
+ * @description An Enjoyable UI Library.
  * @author Taobao UED
- * @url http://kissyui.com/
- * @tags dom,event,library,ui library
+ * @homepage http://kissyui.com/
+ * @keywords dom,event,library,ui library
  * @version 1.2.0
  *
  * @src http://a.tbcdn.cn/s/kissy/1.2.0/kissy.js
