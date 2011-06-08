@@ -1,5 +1,4 @@
 
-
 Install on Mac OS X
 --------------------
 
@@ -12,12 +11,25 @@ Install on Windows
 
  - add X:\\path\\to\\spm\\bin to your %PATH%
 
-
-Usage
+sbuild
 ------
 
     sbuild --help
 
+snode
+-----
+
     snode --help
 
-    spm --help
+spm
+---
+
+for help and very beginning, use this:
+
+    spm help
+
+if you want to transport your module(s), use like this:
+
+    spm transport jquery kissy
+
+notice that you can use `. /path/to/your/spm/bin/spm-autocomplete.bash` to enable bash autocomplete.
