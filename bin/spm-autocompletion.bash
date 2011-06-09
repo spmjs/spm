@@ -11,15 +11,26 @@ _spm() {
     local spm cur action modules actions opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
     spm="${COMP_WORDS[0]}"
     action="${COMP_WORDS[1]}"
-    actions="build transport help --help"
+    actions="build transport help --help rm remove"
 
     modules=`ls modules`
     case "${action}" in
         "build" | "transport")
             if [[ ${cur} == -* ]]; then
                 opts="-f --force"
+                COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+            else
+                COMPREPLY=( $(compgen -W "${modules}" -- ${cur}) )
+            fi
+            return 0;
+            ;;
+
+        "rm" | "remove")
+            if [[ ${cur} == -* ]]; then
+                opts="-f --force -v --version"
                 COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
             else
                 COMPREPLY=( $(compgen -W "${modules}" -- ${cur}) )
