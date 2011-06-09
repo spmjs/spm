@@ -4297,7 +4297,7 @@ KISSY.add('dom/style', function(S, DOM, UA, undefined) {
  *  - 非 webkit 下，jQuery.css paddingLeft 返回 style 值， padding-left 返回 computedStyle 值，
  *    返回的值不同。KISSY 做了统一，更符合预期。
  *
- *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍���入，gecko 下直接输出 float 值。
+ *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍五入，gecko 下直接输出 float 值。
  *
  *  - color: blue 继承值，getComputedStyle, 在 ie 下返回 blue, opera 返回 #0000ff, 其它浏览器
  *    返回 rgb(0, 0, 255)
@@ -5802,7 +5802,7 @@ KISSY.add('node/nodelist', function(S, DOM,Node,undefined) {
  *   - each 方法传给 fn 的 this, 在 jQuery 里指向原生对象，这样可以避免性能问题。
  *     但从用户角度讲，this 的第一直觉是 $(this), kissy 和 yui3 保持一致，牺牲
  *     性能，以易用为首。
- *   - 有了 each 方法，似乎不再需要 import 所有 dom 方法，意义不大。
+ *   - 有了 each 方法，似乎不再需要 import 所有 dom 方���，意义不大。
  *   - dom 是低级 api, node 是中级 api, 这是分层的一个原因。还有一个原因是，如果
  *     直接在 node 里实现 dom 方法，则不大好将 dom 的方法耦合到 nodelist 里。可
  *     以说，技术成本会制约 api 设计。
@@ -5870,7 +5870,7 @@ KISSY.add('node/attach', function(S, DOM, Event, Node, NodeList, undefined) {
 
                         default:
                             return function() {
-                                // 有非 undefined 返回值时，直接 return 返回值；没返回值时，return this, 以支持链式调用。
+                                // 有非 undefined 返回值时，直接 return 返回值；没返回值���，return this, 以支持链式调用。
                                 var elems = this[isNodeList ? GET_DOM_NODES : GET_DOM_NODE](),
                                     ret = fn.apply(DOM, [elems].concat(S.makeArray(arguments)));
                                 return ret === undefined ? this : ret;
@@ -6787,7 +6787,7 @@ KISSY.add('ajax/impl', function(S, Event, S_JSON, undef) {
             // IE 中如果请求一个缓存住的页面，会出现如下状况 (jQuery 中未考虑,此处也不作处理)：
             // 		请求一个页面成功，但头输出为 404, ie6/8 下检测为 200, ie7/ff/chrome/opera 检测为 404
             // 		请求一个不存在的页面，ie 均检测为 200 ,ff/chrome/opera检测为 404
-            // 		请求一个不存在的页面，ie6/7 的 statusText为 'Not Found'，ie8 的��� 'OK', statusText 是可以被程序赋值的
+            // 		请求一个不存在的页面，ie6/7 的 statusText为 'Not Found'，ie8 的为 'OK', statusText 是可以被程序赋值的
             return xhr.status >= 200 && xhr.status < 300 ||
                 xhr.status === 304 || xhr.status === 1223;
         } catch(e) {

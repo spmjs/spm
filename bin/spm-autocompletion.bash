@@ -8,18 +8,23 @@
 # @create: 06/08/2011 08:17:16 PM CST
 
 _spm() {
-    local spm cur action modules actions
+    local spm cur action modules actions opts
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     spm="${COMP_WORDS[0]}"
     action="${COMP_WORDS[1]}"
-    actions="transport help"
+    actions="build transport help --help"
 
     modules=`ls modules`
     case "${action}" in
-        transport)
-            COMPREPLY=( $(compgen -W "${modules}" -- ${cur}) )
-            return 0
+        "build" | "transport")
+            if [[ ${cur} == -* ]]; then
+                opts="-f --force"
+                COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+            else
+                COMPREPLY=( $(compgen -W "${modules}" -- ${cur}) )
+            fi
+            return 0;
             ;;
     esac
 
