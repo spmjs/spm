@@ -45,10 +45,10 @@ seajs modules transportment.
 
 use this to get start:
 
-    spm help
+    spm --help
 
 if you want to transport your module(s), use like this:
 
-    spm transport jquery
+    spm build jquery
 
 you can use `. /path/to/your/spm/bin/spm-autocomplete.bash` to enable bash autocomplete.
