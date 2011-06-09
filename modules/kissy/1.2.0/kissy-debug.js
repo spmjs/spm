@@ -4297,7 +4297,7 @@ KISSY.add('dom/style', function(S, DOM, UA, undefined) {
  *  - 非 webkit 下，jQuery.css paddingLeft 返回 style 值， padding-left 返回 computedStyle 值，
  *    返回的值不同。KISSY 做了统一，更符合预期。
  *
- *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍五入，gecko 下直接输出 float 值。
+ *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍���入，gecko 下直接输出 float 值。
  *
  *  - color: blue 继承值，getComputedStyle, 在 ie 下返回 blue, opera 返回 #0000ff, 其它浏览器
  *    返回 rgb(0, 0, 255)
@@ -5870,7 +5870,7 @@ KISSY.add('node/attach', function(S, DOM, Event, Node, NodeList, undefined) {
 
                         default:
                             return function() {
-                                // 有非 undefined 返回值时，直接 return 返回值；没返回值���，return this, 以支持链式调用。
+                                // 有非 undefined 返回值时，直接 return 返回值；没返回值时，return this, 以支持链式调用。
                                 var elems = this[isNodeList ? GET_DOM_NODES : GET_DOM_NODE](),
                                     ret = fn.apply(DOM, [elems].concat(S.makeArray(arguments)));
                                 return ret === undefined ? this : ret;
