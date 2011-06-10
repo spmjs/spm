@@ -14,7 +14,7 @@ _spm() {
     prev="${COMP_WORDS[COMP_CWORD-1]}"
     spm="${COMP_WORDS[0]}"
     action="${COMP_WORDS[1]}"
-    actions="build transport help --help rm remove"
+    actions=`spm completion`
 
     modules=`ls modules`
     case "${action}" in
@@ -35,6 +35,12 @@ _spm() {
             else
                 COMPREPLY=( $(compgen -W "${modules}" -- ${cur}) )
             fi
+            return 0;
+            ;;
+
+        "test")
+            modules=`ls test/spm`
+            COMPREPLY=( $(compgen -W "${modules}" -- ${cur}) )
             return 0;
             ;;
     esac

@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# @file move.sh
+# @file move_transport.sh
 # @fileoverview: 
-# @author: 鏂囨渤(wenhe@taobao.com)
-# @usage: ./move.sh 
+# @author: yyfrankyy(yyfrankyy@gmail.com)
+# @usage: ./move_transport.sh 
 # @version: 1.0
 # @create: 06/10/2011 12:48:47 PM CST
 
