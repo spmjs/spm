@@ -51,4 +51,4 @@ _spm() {
     fi
 }
 
-complete -F _spm spm
+complete -o default -F _spm spm
