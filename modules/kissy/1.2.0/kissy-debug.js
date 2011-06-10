@@ -3855,7 +3855,7 @@ KISSY.add('dom/offset', function(S, DOM, UA, undefined) {
 
                 // 根据情况将 elem 定位到 container 视窗中
                 // 1. 当 eh > ch 时，优先显示 elem 的顶部，对用户来说，这样更合理
-                // 2. 当 t < ct 时，elem 在 container 视窗上方，优先顶部对齐
+                // 2. 当 t < ct 时���elem 在 container 视窗上方，优先顶部对齐
                 // 3. 当 b > cb 时，elem 在 container 视窗下方，优先底部对齐
                 // 4. 其它情况下，elem 已经在 container 视窗中，无需任何操作
                 if (eh > ch || t < ct || top) {
@@ -4297,7 +4297,7 @@ KISSY.add('dom/style', function(S, DOM, UA, undefined) {
  *  - 非 webkit 下，jQuery.css paddingLeft 返回 style 值， padding-left 返回 computedStyle 值，
  *    返回的值不同。KISSY 做了统一，更符合预期。
  *
- *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍���入，gecko 下直接输出 float 值。
+ *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍五入，gecko 下直接输出 float 值。
  *
  *  - color: blue 继承值，getComputedStyle, 在 ie 下返回 blue, opera 返回 #0000ff, 其它浏览器
  *    返回 rgb(0, 0, 255)
@@ -5802,7 +5802,7 @@ KISSY.add('node/nodelist', function(S, DOM,Node,undefined) {
  *   - each 方法传给 fn 的 this, 在 jQuery 里指向原生对象，这样可以避免性能问题。
  *     但从用户角度讲，this 的第一直觉是 $(this), kissy 和 yui3 保持一致，牺牲
  *     性能，以易用为首。
- *   - 有了 each 方法，似乎不再需要 import 所有 dom 方���，意义不大。
+ *   - 有了 each 方法，似乎不再需要 import 所有 dom 方法，意义不大。
  *   - dom 是低级 api, node 是中级 api, 这是分层的一个原因。还有一个原因是，如果
  *     直接在 node 里实现 dom 方法，则不大好将 dom 的方法耦合到 nodelist 里。可
  *     以说，技术成本会制约 api 设计。
