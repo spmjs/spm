@@ -5870,7 +5870,7 @@ KISSY.add('node/attach', function(S, DOM, Event, Node, NodeList, undefined) {
 
                         default:
                             return function() {
-                                // 有非 undefined 返回值时，直接 return 返回值；没返回值���，return this, 以支持链式调用。
+                                // 有非 undefined 返回值时，直接 return 返回值；没返回值时，return this, 以支持链式调用。
                                 var elems = this[isNodeList ? GET_DOM_NODES : GET_DOM_NODE](),
                                     ret = fn.apply(DOM, [elems].concat(S.makeArray(arguments)));
                                 return ret === undefined ? this : ret;
@@ -6787,7 +6787,7 @@ KISSY.add('ajax/impl', function(S, Event, S_JSON, undef) {
             // IE 中如果请求一个缓存住的页面，会出现如下状况 (jQuery 中未考虑,此处也不作处理)：
             // 		请求一个页面成功，但头输出为 404, ie6/8 下检测为 200, ie7/ff/chrome/opera 检测为 404
             // 		请求一个不存在的页面，ie 均检测为 200 ,ff/chrome/opera检测为 404
-            // 		请求一个不存在的页面，ie6/7 的 statusText为 'Not Found'，ie8 的��� 'OK', statusText 是可以被程序赋值的
+            // 		请求一个不存在的页面，ie6/7 的 statusText为 'Not Found'，ie8 的为 'OK', statusText 是可以被程序赋值的
             return xhr.status >= 200 && xhr.status < 300 ||
                 xhr.status === 304 || xhr.status === 1223;
         } catch(e) {
