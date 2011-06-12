@@ -7,7 +7,7 @@ define(function(require) {
   });
 
   data.forEach(function(o, idx) {
-    o.size = (o.size / 1024).toFixed(1) + 'K';
+    o.size = (o.gzipped / 1024).toFixed(1) + 'K';
   });
 
   function $(id) {
@@ -15,7 +15,7 @@ define(function(require) {
   }
 
   function t(s, d) {
-    for (var p in d){
+    for (var p in d) {
       s = s.replace(new RegExp('{' + p + '}', 'g'), d[p]);
     }
     return s;
@@ -24,14 +24,18 @@ define(function(require) {
   function find(tag) {
     if (!tag) return data;
     var results = [], i = data.length;
-    while (i--) if (data[i].keywords.indexOf(tag) > -1) results.push(data[i]);
+    while (i--) {
+      if (data[i].keywords.indexOf(tag) > -1) results.push(data[i]);
+    }
     return results;
   }
 
   function render(results) {
     var html = [], i = results.length;
     while (i--) {
-      html.push(t('<li><a href="{homepage}"><div class="size">{size}</div><h3>{name}</h3>{description}</a></li>', results[i]));
+      html.push(t('<li><a href="{homepage}"><div class="size">' +
+                  '{size}</div><h3>{name}</h3>{description}</a></li>',
+                  results[i]));
     }
     $('results').innerHTML = html.join('');
   }

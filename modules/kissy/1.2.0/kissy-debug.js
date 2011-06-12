@@ -1503,7 +1503,7 @@ build time: ${build.time}
             var src = re.src;
             S.log("interactive src :" + src);
             //注意：模块名不包含后缀名以及参数，所以去除
-            //系统模块去除系统路径
+            //系统模块去除系统路���
             if (src.lastIndexOf(self.Config.base, 0) == 0) {
                 return utils.removePostfix(src.substring(self.Config.base.length));
             }
@@ -1577,7 +1577,7 @@ build time: ${build.time}
 
                         } else {
                             //载入 css 不需要这步了
-                            //标准浏览器下：外部脚本执行后立即触发该脚本的 load 事件,ie9 还是不行
+                            //标准浏览器下：外部脚本执行后立即触发该脚���的 load 事件,ie9 还是不行
                             if (self.__currentModule) {
                                 S.log("standard browser get modname after load : " + mod.name);
                                 self.__registerModule(mod.name, self.__currentModule.def,
@@ -3855,7 +3855,7 @@ KISSY.add('dom/offset', function(S, DOM, UA, undefined) {
 
                 // 根据情况将 elem 定位到 container 视窗中
                 // 1. 当 eh > ch 时，优先显示 elem 的顶部，对用户来说，这样更合理
-                // 2. 当 t < ct 时���elem 在 container 视窗上方，优先顶部对齐
+                // 2. 当 t < ct 时，elem 在 container 视窗上方，优先顶部对齐
                 // 3. 当 b > cb 时，elem 在 container 视窗下方，优先底部对齐
                 // 4. 其它情况下，elem 已经在 container 视窗中，无需任何操作
                 if (eh > ch || t < ct || top) {
@@ -4297,7 +4297,7 @@ KISSY.add('dom/style', function(S, DOM, UA, undefined) {
  *  - 非 webkit 下，jQuery.css paddingLeft 返回 style 值， padding-left 返回 computedStyle 值，
  *    返回的值不同。KISSY 做了统一，更符合预期。
  *
- *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍���入，gecko 下直接输出 float 值。
+ *  - getComputedStyle 在 webkit 下，会舍弃小数部分，ie 下会四舍五入，gecko 下直接输出 float 值。
  *
  *  - color: blue 继承值，getComputedStyle, 在 ie 下返回 blue, opera 返回 #0000ff, 其它浏览器
  *    返回 rgb(0, 0, 255)

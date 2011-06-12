@@ -1,0 +1,3 @@
+[submodule "support/node-compress"]
+	path = support/node-compress
+	url = git://github.com/waveto/node-compress.git
