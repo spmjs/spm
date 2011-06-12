@@ -7,7 +7,7 @@ define(function(require) {
   });
 
   data.forEach(function(o, idx) {
-    o.size = (o.gzipped / 1024).toFixed(1) + 'K';
+    o.size = ((o.gzipped || o.size) / 1024).toFixed(1) + 'K';
   });
 
   function $(id) {
