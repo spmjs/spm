@@ -8,44 +8,34 @@
 # @create: 06/08/2011 08:17:16 PM CST
 
 _spm() {
-    local spm cur action modules actions opts
+    local spm cur action args actions
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
     spm="${COMP_WORDS[0]}"
+    len="${#COMP_WORDS[@]}"
     action="${COMP_WORDS[1]}"
-    actions=`spm completion`
 
-    modules=`ls modules`
+    if [[ ${cur} == -* ]]; then
+        args=`spm completion options ${action}`
+    else
+        args=`spm completion modules`
+    fi
     case "${action}" in
-        "build" | "transport")
-            if [[ ${cur} == -* ]]; then
-                opts="-f --force"
-                COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
-            else
-                COMPREPLY=( $(compgen -W "${modules}" -- ${cur}) )
-            fi
+        build | transport | rm | remove)
+            COMPREPLY=( $(compgen -W "${args}" -- ${cur}) )
             return 0;
             ;;
 
-        "rm" | "remove")
-            if [[ ${cur} == -* ]]; then
-                opts="-f --force -v --version"
-                COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
-            else
-                COMPREPLY=( $(compgen -W "${modules}" -- ${cur}) )
-            fi
-            return 0;
-            ;;
-
-        "test")
-            modules=`ls test/spm`
-            COMPREPLY=( $(compgen -W "${modules}" -- ${cur}) )
+        test)
+            args=`ls test/spm`
+            COMPREPLY=( $(compgen -W "${args}" -- ${cur}) )
             return 0;
             ;;
     esac
 
-    if [[ "${spm}" == "spm" ]]; then
+    if [[ ${len} == 2 ]]; then
+        actions=`spm completion`
         COMPREPLY=( $(compgen -W "${actions}" -- ${cur}) )
         return 0;
     fi
