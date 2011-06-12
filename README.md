@@ -10,12 +10,12 @@ Install on Mac OS X / Linux
 Install on Windows
 -------------------
 
-### Cygwin ###
+### Cygwin
 
  1. install nodejs(cygwin) from https://github.com/joyent/node/wiki/Building-node.js-on-Cygwin-(Windows)
  2. add /path/to/spm/bin to your cygwin system %PATH%
 
-### Self-Contained Binaries ###
+### Self-Contained Binaries
 
  1. use this self-contained binaries nodejs on windows http://node-js.prcn.co.cc/
  2. add X:\path\to\spm\bin to your system variables %PATH%

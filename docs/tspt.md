@@ -1,7 +1,8 @@
 .tspt file
 ==========
 
-The `.tspt` file provides your code transporting's template, meta infomation.
+The `.tspt` file provides your code transporting's template with 
+meta infomation.
 
 Here goes `transport.js` of seajs.
 
