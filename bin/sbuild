@@ -1,3 +1,8 @@
-#!/bin/sh
+#!/usr/bin/env node
 
-/usr/bin/env node --stack_size=8192 `dirname "$0"`/../lib/sbuild/sbuild.js $@
+var path = require('path');
+var fs = require('fs');
+var lib = path.join(path.dirname(fs.realpathSync(__filename)), '../lib');
+
+process.ARGV = process.argv;
+require(lib + '/sbuild/sbuild.js');
