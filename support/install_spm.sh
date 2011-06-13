@@ -11,6 +11,7 @@ echo "Install spm from local.."
 if [[ -z $(git st | grep "^#\s*modified" | grep -v "untracked content") ]]; then
     git archive --format=tar --prefix=spm/ HEAD | gzip >/tmp/spm.tgz
     sudo npm uninstall spm -g && sudo npm install /tmp/spm.tgz -g
+    . bin/spm-autocompletion.bash
     echo "DONE!"
 else
     echo "FAIL! You need to submit your change first."

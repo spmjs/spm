@@ -1503,7 +1503,7 @@ build time: ${build.time}
             var src = re.src;
             S.log("interactive src :" + src);
             //注意：模块名不包含后缀名以及参数，所以去除
-            //系统模块去除系统路径
+            //系统模块去除系统路���
             if (src.lastIndexOf(self.Config.base, 0) == 0) {
                 return utils.removePostfix(src.substring(self.Config.base.length));
             }
@@ -1577,7 +1577,7 @@ build time: ${build.time}
 
                         } else {
                             //载入 css 不需要这步了
-                            //标准浏览器下：外部脚本执行后立即触发该脚本的 load 事件,ie9 还是不行
+                            //标准浏览器下：外部脚本执行后立即触发该脚���的 load 事件,ie9 还是不行
                             if (self.__currentModule) {
                                 S.log("standard browser get modname after load : " + mod.name);
                                 self.__registerModule(mod.name, self.__currentModule.def,
@@ -5802,7 +5802,7 @@ KISSY.add('node/nodelist', function(S, DOM,Node,undefined) {
  *   - each 方法传给 fn 的 this, 在 jQuery 里指向原生对象，这样可以避免性能问题。
  *     但从用户角度讲，this 的第一直觉是 $(this), kissy 和 yui3 保持一致，牺牲
  *     性能，以易用为首。
- *   - 有了 each 方法，似乎不再需要 import 所有 dom 方���，意义不大。
+ *   - 有了 each 方法，似乎不再需要 import 所有 dom 方法，意义不大。
  *   - dom 是低级 api, node 是中级 api, 这是分层的一个原因。还有一个原因是，如果
  *     直接在 node 里实现 dom 方法，则不大好将 dom 的方法耦合到 nodelist 里。可
  *     以说，技术成本会制约 api 设计。
