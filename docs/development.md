@@ -1,16 +1,25 @@
 Developping spm
 ===============
 
+Installations
+-------------
+
+Since we haven't submit to npm yet, so we have to use these command to 
+install `spm` by npm manually.
+
+     git archive --format=tar --prefix=spm/ HEAD | gzip >/tmp/spm.tgz 
+     sudo npm uninstall spm -g && sudo npm install /tmp/spm.tgz -g
+
+or just run:
+
+    support/install_spm.sh
+
 Type this for starting `spm`:
 
-    spm --help
+    spm help
 
-If you want to transport your module(s), use like this:
-
-    spm build jquery
-
-You can use `. /path/to/your/spm/bin/spm-autocomplete.bash` 
-to enable bash autocompletion, or just put it into your `.bashrc`/`.profile`
+You can use `. /path/to/your/spm/bin/spm-autocomplete.bash` to enable 
+bash autocompletion, or just put it into your `.bashrc`/`.profile`.
 
 Actions
 -------
