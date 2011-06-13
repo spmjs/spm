@@ -16,11 +16,10 @@
     "gzip": ">= 0.1.0"
   },
   "directories": {
-    "lib": "./lib",
-    "bin": "./bin"
+    "lib": "./lib"
   },
   "bin": {
-    "ender": "./bin/spm"
+    "spm": "./bin/spm"
   },
   "preferGlobal": true
 }
