@@ -5,12 +5,7 @@ Installations
 -------------
 
 Since we haven't submit to npm yet, so we have to use these command to 
-install `spm` by npm manually.
-
-     git archive --format=tar --prefix=spm/ HEAD | gzip >/tmp/spm.tgz 
-     sudo npm uninstall spm -g && sudo npm install /tmp/spm.tgz -g
-
-or just run:
+install `spm` by npm manually, run:
 
     support/install_spm.sh
 
