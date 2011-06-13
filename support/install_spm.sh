@@ -7,5 +7,11 @@
 # @version: 1.0
 # @create: 06/13/2011 03:34:15 PM CST
 
-git archive --format=tar --prefix=spm/ HEAD | gzip >/tmp/spm.tgz
-sudo npm uninstall spm -g && sudo npm install /tmp/spm.tgz -g
+echo "Install spm from local.."
+if [[ -z $(git st | grep "^#\s*modified" | grep -v "untracked content") ]]; then
+    git archive --format=tar --prefix=spm/ HEAD | gzip >/tmp/spm.tgz
+    sudo npm uninstall spm -g && sudo npm install /tmp/spm.tgz -g
+    echo "DONE!"
+else
+    echo "FAIL! You need to submit your change first."
+fi
