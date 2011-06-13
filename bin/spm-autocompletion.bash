@@ -18,7 +18,7 @@ _spm() {
     args=""
 
     if [[ ${len} == 2 ]]; then
-        args=`spm completion actions`
+        args=`bin/spm completion actions`
     fi
 
     case "${action}" in
