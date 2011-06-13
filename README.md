@@ -1,24 +1,11 @@
 A Package Manager for SeaJS
 ===========================
 
-Install on Mac OS X / Linux
----------------------------
+Installation
+------------
 
- 1. install nodejs from http://nodejs.org/
- 2. add /path/to/spm/bin to your system $PATH
-
-Install on Windows
--------------------
-
-### Cygwin
-
- 1. install nodejs(cygwin) from https://github.com/joyent/node/wiki/Building-node.js-on-Cygwin-(Windows)
- 2. add /path/to/spm/bin to your cygwin system %PATH%
-
-### Self-Contained Binaries
-
- 1. use this self-contained binaries nodejs on windows http://node-js.prcn.co.cc/
- 2. add X:\path\to\spm\bin to your system variables %PATH%
+ 1. Install [NodeJS](http://nodejs.org) and [NPM](http://npmjs.org).
+ 2. Run `/path/to/your/spm/support/install_spm.sh`
 
 sbuild
 ------
@@ -47,8 +34,6 @@ use this to get start:
 
     spm --help
 
-if you want to transport your module(s), use like this:
-
-    spm build jquery
-
 you can use `. /path/to/your/spm/bin/spm-autocomplete.bash` to enable bash autocomplete.
+
+See `docs/` for more details.
