@@ -35,33 +35,23 @@ var specs = [
     });
   },
   function() {
-    util.readFromPath(getFile('remote-package.tspt'), function(comments) {
-      tspt.parse(comments, function(o) {
-        var meta = o.meta;
-        assert.equal(meta.name, 'SeaJS', 'support remote json');
-      });
+    tspt.parse(getFile('remote-package.tspt'), function(o) {
+      var meta = o.meta;
+      assert.equal(meta.name, 'SeaJS', 'support remote json');
     });
   },
   function() {
-    util.readFromPath(getFile('remote-package-overwrite.tspt'),
-        function(comments) {
-          tspt.parse(comments, function(o) {
-            var meta = o.meta;
-            assert.equal(
-                meta.version, '0.1.0',
-                'support remote json overwrite');
-          });
-        }
-    );
+    tspt.parse(getFile('remote-package-overwrite.tspt'), function(o) {
+      var meta = o.meta;
+      assert.equal(
+          meta.version, '0.1.0',
+          'support remote json overwrite');
+    });
   },
   function() {
-    util.readFromPath(getFile('local-package.tspt'),
-        function(comments) {
-          tspt.parse(comments, function(o) {
-            var meta = o.meta;
-            assert.equal(meta.name, 'SeaJS', 'support local json');
-          });
-        }
-    );
+    tspt.parse(getFile('local-package.tspt'), function(o) {
+      var meta = o.meta;
+      assert.equal(meta.name, 'SeaJS', 'support local json');
+    });
   }
 ];
