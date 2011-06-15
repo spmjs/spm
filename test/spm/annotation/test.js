@@ -1,6 +1,6 @@
 // vim: set ts=2 sw=2:
 var assert = require('assert'),
-    annotation = require('../../../lib/spm/annotation'),
+    annotation = require('../../../lib/spm/tspt/annotation'),
     fs = require('fs'), path = require('path'),
     util = require('../../../lib/util');
 

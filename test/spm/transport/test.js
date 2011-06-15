@@ -1,14 +1,13 @@
 // vim: set ts=2 sw=2:
 var assert = require('assert'),
     fs = require('fs'), path = require('path'),
-    util = require('../../../lib/util'),
-    console = require('../../../lib/spm/log');
+    util = require('../../../lib/util');
 
 var getFile = function(p) {
   return path.join(__dirname, p);
 };
 
-var transport = require('../../../lib/spm/transport');
+var transport = require('../../../lib/spm/actions/transport');
 
 var justCall = function(fn) {
   fn();
