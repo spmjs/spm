@@ -31,7 +31,7 @@ exports.run = function() {
       alias: ['-v', '--version'], length: 1}});
   } catch (e) {
     assert.equal(e,
-        opts.OPTION_ARGUMENTS_NOT_ENOUGH,
+        opts.ERR_OPTION_ARGUMENTS_NOT_ENOUGH,
         'options not enough exceptions');
   }
 
