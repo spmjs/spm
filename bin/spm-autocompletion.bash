@@ -15,7 +15,7 @@ _spm() {
     spm="${COMP_WORDS[0]}"
     len="${#COMP_WORDS[@]}"
     action="${COMP_WORDS[1]}"
-    args=`bin/spm completion ${action} ${cur}`
+    args=`spm completion ${action} ${cur}`
     COMPREPLY=( $(compgen -W "${args}" -- ${cur}) )
     return 0;
 }
