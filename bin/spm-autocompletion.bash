@@ -15,27 +15,7 @@ _spm() {
     spm="${COMP_WORDS[0]}"
     len="${#COMP_WORDS[@]}"
     action="${COMP_WORDS[1]}"
-    args=""
-
-    if [[ ${len} == 2 ]]; then
-        args=`spm completion actions`
-    fi
-
-    case "${action}" in
-        build | transport | rm | remove)
-            if [[ ${cur} == -* ]]; then
-                args=`spm completion options ${action}`
-            else
-                args=`spm completion modules`
-            fi
-            ;;
-
-        test)
-            args=`ls test/spm`
-            ;;
-
-    esac
-
+    args=`bin/spm completion ${action} ${cur}`
     COMPREPLY=( $(compgen -W "${args}" -- ${cur}) )
     return 0;
 }
