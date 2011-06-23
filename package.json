@@ -1,7 +1,7 @@
 {
   "name": "spm",
   "description": "A Package Manager for SeaJS",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "authors": ["Frank Wang <@lifesinger>", "Frank Xu <@yyfrankyy>"],
   "keywords": ["seajs", "modules", "builder", "framework", "packager"],
   "main": "./index.js",
