@@ -10,12 +10,12 @@ var assert = require('assert');
 
 
 console.log('\033[36m  test extract: \033[0m');
-var extract = require('../../lib/sbuild/extract');
+var extract = require('../../lib/spm/lib/extract');
 assert.ok(extract.run(getFile('math/program')).indexOf('define([ "./increment" ]') === 0);
 
 
 console.log('\033[36m  test combo: \033[0m');
-var combo = require('../../lib/sbuild/combo');
+var combo = require('../../lib/spm/actions/build/combo');
 
 
 console.log('\033[36m    test math: \033[0m');
@@ -42,7 +42,7 @@ assert.ok(out.indexOf('define("querystring/1.0.0/querystring",[]') !== -1);
 
 
 console.log('\033[36m    test config-alias: \033[0m');
-var alias = require('../../lib/sbuild/alias');
+var alias = require('../../lib/spm/lib/alias');
 var deps = ['./sub/increment', 'querystring:1.0.0', 'lib/math'];
 deps = alias.parse(deps, getFile('config-alias/app-config.js'));
 console.log(deps);
