@@ -1941,7 +1941,7 @@ build time: ${build.time}
             return mod && mod.value;
         },
 
-        //加载指定模块名模块，如果不存在定义默认定义为内部模块
+        //加载指定模块名模块，如果不存在定义默认定���为内部模块
         __attachModByName: function(modName, callback, cfg) {
 
             var self = this,
@@ -2132,7 +2132,7 @@ build time: ${build.time}
             }
         }
         /**
-         * 一定要正则化，防止出现 ../ 等相对路径
+         * 一定要正则���，防止出现 ../ 等相对路径
          * 考虑本地路径
          */
         if (!base.match(/^(http(s)?)|(file):/i)
