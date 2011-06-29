@@ -7,15 +7,6 @@ Installation
  1. Install [NodeJS](http://nodejs.org) and [NPM](http://npmjs.org).
  2. Run `/path/to/your/spm/support/install_spm.sh`
 
-sbuild
-------
-
-compile seajs modules with dependencies.
-
-use this to get start:
-
-    sbuild --help
-
 snode
 -----
 
@@ -32,7 +23,7 @@ seajs modules transportment.
 
 use this to get start:
 
-    spm --help
+    spm help
 
 you can use `. /path/to/your/spm/bin/spm-autocomplete.bash` to enable bash autocomplete.
 
