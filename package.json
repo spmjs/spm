@@ -20,7 +20,6 @@
   },
   "bin": {
     "spm": "./bin/spm",
-    "sbuild": "./bin/sbuild",
     "snode": "./bin/snode"
   },
   "preferGlobal": true
