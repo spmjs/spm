@@ -1,3 +1,6 @@
 [submodule "modules"]
 	path = modules
 	url = git@github.com:seajs/modules.git
+[submodule "transports"]
+	path = transports
+	url = git@github.com:seajs/transports.git
