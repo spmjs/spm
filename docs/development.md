@@ -26,7 +26,7 @@ spm now support for these actions:
 Provide transporting code to seajs compatible modules.
 
 It read `.tspt` file from `transports` directory then parsing into `modules` 
-direcotry. then update `data.js` for webpage.
+direcotry. then update `seajs.cloudfoundry.com/registry` for webpage.
 
 If you do not specific any modules, it will build all modules by default.
 
@@ -42,7 +42,7 @@ use `node-compress` for calculating gzipped modules size. `false` by default.
 
 ### spm remove [options] [module]
 
-Remove modules from `modules` directory, then update `data.js`.
+Remove modules from `modules` directory, then update `seajs.cloudfoundry.com/registry`.
 
 It provide these options:
 

@@ -1,16 +1,20 @@
 A Package Manager for SeaJS
 ===========================
 
-spm command provide some useful command for transporting your libraries
-to SeaJS compatible modules.
+spm command provide some useful command for managing your local seajs libraries.
 
 Getting Start
 -------------
 
-1. Fork the `transports` folder.
+    spm install seajs
+    spm install backbone
+
+
+Submit Your Libraries
+---------------------
+
+1. Fork the `transports` projects at `http://github.com/seajs/transports.git`.
 2. Write your own `.tspt` file, read `tspt.md` for more details.
-3. Verify your `.tspt` file from here:
-http://seajs.github.com/spm/html/verify-tspt.html
 4. When you finished, fire a pull request, we will handle the rest.
 
 Web
