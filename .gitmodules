@@ -4,3 +4,6 @@
 [submodule "transports"]
 	path = transports
 	url = git@github.com:seajs/transports.git
+[submodule "seajs.cloudfoundry.com"]
+	path = seajs.cloudfoundry.com
+	url = git@github.com:seajs/seajs.cloudfoundry.com.git
