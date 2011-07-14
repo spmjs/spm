@@ -5,7 +5,7 @@ Installation
 ------------
 
  1. Install [NodeJS](http://nodejs.org) and [NPM](http://npmjs.org).
- 2. Run `/path/to/your/spm/support/install_spm.sh`
+ 2. Then install `spm` from `npm`: `npm install spm -g`
 
 spm
 ---
