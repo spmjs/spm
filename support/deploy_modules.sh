@@ -7,5 +7,5 @@
 # @version: 1.0
 # @create: 06/29/2011 11:33:00 AM CST
 
-cd modules.seajs.com
+cd seajs.cloudfoundry.com
 vmc update seajs
