@@ -1,8 +1,4 @@
 #!/usr/bin/env node
 
-var path = require('path');
-var fs = require('fs');
-var lib = path.join(path.dirname(fs.realpathSync(__filename)), '../lib');
-
-process.ARGV = process.argv;
-require(lib + '/snode/snode.js');
+process.argv = process.argv.slice(2);
+require(require('path').join(__dirname, '../lib/snode/snode.js'));
