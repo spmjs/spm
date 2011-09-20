@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
 process.argv = process.argv.slice(2);
-require(require('path').join(__dirname, '../lib/spm/spm.js'));
+require(require('path').join(__dirname, '../lib/spm.js'));

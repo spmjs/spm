@@ -4,7 +4,7 @@ var assert = require('assert'),
     annotation = require('../../../lib/spm/tspt/annotation'),
     tspt = require('../../../lib/spm/tspt/parser'),
     fs = require('fs'), path = require('path'),
-    util = require('../../../lib/util');
+    util = require('../../../lib/helper/util.js');
 
 var getFile = function(p) {
   return path.join(__dirname, p);
