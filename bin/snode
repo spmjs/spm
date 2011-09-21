@@ -1,4 +1,0 @@
-#!/usr/bin/env node
-
-process.argv = process.argv.slice(2);
-require(require('path').join(__dirname, '../lib/snode/snode.js'));

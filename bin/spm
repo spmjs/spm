@@ -1,4 +1,3 @@
-#!/usr/bin/env node
+#!/bin/sh
 
-process.argv = process.argv.slice(2);
-require(require('path').join(__dirname, '../lib/spm.js'));
+/usr/bin/env node `dirname "$0"`/../lib/spm.js $@
