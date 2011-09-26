@@ -8,6 +8,7 @@
 
 })(function(require, exports) {
 
+  require('c');
   exports.version = '1.0.0';
 
 });

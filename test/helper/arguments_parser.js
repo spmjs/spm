@@ -1,9 +1,13 @@
 // vim: set ts=2 sw=2:
 
+process.DEBUG = false;
 require('colors');
 
 var assert = require('assert');
 var argumentsParser = require('../../lib/helper/arguments_parser');
+
+var testName = require('path').basename(__filename);
+console.log(('test ' + testName).cyan);
 
 
 var result;
@@ -63,4 +67,5 @@ assert.equal(result.options['version'][1], '1.1.0');
 assert.equal(result.modules[1], 'b');
 
 
-console.log('100% passed!'.green);
+console.log((testName + ' is ').cyan + 'PASSED'.green);
+
