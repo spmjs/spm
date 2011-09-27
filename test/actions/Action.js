@@ -3,30 +3,35 @@
 process.DEBUG = false;
 require('colors');
 
+var Action = require('../../lib/actions/Action');
 var assert = require('assert');
-var argumentsParser = require('../../lib/helper/arguments_parser');
+
 
 var testName = require('path').basename(__filename);
 console.log(('test ' + testName).cyan);
 
 
+console.log('  test Action.prototype.parseArgs_');
+
+var parseArgs = Action.prototype.parseArgs_;
 var result;
 
-result = argumentsParser(['a']);
+
+result = parseArgs(['a']);
 assert.equal(result.modules[0], 'a');
 
 
-result = argumentsParser(['a', 'b', 'c']);
+result = parseArgs(['a', 'b', 'c']);
 assert.equal(result.modules[0], 'a');
 assert.equal(result.modules[1], 'b');
 assert.equal(result.modules[2], 'c');
 
 
-result = argumentsParser(['--version']);
+result = parseArgs(['--version']);
 assert.equal('--version' in result.options, false);
 
 
-result = argumentsParser(['--version'], {
+result = parseArgs(['--version'], {
   version: { alias: ['-v', '--version'] }
 });
 assert.equal('--version' in result.options, false);
@@ -34,33 +39,33 @@ assert.equal('version' in result.options, true);
 assert.equal(result.options['version'].length, 0);
 
 
-result = argumentsParser(['--version', '1.2.0'], {
+result = parseArgs(['--version', '1.2.0'], {
   version: { alias: ['-v', '--version'], length: 1 }
 });
 assert.equal(result.options['version'][0], '1.2.0');
 
 
-result = argumentsParser(['--version', '1.2.0', '1.1.0'], {
+result = parseArgs(['--version', '1.2.0', '1.1.0'], {
   version: { alias: ['-v', '--version'], length: 2 }
 });
 assert.equal(result.options['version'][1], '1.1.0');
 
 
 assert['throws'](function() {
-  argumentsParser(['--version'], {
+  parseArgs(['--version'], {
     version: { alias: ['-v', '--version'], length: 1 }
   });
 }, /not enough/);
 
 
-result = argumentsParser(['--version', '1.2.0', '1.1.0', 'a', 'b'], {
+result = parseArgs(['--version', '1.2.0', '1.1.0', 'a', 'b'], {
   version: { length: 2, alias: ['--version'] }
 });
 assert.equal(result.options['version'][1], '1.1.0');
 assert.equal(result.modules[1], 'b');
 
 
-result = argumentsParser(['a', 'b', '--version', '1.2.0', '1.1.0'], {
+result = parseArgs(['a', 'b', '--version', '1.2.0', '1.1.0'], {
   version: { length: 2, alias: ['--version'] }
 });
 assert.equal(result.options['version'][1], '1.1.0');
@@ -68,4 +73,3 @@ assert.equal(result.modules[1], 'b');
 
 
 console.log((testName + ' is ').cyan + 'PASSED'.green);
-
