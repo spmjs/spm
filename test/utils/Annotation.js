@@ -10,6 +10,7 @@ var assert = require('assert');
 
 var Annotation = require('../../lib/utils/Annotation');
 
+
 var DATA_DIR = path.resolve(__dirname, '../data/transports');
 var testName = path.basename(__filename);
 console.log(('test ' + testName).cyan);

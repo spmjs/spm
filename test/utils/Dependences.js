@@ -6,7 +6,9 @@ require('colors');
 
 var path = require('path');
 var assert = require('assert');
+
 var Dependences = require('../../lib/utils/Dependences');
+
 
 var DATA_DIR = path.resolve(__dirname, '../data/dependences');
 var testName = path.basename(__filename);

@@ -6,7 +6,9 @@ require('colors');
 
 var path = require('path');
 var assert = require('assert');
+
 var Alias = require('../../lib/utils/Alias');
+
 
 var DATA_DIR = path.resolve(__dirname, '../data/alias');
 var testName = path.basename(__filename);

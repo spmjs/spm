@@ -6,7 +6,9 @@ require('colors');
 
 var path = require('path');
 var assert = require('assert');
+
 var Action = require('../../lib/actions/Action');
+
 
 var testName = path.basename(__filename);
 console.log(('test ' + testName).cyan);
