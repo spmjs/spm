@@ -1,35 +1,33 @@
-// vim: set ts=2 sw=2:
+/**
+ * @author lifesinger@gmail.com (Frank Wang)
+ */
 
-process.DEBUG = false;
 require('colors');
 
-var Action = require('../../lib/actions/Action');
+var path = require('path');
 var assert = require('assert');
+var Action = require('../../lib/actions/Action');
 
-
-var testName = require('path').basename(__filename);
+var testName = path.basename(__filename);
 console.log(('test ' + testName).cyan);
 
 
+// {{{
 console.log('  test Action.prototype.parseArgs_');
 
 var parseArgs = Action.prototype.parseArgs_;
 var result;
 
-
 result = parseArgs(['a']);
 assert.equal(result.modules[0], 'a');
-
 
 result = parseArgs(['a', 'b', 'c']);
 assert.equal(result.modules[0], 'a');
 assert.equal(result.modules[1], 'b');
 assert.equal(result.modules[2], 'c');
 
-
 result = parseArgs(['--version']);
 assert.equal('--version' in result.options, false);
-
 
 result = parseArgs(['--version'], {
   version: { alias: ['-v', '--version'] }
@@ -38,18 +36,15 @@ assert.equal('--version' in result.options, false);
 assert.equal('version' in result.options, true);
 assert.equal(result.options['version'].length, 0);
 
-
 result = parseArgs(['--version', '1.2.0'], {
   version: { alias: ['-v', '--version'], length: 1 }
 });
 assert.equal(result.options['version'][0], '1.2.0');
 
-
 result = parseArgs(['--version', '1.2.0', '1.1.0'], {
   version: { alias: ['-v', '--version'], length: 2 }
 });
 assert.equal(result.options['version'][1], '1.1.0');
-
 
 assert['throws'](function() {
   parseArgs(['--version'], {
@@ -57,19 +52,18 @@ assert['throws'](function() {
   });
 }, /not enough/);
 
-
 result = parseArgs(['--version', '1.2.0', '1.1.0', 'a', 'b'], {
   version: { length: 2, alias: ['--version'] }
 });
 assert.equal(result.options['version'][1], '1.1.0');
 assert.equal(result.modules[1], 'b');
 
-
 result = parseArgs(['a', 'b', '--version', '1.2.0', '1.1.0'], {
   version: { length: 2, alias: ['--version'] }
 });
 assert.equal(result.options['version'][1], '1.1.0');
 assert.equal(result.modules[1], 'b');
+// }}}
 
 
 console.log((testName + ' is ').cyan + 'PASSED'.green);
