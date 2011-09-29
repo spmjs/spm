@@ -21,16 +21,16 @@ console.log('  test Compressor.getMeta_');
 var meta;
 var file = getFile('dependences/static_deps_1.js');
 
-meta = Compressor.getMeta_(file, { baseFile: __filename });
+meta = Compressor.getMeta_(file, { from: __filename });
 assert.equal(meta.deps.length, 2);
 assert.equal(meta.deps[0], 'a');
 assert.equal(meta.deps[1], 'b');
 assert.equal(meta.id, '../data/dependences/static_deps_1');
 
-meta = Compressor.getMeta_(file, { baseFile: file });
+meta = Compressor.getMeta_(file, { from: file });
 assert.equal(meta.id, './static_deps_1');
 
-meta = Compressor.getMeta_(file, { MODULES_DIR: file });
+meta = Compressor.getMeta_(file, { base: file });
 assert.equal(meta.id, 'static_deps_1');
 // }}}
 
@@ -56,7 +56,7 @@ var cases = [
 
 cases.forEach(function(item) {
   file = getFile('dependences/' + item[0] + '.js');
-  var out = Compressor.compress(file, null, { baseFile: file });
+  var out = Compressor.compress(file, null, { from: file });
   //console.log(out);
   assert.equal(out, item[1]);
 });

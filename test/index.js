@@ -7,7 +7,8 @@ require('colors');
 
 require('./actions/Action');
 
-require('./utils/Alias');
 require('./utils/Annotation');
+require('./utils/Combo');
 require('./utils/Compressor');
 require('./utils/Dependences');
+require('./utils/SeaConfig');

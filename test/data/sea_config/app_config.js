@@ -1,4 +1,5 @@
 seajs.config({
+  base: 'http://a.tbcdn.cn/libs',
   timeout: 5000,
   alias: {
     'increment': 'increment.js?t=20110530',
