@@ -6,6 +6,7 @@ require('colors');
 
 
 require('./actions/Action');
+require('./actions/Build');
 
 require('./utils/Annotation');
 require('./utils/Combo');
