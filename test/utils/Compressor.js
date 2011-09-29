@@ -21,7 +21,7 @@ console.log('  test Compressor.getMeta_');
 var meta;
 var file = getFile('dependences/static_deps_1.js');
 
-meta = Compressor.getMeta_(file);
+meta = Compressor.getMeta_(file, { baseFile: __filename });
 assert.equal(meta.deps.length, 2);
 assert.equal(meta.deps[0], 'a');
 assert.equal(meta.deps[1], 'b');
