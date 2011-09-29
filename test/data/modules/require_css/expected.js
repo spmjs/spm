@@ -1,0 +1,1 @@
+define("./program",["./style.css"],function(a){a("./style.css")});
