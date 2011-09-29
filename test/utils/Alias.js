@@ -23,6 +23,11 @@ alias = Alias.parse(getFile('app_config.js'));
 assert.equal(alias['increment'], 'increment.js?t=20110530');
 assert.equal(alias['lib'], './lib');
 assert.equal(alias['underscore'], 'underscore/1.1.6/underscore');
+
+alias = Alias.parse(getFile('app_config_2.js'));
+assert.equal(alias['increment'], 'increment.js?t=20110530');
+assert.equal(alias['lib'], './lib');
+assert.equal(alias['underscore'], 'underscore/1.1.6/underscore');
 // }}}
 
 
