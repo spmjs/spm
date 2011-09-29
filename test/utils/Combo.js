@@ -15,13 +15,55 @@ var DATA_DIR = path.resolve(__dirname, '../data/modules');
 var testName = path.basename(__filename);
 console.log(('test ' + testName).cyan);
 
+var file, expected, expected2, out;
+
 
 // {{{
-console.log('  test Combo.compile');
+console.log('  test Combo.compile math');
 
-var file = getFile('math/program.js');
-var expected = path.join(path.dirname(file), 'expected.js');
-var out = Combo.compile(file);
+file = getFile('math/program.js');
+expected = path.join(path.dirname(file), 'expected.js');
+out = Combo.compile(file);
+assert.equal(out, getCode(expected));
+// }}}
+
+
+// {{{
+console.log('  test Combo.compile top_level');
+
+file = getFile('top_level/program.js');
+expected = path.join(path.dirname(file), 'expected.js');
+expected2 = path.join(path.dirname(file), 'expected_2.js');
+
+// only relative
+out = Combo.compile(file);
+assert.equal(out, getCode(expected));
+
+// comboAll
+out = Combo.compile(file, null, {
+  comboAll: true,
+  MODULES_DIR: path.join(path.dirname(file), 'lib')
+});
+assert.equal(out, getCode(expected2));
+// }}}
+
+
+// {{{
+console.log('  test Combo.compile require_css');
+
+file = getFile('require_css/program.js');
+expected = path.join(path.dirname(file), 'expected.js');
+out = Combo.compile(file);
+assert.equal(out, getCode(expected));
+// }}}
+
+
+// {{{
+console.log('  test Combo.compile define_json');
+
+file = getFile('define_json/program.js');
+expected = path.join(path.dirname(file), 'expected.js');
+out = Combo.compile(file);
 assert.equal(out, getCode(expected));
 // }}}
 
