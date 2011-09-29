@@ -31,17 +31,6 @@ assert.equal(alias['underscore'], 'underscore/1.1.6/underscore');
 // }}}
 
 
-// {{{
-console.log('  test Alias.parseAliasInDependences');
-
-var deps = ['lib', 'underscore', 'increment'];
-Alias.parseAliasInDependences(alias, deps);
-assert.equal(deps[0], './lib');
-assert.equal(deps[1], 'underscore/1.1.6/underscore');
-assert.equal(deps[2], 'increment.js?t=20110530');
-// }}}
-
-
 console.log((testName + ' is ').cyan + 'PASSED'.green);
 
 
