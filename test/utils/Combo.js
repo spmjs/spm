@@ -42,7 +42,7 @@ assert.equal(out, getCode(expected));
 // comboAll
 out = Combo.compile(file, null, {
   comboAll: true,
-  base: path.join(path.dirname(file), 'lib')
+  libs: path.join(path.dirname(file), 'lib')
 });
 assert.equal(out, getCode(expected2));
 // }}}

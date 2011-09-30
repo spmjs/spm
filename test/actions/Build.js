@@ -14,7 +14,8 @@ var Build = require('../../lib/actions/Build');
 var testName = path.basename(__filename);
 console.log(('test ' + testName).cyan);
 
-var build;
+const DATA_DIR = path.join(__dirname, '../data');
+var build, modules;
 
 
 // {{{
@@ -28,13 +29,19 @@ assert.equal(path.existsSync('__build'), false);
 
 
 // {{{
-console.log('  test --config');
+console.log('  test --libs');
+modules = [getFile('modules/math/program.js')];
 
-build = new Build([], { config: [''] });
-fsExt.mkdirS('__build');
+build = new Build(modules, { config: getFile('configs/build_config.js') });
 build.run();
-assert.equal(path.existsSync('__build'), false);
+assert.equal(build.options.base, 'http://a.tbcdn.cn/libs');
 // }}}
 
 
 console.log((testName + ' is ').cyan + 'PASSED'.green);
+
+
+// Helpers
+function getFile(filename) {
+  return DATA_DIR + '/' + filename;
+}
