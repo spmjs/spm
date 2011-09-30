@@ -22,7 +22,7 @@ var file, expected, expected2, out;
 console.log('  test Combo.compile math');
 
 file = getFile('math/program.js');
-expected = path.join(path.dirname(file), 'expected.js');
+expected = path.join(path.dirname(file), 'expected/combo.js');
 out = Combo.compile(file);
 assert.equal(out, getCode(expected));
 // }}}
@@ -32,8 +32,8 @@ assert.equal(out, getCode(expected));
 console.log('  test Combo.compile top_level');
 
 file = getFile('top_level/program.js');
-expected = path.join(path.dirname(file), 'expected.js');
-expected2 = path.join(path.dirname(file), 'expected_2.js');
+expected = path.join(path.dirname(file), 'expected/combo.js');
+expected2 = path.join(path.dirname(file), 'expected/combo_all.js');
 
 // only relative
 out = Combo.compile(file);
@@ -52,17 +52,17 @@ assert.equal(out, getCode(expected2));
 console.log('  test Combo.compile require_css');
 
 file = getFile('require_css/program.js');
-expected = path.join(path.dirname(file), 'expected.js');
+expected = path.join(path.dirname(file), 'expected/combo.js');
 out = Combo.compile(file);
 assert.equal(out, getCode(expected));
 // }}}
 
 
 // {{{
-console.log('  test Combo.compile define_json');
+console.log('\n  test Combo.compile define_json');
 
 file = getFile('define_json/program.js');
-expected = path.join(path.dirname(file), 'expected.js');
+expected = path.join(path.dirname(file), 'expected/combo.js');
 out = Combo.compile(file);
 assert.equal(out, getCode(expected));
 // }}}

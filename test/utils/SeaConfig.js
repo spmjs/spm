@@ -32,7 +32,7 @@ assert.equal(alias['underscore'], 'underscore/1.1.6/underscore');
 
 
 // {{{
-console.log('  test SeaConfig.parseBase');
+console.log('\n  test SeaConfig.parseBase');
 
 var base;
 base = SeaConfig.parseBase(getFile('seajs_config.js'));

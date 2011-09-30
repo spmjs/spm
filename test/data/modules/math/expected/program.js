@@ -1,0 +1,1 @@
+define("./program",["./increment"],function(a){var b=a("./increment").increment;console.log("The result of inc(1) is",b(1))});

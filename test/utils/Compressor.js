@@ -36,7 +36,7 @@ assert.equal(meta.id, 'static_deps_1');
 
 
 // {{{
-console.log('  test Compressor.compress');
+console.log('\n  test Compressor.compress');
 
 var cases = [
     ['static_deps_1', 'define("./static_deps_1",["a","b"],function(){});']
