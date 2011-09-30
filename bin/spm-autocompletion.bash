@@ -1,13 +1,12 @@
 #!/bin/bash
 
 _spm() {
-    local action cur opts
+    local prev cur opts
     COMPREPLY=()
-
-    action="${COMP_WORDS[1]}"
     cur="${COMP_WORDS[COMP_CWORD]}"
-    opts=`spm completion ${action} ${cur}`
-    
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    opts=`spm completion ${prev} ${cur}`
     COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
     return 0
 }

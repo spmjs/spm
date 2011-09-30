@@ -13,10 +13,13 @@ var Completion = require('../../lib/actions/Completion');
 var testName = path.basename(__filename);
 console.log(('test ' + testName).cyan);
 
+var comp;
+
 
 // {{{
-console.log('  test Action.prototype.parseArgs_');
-
+console.log('  test spm [TAB]');
+comp = new Completion('spm');
+console.log(comp.run());
 // }}}
 
 
