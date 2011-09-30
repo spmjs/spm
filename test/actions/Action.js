@@ -20,47 +20,47 @@ console.log('  test Action.prototype.parseArgs_');
 var parseArgs = Action.prototype.parseArgs_;
 var result;
 
-result = parseArgs(['a']);
+result = parseArgs('a');
 assert.equal(result.modules[0], 'a');
 
-result = parseArgs(['a', 'b', 'c']);
+result = parseArgs('a b c');
 assert.equal(result.modules[0], 'a');
 assert.equal(result.modules[1], 'b');
 assert.equal(result.modules[2], 'c');
 
-result = parseArgs(['--version']);
+result = parseArgs('--version');
 assert.equal('--version' in result.options, false);
 
-result = parseArgs(['--version'], {
+result = parseArgs('--version', {
   version: { alias: ['-v', '--version'] }
 });
 assert.equal('--version' in result.options, false);
 assert.equal('version' in result.options, true);
-assert.equal(result.options['version'].length, 0);
+assert.equal(result.options['version'], true);
 
-result = parseArgs(['--version', '1.2.0'], {
+result = parseArgs('--version 1.2.0', {
   version: { alias: ['-v', '--version'], length: 1 }
 });
-assert.equal(result.options['version'][0], '1.2.0');
+assert.equal(result.options['version'], '1.2.0');
 
-result = parseArgs(['--version', '1.2.0', '1.1.0'], {
+result = parseArgs('--version 1.2.0 1.1.0', {
   version: { alias: ['-v', '--version'], length: 2 }
 });
 assert.equal(result.options['version'][1], '1.1.0');
 
 assert['throws'](function() {
-  parseArgs(['--version'], {
+  parseArgs('--version', {
     version: { alias: ['-v', '--version'], length: 1 }
   });
 }, /not enough/);
 
-result = parseArgs(['--version', '1.2.0', '1.1.0', 'a', 'b'], {
+result = parseArgs('--version 1.2.0 1.1.0 a b', {
   version: { length: 2, alias: ['--version'] }
 });
 assert.equal(result.options['version'][1], '1.1.0');
 assert.equal(result.modules[1], 'b');
 
-result = parseArgs(['a', 'b', '--version', '1.2.0', '1.1.0'], {
+result = parseArgs('a b --version 1.2.0 1.1.0', {
   version: { length: 2, alias: ['--version'] }
 });
 assert.equal(result.options['version'][1], '1.1.0');

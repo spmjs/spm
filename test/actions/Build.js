@@ -18,9 +18,19 @@ var build;
 
 
 // {{{
-console.log('  test build("--clear").run()');
+console.log('  test --clear');
 
-build = new Build('--clear');
+build = new Build([], { clear: true });
+fsExt.mkdirS('__build');
+build.run();
+assert.equal(path.existsSync('__build'), false);
+// }}}
+
+
+// {{{
+console.log('  test --config');
+
+build = new Build([], { config: [''] });
 fsExt.mkdirS('__build');
 build.run();
 assert.equal(path.existsSync('__build'), false);
