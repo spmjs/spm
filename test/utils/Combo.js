@@ -29,7 +29,7 @@ assert.equal(out, getCode(expected));
 
 
 // {{{
-console.log('  test Combo.compile top_level');
+console.log('\n  test Combo.compile top_level');
 
 file = getFile('top_level/program.js');
 expected = path.join(path.dirname(file), 'expected/combo.js');
@@ -49,7 +49,7 @@ assert.equal(out, getCode(expected2));
 
 
 // {{{
-console.log('  test Combo.compile require_css');
+console.log('\n  test Combo.compile require_css');
 
 file = getFile('require_css/program.js');
 expected = path.join(path.dirname(file), 'expected/combo.js');

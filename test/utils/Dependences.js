@@ -43,7 +43,7 @@ assert.equal(deps, undefined);
 
 
 // {{{
-console.log('\n  test Dependence.parseDynamic_');
+console.log('  test Dependence.parseDynamic_');
 var parseDynamic = Dependences.parseDynamic_;
 
 deps = parseDynamic(getFile('dynamic_deps_1.js'));
@@ -57,7 +57,7 @@ assert.equal(deps[1], 'b');
 
 
 // {{{
-console.log('\n  test Dependences.parse');
+console.log('  test Dependences.parse');
 var parse = Dependences.parse;
 
 deps = parse(getFile('deps_1.js'));
