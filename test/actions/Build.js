@@ -41,7 +41,7 @@ assertFileContentEqual('math/__build/program.js', 'math/expected/program.js');
 // {{{
 console.log('\n  test build a.js --combo');
 
-build = new Build([getFile('math/program.js')], { combo: true });
+build = new Build([getFile('math/program.js')], { combine: true });
 build.run();
 assertFileContentEqual('math/__build/program.js', 'math/expected/combo.js');
 // }}}
@@ -50,7 +50,7 @@ assertFileContentEqual('math/__build/program.js', 'math/expected/combo.js');
 // {{{
 console.log('\n  test build a.js --combo_all');
 
-build = new Build([getFile('math/program.js')], { comboAll: true });
+build = new Build([getFile('math/program.js')], { combineAll: true });
 build.run();
 assertFileContentEqual('math/__build/program.js', 'math/expected/combo.js');
 // }}}
@@ -60,8 +60,8 @@ assertFileContentEqual('math/__build/program.js', 'math/expected/combo.js');
 console.log('\n  test build a.js --combo --libs exists');
 
 build = new Build([getFile('top_level/program.js')], {
-  combo: true,
-  libs: getFile('top_level/lib')
+  combine: true,
+  libsPath: getFile('top_level/lib')
 });
 build.run();
 assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo.js');
@@ -72,8 +72,8 @@ assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo
 console.log('\n  test build a.js --combo_all --libs exists');
 
 build = new Build([getFile('top_level/program.js')], {
-  comboAll: true,
-  libs: getFile('top_level/lib')
+  combineAll: true,
+  libsPath: getFile('top_level/lib')
 });
 build.run();
 assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo_all.js');
@@ -84,7 +84,7 @@ assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo
 console.log('\n  test build a.js --combo_all --config exists');
 
 build = new Build([getFile('top_level/program.js')], {
-  comboAll: true,
+  combineAll: true,
   config: getFile('top_level/build_config.js')
 });
 build.run();
@@ -96,8 +96,8 @@ assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo
 console.log('\n  test build a.js --libs not-exists');
 
 build = new Build([getFile('top_level/program.js')], {
-  combo: true,
-  libs: getFile('top_level/libs')
+  combine: true,
+  libsPath: getFile('top_level/libs')
 });
 
 assert['throws'](function() {
@@ -110,7 +110,7 @@ assert['throws'](function() {
 console.log('\n  test build a.js --config not-exists');
 
 build = new Build([getFile('top_level/program.js')], {
-  combo: true,
+  combine: true,
   config: getFile('top_level/libs')
 });
 
@@ -124,8 +124,8 @@ assert['throws'](function() {
 console.log('\n  test build a.js --combo_all --libs exists --config exists');
 
 build = new Build([getFile('top_level/program.js')], {
-  comboAll: true,
-  libs: getFile('top_level/lib'),
+  combineAll: true,
+  libsPath: getFile('top_level/lib'),
   config: getFile('top_level/build_config.js')
 });
 build.run();

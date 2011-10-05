@@ -30,7 +30,7 @@ assert.equal(meta.id, '../data/dependences/static_deps_1');
 meta = Compressor.getMeta_(file, { from: file });
 assert.equal(meta.id, './static_deps_1');
 
-meta = Compressor.getMeta_(file, { libs: file });
+meta = Compressor.getMeta_(file, { libsPath: file });
 assert.equal(meta.id, 'static_deps_1');
 // }}}
 

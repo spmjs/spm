@@ -31,10 +31,29 @@ assert.equal(comp.run(), expected);
 
 // {{{
 console.log('  test spm action [TAB]');
+expected = getOptions(require('../../lib/actions/Build'));
 
 comp = new Completion('build');
-console.log(comp.run());
+assert.equal(comp.run(), expected);
+
+comp = new Completion('build --c');
+assert.equal(comp.run(), expected);
 // }}}
 
 
 console.log((testName + ' is ').cyan + 'PASSED'.green);
+
+
+// Helpers
+function getOptions(Action) {
+  var out = '';
+  var options = Action.prototype.AVAILABLE_OPTIONS;
+
+  for (var p in options) {
+    if (options.hasOwnProperty(p)) {
+      out += options[p].alias.join(' ');
+      out += ' ';
+    }
+  }
+  return out.trim();
+}

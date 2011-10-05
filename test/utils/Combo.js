@@ -41,8 +41,8 @@ assert.equal(out, getCode(expected));
 
 // comboAll
 out = Combo.compile(file, null, {
-  comboAll: true,
-  libs: path.join(path.dirname(file), 'lib')
+  combineAll: true,
+  libsPath: path.join(path.dirname(file), 'lib')
 });
 assert.equal(out, getCode(expected2));
 // }}}
