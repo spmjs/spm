@@ -24,14 +24,16 @@ assert.equal(transport.run(), -1);
 
 transport = new Transport('not-exists.js');
 assert.equal(transport.run(), -2);
-
-transport = new Transport(getFile('backbone_transport.js'));
-assert.equal(transport.run(), undefined);
 // }}}
 
 
 // {{{
 console.log('  test Transport#transport');
+
+transport = new Transport(getFile('seajs_transport.js'));
+transport.run({ callback: function(data) {
+
+} });
 
 // }}}
 
