@@ -19,7 +19,7 @@ console.log(('test ' + testName).cyan);
 // {{{
 console.log('  test Annotation.parse');
 
-var result = Annotation.parse(getFile('kissy.js'));
+var result = Annotation.parse(getFile('kissy_transport.js'));
 assert.equal(result['name'], 'KISSY');
 assert.equal(result['author'].length, 3);
 assert.equal(result['author'][0], 'lifesinger');

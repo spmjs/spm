@@ -9,6 +9,7 @@ require('./actions/Action');
 require('./actions/Build');
 require('./actions/Completion');
 require('./actions/Help');
+require('./actions/Transport');
 
 require('./utils/Annotation');
 require('./utils/Combo');
