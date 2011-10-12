@@ -167,7 +167,7 @@ function getFile(filename) {
 
 
 function getCode(filename) {
-  return fs.readFileSync(filename, 'utf-8');
+  return fs.readFileSync(filename, 'utf8');
 }
 
 
