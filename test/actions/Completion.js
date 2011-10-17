@@ -33,7 +33,7 @@ assert.equal(comp.run(), expected);
 console.log('  test spm action [TAB]');
 expected = getOptions(require('../../lib/actions/Build'));
 
-comp = new Completion('build');
+comp = new Completion('build -');
 assert.equal(comp.run(), expected);
 
 comp = new Completion('build --c');
@@ -45,9 +45,9 @@ console.log((testName + ' is ').cyan + 'PASSED'.green);
 
 
 // Helpers
-function getOptions(Action) {
+function getOptions(SubAction) {
   var out = '';
-  var options = Action.prototype.AVAILABLE_OPTIONS;
+  var options = SubAction.AVAILABLE_OPTIONS || {};
 
   for (var p in options) {
     if (options.hasOwnProperty(p)) {
