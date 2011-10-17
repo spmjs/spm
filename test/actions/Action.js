@@ -43,6 +43,11 @@ result = parseArgs('--version 1.2.0', {
 });
 assert.equal(result.options['version'], '1.2.0');
 
+result = parseArgs('-v 1.2.0', {
+  version: { alias: ['-v', '--version'], length: 1 }
+});
+assert.equal(result.options['version'], '1.2.0');
+
 result = parseArgs('--version 1.2.0 1.1.0', {
   version: { alias: ['-v', '--version'], length: 2 }
 });
