@@ -1,6 +1,5 @@
 /**
- * @xpackage https://raw.github.com/documentcloud/backbone/master/package.json
- * @package http://localhost/~lifesinger/spm/test/data/transports/backbone_package.json
+ * @package https://raw.github.com/documentcloud/backbone/master/package.json
  *
  * @src http://documentcloud.github.com/backbone/backbone.js
  * @min http://documentcloud.github.com/backbone/backbone-min.js
@@ -9,7 +8,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define(factory);
+    define('backbone', ['underscore', 'jquery'], factory);
   } else {
     factory();
   }

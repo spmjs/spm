@@ -4,9 +4,11 @@
 
 require('colors');
 
+var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 
+var fsExt = require('../../lib/utils/fsExt');
 var Transport = require('../../lib/actions/Transport');
 const DATA_DIR = path.resolve(__dirname, '../data/transports');
 
@@ -28,13 +30,58 @@ assert.equal(transport.run(), -2);
 
 
 // {{{
-console.log('  test Transport#transport');
+console.log('  test Transport#transport seajs');
 
-transport = new Transport(getFile('seajs_transport.js'));
+transport = new Transport([getFile('seajs_transport.js')]);
 transport.run({ callback: function(data) {
+  var meta = data.meta;
 
-} });
+  assert.ok(meta['package']);
+  assert.ok(meta['src']);
+  assert.equal(meta['name'], 'SeaJS');
+  assert.equal(meta['version'], '1.0.0');
 
+  assert.equal(getCode(data.srcOutputFile), getCode(meta['src']));
+  assert.equal(getCode(data.minOutputFile), getCode(meta['min']));
+
+  // destroy
+  fsExt.rmdirRF(path.dirname(data.srcOutputFile));
+}});
+// }}}
+
+
+// {{{
+console.log('  test Transport#transport mustache');
+
+transport = new Transport([getFile('mustache_transport.js')], { force: true });
+transport.run({ callback: function(data) {
+  var meta = data.meta;
+
+  assert.equal(meta['name'], 'mustache');
+  assert.equal(meta['version'], '0.3.1');
+  assert.ok(getCode(data.srcOutputFile).indexOf("define('mustache'") !== -1);
+  assert.ok(getCode(data.minOutputFile).indexOf('define("mustache"') !== -1);
+
+  // destroy
+  fsExt.rmdirRF(path.dirname(data.srcOutputFile));
+}});
+// }}}
+
+
+// {{{
+console.log('  test Transport#transport backbone');
+
+transport = new Transport([getFile('backbone_transport.js')], { force: true });
+transport.run({ callback: function(data) {
+  var meta = data.meta;
+
+  assert.equal(meta['name'], 'backbone');
+  assert.ok(getCode(data.srcOutputFile).indexOf("define('backbone'") !== -1);
+  assert.ok(getCode(data.minOutputFile).indexOf("define('backbone'") !== -1);
+
+  // destroy
+  fsExt.rmdirRF(path.dirname(data.srcOutputFile));
+}});
 // }}}
 
 
@@ -44,4 +91,9 @@ console.log((testName + ' is ').cyan + 'PASSED'.green);
 // Helpers
 function getFile(filename) {
   return DATA_DIR + '/' + filename;
+}
+
+
+function getCode(filename) {
+  return fs.readFileSync(filename, 'utf8');
 }
