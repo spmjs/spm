@@ -1,3 +1,3 @@
 module.exports = {
-  libsPath: './lib2'
+  "libs_path": './lib2'
 };

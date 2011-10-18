@@ -1,6 +1,6 @@
 
 module.exports = {
 
-  "libsPath": '../../../modules'
+  "libs_path": '../../../modules/'
 
 };
