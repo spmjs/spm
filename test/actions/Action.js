@@ -90,7 +90,7 @@ assert.equal(result.modules.length, 1);
 assert.equal(result.modules[0], 'a.js');
 
 
-result = parseArgs('a.js -f', {
+result = parseArgs(['a.js', '-f'], {
   force: {
     alias: ['--force', '-f']
   }
