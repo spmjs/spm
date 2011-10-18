@@ -1,2 +1,2 @@
-define("./biz/increment",["math"],function(a,b){var c=a("math").add;b.increment=function(a){return c(a,1)}});
 define("./program",["./biz/increment"],function(a){var b=a("./biz/increment").increment;console.log("The result of inc(1) is",b(1))});
+define("./biz/increment",["math"],function(a,b){var c=a("math").add;b.increment=function(a){return c(a,1)}});

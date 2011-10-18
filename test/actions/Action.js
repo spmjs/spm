@@ -89,6 +89,14 @@ result = parseArgs('a.js --o1 --o2 path', {
 assert.equal(result.modules.length, 1);
 assert.equal(result.modules[0], 'a.js');
 
+
+result = parseArgs('a.js -f', {
+  force: {
+    alias: ['--force', '-f']
+  }
+});
+assert.equal(result.modules.length, 1);
+assert.equal(result.options.force, true);
 // }}}
 
 
