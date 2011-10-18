@@ -1,4 +1,5 @@
 /**
+ * @usage node index.js
  * @author lifesinger@gmail.com (Frank Wang)
  */
 
