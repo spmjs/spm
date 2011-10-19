@@ -8,8 +8,10 @@ var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 
+var fsExt = require('../../lib/utils/fsExt');
 var Install = require('../../lib/actions/Install');
 const DATA_DIR = path.resolve(__dirname, '../data/install');
+const MODULES_DIR = path.resolve(__dirname, '../../modules');
 
 var testName = require('path').basename(__filename);
 console.log(('test ' + testName).cyan);
@@ -39,6 +41,68 @@ install = new Install(['backbone'], {
 });
 install.run(function(data) {
   assert.equal(data.errCode, -3);
+});
+// }}}
+
+
+// {{{
+console.log('  test install cookie');
+
+install = new Install(['cookie'], {
+  force: true,
+  to: DATA_DIR
+});
+
+install.run(function(data) {
+  var meta = data.meta;
+  assert.equal(getCode(meta.localminpath), getCode(
+      path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
+  ));
+
+  fsExt.rmdirRF(getFile('cookie'));
+});
+// }}}
+
+
+// {{{
+console.log('  test install json --from local');
+
+install = new Install(['json'], {
+  force: true,
+  from: MODULES_DIR,
+  to: DATA_DIR
+});
+
+install.run(function(data) {
+  var meta = data.meta;
+  assert.equal(getCode(meta.localminpath), getCode(
+      path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
+  ));
+
+  fsExt.rmdirRF(getFile('json'));
+});
+// }}}
+
+
+// {{{
+console.log('  test install seajs');
+
+install = new Install(['seajs'], {
+  to: DATA_DIR
+});
+
+install.run(function(data) {
+  var meta = data.meta;
+
+  assert.equal(getCode(meta.localminpath), getCode(
+      path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
+  ));
+
+  assert.ok(path.existsSync(
+      path.join(path.dirname(meta.localminpath), 'plugin-map.js')
+  ));
+
+  //fsExt.rmdirRF(getFile('seajs'));
 });
 // }}}
 

@@ -22,10 +22,14 @@ var transport;
 console.log('  test Transport#run');
 
 transport = new Transport();
-assert.equal(transport.run(), -1);
+transport.run(function(data) {
+  assert.equal(data.errCode, -1);
+});
 
 transport = new Transport('not-exists.js');
-assert.equal(transport.run(), -2);
+transport.run(function(data) {
+  assert.equal(data.errCode, -2);
+});
 // }}}
 
 
