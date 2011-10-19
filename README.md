@@ -8,7 +8,7 @@ Installation
 1. Install nodejs and npm ([How to install node.js and npm](http://joyeur.com/2010/12/10/installing-node-and-npm/))
 1. Then install spm:
 
-    npm install -g https://github.com/seajs/spm/tarball/master
+    $ npm install -g https://github.com/seajs/spm/tarball/master
 
 
 
@@ -17,29 +17,61 @@ Usage
 
 ### spm install [options] name[@version]
 
-To get all compatible modules in the sea:
+Get all compatible modules in the sea:
 
-    mkdir libs
-    cd libs
-    spm install *
+    $ mkdir libs
+    $ cd libs
+    $ spm install *
 
 Only get a specific module:
 
-    spm install jquery@1.6.2
+    $ spm install jquery@1.6.2
 
 For more details:
 
-    spm help install
+    $ spm help install
 
 
 ### spm build [options] module
+
+Compress a module file:
+
+    $ spm build a.js
+
+Compress and combine to one file with dependencies:
+
+    $ spm build a.js --combine
+
+Compress and combine to one file with all dependencies:
+
+    $ spm build a.js --combine_all
+
+Remove built files:
+
+    $ spm build --clear
+
+You can define `build-config.js` to specify more information:
+
+build-config.js:
+
+````
+module.exports = {
+  "libs_path": "/path/to/libs/",
+  "loader_config": "./init.js"
+};
+
+````
+
+For all options, please call:
+
+    $ spm help build
 
 
 
 For Ninja Users
 ---
 
-### auto completion
+### Auto completion
 
 Add this line:
 
@@ -48,3 +80,12 @@ Add this line:
 to your `.bash_profile` can enable auto completion for spm.
 
 
+### spm transport [--force] transport.js
+
+You can use `transport` to wrap custom modules:
+
+    $ cd path/to/modules
+    $ mkdir xxx
+    $ cp jquery/transport.js xxx/
+    $ vi xxx/transport.js  # modify it
+    $ spm transport xxx/transport.js
