@@ -88,6 +88,8 @@ install.run(function(data) {
 console.log('  test install seajs');
 
 install = new Install(['seajs'], {
+  force: true,
+  from: MODULES_DIR,
   to: DATA_DIR
 });
 
@@ -102,7 +104,7 @@ install.run(function(data) {
       path.join(path.dirname(meta.localminpath), 'plugin-map.js')
   ));
 
-  //fsExt.rmdirRF(getFile('seajs'));
+  fsExt.rmdirRF(getFile('seajs'));
 });
 // }}}
 
