@@ -6,9 +6,9 @@ Installation
 ---
 
 1. Install nodejs and npm ([How to install node.js and npm](http://joyeur.com/2010/12/10/installing-node-and-npm/))
-1. Then call:
+1. Then install spm:
 
-    sudo npm install spm -g
+    npm install -g https://github.com/seajs/spm/tarball/master
 
 
 Usage
