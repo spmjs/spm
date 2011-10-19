@@ -5,15 +5,14 @@
   "authors": ["Frank Wang <@lifesinger>", "Frank Xu <@yyfrankyy>"],
   "keywords": ["seajs", "modules", "builder", "framework", "packager"],
   "main": "./index.js",
-  "homepage": "https://seajs.github.com/spm",
+  "homepage": "https://github.com/seajs/spm",
   "engines": {
     "node": ">= 0.5.5"
   },
   "dependencies": {
     "colors": ">= 0.3.0",
     "uglify-js": ">= 1.0.2",
-    "gzip": ">= 0.1.0",
-    "jsdom": ">=0.2.0"
+    "gzip": ">= 0.1.0"
   },
   "directories": {
     "lib": "./lib"
