@@ -11,6 +11,7 @@ Installation
     npm install -g https://github.com/seajs/spm/tarball/master
 
 
+
 Usage
 ---
 
@@ -22,7 +23,7 @@ To get all compatible modules in the sea:
     cd libs
     spm install *
 
-Only want to get some specify modules:
+Only get a specific module:
 
     spm install jquery@1.6.2
 
@@ -32,4 +33,12 @@ For more details:
 
 
 ### spm build [options] module
+
+
+
+For Ninja Users
+---
+
+### auto completion
+
 
