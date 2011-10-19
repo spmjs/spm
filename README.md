@@ -5,8 +5,8 @@ A Package Manager for SeaJS
 Installation
 ---
 
-1. Install nodejs and npm ([How to install node.js and npm](http://joyeur.com/2010/12/10/installing-node-and-npm/))
-1. Then install spm:
+1. Install nodejs and npm: [How to install node.js and npm](http://joyeur.com/2010/12/10/installing-node-and-npm/)
+1. Install spm:
 
     $ npm install -g https://github.com/seajs/spm/tarball/master
 
