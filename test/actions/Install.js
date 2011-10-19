@@ -50,6 +50,7 @@ console.log('  test install cookie');
 
 install = new Install(['cookie'], {
   force: true,
+  from: MODULES_DIR,
   to: DATA_DIR
 });
 
@@ -59,15 +60,15 @@ install.run(function(data) {
       path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
   ));
 
-  fsExt.rmdirRF(getFile('cookie'));
+  fsExt.rmdirRF(getFile(meta.name));
 });
 // }}}
 
 
 // {{{
-console.log('  test install mustache --from local');
+console.log('  test install jquery@1.6.2');
 
-install = new Install(['mustache'], {
+install = new Install(['jquery@1.6.2'], {
   force: true,
   from: MODULES_DIR,
   to: DATA_DIR
@@ -79,8 +80,39 @@ install.run(function(data) {
       path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
   ));
 
-  fsExt.rmdirRF(getFile('mustache'));
+  fsExt.rmdirRF(getFile(meta.name));
 });
+// }}}
+
+
+// {{{
+console.log('  test install backbone with dependencies');
+
+install = new Install(['backbone'], {
+  force: true,
+  from: MODULES_DIR,
+  to: DATA_DIR
+});
+
+var expected = 'backbone,underscore';
+var actual = [];
+
+install.run(function(data) {
+  var meta = data.meta;
+  assert.equal(getCode(meta.localminpath), getCode(
+      path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
+  ));
+
+  actual.push(meta.name);
+  fsExt.rmdirRF(getFile(meta.name));
+});
+
+setTimeout(function() {
+  assert.equal(actual.join(','), expected);
+
+  fsExt.rmdirRF(getFile('backbone'));
+  fsExt.rmdirRF(getFile('underscore'));
+}, 2000);
 // }}}
 
 
@@ -104,8 +136,32 @@ install.run(function(data) {
       path.join(path.dirname(meta.localminpath), 'plugin-map.js')
   ));
 
-  fsExt.rmdirRF(getFile('seajs'));
+  fsExt.rmdirRF(getFile(meta.name));
 });
+// }}}
+
+
+// {{{
+console.log('  test install querystring es5-safe');
+
+install = new Install(['querystring', 'es5-safe'], {
+  force: true,
+  from: MODULES_DIR,
+  to: DATA_DIR
+});
+
+install.run(function(data) {
+  var meta = data.meta;
+  assert.equal(getCode(meta.localminpath), getCode(
+      path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
+  ));
+
+});
+
+setTimeout(function() {
+  fsExt.rmdirRF(getFile('querystring'));
+  fsExt.rmdirRF(getFile('es5-safe'));
+}, 2000);
 // }}}
 
 
