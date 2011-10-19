@@ -94,7 +94,6 @@ install = new Install(['backbone'], {
   to: DATA_DIR
 });
 
-var expected = 'backbone,underscore';
 var actual = [];
 
 install.run(function(data) {
@@ -108,7 +107,10 @@ install.run(function(data) {
 });
 
 setTimeout(function() {
-  assert.equal(actual.join(','), expected);
+  assert.equal(actual.join('')
+      .replace('backbone', '')
+      .replace('underscore', ''),
+      0);
 
   fsExt.rmdirRF(getFile('backbone'));
   fsExt.rmdirRF(getFile('underscore'));
