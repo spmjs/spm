@@ -33,7 +33,7 @@ assert.equal(transport.run(), -2);
 console.log('  test Transport#transport seajs');
 
 transport = new Transport([getFile('seajs_transport.js')]);
-transport.run({ callback: function(data) {
+transport.run(function(data) {
   var meta = data.meta;
 
   assert.ok(meta['package']);
@@ -46,7 +46,7 @@ transport.run({ callback: function(data) {
 
   // destroy
   fsExt.rmdirRF(path.dirname(data.srcOutputFile));
-}});
+});
 // }}}
 
 
@@ -54,7 +54,7 @@ transport.run({ callback: function(data) {
 console.log('  test Transport#transport mustache');
 
 transport = new Transport([getFile('mustache_transport.js')], { force: true });
-transport.run({ callback: function(data) {
+transport.run(function(data) {
   var meta = data.meta;
 
   assert.equal(meta['name'], 'mustache');
@@ -64,7 +64,7 @@ transport.run({ callback: function(data) {
 
   // destroy
   fsExt.rmdirRF(path.dirname(data.srcOutputFile));
-}});
+});
 // }}}
 
 
@@ -72,7 +72,7 @@ transport.run({ callback: function(data) {
 console.log('  test Transport#transport backbone');
 
 transport = new Transport([getFile('backbone_transport.js')], { force: true });
-transport.run({ callback: function(data) {
+transport.run(function(data) {
   var meta = data.meta;
 
   assert.equal(meta['name'], 'backbone');
@@ -81,7 +81,7 @@ transport.run({ callback: function(data) {
 
   // destroy
   fsExt.rmdirRF(path.dirname(data.srcOutputFile));
-}});
+});
 // }}}
 
 
