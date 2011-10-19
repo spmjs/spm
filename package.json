@@ -18,8 +18,7 @@
     "lib": "./lib"
   },
   "bin": {
-    "spm": "./bin/spm",
-    "spm-autocompletion": "./bin/spm-autocompletion.bash"
+    "spm": "./bin/spm"
   },
   "preferGlobal": true
 }

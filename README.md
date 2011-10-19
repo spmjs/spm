@@ -41,4 +41,10 @@ For Ninja Users
 
 ### auto completion
 
+Add this line:
+
+    . ~/local/lib/node_modules/spm/bin/spm-autocomplete.bash
+
+to your `.bash_profile` can enable auto completion for spm.
+
 
