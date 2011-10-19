@@ -8,7 +8,7 @@ var path = require('path');
 var assert = require('assert');
 
 var CONFIG = require('../../lib/config');
-var Completion = require('../../lib/actions/Completion');
+var Completion = require('../../lib/actions/Completion.js');
 
 
 var testName = path.basename(__filename);
