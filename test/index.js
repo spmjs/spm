@@ -11,6 +11,7 @@ require('./actions/Build');
 require('./actions/Completion');
 require('./actions/Help');
 require('./actions/Transport');
+require('./actions/Install');
 
 require('./utils/Annotation');
 require('./utils/Combo');
