@@ -2,7 +2,8 @@ A Package Manager for SeaJS
 ===
 
 
-### To install:
+Installation
+---
 
 1. Install nodejs and npm ([How to install node.js and npm](http://joyeur.com/2010/12/10/installing-node-and-npm/))
 1. Then call:
@@ -13,7 +14,7 @@ A Package Manager for SeaJS
 Usage
 ---
 
-### `spm install [options] name[@version]`
+### spm install [options] name[@version]
 
 To get all compatible modules in the sea:
 
@@ -30,5 +31,5 @@ For more details:
     spm help install
 
 
-### `spm build [options] module`
+### spm build [options] module
 
