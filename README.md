@@ -28,3 +28,7 @@ Only want to get some specify modules:
 For more details:
 
     spm help install
+
+
+### `spm build [options] module`
+
