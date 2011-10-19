@@ -57,7 +57,7 @@ build-config.js:
 ````
 module.exports = {
   "libs_path": "/path/to/libs/",
-  "loader_config": "./init.js"
+  "loader_config": ".path/to/init.js"
 };
 
 ````
@@ -65,6 +65,7 @@ module.exports = {
 For all options, please call:
 
     $ spm help build
+
 
 
 
@@ -89,3 +90,15 @@ You can use `transport` to wrap custom modules:
     $ cp jquery/transport.js xxx/
     $ vi xxx/transport.js  # modify it
     $ spm transport xxx/transport.js
+
+
+### Use spm from JavaScript
+
+To use spm from JavaScript, you'd do the following:
+
+    var spm = require('spm');
+
+    var build = new spm.Build(['a.js', 'b.js'], {
+      combine: true
+    });
+    build.run();
