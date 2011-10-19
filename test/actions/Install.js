@@ -36,7 +36,7 @@ install.run(function(data) {
 });
 
 // spm install local-exists
-install = new Install(['backbone'], {
+install = new Install(['json'], {
   to: DATA_DIR
 });
 install.run(function(data) {
@@ -65,9 +65,9 @@ install.run(function(data) {
 
 
 // {{{
-console.log('  test install json --from local');
+console.log('  test install mustache --from local');
 
-install = new Install(['json'], {
+install = new Install(['mustache'], {
   force: true,
   from: MODULES_DIR,
   to: DATA_DIR
@@ -79,7 +79,7 @@ install.run(function(data) {
       path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
   ));
 
-  fsExt.rmdirRF(getFile('json'));
+  fsExt.rmdirRF(getFile('mustache'));
 });
 // }}}
 
