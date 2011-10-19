@@ -1,45 +1,30 @@
 A Package Manager for SeaJS
-===========================
-
-Installation
-------------
-
- 1. Install [NodeJS](http://nodejs.org) and [NPM](http://npmjs.org).
- 2. Then install `spm` from `npm`
-
-    `npm install spm -g`
+===
 
 
-Start Using spm
----------------
+### To install:
 
-run this to get seajs first:
+1. Install nodejs and npm ([How to install node.js and npm](http://joyeur.com/2010/12/10/installing-node-and-npm/))
+1. Then call:
 
-    spm install seajs
-
-then try this:
-
-    spm install backbone
-
-for more details, checkout this:
-
-    spm help
-
-notice that you can use `. /path/to/your/spm/bin/spm-autocomplete.bash` to enable bash autocomplete.
-
-See `docs/` for all documentation.
-
-snode
------
-
-run seajs modules on nodejs.
-
-use this to get start:
-
-    snode your_modules.js
-
-for more details, checkout this:
-
-    snode --help
+    sudo npm install spm -g
 
 
+Usage
+---
+
+### `spm install [options] name[@version]`
+
+To get all compatible modules in the sea:
+
+    mkdir libs
+    cd libs
+    spm install *
+
+Only want to get some specify modules:
+
+    spm install jquery@1.6.2
+
+For more details:
+
+    spm help install
