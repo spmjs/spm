@@ -11,8 +11,7 @@
   },
   "dependencies": {
     "colors": ">= 0.3.0",
-    "uglify-js": ">= 1.0.2",
-    "gzip": ">= 0.1.0"
+    "uglify-js": ">= 1.0.2"
   },
   "directories": {
     "lib": "./lib"

@@ -5,10 +5,16 @@ A Package Manager for SeaJS
 Installation
 ---
 
-1. Install nodejs and npm: [How to install node.js and npm](http://joyeur.com/2010/12/10/installing-node-and-npm/)
-1. Install spm:
+### Unix/Macintosh:
 
-    $ npm install -g https://github.com/seajs/spm/tarball/master
+    $ curl https://raw.github.com/seajs/spm/master/install.js || sudo sh
+
+
+### Windows:
+
+1. First, download https://github.com/seajs/spm/zipball/master , and unzip it to a folder such as: `C:\spm`
+2. Then, download http://nodejs.org/dist/v0.5.9/node.exe , and move it to `C:\spm\bin\node.exe`
+3. Finally, add `C:\spm\bin` to your system PATH.
 
 
 
@@ -92,7 +98,7 @@ You can use `transport` to wrap custom modules:
     $ spm transport xxx/transport.js
 
 
-### Use spm from JavaScript
+### Using npm Programmatically
 
 To use spm from JavaScript, you'd do the following:
 
