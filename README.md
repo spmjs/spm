@@ -12,10 +12,10 @@ Installation
 
 ### Windows:
 
-1. First, download https://github.com/seajs/spm/zipball/master , and unzip it to a folder such as: `C:\spm`
-2. Then, download http://nodejs.org/dist/v0.5.9/node.exe , and move it to `C:\spm\bin\node.exe`
-3. Finally, add `C:\spm\bin` to your system PATH.
-4. Run cmd.exe, and type `spm` to do your work!
+1. Download https://github.com/seajs/spm/zipball/master , and unzip it to `C:\spm`
+2. Download http://nodejs.org/dist/v0.5.9/node.exe to `C:\spm\bin\node.exe`
+3. Then, add `C:\spm\bin` to your system PATH.
+4. Finally, run cmd.exe, and type `spm` to do your work!
 
 
 Usage
