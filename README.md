@@ -7,7 +7,7 @@ Installation
 
 ### Unix/Macintosh:
 
-    $ curl https://raw.github.com/seajs/spm/master/install.js || sudo sh
+    $ curl https://raw.github.com/seajs/spm/master/install.sh || sudo sh
 
 
 ### Windows:
