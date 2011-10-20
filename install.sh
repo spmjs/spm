@@ -11,9 +11,10 @@ fi
 if [ -z `which node` ]
   then
     mkdir ~/tmp
+    rm -rf ~/tmp/node-install
     mkdir ~/tmp/node-install
     cd ~/tmp/node-install
-    curl http://nodejs.org/dist/node-v0.4.12.tar.gz | tar xz --strip-components=1
+    curl http://nodejs.org/dist/v0.5.9/node-v0.5.9.tar.gz | tar xz --strip-components=1
     mkdir ~/local
     ./configure --prefix=~/local
     sudo make
