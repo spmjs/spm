@@ -27,7 +27,7 @@ Get all compatible modules in the sea:
 
     $ mkdir libs
     $ cd libs
-    $ spm install *
+    $ spm install * 
 
 Only get a specific module:
 
