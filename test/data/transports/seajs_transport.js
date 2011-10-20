@@ -1,8 +1,8 @@
 /**
  * @package ./seajs_package.json
  *
- * @src ../../../../seajs/build/sea-debug.js
- * @min ../../../../seajs/build/sea.js
+ * @src ../../../modules/seajs/1.0.0/sea-debug.js
+ * @min ../../../modules/seajs/1.0.0/sea.js
  * @version 1.0.0
  */
 /*{{code}}*/
