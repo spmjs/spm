@@ -1,4 +1,5 @@
 #!/bin/bash
+#usage: . install.sh
 
 touch ~/.bash_profile
 if [ `grep -c "#add ~/local/bin to PATH" ~/.bash_profile` == 0 ]
