@@ -26,5 +26,5 @@ if [ -z `which npm` ]
     curl http://npmjs.org/install.sh | sudo sh
 fi
 
-echo installing spm...
+echo Installing spm...
 sudo npm install -g https://github.com/seajs/spm/tarball/master
