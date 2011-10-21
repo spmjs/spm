@@ -8,8 +8,12 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('backbone', ['underscore', 'jquery'], factory);
-  } else {
+    define('#{{id}}', ['underscore', 'jquery'], factory);
+  }
+  else if (typeof exports !== 'undefined') {
+    factory(require, exports);
+  }
+  else {
     factory();
   }
 

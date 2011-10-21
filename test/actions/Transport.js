@@ -62,9 +62,9 @@ transport.run(function(data) {
   var meta = data.meta;
 
   assert.equal(meta['name'], 'mustache');
-  assert.equal(meta['version'], '0.3.1');
-  assert.ok(getCode(data.srcOutputFile).indexOf("define('mustache'") !== -1);
-  assert.ok(getCode(data.minOutputFile).indexOf('define("mustache"') !== -1);
+  assert.equal(meta['version'], '0.4.0');
+  assert.ok(getCode(data.srcOutputFile).indexOf("define('#mustache") !== -1);
+  assert.ok(getCode(data.minOutputFile).indexOf('define("#mustache') !== -1);
 
   // destroy
   fsExt.rmdirRF(path.dirname(data.srcOutputFile));
@@ -80,8 +80,8 @@ transport.run(function(data) {
   var meta = data.meta;
 
   assert.equal(meta['name'], 'backbone');
-  assert.ok(getCode(data.srcOutputFile).indexOf("define('backbone'") !== -1);
-  assert.ok(getCode(data.minOutputFile).indexOf("define('backbone'") !== -1);
+  assert.ok(getCode(data.srcOutputFile).indexOf("define('#backbone") !== -1);
+  assert.ok(getCode(data.minOutputFile).indexOf("define('#backbone") !== -1);
 
   // destroy
   fsExt.rmdirRF(path.dirname(data.srcOutputFile));

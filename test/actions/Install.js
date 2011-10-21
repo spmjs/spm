@@ -66,9 +66,9 @@ install.run(function(data) {
 
 
 // {{{
-console.log('  test install jquery@1.6.2');
+console.log('  test install jquery@1.6.4');
 
-install = new Install(['jquery@1.6.2'], {
+install = new Install(['jquery@1.6.4'], {
   force: true,
   from: MODULES_DIR,
   to: DATA_DIR
