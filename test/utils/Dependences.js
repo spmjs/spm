@@ -79,10 +79,6 @@ assert.equal(deps[1], 'b');
 
 deps = parse(getFile('deps_6.js'));
 assert.equal(deps.length, 0);
-
-assert['throws'](function() {
-  parse(getFile('throw_error_1.js'))
-}, /multiple/);
 // }}}
 
 
