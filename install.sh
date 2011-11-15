@@ -14,7 +14,7 @@ if [ -z "`which node`" -o -z "`node --version | grep v0.6`" ]; then
   rm -rf ~/tmp/node-install
   mkdir ~/tmp/node-install
   cd ~/tmp/node-install
-  curl http://nodejs.org/dist/v0.6.0/node-v0.6.0.tar.gz | tar xz --strip-components=1
+  curl http://nodejs.org/dist/v0.6.1/node-v0.6.1.tar.gz | tar xz --strip-components=1
   mkdir ~/local
   ./configure --prefix=~/local
   sudo make
