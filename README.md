@@ -2,20 +2,16 @@ A Package Manager for SeaJS
 ===
 
 
+
 Installation
 ---
 
-### Unix/Macintosh:
+First, install node and npm: http://nodejs.org/#download
 
-    $ curl https://raw.github.com/seajs/spm/master/install.sh | sudo sh
+Then,
 
+    $ npm install spm -g
 
-### Windows:
-
-1. Download https://github.com/seajs/spm/zipball/master , and unzip it to `C:\spm`
-2. Download http://nodejs.org/dist/v0.6.0/node.exe to `C:\spm\bin\node.exe`
-3. Then, add `C:\spm\bin` to your system PATH.
-4. Finally, run cmd.exe, and type `spm` to do your work!
 
 
 Usage
@@ -31,7 +27,7 @@ Get all compatible modules in the sea:
 
 Only get a specific module:
 
-    $ spm install jquery@1.6.2
+    $ spm install jquery@1.7.1
 
 For more details:
 
@@ -60,18 +56,14 @@ You can define `build-config.js` to specify more information:
 
 build-config.js:
 
-````
-module.exports = {
-  "libs_path": "/path/to/libs/",
-  "loader_config": ".path/to/init.js"
-};
-
-````
+    module.exports = {
+      "base_path": "/path/to/libs/",
+      "loader_config": "path/to/init.js"
+    };
 
 For all options, please call:
 
     $ spm help build
-
 
 
 
@@ -82,7 +74,7 @@ For Ninja Users
 
 Add this line:
 
-    . ~/local/lib/node_modules/spm/bin/spm-autocomplete.bash
+    . /usr/local/lib/node_modules/spm/bin/spm-autocomplete.bash
 
 to your `.bash_profile` can enable auto completion for spm.
 
