@@ -15,9 +15,9 @@ console.log(('test ' + testName).cyan);
 
 
 // {{{
-console.log('  test Action#parseArgs_');
+console.log('  test Action#_parseArgs');
 
-var parseArgs = Action.prototype.parseArgs_;
+var parseArgs = Action.prototype._parseArgs;
 var result;
 
 result = parseArgs('a');
