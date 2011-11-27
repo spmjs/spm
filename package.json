@@ -3,15 +3,14 @@
   "description": "A Package Manager for SeaJS",
   "version": "0.4.0",
   "authors": ["Frank Wang <@lifesinger>", "Frank Xu <@yyfrankyy>"],
-  "keywords": ["seajs", "modules", "builder", "framework", "packager"],
+  "keywords": ["seajs", "module", "package", "optimization", "tool"],
   "main": "./index.js",
   "homepage": "https://github.com/seajs/spm",
   "engines": {
-    "node": ">= 0.6.1"
+    "node": ">= 0.6.3"
   },
   "dependencies": {
-    "colors": ">= 0.3.0",
-    "uglify-js": ">= 1.0.2"
+    "uglify-js": ">= 1.1.1"
   },
   "directories": {
     "lib": "./lib"
