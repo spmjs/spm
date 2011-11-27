@@ -67,7 +67,7 @@ For all options, please call:
 
 
 
-For Ninja Users
+For Advanced Users
 ---
 
 ### Auto completion
