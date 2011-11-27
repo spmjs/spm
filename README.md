@@ -8,7 +8,7 @@ Installation
 
 First, install node and npm: http://nodejs.org/#download
 
-Then,
+Then
 
     $ npm install spm -g
 
