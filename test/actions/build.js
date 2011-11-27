@@ -57,11 +57,11 @@ assertFileContentEqual('math/__build/program.js', 'math/expected/combo.js');
 
 
 // {{{
-console.log('\n  test build a.js --combine --libs_path exists');
+console.log('\n  test build a.js --combine --base_path exists');
 
 build = new Build([getFile('top_level/program.js')], {
   combine: true,
-  libs_path: getFile('top_level/lib')
+  base_path: getFile('top_level/lib')
 });
 build.run();
 assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo.js');
@@ -69,11 +69,11 @@ assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo
 
 
 // {{{
-console.log('\n  test build a.js --combine_all --libs_path exists');
+console.log('\n  test build a.js --combine_all --base_path exists');
 
 build = new Build([getFile('top_level/program.js')], {
   combine_all: true,
-  libs_path: getFile('top_level/lib')
+  base_path: getFile('top_level/lib')
 });
 build.run();
 assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo_all.js');
@@ -93,11 +93,11 @@ assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo
 
 
 // {{{
-console.log('\n  test build a.js --libs_path not-exists');
+console.log('\n  test build a.js --base_path not-exists');
 
 build = new Build([getFile('top_level/program.js')], {
   combine: true,
-  libs_path: getFile('top_level/libs')
+  base_path: getFile('top_level/libs')
 });
 
 assert['throws'](function() {
@@ -121,11 +121,11 @@ assert['throws'](function() {
 
 
 // {{{
-console.log('\n  test build a.js --combine_all --libs_path exists --config exists');
+console.log('\n  test build a.js --combine_all --base_path exists --config exists');
 
 build = new Build([getFile('top_level/program.js')], {
   combine_all: true,
-  libs_path: getFile('top_level/lib'),
+  base_path: getFile('top_level/lib'),
   config: getFile('top_level/build_config.js')
 });
 build.run();

@@ -1,6 +1,6 @@
 
 module.exports = {
 
-  "libs_path": '../../../modules/'
+  "base_path": '../../../modules/'
 
 };

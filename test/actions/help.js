@@ -16,7 +16,7 @@ console.log(('test ' + testName).cyan);
 
 // {{{
 console.log('  test spm help');
-assert.ok(new Help().run().indexOf('seajs') > -1);
+assert.ok(new Help().run().indexOf('SeaJS') > -1);
 // }}}
 
 
