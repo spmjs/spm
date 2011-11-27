@@ -20,12 +20,25 @@ var build;
 
 
 // {{{
+console.log(process.cwd());
 console.log('  test build --clear');
 
 build = new Build([], { clear: true });
 fsExt.mkdirS('__build');
 build.run();
 assert.equal(path.existsSync('__build'), false);
+// }}}
+
+
+// {{{
+console.log('  test build --clear xx');
+
+build = new Build(['__xx'], { clear: true });
+fsExt.mkdirS('__xx');
+fsExt.mkdirS('__xx/__build');
+build.run();
+assert.equal(path.existsSync('xx/__build'), false);
+fsExt.rmdirRF('__xx');
 // }}}
 
 
