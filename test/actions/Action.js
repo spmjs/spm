@@ -7,7 +7,7 @@ require('../../lib/utils/colors.js');
 var path = require('path');
 var assert = require('assert');
 
-var Action = require('../../lib/actions/action.js');
+var Action = require('../../lib/actions/Action.js');
 
 
 var testName = path.basename(__filename);
