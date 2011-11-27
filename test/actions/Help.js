@@ -2,12 +2,12 @@
  * @author lifesinger@gmail.com (Frank Wang)
  */
 
-require('colors');
+require('../../lib/utils/colors.js');
 
 var path = require('path');
 var assert = require('assert');
 
-var Help = require('../../lib/actions/Help');
+var Help = require('../../lib/actions/help.js');
 
 
 var testName = path.basename(__filename);

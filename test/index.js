@@ -3,17 +3,17 @@
  * @author lifesinger@gmail.com (Frank Wang)
  */
 
-require('colors');
+require('../lib/utils/colors.js');
 
-require('./utils/Annotation');
-require('./utils/Combo');
-require('./utils/Compressor');
-require('./utils/Dependences');
-require('./utils/LoaderConfig');
+require('./utils/annotation.js');
+require('./utils/combo.js');
+require('./utils/compressor.js');
+require('./utils/dependences.js');
+require('./utils/loader_config.js');
 
-require('./actions/Action');
-require('./actions/Build');
-require('./actions/Completion');
-require('./actions/Help');
-require('./actions/Transport');
-require('./actions/Install');
+require('./actions/action.js');
+require('./actions/build.js');
+require('./actions/completion.js');
+require('./actions/help.js');
+require('./actions/transport.js');
+require('./actions/install.js');

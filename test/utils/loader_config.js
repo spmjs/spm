@@ -2,12 +2,12 @@
  * @author lifesinger@gmail.com (Frank Wang)
  */
 
-require('colors');
+require('../../lib/utils/colors.js');
 
 var path = require('path');
 var assert = require('assert');
 
-var LoaderConfig = require('../../lib/utils/LoaderConfig');
+var LoaderConfig = require('../../lib/utils/loader_config.js');
 
 
 var DATA_DIR = path.resolve(__dirname, '../data/configs');

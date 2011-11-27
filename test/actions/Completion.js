@@ -2,13 +2,13 @@
  * @author lifesinger@gmail.com (Frank Wang)
  */
 
-require('colors');
+require('../../lib/utils/colors.js');
 
 var path = require('path');
 var assert = require('assert');
 
-var CONFIG = require('../../lib/config');
-var Completion = require('../../lib/actions/Completion.js');
+var CONFIG = require('../../lib/config.js');
+var Completion = require('../../lib/actions/completion.js');
 
 
 var testName = path.basename(__filename);

@@ -2,13 +2,13 @@
  * @author lifesinger@gmail.com (Frank Wang)
  */
 
-require('colors');
+require('../../lib/utils/colors.js');
 
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 
-var Combo = require('../../lib/utils/Combo');
+var Combo = require('../../lib/utils/combo.js');
 
 
 var DATA_DIR = path.resolve(__dirname, '../data/modules');

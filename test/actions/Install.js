@@ -2,14 +2,15 @@
  * @author lifesinger@gmail.com (Frank Wang)
  */
 
-require('colors');
+require('../../lib/utils/colors.js');
 
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 
-var fsExt = require('../../lib/utils/fsExt');
-var Install = require('../../lib/actions/Install');
+var fsExt = require('../../lib/utils/fs_ext.js');
+var Install = require('../../lib/actions/install.js');
+
 const DATA_DIR = path.resolve(__dirname, '../data/install');
 const MODULES_DIR = path.resolve(__dirname, '../../modules');
 

@@ -2,14 +2,14 @@
  * @author lifesinger@gmail.com (Frank Wang)
  */
 
-require('colors');
+require('../../lib/utils/colors.js');
 
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 
-var fsExt = require('../../lib/utils/fsExt');
-var Transport = require('../../lib/actions/Transport');
+var fsExt = require('../../lib/utils/fs_ext.js');
+var Transport = require('../../lib/actions/transport.js');
 const DATA_DIR = path.resolve(__dirname, '../data/transports');
 
 var testName = require('path').basename(__filename);
