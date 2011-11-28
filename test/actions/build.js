@@ -110,7 +110,8 @@ assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo
 console.log('\n  test build a.js --base_path not-exists');
 
 build = new Build([getFile('top_level/program.js')], {
-  combine: true,
+  combine_all: true,
+  app_url: 'http://test.com/js',
   base_path: getFile('top_level/xx_libs')
 });
 
@@ -125,7 +126,8 @@ console.log('\n  test build a.js --config not-exists');
 
 build = new Build([getFile('top_level/program.js')], {
   combine: true,
-  config: getFile('top_level/libs')
+  app_url: 'http://test.com/js',
+  config: getFile('top_level/xx_libs')
 });
 
 assert['throws'](function() {
@@ -193,6 +195,20 @@ build = new Build([getFile('compiler_options')], {
 });
 build.run();
 assertFileContentEqual('compiler_options/__build/main.js', 'compiler_options/expected/main.js');
+// }}}
+
+
+// {{{
+console.log('\n  test build a.js --out_path');
+fsExt.rmdirRF(getFile('out_path/z/x/c'));
+
+build = new Build([getFile('out_path/main.js')], {
+  config: getFile('out_path/build-config.js')
+});
+build.run();
+assert(path.existsSync(getFile('out_path/z/x/c/main.js')));
+
+fsExt.rmdirRF(getFile('out_path/z/x/c'));
 // }}}
 
 
