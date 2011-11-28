@@ -178,10 +178,21 @@ assertFileContentEqual('excludes/__build/program.js', 'excludes/expected/combo.j
 
 build = new Build([getFile('excludes/program.js')], {
   config: getFile('excludes/build-config.js'),
-  excludes: 'lib-x'
+  excludes: /lib-x/
 });
 build.run();
 assertFileContentEqual('excludes/__build/program.js', 'excludes/expected/combo_2.js');
+// }}}
+
+
+// {{{
+console.log('\n  test build a.js with compiler_options in build-config.js');
+
+build = new Build([getFile('compiler_options')], {
+  config: getFile('compiler_options/build-config.js')
+});
+build.run();
+assertFileContentEqual('compiler_options/__build/main.js', 'compiler_options/expected/main.js');
 // }}}
 
 
