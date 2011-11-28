@@ -54,7 +54,7 @@ assertFileContentEqual('math/__build/program.js', 'math/expected/program.js');
 // {{{
 console.log('\n  test build a.js --combine');
 
-build = new Build([getFile('math/program.js')], { combine: true });
+build = new Build([getFile('math/program.js')], { combine: true, app_url: 'http://test.com/js/' });
 build.run();
 assertFileContentEqual('math/__build/program.js', 'math/expected/combo.js');
 // }}}
@@ -63,7 +63,7 @@ assertFileContentEqual('math/__build/program.js', 'math/expected/combo.js');
 // {{{
 console.log('\n  test build a.js --combine_all');
 
-build = new Build([getFile('math/program.js')], { combine_all: true });
+build = new Build([getFile('math/program.js')], { combine_all: true, app_url: 'http://test.com/js/' });
 build.run();
 assertFileContentEqual('math/__build/program.js', 'math/expected/combo.js');
 // }}}
@@ -74,7 +74,8 @@ console.log('\n  test build a.js --combine --base_path exists');
 
 build = new Build([getFile('top_level/program.js')], {
   combine: true,
-  base_path: getFile('top_level/lib')
+  base_path: getFile('top_level/lib'),
+  app_url: 'http://test.com/js/'
 });
 build.run();
 assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo.js');
@@ -86,7 +87,8 @@ console.log('\n  test build a.js --combine_all --base_path exists');
 
 build = new Build([getFile('top_level/program.js')], {
   combine_all: true,
-  base_path: getFile('top_level/lib')
+  base_path: getFile('top_level/lib'),
+  app_url: 'http://test.com/js/'
 });
 build.run();
 assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo_all.js');
@@ -97,7 +99,6 @@ assertFileContentEqual('top_level/__build/program.js', 'top_level/expected/combo
 console.log('\n  test build a.js --combine_all --config exists');
 
 build = new Build([getFile('top_level/program.js')], {
-  combine_all: true,
   config: getFile('top_level/build_config.js')
 });
 build.run();

@@ -1,1 +1,1 @@
-define("./program",["./style.css"],function(a){a("./style.css")});
+define("http://test.com/js/program.js",["./style.css"],function(a){a("./style.css")});

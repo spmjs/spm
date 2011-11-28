@@ -23,7 +23,7 @@ console.log('  test Combo.compile math');
 
 file = getFile('math/program.js');
 expected = path.join(path.dirname(file), 'expected/combo.js');
-out = Combo.compile(file);
+out = Combo.compile(file, null, { app_url: 'http://test.com/js/' });
 assert.equal(out, getCode(expected));
 // }}}
 
@@ -36,13 +36,14 @@ expected = path.join(path.dirname(file), 'expected/combo.js');
 expected2 = path.join(path.dirname(file), 'expected/combo_all.js');
 
 // only relative
-out = Combo.compile(file);
+out = Combo.compile(file, null, { app_url: 'http://test.com/js/' });
 assert.equal(out, getCode(expected));
 
-// comboAll
+// combine all
 out = Combo.compile(file, null, {
   combine_all: true,
-  base_path: path.join(path.dirname(file), 'lib')
+  base_path: path.join(path.dirname(file), 'lib'),
+  app_url: 'http://test.com/js'
 });
 assert.equal(out, getCode(expected2));
 // }}}
@@ -53,7 +54,7 @@ console.log('\n  test Combo.compile require_css');
 
 file = getFile('require_css/program.js');
 expected = path.join(path.dirname(file), 'expected/combo.js');
-out = Combo.compile(file);
+out = Combo.compile(file, null, { app_url: 'http://test.com/js/' });
 assert.equal(out, getCode(expected));
 // }}}
 
@@ -63,7 +64,7 @@ console.log('\n  test Combo.compile define_json');
 
 file = getFile('define_json/program.js');
 expected = path.join(path.dirname(file), 'expected/combo.js');
-out = Combo.compile(file);
+out = Combo.compile(file, null, { app_url: 'http://test.com/js/' });
 assert.equal(out, getCode(expected));
 // }}}
 
