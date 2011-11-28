@@ -16,10 +16,10 @@ console.log(('test ' + testName).cyan);
 
 
 //{{{
-console.log('  test Dependences.parseStatic_');
+console.log('  test Dependences._parseStatic');
 
 var deps;
-var parseStatic = Dependences.parseStatic_;
+var parseStatic = Dependences._parseStatic;
 
 deps = parseStatic(getFile('static_deps_1.js'));
 assert.equal(deps.length, 2);
@@ -43,8 +43,8 @@ assert.equal(deps, undefined);
 
 
 // {{{
-console.log('  test Dependence.parseDynamic_');
-var parseDynamic = Dependences.parseDynamic_;
+console.log('  test Dependence._parseDynamic');
+var parseDynamic = Dependences._parseDynamic;
 
 deps = parseDynamic(getFile('dynamic_deps_1.js'));
 assert.equal(deps.length, 0);

@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('define8', ['a', 'b'], factory);
+    define('test', ['a', 'b'], factory);
   } else {
     factory(null, (this['XX'] = {}));
   }
