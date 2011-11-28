@@ -110,7 +110,7 @@ console.log('\n  test build a.js --base_path not-exists');
 
 build = new Build([getFile('top_level/program.js')], {
   combine: true,
-  base_path: getFile('top_level/libs')
+  base_path: getFile('top_level/xx_libs')
 });
 
 assert['throws'](function() {
