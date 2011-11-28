@@ -167,6 +167,24 @@ assertFileContentEqual('deep/sub/biz/__build/math.js', 'deep/expected/math.js');
 // }}}
 
 
+// {{{
+console.log('\n  test build a.js --excludes');
+
+build = new Build([getFile('excludes/program.js')], {
+  config: getFile('excludes/build-config.js')
+});
+build.run();
+assertFileContentEqual('excludes/__build/program.js', 'excludes/expected/combo.js');
+
+build = new Build([getFile('excludes/program.js')], {
+  config: getFile('excludes/build-config.js'),
+  excludes: 'lib-x'
+});
+build.run();
+assertFileContentEqual('excludes/__build/program.js', 'excludes/expected/combo_2.js');
+// }}}
+
+
 // clear tmp build files
 Build.prototype.clear(DATA_DIR);
 
