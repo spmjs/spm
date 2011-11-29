@@ -43,7 +43,7 @@ transport.run(function(data) {
   assert.ok(meta['package']);
   assert.ok(meta['src']);
   assert.equal(meta['name'], 'SeaJS');
-  assert.equal(meta['version'], '1.0.0');
+  assert.equal(meta['version'], '1.1.0');
 
   assert.equal(getCode(data.srcOutputFile), getCode(meta['src']));
   assert.equal(getCode(data.minOutputFile), getCode(meta['min']));

@@ -31,13 +31,16 @@ install.run(function(data) {
 });
 
 // spm install not-exists
-install = new Install('not-exists');
+install = new Install(['not-exists'], {
+  from: MODULES_DIR
+});
 install.run(function(data) {
   assert.equal(data.errCode, -2);
 });
 
 // spm install local-exists
 install = new Install(['json'], {
+  from: MODULES_DIR,
   to: DATA_DIR
 });
 install.run(function(data) {
@@ -57,7 +60,7 @@ install = new Install(['cookie'], {
 
 install.run(function(data) {
   var meta = data.meta;
-  assert.equal(getCode(meta.localminpath), getCode(
+  assert.equal(getCode(getMinPath(meta)), getCode(
       path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
   ));
 
@@ -77,7 +80,7 @@ install = new Install(['jquery@1.6.4'], {
 
 install.run(function(data) {
   var meta = data.meta;
-  assert.equal(getCode(meta.localminpath), getCode(
+  assert.equal(getCode(getMinPath(meta)), getCode(
       path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
   ));
 
@@ -99,7 +102,7 @@ var actual = [];
 
 install.run(function(data) {
   var meta = data.meta;
-  assert.equal(getCode(meta.localminpath), getCode(
+  assert.equal(getCode(getMinPath(meta)), getCode(
       path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
   ));
 
@@ -131,12 +134,12 @@ install = new Install(['seajs'], {
 install.run(function(data) {
   var meta = data.meta;
 
-  assert.equal(getCode(meta.localminpath), getCode(
+  assert.equal(getCode(getMinPath(meta)), getCode(
       path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
   ));
 
   assert.ok(path.existsSync(
-      path.join(path.dirname(meta.localminpath), 'plugin-map.js')
+      path.join(path.dirname(getMinPath(meta)), 'plugin-map.js')
   ));
 
   fsExt.rmdirRF(getFile(meta.name));
@@ -155,7 +158,7 @@ install = new Install(['querystring', 'es5-safe'], {
 
 install.run(function(data) {
   var meta = data.meta;
-  assert.equal(getCode(meta.localminpath), getCode(
+  assert.equal(getCode(getMinPath(meta)), getCode(
       path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
   ));
 
@@ -179,4 +182,9 @@ function getFile(filename) {
 
 function getCode(filename) {
   return fs.readFileSync(filename, 'utf8');
+}
+
+
+function getMinPath(meta) {
+  return path.join(meta.installTo, meta.installFiles[0]);
 }

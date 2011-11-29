@@ -1,8 +1,8 @@
 /**
- * @package https://raw.github.com/documentcloud/backbone/master/package.json
+ * @package ./backbone_package.json
  *
- * @src http://documentcloud.github.com/backbone/backbone.js
- * @min http://documentcloud.github.com/backbone/backbone-min.js
+ * @src ../../../modules/backbone/0.5.3/backbone-debug.js
+ * @min ../../../modules/backbone/0.5.3/backbone.js
  */
 
 (function(factory) {

@@ -1,8 +1,8 @@
 /**
- * @package https://raw.github.com/janl/mustache.js/master/lib/package.json
+ * @package mustache_package.json
  *
  * @version 0.4.0
- * @src https://raw.github.com/janl/mustache.js/master/mustache.js
+ * @src ../../../modules/mustache/0.4.0/mustache-debug.js
  */
 
 (function(factory) {
