@@ -6,19 +6,7 @@
   "keywords"      : ["seajs", "module", "package", "optimization", "tool"],
   "author"        : "Frank Wang <lifesinger@gmail.com>",
   "contributors"  : ["Frank Xu <yyfrankyy@gmail.com>"],
-  "main"          : "./lib/spm.js",
-  "bin"           : {
-                      "spm": "./bin/spm"
-                    },
-  "directories"   : {
-                      "bin": "./bin",
-                      "lib": "./lib",
-                      "test": "./test"
-                    },
-
-  "engines"       : {
-                      "node": ">= 0.6.3"
-                    },
+  "engines"       : {"node": ">= 0.6.3"},
   "dependencies"  : {
                       "uglify-js": ">= 1.1.1",
                       "seajs": ">= 1.1.0"
@@ -27,5 +15,10 @@
                       "type": "git",
                       "url": "git://github.com/seajs/spm.git"
                     },
+  "main"          : "./lib/spm.js",
+  "bin"           : {
+                      "spm": "./bin/spm"
+                    },
+  "files"         : ["bin", "lib", "test"],
   "preferGlobal"  : true
 }
