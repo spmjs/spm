@@ -1,19 +1,21 @@
 {
-  "name": "spm",
-  "version": "0.4.0",
-  "description": "A Package Manager for SeaJS",
-  "authors": ["Frank Wang <@lifesinger>", "Frank Xu <@yyfrankyy>"],
-  "keywords": ["seajs", "module", "package", "optimization", "tool"],
-  "homepage": "https://github.com/seajs/spm",
-  "main": "./lib/spm.js",
-  "bin": {
-    "spm": "./bin/spm"
-  },
-  "engines": {
-    "node": ">= 0.6.3"
-  },
-  "dependencies": {
-    "uglify-js": ">= 1.1.1"
-  },
-  "preferGlobal": true
+  "name"          : "spm",
+  "version"       : "0.4.0",
+  "description"   : "A Package Manager for SeaJS",
+  "homepage"      : "https://github.com/seajs/spm",
+  "keywords"      : ["seajs", "module", "package", "optimization", "tool"],
+  "authors"       : ["Frank Wang <@lifesinger>", "Frank Xu <@yyfrankyy>"],
+  "contributors"  : [],
+  "main"          : "./lib/spm.js",
+  "bin"           : {
+                      "spm": "./bin/spm"
+                    },
+  "engines"       : {
+                      "node": ">= 0.6.3"
+                    },
+  "dependencies"  : {
+                      "uglify-js": ">= 1.1.1",
+                      "seajs": ">= 1.1.0"
+                    },
+  "preferGlobal"  : true
 }
