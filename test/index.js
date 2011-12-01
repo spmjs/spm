@@ -17,3 +17,5 @@ require('./actions/completion.js');
 require('./actions/help.js');
 require('./actions/transport.js');
 require('./actions/install.js');
+
+require('./issues/conditional-compile/test.js');
