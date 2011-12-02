@@ -58,6 +58,8 @@ build-config.js:
 
     module.exports = {
       "base_path": "/path/to/libs/",
+      "app_url": "http://test.com/js/app/",
+      "app_path": "/path/to/app/",
       "loader_config": "path/to/init.js"
     };
 
