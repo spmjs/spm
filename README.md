@@ -76,7 +76,7 @@ For Advanced Users
 
 Add this line:
 
-    . /usr/local/lib/node_modules/spm/bin/spm-autocomplete.bash
+    . /usr/local/lib/node_modules/spm/bin/spm-autocompletion.bash
 
 to your `.bash_profile` can enable auto completion for spm.
 
