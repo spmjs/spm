@@ -27,7 +27,7 @@ Get all compatible modules in the sea:
 
 Only get a specific module:
 
-    $ spm install jquery@1.7.1
+    $ spm install jquery@1.7.2
 
 For more details:
 
