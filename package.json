@@ -19,5 +19,8 @@
   "bin"           : {
                       "spm": "./bin/spm"
                     },
+  "scripts"       : {
+                      "test": "node test/"
+                    },
   "preferGlobal"  : true
 }
