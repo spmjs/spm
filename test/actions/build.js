@@ -26,7 +26,7 @@ console.log('  test build --clear');
 build = new Build([], { clear: true });
 fsExt.mkdirS('__build');
 build.run();
-assert.equal(path.existsSync('__build'), false);
+assert.equal(fs.existsSync('__build'), false);
 // }}}
 
 
@@ -37,7 +37,7 @@ build = new Build(['__xx'], { clear: true });
 fsExt.mkdirS('__xx');
 fsExt.mkdirS('__xx/__build');
 build.run();
-assert.equal(path.existsSync('xx/__build'), false);
+assert.equal(fs.existsSync('xx/__build'), false);
 fsExt.rmdirRF('__xx');
 // }}}
 
@@ -206,7 +206,7 @@ build = new Build([getFile('out_path/main.js')], {
   config: getFile('out_path/build-config.js')
 });
 build.run();
-assert(path.existsSync(getFile('out_path/z/x/c/main.js')));
+assert(fs.existsSync(getFile('out_path/z/x/c/main.js')));
 
 fsExt.rmdirRF(getFile('out_path/z/x/c'));
 // }}}

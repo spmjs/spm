@@ -6,7 +6,7 @@
   "keywords"      : ["seajs", "module", "package", "optimization", "tool"],
   "author"        : "Frank Wang <lifesinger@gmail.com>",
   "contributors"  : ["Frank Xu <yyfrankyy@gmail.com>", "hui.kang <kangpangpang@gmail.com>"],
-  "engines"       : {"node": ">= 0.6.3"},
+  "engines"       : {"node": ">= 0.8.1"},
   "dependencies"  : {
                       "uglify-js": ">= 1.1.1",
                       "seajs": ">= 1.1.0"

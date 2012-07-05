@@ -138,7 +138,7 @@ install.run(function(data) {
       path.join(MODULES_DIR, meta.name, meta.version, meta.filename + '.js')
   ));
 
-  assert.ok(path.existsSync(
+  assert.ok(fs.existsSync(
       path.join(path.dirname(getMinPath(meta)), 'plugin-map.js')
   ));
 
