@@ -16,3 +16,5 @@ Thumbs.db
 *.swo
 *.log
 node_modules/
+.buildpath
+.settings
