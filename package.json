@@ -10,7 +10,8 @@
   "dependencies"  : {
                       "uglify-js": ">= 1.1.1",
                       "seajs": ">= 1.1.0",
-                      "async": "0.1.22"
+                      "async": "0.1.22",
+                      "tar": "0.1.13"
                     },
   "repository"    : {
                       "type": "git",
