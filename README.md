@@ -33,6 +33,13 @@ For more details:
 
     $ spm help install
 
+### spm init
+
+init new module
+
+    $ mkdir cd module
+    $ cd module
+    $ spm init
 
 ### spm build [options] module
 
