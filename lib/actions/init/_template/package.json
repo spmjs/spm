@@ -12,10 +12,10 @@
         "url": ""
     },
     "license": "",
-    "moduleDependencies": {
+    "dependencies": {
     },
     "tests": ["{{project}}"],
     "output": {
-        "{{project}}.js": ["{{project}}.js"]
+        "{{project}}.js": "."
     }
 }
