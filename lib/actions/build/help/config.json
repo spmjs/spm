@@ -1,0 +1,4 @@
+{
+  sources: ['arale.alipay.im:8000'],
+  root: '#'
+}
