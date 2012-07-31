@@ -37,7 +37,7 @@ For more details:
 
 init new module
 
-    $ mkdir cd module
+    $ mkdir module
     $ cd module
     $ spm init
 
