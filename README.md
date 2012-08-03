@@ -1,96 +1,163 @@
-A Package Manager for SeaJS
+简单、放心的包管理工具
 ===
 
-
-
-Installation
+安装
 ---
 
-First, install node and npm: http://nodejs.org/#download
+首先需要安装, node 和 npm: http://nodejs.org/#download
 
-Then
+然后有两种安装方式:
 
-    $ npm install spm -g
+###通过npm###
 
+```
+$ npm install spm -g
+```
 
+###通过源代码###
 
-Usage
+```
+git clone https://github.com/seajs/spm.git
+```
+```
+npm install spm/ -g
+```
+
+SPM 概要
 ---
 
-### spm install [options] name[@version]
+目前我们的打包是基于配置文件，而且对模块的目录结构也有一定的要求，所以需要先了解下SPM打包模块下基本目录结构和一个经典的配置文件.
 
-Get all compatible modules in the sea:
+### 目录结构
+
+```
+package.json
+README.md
+src/
+    example.js
+dist/
+    example-debug.js
+    example.js
+tests/
+examples/
+```
+其中**dist**目录是我们打包好的模块. 也就是最终上线使用的模块.
+
+### 配置文件(example)
+```
+{
+    "name": "example",
+    "version": "0.9.17",
+    "dependencies": {
+        "$": "$",
+        "handlebars": "1.0.0",
+        "base": "#base/0.9.16/base"
+    },
+    "output": {
+        "name.js": ".",
+        "name2.js": ['n1.js', 'n2.js']
+    }
+}
+```
+
+### dependencies 相关依赖解析。
+
+#### 相关写法
+
+1. spm对于这种相等的模块，spm将不作处理，最终**$**的解析将有页面来决定.
+2. 这种是```handlebars/1.0.0/handlebars```的一种简化形式
+3. 是我们的标准配置.
+
+#### 依赖查找
+由于打包的时候我们需要计算依赖关系，所以我们根据用户配置的依赖需要找到具体的模块，我们目前是通过源来完成的，对于一些标准模块
+我们会提供统一的源服务，而对于用户的一些私有模块，我们也提供了命令可以方便用户快速的搭建自己的私有源服务.后面也会有相关**源**的介绍.
+
+### outout 模块输出配置.
+目前支持多种写法，最常用的就是上面两种:
+
+1. **"."** 会产生合并，其中会把name.js这个模块所有依赖的相对模块合并成一个模块**name.js**输出.
+2. 也是合并，不过是按照用户数组定义的顺序进行文件合并.
+
+总之SPM 目前说简单点就是根据模块的配置文件，然后计算模块的依赖，并替换相关依赖，并把需要的文件合并起来，然后输出标准的CMD模块. 
+
+对于配置文件更详细的内容可以参看下面两个内容:
+
+[package, sources and spm](https://github.com/seajs/spm/issues/148)
+
+[配置文件详情](https://github.com/seajs/spm/wiki/package.json) 
+
+对于具体的例子，可以参考我们已经开放出去的模块:
+
+[aralejs](https://github.com/aralejs)
+
+SPM 相关命令
+---
+目前我们的命令大概可以分为两类.
+
+### 模块打包
+
+#### spm build [options]
+
+根据package.json的配置打包模块并输出到**dist**目录:
+
+    $ spm build
+其中有下面相关设置:
+
+    -c // 使用google closure compile 进行压缩
+
+    -X // 打印debug信息, 方便调试
+
+#### spm upload [options]
+
+打包模块(build)，并把打包好后的dist目录的内容按照我们的定义上传到**源服务中** 方便其他人使用.
+
+    $ spm upload 
+
+其中**build**的参数也都适用，有一个新增加的：
+    
+    --only // 只进行上传，不会执行build操作.
+
+#### spm deploy [options]
+
+打包模块，并上传源服务，而且根据用户配置的远程服务器信息，可以把dist下面的内容**scp**到远程服务器.
+具体的配置信息参看:
+
+[spm deploy 基本介绍](https://github.com/seajs/spm/issues/173)
+
+[spm deploy 相关讨论](https://github.com/seajs/spm/issues/181)
+
+其中参数和upload的一致.
+
+
+### 工具辅助
+
+#### spm install [options] name[@version]
+
+获取所有的 seajs 兼容新模块到当前目录.
 
     $ mkdir libs
     $ cd libs
     $ spm install all
 
-Only get a specific module:
+也可以获取指定模块:
 
     $ spm install jquery@1.7.2
 
-For more details:
+查看更多详情:
 
     $ spm help install
 
-### spm init
+#### spm init
 
-init new module
+创建一个标准模块:
 
     $ mkdir module
     $ cd module
     $ spm init
 
-### spm build [options] module
+#### spm transport [--force] transport.js
 
-Compress a module file:
-
-    $ spm build a.js
-
-Compress and combine to one file with dependencies:
-
-    $ spm build a.js --combine
-
-Compress and combine to one file with all dependencies:
-
-    $ spm build a.js --combine_all
-
-Remove built files:
-
-    $ spm build --clear
-
-You can define `build-config.js` to specify more information:
-
-build-config.js:
-
-    module.exports = {
-      "base_path": "/path/to/libs/",
-      "app_url": "http://test.com/js/app/",
-      "app_path": "/path/to/app/",
-      "loader_config": "path/to/init.js"
-    };
-
-For all options, please call:
-
-    $ spm help build
-
-
-
-For Advanced Users
----
-
-### Auto completion
-
-Add this line:
-
-    . /usr/local/lib/node_modules/spm/bin/spm-autocompletion.bash
-
-to your `.bash_profile` can enable auto completion for spm.
-
-
-### spm transport [--force] transport.js
-
-You can use `transport` to wrap custom modules:
+你可以通过 `transport` 去包装一些非标准模块:
 
     $ cd path/to/modules
     $ mkdir xxx
@@ -98,14 +165,17 @@ You can use `transport` to wrap custom modules:
     $ vi xxx/transport.js  # modify it
     $ spm transport xxx/transport.js
 
+### spm server [options] 
 
-### Using npm Programmatically
+在当前目录启用源服务， 端口为 8000
+    
+    $ spm server -p 8000
 
-To use spm from JavaScript, you'd do the following:
+这样使用者可以在内网部署此服务，可以把模块部署到此服务，其他用户也可以从这个服务获取里面的模块.
 
-    var spm = require('spm');
+如果一个服务想对多个系统(也就是模块配置有不同的root)提供服务的话
 
-    var build = new spm.Build(['a.js', 'b.js'], {
-      combine: true
-    });
-    build.run();
+    $ spm server -p 8001 --mapping
+
+
+
