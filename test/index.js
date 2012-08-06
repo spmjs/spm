@@ -1,21 +1,31 @@
 /**
  * @usage node index.js
- * @author lifesinger@gmail.com (Frank Wang)
+ * @author kangpangpang@gmail.com (kangpangpang)
  */
+var jasmine = require('jasmine-node');
+var sys = require('sys');
 
-require('../lib/utils/colors.js');
+for(var key in jasmine) {
+  global[key] = jasmine[key];
+}
 
-require('./utils/annotation.js');
-require('./utils/combo.js');
-require('./utils/compressor.js');
-require('./utils/dependences.js');
-require('./utils/loader_config.js');
+var isVerbose = true;
+var showColors = true;
 
-require('./actions/action.js');
-require('./actions/build.js');
-require('./actions/completion.js');
-require('./actions/help.js');
-require('./actions/transport.js');
-require('./actions/install.js');
+process.argv.forEach(function(arg){
+    switch(arg) {
+          case '--color': showColors = true; break;
+          case '--noColor': showColors = false; break;
+          case '--verbose': isVerbose = true; break;
+    }
+});
 
-require('./issues/conditional-compile/test.js');
+jasmine.executeSpecsInFolder(__dirname + '/specs', function(runner, log){
+  if (runner.results().failedCount == 0) {
+    process.exit(0);
+  }
+  else {
+    process.exit(1);
+  }
+}, isVerbose, showColors, null, false, /.*spec\.js$/);
+
