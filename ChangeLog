@@ -1,0 +1,7 @@
+2012.08.06, Version 0.9.3(Unstable)
+
+* Fix #193 默认源改为公开源
+* Fix #190 log IO冲重定向问题.
+* Fix #189 新源目录初始化
+* Feature #188 自定义config.json位置.
+

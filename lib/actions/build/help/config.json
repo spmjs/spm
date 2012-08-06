@@ -1,4 +1,4 @@
 {
-  sources: ['arale.alipay.im:8000'],
+  sources: ['modules.seajs.org'],
   root: '#'
 }
