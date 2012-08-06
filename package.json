@@ -1,6 +1,6 @@
 {
     "name"          : "spm",
-    "version"       : "0.9.3",
+    "version"       : "0.9.4-dev",
     "description"   : "A Package Manager for SeaJS",
     "homepage"      : "https://github.com/seajs/spm",
     "keywords"      : ["seajs", "module", "package", "optimization", "tool"],
