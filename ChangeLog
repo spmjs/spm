@@ -1,3 +1,7 @@
+2012.08.8, Version 0.9.4-1(Unstable)
+
+* Fix #202, #203 windows下面用户目录获取不正确.
+
 2012.08.06, Version 0.9.3(Unstable)
 
 * Fix #193 默认源改为公开源
