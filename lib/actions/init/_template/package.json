@@ -1,6 +1,7 @@
 {
     "name": "{{project}}",
     "version": "0.1.0",
+    "root": "{{root}}",
     "description": "",
     "homepage": "",
     "author": "",
