@@ -155,6 +155,10 @@ SPM 相关命令
     $ cd module
     $ spm init
 
+可指定模块的 root，这个配置可查看 [package.json](https://github.com/seajs/spm/wiki/package.json)
+
+    $ spm init -r alipay
+
 #### spm transport [--force] transport.js
 
 你可以通过 `transport` 去包装一些非标准模块:
