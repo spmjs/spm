@@ -103,9 +103,9 @@ SPM 相关命令
     $ spm build
 其中有下面相关设置:
 
-    -c // 使用google closure compile 进行压缩
+    -compiler=closure // 使用google closure compile 进行压缩
 
-    -X // 打印debug信息, 方便调试
+    -v --verbose // 打印debug信息, 方便调试
 
 #### spm upload [options]
 
