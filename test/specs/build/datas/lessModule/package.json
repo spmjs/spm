@@ -1,14 +1,7 @@
 {
-    "name": "moduleA",
-    "version": "0.9.17",
-    "dependencies": {
-        "$": "$",
-        "handlebars": "1.0.0",
-        "base": "0.9.16"
-    },
+    "name": "lessModule",
+    "version": "0.9.1",
     "output": {
-        "widget.js": ".",
-        "templatable.js": "."
-    },
-    "tests": ["daparser", "widget", "templatable"]
+        "main.js": "."
+    }
 }
