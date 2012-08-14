@@ -4,6 +4,7 @@
  */
 var jasmine = require('jasmine-node');
 var sys = require('sys');
+require('../lib/utils/log.js');
 
 for(var key in jasmine) {
   global[key] = jasmine[key];
