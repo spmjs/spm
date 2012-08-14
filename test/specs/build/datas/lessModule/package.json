@@ -4,6 +4,6 @@
     "output": {
         "main.js": ".",
         "colors.less": "colors.less",
-        "abc.less": ["css3.less", "test.less"]
+        "merge.less": ["css3.less", "test.less"]
     }
 }
