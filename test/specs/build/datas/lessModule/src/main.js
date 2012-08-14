@@ -1,4 +1,4 @@
 define(function(require, exports, module) {
-  require('./colors.less');
-  require('./merge.less');
+  var a = require('./colors.less');
+  var b=require('./css3.less');
 });
