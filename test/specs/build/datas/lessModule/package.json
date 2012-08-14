@@ -2,6 +2,8 @@
     "name": "lessModule",
     "version": "0.9.1",
     "output": {
-        "main.js": "."
+        "main.js": ".",
+        "colors.less": "colors.less",
+        "abc.less": ["css3.less", "test.less"]
     }
 }
