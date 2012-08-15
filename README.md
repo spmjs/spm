@@ -1,53 +1,57 @@
-简单、放心的包管理工具
-===
+# Static Package Manager - 简单、放心的包管理工具
 
-安装
----
 
-首先需要安装, node 和 npm: http://nodejs.org/#download
+## 安装
+
+首先需要安装 node 和 npm: http://nodejs.org/#download
 
 然后有两种安装方式:
 
-###通过npm###
+### 通过 npm
 
 ```
-$ npm install spm -g
+$ sudo npm install spm -g
 ```
 
-###通过源代码###
+### 通过源码
 
 ```
-git clone https://github.com/seajs/spm.git
+$ git clone https://github.com/seajs/spm.git
 ```
 ```
-npm install spm/ -g
+$ cd spm
+$ sudo npm install -g
 ```
 
-SPM 概要
----
 
-目前我们的打包是基于配置文件，而且对模块的目录结构也有一定的要求，所以需要先了解下SPM打包模块下基本目录结构和一个经典的配置文件.
+## SPM 概要
 
-### 目录结构
+目前我们的打包是基于配置文件，而且对模块的目录结构也有一定的要求，所以需要先了解下基本的目录结构和典型的配置文件。
+
+
+### 目录结构约定
 
 ```
-package.json
-README.md
-src/
-    example.js
 dist/
     example-debug.js
     example.js
-tests/
 examples/
+src/
+    example.js
+tests/
+package.json
+README.md
 ```
-其中**dist**目录是我们打包好的模块. 也就是最终上线使用的模块.
 
-### 配置文件(example)
+其中 **dist** 目录存放的是我们打包好的模块，也就是最终上线使用的模块文件。
+
+
+### 典型配置文件
+
 ```
 {
     "name": "example",
-    "version": "0.9.17",
+    "version": "1.0.0",
     "dependencies": {
         "$": "$",
         "handlebars": "1.0.0",
@@ -60,7 +64,7 @@ examples/
 }
 ```
 
-### dependencies 相关依赖解析。
+### dependencies 相关依赖解析
 
 #### 相关写法
 
