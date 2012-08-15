@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Widget</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="http://aralejs.github.com/assets/base.css" />
+        <link rel="stylesheet" href="http://aralejs.github.com/assets/style.css" />
+        <link rel="stylesheet" href="http://aralejs.github.com/assets/pygments.css" />
+        <script src="https://a.alipayobjects.com/static/arale/seajs/1.2.0/sea.js"></script>
+        
+<script src="http://aralejs.github.com/tools/seajs-help.js"></script>
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="http://aralejs.github.com/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="http://aralejs.org/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="../">Widget</a>
+                <a href="../examples/">Examples</a>
+                
+                
+                <a id="nav-test" href="../tests/runner.html">Tests</a>
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container">
+
+<nav id="side-nav">
+    
+    <a href="../examples/index.html">index</a>
+    
+    <a href="../examples/simple-tabview.html">simple-tabview</a>
+    
+</nav>
+
+<style>
+    #simple-tabs {
+        width: 400px;
+    }
+
+    .nav li {
+        list-style: none;
+        float: left;
+        border: 1px solid #eee;
+        padding: 5px 10px;
+        border-bottom: none;
+        cursor: pointer;
+    }
+
+    .nav li.active {
+        background: #eee;
+    }
+
+    .content {
+        clear: both;
+        border: 1px solid #eee;
+        height: 200px;
+        width: 500px;
+        overflow: hidden;
+    }
+
+    .content div {
+        height: 200px;
+        padding: 20px;
+    }
+</style>
+
+<div id="demo">
+    <ul class="nav">
+        <li>开放</li>
+        <li>简单</li>
+        <li>易用</li>
+    </ul>
+    <div class="content">
+        <div>开源开放，海纳百川。</div>
+        <div>如无必要，勿增实体。</div>
+        <div>一目了然，容易学习。</div>
+    </div>
+</div>
+<p><button id="egg">手贱</button></p>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;../src/widget&#39;</span><span class="p">,</span> <span class="s1">&#39;jquery&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Widget</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// 基于 Widget 定义 SimpleTabView 组件</span>
+    <span class="kd">var</span> <span class="nx">SimpleTabView</span> <span class="o">=</span> <span class="nx">Widget</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+
+        <span class="nx">attrs</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">triggers</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">value</span><span class="o">:</span> <span class="s1">&#39;.nav li&#39;</span><span class="p">,</span>
+                <span class="nx">getter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+                <span class="p">},</span>
+                <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+
+            <span class="nx">panels</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">value</span><span class="o">:</span> <span class="s1">&#39;.content div&#39;</span><span class="p">,</span>
+                <span class="nx">getter</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">$</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+                <span class="p">},</span>
+                <span class="nx">readOnly</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">},</span>
+
+            <span class="nx">activeIndex</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">value</span><span class="o">:</span> <span class="mi">0</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+
+        <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s1">&#39;click .nav li&#39;</span><span class="o">:</span> <span class="s1">&#39;switchTo&#39;</span>
+        <span class="p">},</span>
+
+        <span class="nx">_onRenderActiveIndex</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">val</span><span class="p">,</span> <span class="nx">prev</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">triggers</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;triggers&#39;</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">panels</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;panels&#39;</span><span class="p">);</span>
+
+            <span class="nx">triggers</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="nx">prev</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+            <span class="nx">triggers</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="nx">val</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">);</span>
+
+            <span class="nx">panels</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="nx">prev</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+            <span class="nx">panels</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="nx">val</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+        <span class="p">},</span>
+
+        <span class="nx">switchTo</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 触发点击事件时，index 是 ev 对象</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">index</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">index</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;triggers&#39;</span><span class="p">).</span><span class="nx">index</span><span class="p">(</span><span class="nx">index</span><span class="p">.</span><span class="nx">target</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;activeIndex&#39;</span><span class="p">,</span> <span class="nx">index</span><span class="p">);</span>
+        <span class="p">},</span>
+
+        <span class="nx">setup</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;panels&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">switchTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;activeIndex&#39;</span><span class="p">))</span>
+        <span class="p">},</span>
+
+        <span class="nx">add</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">li</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;&#39;</span> <span class="o">+</span> <span class="nx">title</span> <span class="o">+</span> <span class="s1">&#39;&lt;/li&gt;&#39;</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;&#39;</span> <span class="o">+</span> <span class="nx">content</span> <span class="o">+</span> <span class="s1">&#39;&lt;/div&gt;&#39;</span><span class="p">);</span>
+
+            <span class="nx">li</span><span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;triggers&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">parentNode</span><span class="p">);</span>
+            <span class="nx">div</span><span class="p">.</span><span class="nx">appendTo</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;panels&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">parentNode</span><span class="p">);</span>
+
+            <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+        <span class="p">},</span>
+
+        <span class="nx">setActiveContent</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;panels&#39;</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;activeIndex&#39;</span><span class="p">)).</span><span class="nx">html</span><span class="p">(</span><span class="nx">content</span><span class="p">);</span>
+        <span class="p">},</span>
+
+        <span class="nx">size</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;triggers&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+
+    <span class="kd">var</span> <span class="nx">tabView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SimpleTabView</span><span class="p">({</span>
+        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo&#39;</span><span class="p">,</span>
+        <span class="nx">activeIndex</span><span class="o">:</span> <span class="mi">0</span>
+    <span class="p">}).</span><span class="nx">render</span><span class="p">();</span>
+
+
+    <span class="kd">var</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#egg&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">tabView</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s1">&#39;哈哈&#39;</span><span class="p">,</span> <span class="s1">&#39;你居然点击了 &#39;</span> <span class="o">+</span> <span class="nx">counter</span><span class="o">++</span> <span class="o">+</span> <span class="s1">&#39; 次&#39;</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">switchTo</span><span class="p">(</span><span class="nx">tabView</span><span class="p">.</span><span class="nx">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">counter</span><span class="o">++</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">tabView</span><span class="p">.</span><span class="nx">setActiveContent</span><span class="p">(</span><span class="s1">&#39;囧，你居然还点击，手真贱呀&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">tabView</span><span class="p">.</span><span class="nx">element</span><span class="p">.</span><span class="nx">remove</span><span class="p">();</span>
+            <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">remove</span><span class="p">();</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.example&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">&#39;悄悄的我走了，不带走一行代码⋯⋯&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+seajs.use(['../src/widget', 'jquery'], function(Widget, $) {
+
+    // 基于 Widget 定义 SimpleTabView 组件
+    var SimpleTabView = Widget.extend({
+
+        attrs: {
+            triggers: {
+                value: '.nav li',
+                getter: function(val) {
+                    return this.$(val);
+                },
+                readOnly: true
+            },
+
+            panels: {
+                value: '.content div',
+                getter: function(val) {
+                    return this.$(val);
+                },
+                readOnly: true
+            },
+
+            activeIndex: {
+                value: 0
+            }
+        },
+
+        events: {
+            'click .nav li': 'switchTo'
+        },
+
+        _onRenderActiveIndex: function(val, prev) {
+            var triggers = this.get('triggers');
+            var panels = this.get('panels');
+
+            triggers.eq(prev).removeClass('active');
+            triggers.eq(val).addClass('active');
+
+            panels.eq(prev).hide();
+            panels.eq(val).show();
+        },
+
+        switchTo: function(index) {
+            // 触发点击事件时，index 是 ev 对象
+            if (typeof index === 'object') {
+                index = this.get('triggers').index(index.target);
+            }
+
+            return this.set('activeIndex', index);
+        },
+
+        setup: function() {
+            this.get('panels').hide();
+            this.switchTo(this.get('activeIndex'))
+        },
+
+        add: function(title, content) {
+            var li = $('<li>' + title + '</li>');
+            var div = $('<div>' + content + '</div>');
+
+            li.appendTo(this.get('triggers')[0].parentNode);
+            div.appendTo(this.get('panels')[0].parentNode);
+
+            return this;
+        },
+
+        setActiveContent: function(content) {
+            this.get('panels').eq(this.get('activeIndex')).html(content);
+        },
+
+        size: function() {
+            return this.get('triggers').length;
+        }
+    });
+
+
+    var tabView = new SimpleTabView({
+        element: '#demo',
+        activeIndex: 0
+    }).render();
+
+
+    var counter = 1;
+
+    $('#egg').click(function() {
+        if (counter < 4) {
+            tabView.add('哈哈', '你居然点击了 ' + counter++ + ' 次')
+                    .switchTo(tabView.size() - 1);
+        }
+        else if (counter++ === 4) {
+            tabView.setActiveContent('囧，你居然还点击，手真贱呀');
+        }
+        else {
+            tabView.element.remove();
+            $(this).remove();
+            $('.example').html('悄悄的我走了，不带走一行代码⋯⋯');
+        }
+    });
+
+});
+</script>
+
+
+            </div>
+        </div>
+        <hr class="end" />
+        <a id="github" href="https://github.com/aralejs/widget" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:999" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    </body>
+</html>
