@@ -1,15 +1,15 @@
 
 var path = require('path');
-var ProjectFactory = require('../../../lib/actions/build/core/project_factory.js');
-var fsExt = require('../../../lib/utils/fs_ext.js');
+var ProjectFactory = require('../../lib/core/project_factory.js');
+var fsExt = require('../../lib/utils/fs_ext.js');
 var less = require('less');
 describe('less project test', function() {
   var action = "build";
-  var dir = path.join(path.dirname(module.filename), "./datas/lessModule/");
+  var dir = path.join(path.dirname(module.filename), "../data/plugins/lessModule/");
  
-  var lessPlugin = require('../../../lib/actions/build/plugins/less.js');
-  var resources = require('../../../lib/actions/build/plugins/resources.js');
-  var clean = require('../../../lib/actions/build/plugins/clean.js');
+  var lessPlugin = require('../../lib/plugins/less.js');
+  var resources = require('../../lib/plugins/resources.js');
+  var clean = require('../../lib/plugins/clean.js');
 
   beforeEach(function() {
      

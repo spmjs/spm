@@ -1,10 +1,10 @@
 var path = require('path');
-var ProjectFactory = require('../../../lib/actions/build/core/project_factory.js');
-var fsExt = require('../../../lib/utils/fs_ext.js');
+var ProjectFactory = require('../../lib/core/project_factory.js');
+var fsExt = require('../../lib/utils/fs_ext.js');
 
 describe('project model constructor', function() {
   var action = "build";
-  var dir = path.join(path.dirname(module.filename), "./datas/coffeeModule/");
+  var dir = path.join(path.dirname(module.filename), "../data/plugins/coffeeModule/");
   console.log(dir);
   it('test model create ', function() {
     getProjectModel('build', dir, function(moduleA) {
@@ -14,9 +14,9 @@ describe('project model constructor', function() {
     });
   });
 
-  var coffeePlugin = require('../../../lib/actions/build/plugins/coffee.js');
-  var resources = require('../../../lib/actions/build/plugins/resources.js');
-  var clean = require('../../../lib/actions/build/plugins/clean.js');
+  var coffeePlugin = require('../../lib/plugins/coffee.js');
+  var resources = require('../../lib/plugins/resources.js');
+  var clean = require('../../lib/plugins/clean.js');
 
   beforeEach(function() {
      

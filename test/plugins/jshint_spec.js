@@ -1,11 +1,11 @@
 
 var path = require('path');
-var ProjectFactory = require('../../../lib/actions/build/core/project_factory.js');
-var fsExt = require('../../../lib/utils/fs_ext.js');
+var ProjectFactory = require('../../lib/core/project_factory.js');
+var fsExt = require('../../lib/utils/fs_ext.js');
 var jshint = require('jshint').JSHINT;
 describe('project model constructor', function() {
   var action = "build";
-  var dir = path.join(path.dirname(module.filename), "./datas/moduleA/");
+  var dir = path.join(path.dirname(module.filename), "../data/plugins/moduleA/");
  
   it('test jshint plugin', function() {
     getProjectModel('build', dir, function(model) {
