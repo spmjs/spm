@@ -1,4 +1,4 @@
 {
-  sources: ['modules.seajs.org'],
-  root: '#'
+  "sources": ["modules.seajs.org"],
+  "root": "#"
 }
