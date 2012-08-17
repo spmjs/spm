@@ -1,3 +1,23 @@
+## 2012.08.17, Version 0.9.6(Unstable)
+
+### 插件
+- ✔ #212 js模块中css的处理
+- ✔ #98 less 支持
+- ✔ #97 coffee 支持
+
+### 优化增强
+- ✔ #226 提供源代码和输出目录的参数
+- ✔ #225 debug文件排除
+- ✔ #223 全局配置文件中支持seajs.config内容读取
+- ✔ #200 支持自定义版本
+- ✔ #194 参数优化
+- ✔ #177 增加parent配置
+- ✔ #207 spm init windows平台下兼容.
+
+### bug fix
+
+- ✔ #222 windows平台下压缩的tar包的解压问题.
+- ✔ #215 output替换插件 require正则替换问题.
 
 ## 2012.08.10, Version 0.9.5(Unstable)
 
