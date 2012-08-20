@@ -1,6 +1,5 @@
 
 var path = require('path');
-var ProjectFactory = require('../../lib/core/project_factory.js');
 var fsExt = require('../../lib/utils/fs_ext.js');
 var jshint = require('jshint').JSHINT;
 describe('project model constructor', function() {
@@ -17,11 +16,4 @@ describe('project model constructor', function() {
     });
   });
 });
-
-function getProjectModel(action, dir, callback) {
-  ProjectFactory.getProjectModel(action, dir, function(projectModel) {
-    callback(projectModel);
-  });
-}
-
 

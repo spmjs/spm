@@ -1,5 +1,4 @@
 var path = require('path');
-var ProjectFactory = require('../../lib/core/project_factory.js');
 
 describe('project model constructor', function() {
   var action = "build";
@@ -14,8 +13,3 @@ describe('project model constructor', function() {
   });
 });
 
-function getProjectModel(action, dir, callback) {
-  ProjectFactory.getProjectModel(action, dir, function(projectModel) {
-    callback(projectModel);
-  });
-}

@@ -30,18 +30,13 @@ describe('less project test', function() {
     getProjectModel('build', dir, function(model) {
       var src = model.srcDirectory;
       var build = model.buildDirectory;
-      console.info('lesss---->', less);
+      // console.info('lesss---->', less);
       // console.info('result---->', jshint.errors);
       // console.info('result---->', result);
     });
   });
 });
 
-function getProjectModel(action, dir, callback) {
-  ProjectFactory.getProjectModel(action, dir, function(projectModel) {
-    callback(projectModel);
-  });
-}
 
 
 

@@ -3,6 +3,8 @@
  * @author kangpangpang@gmail.com (kangpangpang)
  */
 var jasmine = require('jasmine-node');
+var moduleJs = require('./module.js');
+
 var sys = require('sys');
 require('../lib/utils/log.js');
 
