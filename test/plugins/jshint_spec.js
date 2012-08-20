@@ -5,7 +5,7 @@ var fsExt = require('../../lib/utils/fs_ext.js');
 var jshint = require('jshint').JSHINT;
 describe('project model constructor', function() {
   var action = "build";
-  var dir = path.join(path.dirname(module.filename), "../data/plugins/moduleA/");
+  var dir = path.join(path.dirname(module.filename), "../data/modules/moduleA/");
  
   it('test jshint plugin', function() {
     getProjectModel('build', dir, function(model) {

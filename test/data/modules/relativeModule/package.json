@@ -1,0 +1,8 @@
+{
+    "name": "relativeModule",
+    "version": "0.9.1",
+    "output": {
+        "lib/c.js": ".",
+        "core/a.js": "."
+    }
+}

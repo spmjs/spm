@@ -4,7 +4,7 @@ var fsExt = require('../../lib/utils/fs_ext.js');
 
 describe('project model constructor', function() {
   var action = "build";
-  var dir = path.join(path.dirname(module.filename), "../data/plugins/coffeeModule/");
+  var dir = path.join(path.dirname(module.filename), "../data/modules/coffeeModule/");
   console.log(dir);
   it('test model create ', function() {
     getProjectModel('build', dir, function(moduleA) {
