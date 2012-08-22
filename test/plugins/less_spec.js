@@ -2,9 +2,12 @@
 var path = require('path');
 var ProjectFactory = require('../../lib/core/project_factory.js');
 var fsExt = require('../../lib/utils/fs_ext.js');
+var Opts = require('../../lib/utils/opts.js');
 var less = require('less');
+
 describe('less project test', function() {
   var action = "build";
+  var argv = Opts.get(action).argv;
   var dir = path.join(path.dirname(module.filename), "../data/modules/lessModule/");
  
   var lessPlugin = require('../../lib/plugins/less.js');
@@ -13,21 +16,21 @@ describe('less project test', function() {
 
   beforeEach(function() {
      
-    getProjectModel('build', dir, function(model) {
-      resources.execute(model, function() {
+    getProjectModel(action, dir, function(model) {
+      resources.execute(model, argv, function() {
       });
     });
   });
 
   afterEach(function() {
-    getProjectModel('build', dir, function(model) {
-      clean.execute(model, function() {
+    getProjectModel(action, dir, function(model) {
+      clean.execute(model, argv, function() {
       });
     });
   });
 
   it('test less plugin', function() {
-    getProjectModel('build', dir, function(model) {
+    getProjectModel(action, dir, function(model) {
       var src = model.srcDirectory;
       var build = model.buildDirectory;
       // console.info('lesss---->', less);

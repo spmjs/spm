@@ -1,0 +1,7 @@
+{
+    "name": "invalidNameModule",
+    "version": "0.0.1",
+    "output": {
+        "jquery.json-2.s.js": "."
+    }
+}

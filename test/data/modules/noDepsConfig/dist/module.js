@@ -1,0 +1,1 @@
+define("noDepsConfig/0.0.1/module",["$"],function(e,t){var n=e("$");t.get=function(e){return n(e)}});

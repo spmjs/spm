@@ -1,13 +1,14 @@
 var path = require('path');
 var ProjectFactory = require('../../lib/core/project_factory.js');
 var fsExt = require('../../lib/utils/fs_ext.js');
+var Opts = require('../../lib/utils/opts.js');
 
-describe('project model constructor', function() {
+describe('coffee module test', function() {
   var action = "build";
+  var argv = Opts.get(action).argv;
   var dir = path.join(path.dirname(module.filename), "../data/modules/coffeeModule/");
-  console.log(dir);
   it('test model create ', function() {
-    getProjectModel('build', dir, function(moduleA) {
+    getProjectModel(action, dir, function(moduleA) {
       expect(moduleA).not.toBe(null);
       expect(moduleA.name).toEqual('coffeeModule');
       expect(moduleA.version).toEqual('0.9.1');
@@ -20,25 +21,25 @@ describe('project model constructor', function() {
 
   beforeEach(function() {
      
-    getProjectModel('build', dir, function(model) {
-      resources.execute(model, function() {
+    getProjectModel(action, dir, function(model) {
+      resources.execute(model, argv, function() {
       });
     });
   });
 
   afterEach(function() {
-    getProjectModel('build', dir, function(model) {
-      clean.execute(model, function() {
+    getProjectModel(action, dir, function(model) {
+      clean.execute(model, argv, function() {
       });
     });
   });
 
   it('test coffee plugin', function() {
-    getProjectModel('build', dir, function(model) {
+    getProjectModel(action, dir, function(model) {
       var src = model.srcDirectory;
       var build = model.buildDirectory;
 
-      coffeePlugin.execute(model, function() {
+      coffeePlugin.execute(model, argv, function() {
         var scripts1 = fsExt.listFiles(src);
         var scripts2 = fsExt.listFiles(build);
         expect(scripts1.length).toEqual(scripts2.length);
@@ -66,9 +67,3 @@ describe('project model constructor', function() {
     });
   });
 });
-
-function getProjectModel(action, dir, callback) {
-  ProjectFactory.getProjectModel(action, dir, function(projectModel) {
-    callback(projectModel);
-  });
-}
