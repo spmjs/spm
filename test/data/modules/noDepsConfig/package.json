@@ -1,5 +1,6 @@
 {
     "name": "noDepsConfig",
+    "root": "",
     "version": "0.0.1",
     "output": {
         "module.js": "."

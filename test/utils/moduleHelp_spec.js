@@ -1,9 +1,8 @@
 var path = require('path');
-var ProjectFactory = require('../../lib/plugins/dependencies.js');
 var moduleHelp = require('../../lib/utils/moduleHelp.js');
 
-describe('dependencies plugin test', function() {
-   it('test relative dir calculate', function() {
+describe('moduleHelp tools test', function() {
+   it('test getBaseDepModulePath', function() {
      var m1 = 'lib/a.js';
      var m2 = '../core/b.js';
      var m3 = './core/b.js';
@@ -15,7 +14,7 @@ describe('dependencies plugin test', function() {
      //expect(moduleA.version).toEqual('0.9.17');
    });
 
-   it('test base module dependencies', function() {
+   it('test base getRelativeBaseModulePath', function() {
      var m1 = 'lib/a.js';
      var m2 = './core/b.js';
      var m3 = './lib/c.js';
@@ -25,4 +24,5 @@ describe('dependencies plugin test', function() {
      expect(moduleHelp.getRelativeBaseModulePath(m2, m3)).toEqual('../lib/c.js');
    });
 });
+
 

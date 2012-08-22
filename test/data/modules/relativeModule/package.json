@@ -1,6 +1,6 @@
 {
     "name": "relativeModule",
-    "root": "http://arale.alipay.im:8000/",
+    "root": "",
     "version": "0.9.1",
     "output": {
         "lib/c.js": ".",

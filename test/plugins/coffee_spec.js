@@ -1,26 +1,17 @@
 var path = require('path');
-var ProjectFactory = require('../../lib/core/project_factory.js');
 var fsExt = require('../../lib/utils/fs_ext.js');
 var Opts = require('../../lib/utils/opts.js');
 
-describe('coffee module test', function() {
+describe('coffee plugin test', function() {
   var action = "build";
   var argv = Opts.get(action).argv;
   var dir = path.join(path.dirname(module.filename), "../data/modules/coffeeModule/");
-  it('test model create ', function() {
-    getProjectModel(action, dir, function(moduleA) {
-      expect(moduleA).not.toBe(null);
-      expect(moduleA.name).toEqual('coffeeModule');
-      expect(moduleA.version).toEqual('0.9.1');
-    });
-  });
-
+ 
   var coffeePlugin = require('../../lib/plugins/coffee.js');
   var resources = require('../../lib/plugins/resources.js');
   var clean = require('../../lib/plugins/clean.js');
 
   beforeEach(function() {
-     
     getProjectModel(action, dir, function(model) {
       resources.execute(model, argv, function() {
       });
@@ -49,9 +40,7 @@ describe('coffee module test', function() {
         expect(srcScripts.length).toEqual(1);
         expect(buildScripts.length).toEqual(1);
 
-
         var coffeeModPattern = model.getReqModRegByType('[^\"\']+\\.coffee');
-
 
         var srcCode = fsExt.listFiles(src, /js$/).map(function(f) {
           return fsExt.readFileSync(f);

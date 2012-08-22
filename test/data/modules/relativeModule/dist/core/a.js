@@ -1,1 +1,1 @@
-define("http://arale.alipay.im:8000/relativeModule/0.9.1/b",[],function(e,t){t.say=function(){console.log("say!")}}),define("http://arale.alipay.im:8000/relativeModule/0.9.1/core/a",["./b"],function(e,t){var n=e("./b");t.say=function(){n.say()}});
+define("relativeModule/0.9.1/b",[],function(e,t){t.say=function(){console.log("say!")}}),define("relativeModule/0.9.1/core/a",["./b"],function(e,t){var n=e("./b");t.say=function(){n.say()}});
