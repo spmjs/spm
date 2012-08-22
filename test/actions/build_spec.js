@@ -1,11 +1,9 @@
 var path = require('path');
-var moduleHelp = require('../../lib/utils/moduleHelp.js');
 var fsExt = require('../../lib/utils/fs_ext.js');
 
 var buildAction = require('../../lib/actions/build.js');
 var depsPlugin = require('../../lib/plugins/dependencies.js');
 
-var ACTION = 'build';
 var action = 'build';
 
 var moduleAdir = path.join(path.dirname(module.filename), "../data/modules/moduleA/");
