@@ -69,6 +69,9 @@ describe('spm build output plugin test', function() {
     var d9 = getRegById('#widget/1.0.0/widget-debug');
     var d10 = getRegById('#base/1.0.0/aspect-debug');
 
+    var d11 = getRegByModel(model, 'plugins/p1-debug');
+    var d12 = getRegByModel(model, 'plugins/p2-debug');
+
     expect(allMergeCode).toMatch(d1);
     expect(allMergeCode).toMatch(d2);
     expect(allMergeCode).toMatch(d3);
@@ -79,8 +82,10 @@ describe('spm build output plugin test', function() {
     expect(allMergeCode).toMatch(d8);
     expect(allMergeCode).toMatch(d9);
     expect(allMergeCode).toMatch(d10);
+    expect(allMergeCode).toMatch(d11);
 
     expect(allMergeCode).not.toMatch(jqReg);
+    expect(allMergeCode).not.toMatch(d12);
   
   });
 
