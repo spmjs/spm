@@ -26,6 +26,8 @@ describe('spm build output plugin test', function() {
     });
   });
 
+  var jqReg = getRegById('#jquery/1.7.2/jquery-debug');
+
   it('test module build', function() {
     expect(model.name).toEqual('outputTest'); 
   });
@@ -77,11 +79,12 @@ describe('spm build output plugin test', function() {
     expect(allMergeCode).toMatch(d8);
     expect(allMergeCode).toMatch(d9);
     expect(allMergeCode).toMatch(d10);
+
+    expect(allMergeCode).not.toMatch(jqReg);
   
   });
 
-  var jqReg = getRegById('#jquery/1.7.2/jquery-debug');
-
+ 
   it('test exclude merge module A', function() {
   
     var excludeMergeCode = getDistCode('excludeMergeA-debug.js'); 
