@@ -2,10 +2,13 @@
  * @usage node index.js
  * @author kangpangpang@gmail.com (kangpangpang)
  */
-var jasmine = require('jasmine-node');
-var moduleJs = require('./module.js');
 
 var sys = require('sys');
+var path = require('path');
+var jasmine = require('jasmine-node');
+var argv = require('optimist').argv;
+var moduleJs = require('./module.js');
+
 require('../lib/utils/log.js');
 
 for(var key in jasmine) {
@@ -23,7 +26,12 @@ process.argv.forEach(function(arg){
     }
 });
 
-jasmine.executeSpecsInFolder(__dirname, function(runner, log){
+var executePath = __dirname;
+if (argv.dir) {
+  executePath = path.join(executePath, argv.dir);
+}
+
+jasmine.executeSpecsInFolder(executePath, function(runner, log){
   if (runner.results().failedCount == 0) {
     process.exit(0);
   }
