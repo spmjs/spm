@@ -1,0 +1,18 @@
+{
+    "version": "0.9.9",
+    "name": "switchable",
+    "output": {
+        "switchable.js": ".",
+        "tabs.js": "default",
+        "slide.js": "default",
+        "accordion.js": "default",
+        "carousel.js": "default"
+    },
+    "dependencies": {
+        "$":"jquery/1.7.2/jquery",
+        "widget": "1.0.0",
+        "easing": "1.0.0"
+    },
+    "tests": ["switchable"]
+}
+

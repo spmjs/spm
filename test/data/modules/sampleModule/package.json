@@ -1,0 +1,12 @@
+{
+    "name": "sampleModule",
+    "version": "0.0.1",
+    "dependencies": {
+        "$": "$",
+        "handlebars": "1.0.0",
+        "base": "0.9.16"
+    },
+    "output": {
+        "module.js": "."
+    }
+}
