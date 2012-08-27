@@ -1,0 +1,13 @@
+{
+    "version": "1.0.0",
+    "extend": true,
+    "parent": "parent_config.json",
+    "sources": ["arale.alipay.im:8000"],
+    "name": "parent_config",
+    "dependencies": {
+        "$":"jquery/1.7.2/jquery",
+        "widget": "0.9.16"
+    },
+    "isBoolean": true 
+}
+
