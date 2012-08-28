@@ -1,10 +1,11 @@
 var path = require('path');
 var fsExt = require('../../lib/utils/fs_ext.js');
 
-var buildAction = require('../../lib/actions/build.js');
+var ActionFactory = require('../../lib/core/action_factory.js');
 var depsPlugin = require('../../lib/plugins/dependencies.js');
 
 var action = 'build';
+var buildAction = ActionFactory.getActionObj(action);
 
 var outputTestDir = path.join(path.dirname(module.filename), "../data/modules/outputTest/");
 var distDir = path.join(outputTestDir, 'dist');
