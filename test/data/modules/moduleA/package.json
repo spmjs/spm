@@ -1,5 +1,6 @@
 {
     "name": "moduleA",
+    "root": "#",
     "version": "0.9.17",
     "dependencies": {
         "$": "$",

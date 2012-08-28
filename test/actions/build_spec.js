@@ -112,7 +112,7 @@ describe('spm build test', function() {
 
 function executeBuildAction(moduleDir, callback) {
   getProjectModel(action, moduleDir, function(model) {
-    buildAction.execute(action, model, function(err) {
+    buildAction.execute(model, function(err) {
       expect(err).toBeFalsy();
       callback(model);
     });

@@ -236,7 +236,7 @@ define("#moduleA/0.9.17/auto-render-debug", ["$-debug"], function(require, expor
 });
 
 
-define("#moduleA/0.9.17/widget-debug", ["./daparser-debug", "./auto-render-debug", "$-debug", "#base/0.9.16/base-debug", "#events/0.9.1/events-debug", "#class/0.9.2/class-debug"], function(require, exports, module) {
+define("#moduleA/0.9.17/widget-debug", ["./daparser-debug", "./auto-render-debug", "#base/0.9.16/base-debug", "#events/0.9.1/events-debug", "#class/0.9.2/class-debug", "$-debug"], function(require, exports, module) {
 
     // Widget
     // ---------

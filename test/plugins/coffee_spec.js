@@ -4,23 +4,27 @@ var Opts = require('../../lib/utils/opts.js');
 
 describe('coffee plugin test', function() {
   var action = "build";
-  var argv = Opts.get(action).argv;
+  var opts = Opts.get(action);
   var dir = path.join(path.dirname(module.filename), "../data/modules/coffeeModule/");
  
   var coffeePlugin = require('../../lib/plugins/coffee.js');
   var resources = require('../../lib/plugins/resources.js');
   var clean = require('../../lib/plugins/clean.js');
 
+  coffeePlugin.setOpts(opts);
+  resources.setOpts(opts);
+  clean.setOpts(opts);
+
   beforeEach(function() {
     getProjectModel(action, dir, function(model) {
-      resources.execute(model, argv, function() {
+      resources.execute(model, function() {
       });
     });
   });
 
   afterEach(function() {
     getProjectModel(action, dir, function(model) {
-      clean.execute(model, argv, function() {
+      clean.execute(model, function() {
       });
     });
   });
@@ -30,7 +34,7 @@ describe('coffee plugin test', function() {
       var src = model.srcDirectory;
       var build = model.buildDirectory;
 
-      coffeePlugin.execute(model, argv, function() {
+      coffeePlugin.execute(model, function() {
         var scripts1 = fsExt.listFiles(src);
         var scripts2 = fsExt.listFiles(build);
         expect(scripts1.length).toEqual(scripts2.length);

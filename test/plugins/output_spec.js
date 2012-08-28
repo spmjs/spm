@@ -148,7 +148,7 @@ function getRegByModel(model, moduleName) {
 }
 function executeBuildAction(moduleDir, callback) {
   getProjectModel(action, moduleDir, function(model) {
-    buildAction.execute(action, model, function(err) {
+    buildAction.execute(model, function(err) {
       expect(err).toBeFalsy();
       callback(model);
     });

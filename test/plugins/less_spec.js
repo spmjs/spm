@@ -7,24 +7,28 @@ var less = require('less');
 
 describe('less project test', function() {
   var action = "build";
-  var argv = Opts.get(action).argv;
+  var opts = Opts.get(action);
   var dir = path.join(path.dirname(module.filename), "../data/modules/lessModule/");
  
   var lessPlugin = require('../../lib/plugins/less.js');
   var resources = require('../../lib/plugins/resources.js');
   var clean = require('../../lib/plugins/clean.js');
 
+  lessPlugin.setOpts(opts);
+  resources.setOpts(opts);
+  clean.setOpts(opts);
+
   beforeEach(function() {
      
     getProjectModel(action, dir, function(model) {
-      resources.execute(model, argv, function() {
+      resources.execute(model, function() {
       });
     });
   });
 
   afterEach(function() {
     getProjectModel(action, dir, function(model) {
-      clean.execute(model, argv, function() {
+      clean.execute(model, function() {
       });
     });
   });
