@@ -10,6 +10,7 @@ var moduleAdir = path.join(path.dirname(module.filename), "../data/modules/modul
 var invalidNameModuleDir = path.join(path.dirname(module.filename), "../data/modules/invalidName/");
 var noDepsConfigModuleDir = path.join(path.dirname(module.filename), "../data/modules/noDepsConfig/");
 var relativeModuleDir = path.join(path.dirname(module.filename), "../data/modules/relativeModule/");
+var sampleModuleDir = path.join(path.dirname(module.filename), "../data/modules/sampleModule/");
 
 describe('spm build test', function() {
 
@@ -82,7 +83,30 @@ describe('spm build test', function() {
     waitsFor(function() {
       return buildOver;
     });
-  
+  });
+
+  it('test module which define contain space', function() {
+    var buildOver = false;
+    runs(function() {
+      executeBuildAction(sampleModuleDir, function(model) {
+        buildOver = true;
+        expect(model.name).toEqual('sampleModule');
+        var spaceDefinePath = path.join(sampleModuleDir, 'dist', 'spaceDefine-debug.js');
+        var modulePath = path.join(sampleModuleDir, 'dist', 'module-debug.js');
+        expect(fsExt.existsSync(spaceDefinePath)).toBeTruthy();
+        expect(fsExt.existsSync(modulePath)).toBeTruthy();
+        var code = fsExt.readFileSync(spaceDefinePath);
+        var moduleCode = fsExt.readFileSync(modulePath);
+        var sreg = /define\("sampleModule\/0.0.1\/spaceDefine-debug",/;
+        var mreg = /define\("sampleModule\/0.0.1\/module-debug",/;
+        expect(code).toMatch(sreg);
+        expect(moduleCode).toMatch(mreg);
+      });
+    });
+
+    waitsFor(function() {
+      return buildOver;
+    });
   });
 });
 
