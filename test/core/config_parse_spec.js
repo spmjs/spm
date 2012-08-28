@@ -143,4 +143,31 @@ describe("config parse test", function() {
       expect(config.get('sources')[3]).toBe('arale.alipay.im:8003');
     });
   });
+
+  it('test async get', function() {
+    runs(function() {
+      config.addFile(json2);
+    });
+
+    var p = null;
+    runs(function() {
+      var fn = function() {
+        config.get('parent');
+      };
+      expect(fn).toThrow();
+
+      config.get('parent', function(value) {
+        p = value; 
+      });
+    });
+    expect(config.state()).toEqual('parsing');
+    
+    waitsFor(function() {
+      return config.isEnd();
+    }, 500);
+
+    runs(function() {
+      expect(p).toEqual('parent_config.json');
+    });
+  });
 });
