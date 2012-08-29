@@ -80,7 +80,7 @@ describe("config parse test", function() {
 
     waitsFor(function() {
       return config._state === 'end'; 
-    }, 6000);
+    }, 19000);
 
     runs(function() {
       expect(config.get('name')).toBe('module');
