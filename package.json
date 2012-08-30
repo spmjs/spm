@@ -8,6 +8,7 @@
     "contributors"  : ["Frank Xu <yyfrankyy@gmail.com>", "kangpangpang <kangpangpang@gmail.com>"],
     "engines"       : {"node": ">= 0.8.1"},
     "dependencies"  : {
+        "semver": "~1.0.14",
         "uglify-js": ">= 1.1.1",
         "seajs": ">= 1.1.0",
         "async": "0.1.22",
