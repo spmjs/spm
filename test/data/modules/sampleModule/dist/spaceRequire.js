@@ -1,0 +1,1 @@
+define("sampleModule/0.0.1/spaceRequire",["./module.js","a","b","c"],function(e,t){var n=e("a"),r=e("b"),i=e("c"),i=e("./module.js"),i=e("./module.js"),i=e("./module.js");t.get=function(e){return $(e)}});
