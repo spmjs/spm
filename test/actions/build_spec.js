@@ -132,6 +132,33 @@ describe('spm build test', function() {
       return buildOver;
     });
   });
+
+  it('test require async', function() {
+    var buildOver = false;
+    runs(function() {
+      executeBuildAction(sampleModuleDir, function(model) {
+        buildOver = true;
+        var modulePath = path.join(sampleModuleDir, 'dist', 'asyncRequire-debug.js');
+        expect(fsExt.existsSync(modulePath)).toBeTruthy();
+        
+        var code = fsExt.readFileSync(modulePath);
+
+        var defineReg = /define\("sampleModule\/0.0.1\/asyncRequire-debug", \[\]/;
+        var requireReg1 = /require\.async\('\.\/module-debug'\)/;
+        var requireReg2 = /require\.async\('module-debug'\)/;
+        var requireReg2 = /require\.async\('$-debug'\)/;
+        var requireReg2 = /require\.async\('#base\/1.0.0\/base-debug'\)/;
+        expect(code).toMatch(defineReg);
+        expect(code).toMatch(requireReg1);
+        expect(code).toMatch(requireReg2);
+      });
+    });
+
+    waitsFor(function() {
+      return buildOver;
+    });
+  });
+
 });
 
 function executeBuildAction(moduleDir, callback) {
