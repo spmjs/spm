@@ -108,6 +108,30 @@ describe('spm build test', function() {
       return buildOver;
     });
   });
+
+  it('test module require', function() {
+    var buildOver = false;
+    runs(function() {
+      executeBuildAction(sampleModuleDir, function(model) {
+        buildOver = true;
+        var modulePath = path.join(sampleModuleDir, 'dist', 'debugRequire-debug.js');
+        expect(fsExt.existsSync(modulePath)).toBeTruthy();
+        
+        var code = fsExt.readFileSync(modulePath);
+
+        var defineReg = /define\("sampleModule\/0.0.1\/debugRequire-debug", \[".\/module-debug"\]/;
+        var requireReg1 = /require\('\.\/module-debug'\)/;
+        var requireReg2 = /require\('module-debug'\)/;
+        expect(code).toMatch(defineReg);
+        expect(code).toMatch(requireReg1);
+        expect(code).toMatch(requireReg2);
+      });
+    });
+
+    waitsFor(function() {
+      return buildOver;
+    });
+  });
 });
 
 function executeBuildAction(moduleDir, callback) {

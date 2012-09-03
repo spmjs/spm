@@ -8,6 +8,8 @@
     },
     "output": {
         "module.js": ".",
+        "debugRequire.js": ".",
+        "asyncRequire.js": ".",
         "spaceRequire.js": "default",
         "commentDefine.js": "default",
         "spaceDefine.js": "default"

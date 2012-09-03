@@ -1,0 +1,1 @@
+define("sampleModule/0.0.1/asyncRequire",[],function(e,t){var n=e.async("./module.js"),r=e.async("module.js"),i=e.async("$"),s=e.async("base");t.say=function(){n.get(),r.get()}});
