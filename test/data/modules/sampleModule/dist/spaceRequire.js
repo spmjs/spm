@@ -1,1 +1,1 @@
-define("sampleModule/0.0.1/spaceRequire",["./module","a","b","c"],function(e,t){var n=e("a"),r=e("b"),i=e("c"),i=e("./module"),i=e("./module"),i=e("./module");t.get=function(e){return $(e)}});
+define("sampleModule/0.0.1/spaceRequire",["./module"],function(e,t){var n=e("./module"),n=e("./module"),n=e("./module");t.get=function(e){return $(e)}});
