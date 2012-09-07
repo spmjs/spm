@@ -1,5 +1,5 @@
 var path = require('path');
-var moduleHelp = require('../../lib/utils/moduleHelp.js');
+var moduleHelp = require('../../lib/utils/module_help.js');
 
 describe('moduleHelp tools test', function() {
    it('test getBaseDepModulePath', function() {
