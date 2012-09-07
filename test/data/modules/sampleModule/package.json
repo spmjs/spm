@@ -4,11 +4,12 @@
     "version": "0.0.1",
     "dependencies": {
         "$": "$",
+        "seajs": "#seajs/1.2.1/sea",
         "handlebars": "1.0.0",
         "base": "1.0.0"
     },
     "output": {
-        "module.js": ".",
+        "module.js": "seajs",
         "debugRequire.js": ".",
         "asyncRequire.js": ".",
         "spaceRequire.js": "default",
