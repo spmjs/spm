@@ -1,0 +1,7 @@
+{
+  "name": "ast_test",
+  "version": "0.0.1",
+  "output": {
+    "module.js": "."
+  }
+}

@@ -1,0 +1,1 @@
+define(function(e,t){t.say=function(){console.info("hello!")}});
