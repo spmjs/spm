@@ -4,7 +4,7 @@
     "version": "0.0.1",
     "dependencies": {
         "$": "$",
-        "seajs": "#seajs/1.2.1/sea",
+        "seajs": "#seajs/1.2.0/sea",
         "handlebars": "1.0.0",
         "base": "1.0.0"
     },
