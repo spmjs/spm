@@ -1,4 +1,4 @@
-define("relativeModule/0.9.1/b-debug", [], function(require, exports){
+define("relativeModule/0.9.1/core/b-debug", [], function(require, exports){
   exports.say = function() {
     console.log('say!'); 
   };
