@@ -1,6 +1,6 @@
 /**
  * @preserve SeaJS - A Module Loader for the Web
- * v1.2.0 | seajs.org | MIT Licensed
+ * v1.2.1 | seajs.org | MIT Licensed
  */
 
 
@@ -14,7 +14,7 @@ this.seajs = { _seajs: this.seajs }
  * The version of the framework. It will be replaced with "major.minor.patch"
  * when building.
  */
-seajs.version = '1.2.0'
+seajs.version = '1.2.1'
 
 
 /**
@@ -126,22 +126,12 @@ seajs._config = {
       }
 
 
-  util.unique = function(arr) {
+  var keys = util.keys = Object.keys || function(o) {
     var ret = []
-    var o = {}
 
-    forEach(arr, function(item) {
-      o[item] = 1
-    })
-
-    if (Object.keys) {
-      ret = Object.keys(o)
-    }
-    else {
-      for (var p in o) {
-        if (o.hasOwnProperty(p)) {
-          ret.push(p)
-        }
+    for (var p in o) {
+      if (o.hasOwnProperty(p)) {
+        ret.push(p)
       }
     }
 
@@ -149,20 +139,14 @@ seajs._config = {
   }
 
 
-  util.keys = Object.keys
+  util.unique = function(arr) {
+    var o = {}
 
-  if (!util.keys) {
-    util.keys = function(o) {
-      var ret = []
+    forEach(arr, function(item) {
+      o[item] = 1
+    })
 
-      for (var p in o) {
-        if (o.hasOwnProperty(p)) {
-          ret.push(p)
-        }
-      }
-
-      return ret
-    }
+    return keys(o)
   }
 
 
@@ -173,7 +157,7 @@ seajs._config = {
 })(seajs._util)
 
 /**
- * The tiny console support
+ * The tiny console
  */
 ;(function(util, config) {
 
@@ -202,7 +186,7 @@ seajs._config = {
 })(seajs._util, seajs._config)
 
 /**
- * Path utilities for the framework
+ * Path utilities
  */
 ;(function(util, config, global) {
 
@@ -452,6 +436,7 @@ seajs._config = {
 
   util.id2Uri = id2Uri
   util.isAbsolute = isAbsolute
+  util.isRoot = isRoot
   util.isTopLevel = isTopLevel
 
   util.pageUri = pageUri
@@ -459,7 +444,7 @@ seajs._config = {
 })(seajs._util, seajs._config, this)
 
 /**
- * Utilities for fetching js and css files.
+ * Utilities for fetching js and css files
  */
 ;(function(util, config) {
 
@@ -491,8 +476,7 @@ seajs._config = {
     if (isCSS) {
       node.rel = 'stylesheet'
       node.href = url
-    }
-    else {
+    } else {
       node.async = 'async'
       node.src = url
     }
@@ -720,7 +704,7 @@ seajs._config = {
 })(seajs._util)
 
 /**
- * The Module constructor and its methods
+ * The core of loader
  */
 ;(function(seajs, util, config) {
 
@@ -805,8 +789,9 @@ seajs._config = {
             }
           }
           // Maybe failed to fetch successfully, such as 404 or non-module.
-          // In these cases, module.status stay at FETCHING or FETCHED.
+          // // In these cases, module.status stay at FETCHING or FETCHED.
           else {
+            util.log('It is not a valid CMD module: ' + uri)
             cb()
           }
         }
@@ -815,7 +800,7 @@ seajs._config = {
     }
 
     function cb(module) {
-      module && (module.status = STATUS.READY)
+      (module || {}).status < STATUS.READY && (module.status = STATUS.READY)
       --remain === 0 && callback()
     }
   }
@@ -831,7 +816,7 @@ seajs._config = {
     //  1. the module file is 404.
     //  2. the module file is not written with valid module format.
     //  3. other error cases.
-    if (module.status < STATUS.READY) {
+    if (module.status < STATUS.READY && !hasModifiers(module)) {
       return null
     }
 
@@ -935,11 +920,12 @@ seajs._config = {
     var resolvedUri = id ? resolve(id) : derivedUri
 
     if (resolvedUri) {
+      // For IE:
       // If the first module in a package is not the cachedModules[derivedUri]
-      // self, it should assign it to the correct module when found.
+      // self, it should assign to the correct module when found.
       if (resolvedUri === derivedUri) {
         var refModule = cachedModules[derivedUri]
-        if (refModule && refModule.packageUri &&
+        if (refModule && refModule.realUri &&
             refModule.status === STATUS.SAVED) {
           cachedModules[derivedUri] = null
         }
@@ -947,12 +933,13 @@ seajs._config = {
 
       var module = save(resolvedUri, meta)
 
-      // Handles un-correspondence case:
+      // For IE:
+      // Assigns the first module in package to cachedModules[derivedUrl]
       if (derivedUri) {
         // cachedModules[derivedUri] may be undefined in combo case.
         if ((cachedModules[derivedUri] || {}).status === STATUS.FETCHING) {
           cachedModules[derivedUri] = module
-          module.packageUri = derivedUri
+          module.realUri = derivedUri
         }
       }
       else {
@@ -982,15 +969,6 @@ seajs._config = {
         module.exports && matches.push(module.exports)
       }
     })
-
-    var length = matches.length
-
-    if (length === 1) {
-      matches = matches[0]
-    }
-    else if (length === 0) {
-      matches = null
-    }
 
     return matches
   }
@@ -1080,7 +1058,7 @@ seajs._config = {
           // See: test/issues/un-correspondence
           if (firstModuleInPackage && module.status === STATUS.FETCHED) {
             cachedModules[uri] = firstModuleInPackage
-            firstModuleInPackage.packageUri = uri
+            firstModuleInPackage.realUri = uri
           }
           firstModuleInPackage = null
 
@@ -1132,8 +1110,12 @@ seajs._config = {
     }
   }
 
+  function hasModifiers(module) {
+    return !!cachedModifiers[module.realUri || module.uri]
+  }
+
   function execModifiers(module) {
-    var uri = module.uri
+    var uri = module.realUri || module.uri
     var modifiers = cachedModifiers[uri]
 
     if (modifiers) {
@@ -1337,7 +1319,7 @@ seajs._config = {
     // Makes sure config.base is an absolute path.
     var base = config.base
     if (base && !util.isAbsolute(base)) {
-      config.base = util.id2Uri('./' + base + '/')
+      config.base = util.id2Uri((util.isRoot(base) ? '' : './') + base + '/')
     }
 
     // Uses map to implement nocache.
@@ -1401,7 +1383,7 @@ seajs._config = {
 })(seajs, seajs._util, seajs._config)
 
 /**
- * Prepare for debug mode
+ * Prepare for bootstrapping
  */
 ;(function(seajs, util, global) {
 
@@ -1418,19 +1400,42 @@ seajs._config = {
     alias: { seajs: util.loaderDir }
   })
 
-  // Uses `seajs-debug` flag to turn on debug mode.
-  if (global.location.search.indexOf('seajs-debug') > -1 ||
-      document.cookie.indexOf('seajs=1') > -1) {
-    seajs.config({ debug: 2 }).use('seajs/plugin-debug')
 
-    // Delays `seajs.use` calls to the onload of `mapfile`.
-    seajs._use = seajs.use
-    seajs._useArgs = []
-    seajs.use = function() { seajs._useArgs.push(arguments); return seajs }
+  // Uses `seajs-xxx` flag to load plugin-xxx.
+  util.forEach(getStartupPlugins(), function(name) {
+    seajs.use('seajs/plugin-' + name)
+
+    // Delays `seajs.use` calls to the onload of `mapfile` in debug mode.
+    if (name === 'debug') {
+      seajs._use = seajs.use
+      seajs._useArgs = []
+      seajs.use = function() { seajs._useArgs.push(arguments); return seajs }
+    }
+  })
+
+
+  // Helpers
+  // -------
+
+  function getStartupPlugins() {
+    var ret = []
+    var str = global.location.search
+
+    // Converts `seajs-xxx` to `seajs-xxx=1`
+    str = str.replace(/(seajs-\w+)(&|$)/g, '$1=1$2')
+
+    // Add cookie string
+    str += ' ' + document.cookie
+
+    // Excludes seajs-xxx=0
+    str.replace(/seajs-(\w+)=[1-9]/g, function(m, name) {
+      ret.push(name)
+    })
+
+    return util.unique(ret)
   }
 
 })(seajs, seajs._util, this)
-
 /**
  * The bootstrap and entrances
  */
@@ -1466,6 +1471,10 @@ seajs._config = {
       }
     }
   })((_seajs || 0)['args'])
+
+
+  // Add define.amd property for clear indicator.
+  global.define.cmd = {}
 
 
   // Keeps clean!
