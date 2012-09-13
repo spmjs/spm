@@ -39,8 +39,6 @@ seajs._config = {
   preload: []
 }
 
-
-
 /**
  * The minimal language enhancement
  */
@@ -158,8 +156,6 @@ seajs._config = {
 
 })(seajs._util)
 
-
-
 /**
  * The tiny console
  */
@@ -188,8 +184,6 @@ seajs._config = {
   }
 
 })(seajs._util, seajs._config)
-
-
 
 /**
  * Path utilities
@@ -449,8 +443,6 @@ seajs._config = {
 
 })(seajs._util, seajs._config, this)
 
-
-
 /**
  * Utilities for fetching js and css files
  */
@@ -672,8 +664,6 @@ seajs._config = {
 
 })(seajs._util, seajs._config, this)
 
-
-
 /**
  * The parser for dependencies
  */
@@ -684,9 +674,9 @@ seajs._config = {
 
   util.parseDependencies = function(code) {
     // Parse these `requires`:
-    //   var a = require('undefined-debug');
-    //   someMethod(require('undefined-debug'));
-    //   require('undefined-debug');
+    //   var a = require('a');
+    //   someMethod(require('b'));
+    //   require('c');
     //   ...
     // Doesn't parse:
     //   someInstance.require(...);
@@ -712,8 +702,6 @@ seajs._config = {
   }
 
 })(seajs._util)
-
-
 
 /**
  * The core of loader
@@ -1224,8 +1212,6 @@ seajs._config = {
 
 })(seajs, seajs._util, seajs._config)
 
-
-
 /**
  * The configuration
  */
@@ -1396,8 +1382,6 @@ seajs._config = {
 
 })(seajs, seajs._util, seajs._config)
 
-
-
 /**
  * Prepare for bootstrapping
  */
@@ -1452,8 +1436,6 @@ seajs._config = {
   }
 
 })(seajs, seajs._util, this)
-
-
 /**
  * The bootstrap and entrances
  */
@@ -1506,9 +1488,9 @@ seajs._config = {
 
 
 define("test1/module/0.0.1/module-debug", [], function(require, exports) {
-  // var a = require('undefined-debug');
-  // var b = require('undefined-debug');
-  // var c = require('undefined-debug');
+  // var a = require('a-debug');
+  // var b = require('b-debug');
+  // var c = require('c-debug');
   // var $ = require('$-debug');
 
   exports.get = function(id) {
