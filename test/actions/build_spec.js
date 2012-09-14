@@ -31,7 +31,7 @@ describe('spm build test', function() {
 
         expect(moduleDebugCode).toBeDefined();
 
-        var deps = depsPlugin.parseDependencies(moduleDebugCode);
+        var deps = depsPlugin.parseDependencies(null, moduleDebugCode);
         deps.forEach(function(dep) {
           expect(/undefined/.test(dep)).toBeFalsy();
         });

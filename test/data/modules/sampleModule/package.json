@@ -9,7 +9,7 @@
         "base": "1.0.0"
     },
     "output": {
-        "module.js": "seajs",
+        "module.js": ".",
         "debugRequire.js": ".",
         "asyncRequire.js": ".",
         "spaceRequire.js": "default",
