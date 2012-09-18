@@ -1,1 +1,1 @@
-define("app/0.0.1/app",["xbox/0.0.1/xbox"],function(e,t){var n=e("xbox/0.0.1/xbox");t.show=function(){n.show()}});
+define("xbox/0.0.1/xbox",[],function(e,t){t.show=function(){alert("hi, Im a xbox!")}}),define("apop/0.0.1/apop",[],function(e,t){t.show=function(){alert("hi, Im a apop!")}}),define("app/0.0.1/app",["xbox/0.0.1/xbox","apop/0.0.1/apop"],function(e,t){var n=e("xbox/0.0.1/xbox"),r=e("apop/0.0.1/apop");t.show=function(){n.show(),r.show()}});

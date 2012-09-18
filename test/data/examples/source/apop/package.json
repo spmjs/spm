@@ -1,12 +1,12 @@
 {
-  "name": "app",
+  "name": "apop",
   "root": "",
   "version": "0.0.1",
   "dependencies": {
-    "xbox": "0.0.1",
-    "apop": "0.0.1"
+    "base": "1.0.0"
   },
   "output": {
-    "app.js": "*"
+    "apop.js": "."
   }
 }
+

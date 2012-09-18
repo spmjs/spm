@@ -3,17 +3,19 @@
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
   
       <title>spm examples</title>
-       <script type="text/javascript" charset="utf-8"  src="./seajs/1.2.1/sea.js"></script>
+       <script type="text/javascript" charset="utf-8"  src="./seajs/1.2.1/sea-debug.js"></script>
+       <script type="text/javascript" charset="utf-8" src-"http://127.0.0.1:8002/app/0.0.1/app.js">
+           
+       </script>
        <script type="text/javascript" charset="utf-8">
            seajs.config({
                alias: {
-                   "app": "app/0.0.1/app",
                    "$": "jquery/1.7.2/jquery"
                } 
            });
        </script>
        <script type="text/javascript" charset="utf-8">
-           seajs.use(['$', 'app'], function($, app) {
+           seajs.use(['$', 'app/0.0.1/app'], function($, app) {
                 $('#test').on('click', function() {
                     app.show();     
                 });
