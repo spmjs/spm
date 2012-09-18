@@ -3,7 +3,7 @@ define(function(require, exports) {
   var apop = require('apop');
   var sub = require('./sub_mod.js');
 
-  require('./style.css');
+  require('style.css');
 
   exports.show = function() {
     xbox.show();
