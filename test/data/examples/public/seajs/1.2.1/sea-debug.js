@@ -836,9 +836,10 @@ seajs._config = {
 
 
     function require(id) {
+console.info('id-----require--->', id);
       var uri = resolve(id, module.uri)
       var child = cachedModules[uri]
-
+console.info('child---->', child);
       // Just return null when uri is invalid.
       if (!child) {
         return null
@@ -850,6 +851,7 @@ seajs._config = {
       }
 
       child.parent = module
+console.info('id1-----require--->', id);
       return child._compile()
     }
 

@@ -4,25 +4,28 @@
   
       <title>spm examples</title>
        <script type="text/javascript" charset="utf-8"  src="./seajs/1.2.1/sea-debug.js"></script>
-       <script type="text/javascript" charset="utf-8" src-"http://127.0.0.1:8002/app/0.0.1/app.js">
            
        </script>
        <script type="text/javascript" charset="utf-8">
            seajs.config({
                alias: {
-                   "$": "jquery/1.7.2/jquery"
+                 "$": "jquery/1.7.2/jquery"
+                 ,"app": "app/0.0.1/app"
                } 
            });
        </script>
        <script type="text/javascript" charset="utf-8">
-           seajs.use(['$', 'app/0.0.1/app'], function($, app) {
-                $('#test').on('click', function() {
+           //seajs.use(['$', 'ww'], function($, app) {
+           seajs.use(['$', 'app'], function($, app) {
+                $('#btn_test').on('click', function() {
                     app.show();     
                 });
            });
        </script>
   </head>
   <body>
-      <input id="test" type="button" value="click me"/>
+      <div id="div_test">
+        <input id="btn_test" type="button" value="click me"/>
+      </div>
   </body>
 </html>
