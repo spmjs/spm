@@ -1,0 +1,13 @@
+{
+    "name": "你好",
+    "root": "#",
+    "version": "0.0.1",
+    "dependencies": {
+        "$": "$",
+        "handlebars": "1.0.0",
+        "base": "0.9.16"
+    },
+    "output": {
+        "widget.js": "default"
+    }
+}

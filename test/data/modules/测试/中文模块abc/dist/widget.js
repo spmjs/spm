@@ -1,0 +1,1 @@
+define("#你好/0.0.1/widget",["#base/0.9.16/base","#events/0.9.1/events","#class/0.9.2/class","$"],function(e,t,n){var r=e("#base/0.9.16/base"),i=e("$");t.say=function(e){console.info(i(e))}});
