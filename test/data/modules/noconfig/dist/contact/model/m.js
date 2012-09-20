@@ -1,0 +1,1 @@
+define(function(e,t,n){var r="<div>hello</div>",i=e("../../core/js/config.js"),s=e("../../core/js/utils.js");t.say=function(){s.log("tpl----->"+r),s.log("config--->",i)}});
