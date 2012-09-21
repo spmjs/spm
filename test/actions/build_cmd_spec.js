@@ -107,7 +107,6 @@ describe('spm cmd build test', function() {
     expect(files1.indexOf('main.js') > -1).toBeTruthy();
 
     var code1 = cat(path.join(dist1, 'main-debug.js'));
-console.info('code1-------->', code1)
     expect(code1).toMatch('#public/1.0.0/main-debug');
     
     var cmd2 = cmd.slice(0);
