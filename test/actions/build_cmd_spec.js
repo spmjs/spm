@@ -88,6 +88,56 @@ describe('spm cmd build test', function() {
     expect(code).toMatch('#public/1.0.0/contact/model/m-debug');
     expect(code).toMatch('#public/1.0.0/main-debug');
   });
+
+  it('test with-debug', function() {
+    var cmd = baseCmd.slice(0);
+    cmd.push('--name=public');
+    cmd.push('--version=1.0.0');
+    cmd.push('--output.main=.');  
+
+    // test default
+    var cmd1 = cmd.slice(0);
+    var dist1 = 'debug_default';
+    cmd1.push('--dist=' + dist1);
+    run(cmd1);
+    var files1 = ls(dist1);
+
+    expect(files1.length).toBe(2);
+    expect(files1.indexOf('main-debug.js') > -1).toBeTruthy();
+    expect(files1.indexOf('main.js') > -1).toBeTruthy();
+
+    var code1 = cat(path.join(dist1, 'main-debug.js'));
+console.info('code1-------->', code1)
+    expect(code1).toMatch('#public/1.0.0/main-debug');
+    
+    var cmd2 = cmd.slice(0);
+    var dist2 = 'debug_empty';
+    cmd2.push('--dist=' + dist2);
+    cmd2.push('--with-debug=""');
+    run(cmd2);
+    var files2 = ls(dist2);
+
+    expect(files2.length).toBe(1);
+    expect(files2.indexOf('main.js') > -1).toBeTruthy();
+
+    var code2 = cat(path.join(dist2, 'main.js'));
+    expect(code2).toMatch('#public/1.0.0/main');
+
+    var cmd3 = cmd.slice(0);
+    var dist3 = 'debug_custom';
+    cmd3.push('--dist=' + dist3);
+    cmd3.push('--with-debug=src');
+    run(cmd3);
+    var files3 = ls(dist3);
+    
+    expect(files3.length).toBe(2);
+    expect(files3.indexOf('main-src.js') > -1).toBeTruthy();
+    expect(files3.indexOf('main.js') > -1).toBeTruthy();
+
+    var code3 = cat(path.join(dist3, 'main-src.js'));
+    expect(code3).toMatch('#public/1.0.0/main-src');
+  
+  });
 });
 
 function run(cmd) {
