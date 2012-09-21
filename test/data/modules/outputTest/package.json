@@ -8,6 +8,10 @@
       "$": "jquery/1.7.2/jquery"
     },
     "output": {
+      "new_module.js": {
+        "main": "allMerge.js",
+        "includes": ["a.js", "b.js", "*", "c.js"]
+      },
       "localMerge.js": ".",
       "allMerge.js": "*",
       "arrayMerge.js": ["arrayMerge.js", "a.js", "b.js", "c.js"],
