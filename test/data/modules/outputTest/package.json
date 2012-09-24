@@ -10,7 +10,7 @@
     "output": {
       "new_module.js": {
         "main": "allMerge.js",
-        "includes": ["a.js", "b.js", "*", "c.js"]
+        "includes": ["a.js", "b.js", ".", "c.js"]
       },
       "localMerge.js": ".",
       "allMerge.js": "*",
