@@ -26,6 +26,7 @@
       "*": {
         "excludes": ["#jquery/1.7.2/jquery", "plugins/p2.js"]
       },
-      "sites1": "sites/**/*.js"
+      "sites1": "sites/**/*.js",
+      "plugins/*.js": "default"
     }
 }
