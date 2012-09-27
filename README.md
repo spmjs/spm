@@ -1,5 +1,6 @@
 # Static Package Manager - 简单、放心的包管理工具
 
+相关文档可以查看 [wiki](https://github.com/seajs/spm/wiki)
 
 ## 安装
 
