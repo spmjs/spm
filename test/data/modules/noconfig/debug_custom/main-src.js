@@ -12,7 +12,7 @@ define("#public/1.0.0/core/js/utils-src", [], function(require, exports) {
 
 
 define("#public/1.0.0/contact/model/m-src", ["../../core/js/config-src", "../../core/js/utils-src"], function(require, exports, module) {
-  var tpl = '<div>hello</div>';
+  var tpl = '<div>hello</div><input name="nihai" value=\'{"name": "a"}\'/>';
   var config = require('../../core/js/config-src'); 
   var utils = require('../../core/js/utils-src'); 
   
