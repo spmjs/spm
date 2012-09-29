@@ -1,3 +1,12 @@
+
+## 2012.09.29 , Version 0.9.12(Unstable)
+
+这个版本将是1.0之前最后的一个测试版本，在国庆后的第一周正式发布1.0
+这个版本主要进行了一些bugfix, 还有根据社区的反馈增加了部分接口。
+
+详情可以查看 https://github.com/seajs/spm/issues?milestone=11&state=closed
+关于新增接口的使用 可以参看  https://github.com/seajs/spm/wiki/Spm-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3 
+
 ## 2012.09.21 , Version 0.9.11(Unstable)
 
 SPM 0.9.11会在9月21号下班前发布，敬请关注. 
