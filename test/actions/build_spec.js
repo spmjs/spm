@@ -15,7 +15,7 @@ var sampleModuleDir = path.join(path.dirname(module.filename), "../data/modules/
 describe('spm build test', function() {
 
   it('module model create test', function() {
-    getProjectModel(action, moduleAdir, function(moduleA) {
+    getProjectModel(moduleAdir, function(moduleA) {
       expect(moduleA).not.toBe(null);
       expect(moduleA.name).toEqual('moduleA');
       expect(moduleA.version).toEqual('0.9.17');
@@ -166,7 +166,7 @@ describe('spm build test', function() {
 });
 
 function executeBuildAction(moduleDir, callback) {
-  getProjectModel(action, moduleDir, function(model) {
+  getProjectModel(moduleDir, function(model) {
     buildAction.execute(model, function(err) {
       expect(err).toBeFalsy();
       callback(model);

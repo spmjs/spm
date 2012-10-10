@@ -7,7 +7,7 @@ describe('project model constructor', function() {
   var dir = path.join(path.dirname(module.filename), "../data/modules/moduleA/");
  
   it('test jshint plugin', function() {
-    getProjectModel('build', dir, function(model) {
+    getProjectModel(dir, function(model) {
       var src = model.srcDirectory;
       var build = model.buildDirectory;
       var result = jshint(fsExt.readFileSync(path.join(src,'widget.js')));

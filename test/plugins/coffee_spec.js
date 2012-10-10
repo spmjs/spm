@@ -16,21 +16,21 @@ describe('coffee plugin test', function() {
   clean.setOpts(opts);
 
   beforeEach(function() {
-    getProjectModel(action, dir, function(model) {
+    getProjectModel(dir, function(model) {
       resources.execute(model, function() {
       });
     });
   });
 
   afterEach(function() {
-    getProjectModel(action, dir, function(model) {
+    getProjectModel(dir, function(model) {
       clean.execute(model, function() {
       });
     });
   });
 
   it('test coffee plugin', function() {
-    getProjectModel(action, dir, function(model) {
+    getProjectModel(dir, function(model) {
       var src = model.srcDirectory;
       var build = model.buildDirectory;
 

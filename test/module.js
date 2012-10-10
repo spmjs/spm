@@ -1,7 +1,12 @@
 var ProjectFactory = require('../lib/core/project_factory.js');
 
-global.getProjectModel = function(action, dir, callback) {
-  ProjectFactory.getProjectModel(action, dir, function(projectModel) {
+global.getProjectModel = function(dir, callback) {
+  var options = {
+    "baseDirectory": dir 
+  };
+
+    
+  ProjectFactory.getProjectModel(options, function(projectModel) {
     callback(projectModel);
   });
 };

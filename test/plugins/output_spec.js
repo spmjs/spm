@@ -148,7 +148,7 @@ function getRegByModel(model, moduleName) {
   return new RegExp('define' + '\\("' + model.name + '\\/' + model.version + '\\/' + moduleName);
 }
 function executeBuildAction(moduleDir, callback) {
-  getProjectModel(action, moduleDir, function(model) {
+  getProjectModel(moduleDir, function(model) {
     buildAction.execute(model, function(err) {
       expect(err).toBeFalsy();
       callback(model);

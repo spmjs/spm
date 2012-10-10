@@ -20,21 +20,21 @@ describe('less project test', function() {
 
   beforeEach(function() {
      
-    getProjectModel(action, dir, function(model) {
+    getProjectModel(dir, function(model) {
       resources.execute(model, function() {
       });
     });
   });
 
   afterEach(function() {
-    getProjectModel(action, dir, function(model) {
+    getProjectModel(dir, function(model) {
       clean.execute(model, function() {
       });
     });
   });
 
   it('test less plugin', function() {
-    getProjectModel(action, dir, function(model) {
+    getProjectModel(dir, function(model) {
       var src = model.srcDirectory;
       var build = model.buildDirectory;
       // console.info('lesss---->', less);
