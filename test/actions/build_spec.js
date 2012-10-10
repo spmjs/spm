@@ -1,10 +1,9 @@
 var path = require('path');
 var fsExt = require('../../lib/utils/fs_ext.js');
-var ActionFactory = require('../../lib/core/action_factory.js');
-var depsPlugin = require('../../lib/plugins/dependencies.js');
 
-var action = 'build';
-var buildAction = ActionFactory.getActionObj(action); 
+var spm = require('../../lib/spm.js'); // require('spm');
+var depsPlugin = require('../../lib/plugins/dependencies.js');
+var build = spm.getAction('build');
 
 var moduleAdir = path.join(path.dirname(module.filename), "../data/modules/moduleA/");
 var invalidNameModuleDir = path.join(path.dirname(module.filename), "../data/modules/invalidName/");
@@ -166,11 +165,8 @@ describe('spm build test', function() {
 });
 
 function executeBuildAction(moduleDir, callback) {
-  getProjectModel(moduleDir, function(model) {
-    buildAction.execute(model, function(err) {
-      expect(err).toBeFalsy();
-      callback(model);
-    });
-  });
+  build.run({
+    baseDirectory: moduleDir
+  }, callback);
 }
 
