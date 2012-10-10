@@ -1,5 +1,1 @@
-define(function(require, exports) {
-    exports.log = function(str) {
-        console.info('[log] ' + str);
-    };
-});
+define(function(e,t){t.log=function(e){console.info("[log] "+e)}});
