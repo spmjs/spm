@@ -10,6 +10,10 @@ describe('spm init action', function() {
   beforeEach(function() {
     rm('-rf', path.join(moduleDir, '*'));
   });
+
+  afterEach(function() {
+    rm('-rf', path.join(moduleDir, '*'));
+  });
   
   it('test init empty project by default', function() {
     var initSucc = false
