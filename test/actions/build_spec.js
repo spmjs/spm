@@ -166,7 +166,7 @@ describe('spm build test', function() {
 
 function executeBuildAction(moduleDir, callback) {
   build.run({
-    baseDirectory: moduleDir
+    base: moduleDir
   }, callback);
 }
 

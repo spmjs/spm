@@ -27,8 +27,13 @@ process.argv.forEach(function(arg){
 });
 
 var executePath = __dirname;
+var executeFile = /.*spec\.js$/;
 if (argv.dir) {
   executePath = path.join(executePath, argv.dir);
+}
+
+if (argv.file) {
+  executeFile = new RegExp(argv.file + '\.js$');
 }
 
 jasmine.executeSpecsInFolder(executePath, function(runner, log){
@@ -38,5 +43,4 @@ jasmine.executeSpecsInFolder(executePath, function(runner, log){
   else {
     process.exit(1);
   }
-}, isVerbose, showColors, null, false, /.*spec\.js$/);
-
+}, isVerbose, showColors, null, false, executeFile);
