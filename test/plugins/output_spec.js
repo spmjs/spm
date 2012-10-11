@@ -1,11 +1,8 @@
 var path = require('path');
 var fsExt = require('../../lib/utils/fs_ext.js');
 
-var ActionFactory = require('../../lib/core/action_factory.js');
-var depsPlugin = require('../../lib/plugins/dependencies.js');
-
-var action = 'build';
-var buildAction = ActionFactory.getActionObj(action);
+var spm = require('../../lib/spm.js'); // require('spm');
+var build = spm.getAction('build');
 
 var outputTestDir = path.join(path.dirname(module.filename), "../data/modules/outputTest/");
 var distDir = path.join(outputTestDir, 'dist');
@@ -148,12 +145,9 @@ function getRegByModel(model, moduleName) {
   return new RegExp('define' + '\\("' + model.name + '\\/' + model.version + '\\/' + moduleName);
 }
 function executeBuildAction(moduleDir, callback) {
-  getProjectModel(moduleDir, function(model) {
-    buildAction.execute(model, function(err) {
-      expect(err).toBeFalsy();
-      callback(model);
-    });
-  });
+  build.run({
+    base: moduleDir
+  }, callback);
 }
 
 function getDistCode(name) {
