@@ -4,6 +4,7 @@
     "dependencies": {
     },
     "output": {
-      "base.css": "."
+      "base.css": "default",
+      "base1.css": ["base.css", "css3.less"]
     }
 }
