@@ -1,0 +1,22 @@
+{
+    "name": "dir_name",
+    "version": "1.0.0",
+    "root": "#",
+    "description": "",
+    "homepage": "",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": {
+        "url": ""
+    },
+    "license": "",
+    "dependencies": {
+    },
+    "tests": ["dir_name"],
+    "output": {
+        "dir_name.js": "."
+    }
+}
