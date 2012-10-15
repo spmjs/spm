@@ -23,11 +23,11 @@ $ npm install -g spm
 #### spm build [options] 
 对项目文件进行处理，并输出到指定目录. 这个可以说是 SPM 核心功能之一，具体的使用可以参看下面文档：
 
-[SPM build 详解](https://github.com/seajs/spm/wiki/SPM-build-%E8%AF%A6%E8%A7%A3)
+* [SPM build 详解](https://github.com/seajs/spm/wiki/SPM-build-%E8%AF%A6%E8%A7%A3)
 
-[SPM build 基于命令行参数打包详解](https://github.com/seajs/spm/wiki/SPM-build-%E5%9F%BA%E4%BA%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%89%93%E5%8C%85%E8%AF%A6%E8%A7%A3)
+* [SPM build 基于命令行参数打包详解](https://github.com/seajs/spm/wiki/SPM-build-%E5%9F%BA%E4%BA%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%89%93%E5%8C%85%E8%AF%A6%E8%A7%A3)
 
-[SPM build 合并详解](https://github.com/seajs/spm/wiki/SPM-build-%E5%90%88%E5%B9%B6%E6%A8%A1%E5%9D%97%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3%E8%AF%B4%E6%98%8E)
+* [SPM build 合并详解](https://github.com/seajs/spm/wiki/SPM-build-%E5%90%88%E5%B9%B6%E6%A8%A1%E5%9D%97%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3%E8%AF%B4%E6%98%8E)
 
 #### spm upload [options]
 打包项目，并上传到[源](https://github.com/seajs/spm/wiki/SPM-%E6%BA%90%E8%AF%A6%E8%A7%A3)中.
@@ -35,9 +35,9 @@ $ npm install -g spm
 #### spm deploy [options]
 打包项目，并上传源，而且根据用户配置进行代码部署. 
 
-[spm deploy 基本介绍](https://github.com/seajs/spm/issues/173)
+* [spm deploy 基本介绍](https://github.com/seajs/spm/issues/173)
 
-[spm deploy 相关讨论](https://github.com/seajs/spm/issues/181)
+* [spm deploy 相关讨论](https://github.com/seajs/spm/issues/181)
 
 
 ### 开发辅助
