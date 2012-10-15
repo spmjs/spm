@@ -22,6 +22,7 @@ $ npm install -g spm
 
 #### spm build [options] 
 对项目文件进行处理，并输出到指定目录. 这个可以说是 SPM 核心功能之一，具体的使用可以参看下面文档：
+* [SPM build 使用入门](https://github.com/seajs/spm/wiki/SPM-build-%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8(%E4%B8%80))
 
 * [SPM build 详解](https://github.com/seajs/spm/wiki/SPM-build-%E8%AF%A6%E8%A7%A3)
 
