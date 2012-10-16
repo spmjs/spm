@@ -25,7 +25,7 @@ $ npm install -g spm
 * [SPM build 入门之默认目录结构](https://github.com/seajs/spm/wiki/SPM-build-%E4%B9%8B%E9%BB%98%E8%AE%A4%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84)
 * [SPM build 入门之任意目录结构](https://github.com/seajs/spm/wiki/Spm-build-%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84)
 * [SPM build 执行详解](https://github.com/seajs/spm/wiki/SPM-build-%E8%AF%A6%E8%A7%A3)
-* [SPM build 命令行参数详解](https://github.com/seajs/spm/wiki/SPM-build-%E5%9F%BA%E4%BA%8E%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%89%93%E5%8C%85%E8%AF%A6%E8%A7%A3)
+* [SPM build 命令行参数详解](https://github.com/seajs/spm/wiki/SPM-build-%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3
 * [SPM build 合并规则详解](https://github.com/seajs/spm/wiki/SPM-build-%E5%90%88%E5%B9%B6%E6%A8%A1%E5%9D%97%E5%A4%84%E7%90%86%E7%9B%B8%E5%85%B3%E8%AF%B4%E6%98%8E)
 
 #### spm upload [options]
