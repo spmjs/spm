@@ -4,11 +4,12 @@
   "spmConfig": {
      "*": {
        "only": true,
-       "src": "app"
+       "src": "app",
+       "idRule": "{{moduleName}}"
      },
      "build": {
        "abc": "abc/{{version}}",
-        "to": "{{spmConfig.build.abc}}/def/{{spmConfig.build.src}}"
+       "to": "{{spmConfig.build.abc}}/def/{{spmConfig.build.src}}"
       }
   }
 }

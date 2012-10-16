@@ -21,4 +21,25 @@ describe('project model parse test', function() {
       return getModel; 
     }, 2000);
   });
+
+  it('test spmConfig parse for common config', function() {
+    var getModel = false;
+    runs(function() {
+      getProjectModel('deploy', spmConfigTestModuleDir, function(model) {
+        getModel = true;
+        expect(model.name).toBe('spmConfigModel');
+        expect(model.version).toBe('0.0.1');
+
+        expect(model.getConfig('abc')).toBeUndefined();
+        expect(model.getConfig('to')).toBeUndefined();
+
+        expect(model.getConfig('idRule')).toEqual('{{moduleName}}');
+      });
+    });
+    
+    waitsFor(function() {
+      return getModel; 
+    }, 2000);
+  });
+
 });
