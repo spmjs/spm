@@ -22,41 +22,46 @@ describe('coffee plugin test', function() {
     });
   });
 
-  afterEach(function() {
-    getProjectModel(dir, function(model) {
-      clean.execute(model, function() {
-      });
-    });
-  });
-
   it('test coffee plugin', function() {
-    getProjectModel(dir, function(model) {
-      var src = model.srcDirectory;
-      var build = model.buildDirectory;
+    var getModel = false;
+    runs(function() {
+      getProjectModel(dir, function(model) {
+        getModel = true;
+        var src = model.srcDirectory;
+        var build = model.buildDirectory;
 
-      coffeePlugin.execute(model, function() {
-        var scripts1 = fsExt.listFiles(src);
-        var scripts2 = fsExt.listFiles(build);
-        expect(scripts1.length).toEqual(scripts2.length);
+        coffeePlugin.execute(model, function() {
+          var scripts1 = fsExt.listFiles(src);
+          var scripts2 = fsExt.listFiles(build);
+          expect(scripts1.length).toEqual(scripts2.length);
 
-        var srcScripts = fsExt.listFiles(src, /coffee$/);
-        var buildScripts = fsExt.listFiles(build, /coffee\.js$/);
-        expect(srcScripts.length).toEqual(1);
-        expect(buildScripts.length).toEqual(1);
+          var srcScripts = fsExt.listFiles(src, /coffee$/);
+          var buildScripts = fsExt.listFiles(build, /coffee\.js$/);
+          expect(srcScripts.length).toEqual(1);
+          expect(buildScripts.length).toEqual(1);
 
-        var coffeeModPattern = model.getReqModRegByType('[^\"\']+\\.coffee');
+          var coffeeModPattern = model.getReqModRegByType('[^\"\']+\\.coffee');
 
-        var srcCode = fsExt.listFiles(src, /js$/).map(function(f) {
-          return fsExt.readFileSync(f);
+          var srcCode = fsExt.listFiles(src, /js$/).map(function(f) {
+            return fsExt.readFileSync(f);
+          });
+
+          var buildCode = fsExt.listFiles(build, /js$/).map(function(f) {
+            return fsExt.readFileSync(f);
+          });
+          
+          expect(coffeeModPattern.test(srcCode[0])).toBeTruthy();
+          expect(coffeeModPattern.test(buildCode[0])).toBeFalsy();
         });
 
-        var buildCode = fsExt.listFiles(build, /js$/).map(function(f) {
-          return fsExt.readFileSync(f);
+        clean.execute(model, function() {
         });
-        
-        expect(coffeeModPattern.test(srcCode[0])).toBeTruthy();
-        expect(coffeeModPattern.test(buildCode[0])).toBeFalsy();
       });
+
+      waitsFor(function() {
+        return getModel;
+      }, 2000);
+    
     });
   });
 });
