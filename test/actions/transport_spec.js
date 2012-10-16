@@ -44,7 +44,7 @@ describe('spm transport action', function() {
 
     waitsFor(function() {
       return seajsMetaParse;
-    });
+    }, 20000);
   });
 
 });
