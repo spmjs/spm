@@ -1,0 +1,158 @@
+file encoding: utf8
+Scanning for projects...
+
+------------------------------------------------------------------------
+Building public 1.0.0
+------------------------------------------------------------------------
+PROCESSING MODULE contact/model/m.js
+GENERATE ID    #public/1.0.0/contact/model/m
+PROCESSING MODULE core/js/utils.js
+GENERATE ID    #public/1.0.0/core/js/utils
+PROCESSING MODULE main.js
+GENERATE ID    #public/1.0.0/main
+------------------------------------------------------------------------
+BUILD SUCCESSFULLY!
+------------------------------------------------------------------------
+Scanning for projects...
+[31m [ERROR] Caught exception: TypeError: Object 111 has no method 'indexOf'  [39m
+------------------------------------------------------------------------
+TypeError: Object 111 has no method 'indexOf'
+    at exports.perfectLocalPath (/Users/kanghui/Projects/alipay-project2/spm/lib/utils/module_help.js:58:17)
+    at parse (/Users/kanghui/Projects/alipay-project2/spm/lib/actions/build.js:146:14)
+    at Object.Action.createOptions.getConfig (/Users/kanghui/Projects/alipay-project2/spm/lib/core/action.js:124:16)
+    at Object.Project.getConfig (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:455:25)
+    at Object.Project._initGlobalInfo (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:203:53)
+    at Object.Project (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:149:8)
+    at exports.getProjectModel (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:131:7)
+    at g (events.js:193:14)
+    at EventEmitter.emit (events.js:93:17)
+    at Object.module.exports.queue.drain (/Users/kanghui/Projects/alipay-project2/spm/lib/core/config_parse.js:61:10)
+------- [ 'node /Users/kanghui/Projects/alipay-project2/spm/bin/spm build',
+  '--global-config=public/config/seajs.config',
+  '--src=public',
+  '--version=1.0.0',
+  '--to=111' ]
+------- Scanning for projects...
+[31m [ERROR] Caught exception: TypeError: Object 111 has no method 'indexOf'  [39m
+------------------------------------------------------------------------
+TypeError: Object 111 has no method 'indexOf'
+    at exports.perfectLocalPath (/Users/kanghui/Projects/alipay-project2/spm/lib/utils/module_help.js:58:17)
+    at parse (/Users/kanghui/Projects/alipay-project2/spm/lib/actions/build.js:146:14)
+    at Object.Action.createOptions.getConfig (/Users/kanghui/Projects/alipay-project2/spm/lib/core/action.js:124:16)
+    at Object.Project.getConfig (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:455:25)
+    at Object.Project._initGlobalInfo (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:203:53)
+    at Object.Project (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:149:8)
+    at exports.getProjectModel (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:131:7)
+    at g (events.js:193:14)
+    at EventEmitter.emit (events.js:93:17)
+    at Object.module.exports.queue.drain (/Users/kanghui/Projects/alipay-project2/spm/lib/core/config_parse.js:61:10)
+
+
+spm cmd build test
+[31m  test arg dist[0m
+
+Failures:
+
+  1) test arg dist
+   Message:
+     [31mExpected 'Scanning for projects...
+[31m [ERROR] Caught exception: TypeError: Object 111 has no method 'indexOf'  [39m
+------------------------------------------------------------------------
+TypeError: Object 111 has no method 'indexOf'
+    at exports.perfectLocalPath (/Users/kanghui/Projects/alipay-project2/spm/lib/utils/module_help.js:58:17)
+    at parse (/Users/kanghui/Projects/alipay-project2/spm/lib/actions/build.js:146:14)
+    at Object.Action.createOptions.getConfig (/Users/kanghui/Projects/alipay-project2/spm/lib/core/action.js:124:16)
+    at Object.Project.getConfig (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:455:25)
+    at Object.Project._initGlobalInfo (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:203:53)
+    at Object.Project (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:149:8)
+    at exports.getProjectModel (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:131:7)
+    at g (events.js:193:14)
+    at EventEmitter.emit (events.js:93:17)
+    at Object.module.exports.queue.drain (/Users/kanghui/Projects/alipay-project2/spm/lib/core/config_parse.js:61:10)
+' to match '#public/1.0.0/contact/model/m'.[0m
+   Stacktrace:
+     Error: Expected 'Scanning for projects...
+[31m [ERROR] Caught exception: TypeError: Object 111 has no method 'indexOf'  [39m
+------------------------------------------------------------------------
+TypeError: Object 111 has no method 'indexOf'
+    at exports.perfectLocalPath (/Users/kanghui/Projects/alipay-project2/spm/lib/utils/module_help.js:58:17)
+    at parse (/Users/kanghui/Projects/alipay-project2/spm/lib/actions/build.js:146:14)
+    at Object.Action.createOptions.getConfig (/Users/kanghui/Projects/alipay-project2/spm/lib/core/action.js:124:16)
+    at Object.Project.getConfig (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:455:25)
+    at Object.Project._initGlobalInfo (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:203:53)
+    at Object.Project (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:149:8)
+    at exports.getProjectModel (/Users/kanghui/Projects/alipay-project2/spm/lib/core/project_factory.js:131:7)
+    at g (events.js:193:14)
+    at EventEmitter.emit (events.js:93:17)
+    at Object.module.exports.queue.drain (/Users/kanghui/Projects/alipay-project2/spm/lib/core/config_parse.js:61:10)
+' to match '#public/1.0.0/contact/model/m'.
+    at new jasmine.ExpectationResult (/Users/kanghui/Projects/alipay-project2/spm/node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js:102:32)
+    at null.toMatch (/Users/kanghui/Projects/alipay-project2/spm/node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js:1171:29)
+    at null.<anonymous> (/Users/kanghui/Projects/alipay-project2/spm/test/actions/build_cmd_spec.js:40:21)
+    at jasmine.Block.execute (/Users/kanghui/Projects/alipay-project2/spm/node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js:1001:15)
+    at jasmine.Queue.next_ (/Users/kanghui/Projects/alipay-project2/spm/node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js:1790:31)
+    at jasmine.Queue.start (/Users/kanghui/Projects/alipay-project2/spm/node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js:1743:8)
+    at jasmine.Spec.execute (/Users/kanghui/Projects/alipay-project2/spm/node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js:2070:14)
+    at jasmine.Queue.next_ (/Users/kanghui/Projects/alipay-project2/spm/node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js:1790:31)
+    at jasmine.Queue.start (/Users/kanghui/Projects/alipay-project2/spm/node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js:1743:8)
+    at jasmine.Suite.execute (/Users/kanghui/Projects/alipay-project2/spm/node_modules/jasmine-node/lib/jasmine-node/jasmine-2.0.0.rc1.js:2215:14)
+
+Finished in 1.685 seconds
+[31m1 test, 4 assertions, 1 failure
+[0m
+file encoding: utf8
+Scanning for projects...
+
+------------------------------------------------------------------------
+Building public 1.0.0
+------------------------------------------------------------------------
+PROCESSING MODULE contact/model/m.js
+GENERATE ID    #public/1.0.0/contact/model/m
+PROCESSING MODULE core/js/utils.js
+GENERATE ID    #public/1.0.0/core/js/utils
+PROCESSING MODULE main.js
+GENERATE ID    #public/1.0.0/main
+------------------------------------------------------------------------
+BUILD SUCCESSFULLY!
+------------------------------------------------------------------------
+Scanning for projects...
+
+------------------------------------------------------------------------
+Building public 1.0.0
+------------------------------------------------------------------------
+PROCESSING MODULE contact/model/m.js
+GENERATE ID    #public/1.0.0/contact/model/m
+PROCESSING MODULE core/js/utils.js
+GENERATE ID    #public/1.0.0/core/js/utils
+PROCESSING MODULE main.js
+GENERATE ID    #public/1.0.0/main
+------------------------------------------------------------------------
+BUILD SUCCESSFULLY!
+------------------------------------------------------------------------
+------- [ 'node /Users/kanghui/Projects/alipay-project2/spm/bin/spm build',
+  '--global-config=public/config/seajs.config',
+  '--src=public',
+  '--version=1.0.0',
+  '--to=111' ]
+------- Scanning for projects...
+
+------------------------------------------------------------------------
+Building public 1.0.0
+------------------------------------------------------------------------
+PROCESSING MODULE contact/model/m.js
+GENERATE ID    #public/1.0.0/contact/model/m
+PROCESSING MODULE core/js/utils.js
+GENERATE ID    #public/1.0.0/core/js/utils
+PROCESSING MODULE main.js
+GENERATE ID    #public/1.0.0/main
+------------------------------------------------------------------------
+BUILD SUCCESSFULLY!
+------------------------------------------------------------------------
+
+
+spm cmd build test
+[32m  test arg dist[0m
+
+Finished in 2.373 seconds
+[32m1 test, 4 assertions, 0 failures
+[0m

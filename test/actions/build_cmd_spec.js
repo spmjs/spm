@@ -17,7 +17,7 @@ baseCmd.push('node ' + spmHome + ' build');
 baseCmd.push('--global-config=' + path.join('public', 'config', 'seajs.config'));
 baseCmd.push('--src=public');
 //baseCmd.push('--version=1111');  
-//baseCmd.push('--dist=222');
+//baseCmd.push('--to=222');
 //baseCmd.push('--output.main=.');  
 
 describe('spm cmd build test', function() {
@@ -60,13 +60,13 @@ describe('spm cmd build test', function() {
     cmd.push('--version=1.0.0');
 
     var cmd1 = cmd.slice(0);
-    cmd1.push('--dist=new_dist');
+    cmd1.push('--to=new_dist');
     var output1 = run(cmd1);
     expect(output1).toMatch('#public/1.0.0/contact/model/m');
     expect(fsExt.existsSync(path.join(basePath, 'new_dist'))).toBeTruthy();
 
     var cmd2 = cmd.slice(0);
-    cmd2.push('--dist=111');
+    cmd2.push('--to=111');
     var output2 = run(cmd2);
     expect(output2).toMatch('#public/1.0.0/contact/model/m');
     expect(fsExt.existsSync(path.join(basePath, '111'))).toBeTruthy();
@@ -98,7 +98,7 @@ describe('spm cmd build test', function() {
     // test default
     var cmd1 = cmd.slice(0);
     var dist1 = 'debug_default';
-    cmd1.push('--dist=' + dist1);
+    cmd1.push('--to=' + dist1);
     run(cmd1);
     var files1 = ls(dist1);
 
@@ -111,7 +111,7 @@ describe('spm cmd build test', function() {
     
     var cmd2 = cmd.slice(0);
     var dist2 = 'debug_empty';
-    cmd2.push('--dist=' + dist2);
+    cmd2.push('--to=' + dist2);
     cmd2.push('--with-debug=""');
     run(cmd2);
     var files2 = ls(dist2);
@@ -124,7 +124,7 @@ describe('spm cmd build test', function() {
 
     var cmd3 = cmd.slice(0);
     var dist3 = 'debug_custom';
-    cmd3.push('--dist=' + dist3);
+    cmd3.push('--to=' + dist3);
     cmd3.push('--with-debug=src');
     run(cmd3);
     var files3 = ls(dist3);

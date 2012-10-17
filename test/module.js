@@ -1,4 +1,5 @@
 var ProjectFactory = require('../lib/core/project_factory.js');
+var Action = require('../lib/core/Action.js');
 
 global.getProjectModel = function(action, dir, callback) {
   if (arguments.length === 2) {
@@ -6,9 +7,9 @@ global.getProjectModel = function(action, dir, callback) {
     dir = action;
     action = 'build';
   }
-  var options = {
-    "baseDirectory": dir 
-  };
+  var options = Action.prototype.createOptions({
+    "base": dir 
+  });
     
   ProjectFactory.getProjectModel(action, options, function(projectModel) {
     callback(projectModel);
