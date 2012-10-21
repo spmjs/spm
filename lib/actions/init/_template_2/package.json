@@ -1,0 +1,24 @@
+{
+    "name": "{{project}}",
+    "version": "1.0.0",
+    "root": "{{root}}",
+    "description": "",
+    "homepage": "",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": {
+        "url": ""
+    },
+    "license": "",
+    "dependencies": {
+        "$": "$",
+        "widget": "1.0.2"
+    },
+    "tests": ["{{project}}"],
+    "output": {
+        "{{project}}.js": "."
+    }
+}
