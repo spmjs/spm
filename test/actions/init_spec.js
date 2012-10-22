@@ -16,11 +16,10 @@ describe('spm init action', function() {
   });
   
   it('test init empty project by default', function() {
-    return;
     var initSucc = false
     var moduleName = 'testModule';
     runs(function() {
-      init.run({projectName: moduleName, base: path.join(moduleDir, moduleName)}, function() {
+      init.run({projectName: moduleName, base: path.join(moduleDir, moduleName), 'module-type': 1}, function() {
         initSucc = true;
         expect(true).toBeTruthy();
         var initModule = ls(moduleDir);
@@ -40,11 +39,10 @@ describe('spm init action', function() {
   }); 
 
   it('test init empty project by default name', function() {
-      return;
     var initSucc = false
     var moduleName = 'dir_name';
     runs(function() {
-      init.run({base: path.join(moduleDir, moduleName)}, function() {
+      init.run({base: path.join(moduleDir, moduleName), 'module-type': 2}, function() {
         initSucc = true;
         expect(true).toBeTruthy();
         var initModule = ls(moduleDir);
