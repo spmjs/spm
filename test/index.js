@@ -2,8 +2,6 @@
  * @usage node index.js
  * @author kangpangpang@gmail.com (kangpangpang)
  */
-
-var sys = require('sys');
 var path = require('path');
 var jasmine = require('jasmine-node');
 var argv = require('optimist').argv;
