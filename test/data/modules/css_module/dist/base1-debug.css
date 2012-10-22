@@ -148,7 +148,7 @@ body .fn-hide {
 }
 .other {
   -moz-transform: translate(0, 11em) rotate(-90deg);
-  transform: rotatex(45deg);
+  transform: rotateX(45deg);
 }
 p:not([class*="lead"]) {
   color: black;
@@ -170,10 +170,10 @@ li:nth-child(-5n),
 li:nth-child(-n+2) {
   color: white;
 }
-a[href^="http:/"] {
+a[href^="http://"] {
   color: black;
 }
-a[href$="http:/"] {
+a[href$="http://"] {
   color: black;
 }
 form[data-disabled] {
