@@ -37,7 +37,9 @@ describe('spm transport action', function() {
         var version = ls(seajsDir);
         expect(version.indexOf('1.2.1') > -1).toBeTruthy();
         var files = ls(path.join(seajsDir, '1.2.1'));
-        expect(files.length).toEqual(9);
+
+        // add pacakge.json
+        expect(files.length).toEqual(10);
         seajsMetaParse = true;
       }); 
     });
