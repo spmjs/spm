@@ -21,8 +21,8 @@ SPM 是一个基于命令行的前端项目管理工具，目前可以支持 JS 
 		* [spmConfig](https://github.com/seajs/spm/wiki/package.json-:-spmConfig)
 		* [全局配置: ~/.spm/config.json](https://github.com/seajs/spm/wiki/%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%3A-~-.spm-config.json)
 		* [Spm build 之自定义目录结构](https://github.com/seajs/spm/wiki/Spm-build-%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84)
-* [[命令行参数]]
-* [[在 Node 中调用]]
+* [命令行参数](https://github.com/seajs/spm/wiki/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0)
+* [在 Node 中调用](https://github.com/seajs/spm/wiki/%E5%9C%A8-Node-%E4%B8%AD%E8%B0%83%E7%94%A8)
 * [版本变更日志](https://github.com/seajs/spm/blob/master/HISTORY.md)
 
 ## 讨论和报告 Bug
