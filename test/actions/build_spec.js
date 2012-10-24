@@ -74,7 +74,7 @@ describe('spm build test', function() {
         
         var code = fsExt.readFileSync(moduleCPath);
 
-        var cDefReg = /define\("relativeModule\/0.9.1\/lib\/c-debug", \["..\/core\/b-debug", "..\/core\/a-debug"\]/;
+        var cDefReg = /define\("relativeModule\/0.9.1\/lib\/c-debug", \["..\/core\/a-debug", "..\/core\/b-debug"\]/;
         var bDefReg = /define\("relativeModule\/0.9.1\/core\/b-debug", \[\]/;
         var aDefReg = /define\("relativeModule\/0.9.1\/core\/a-debug", \[".\/b-debug"\]/;
         expect(code).toMatch(cDefReg);
