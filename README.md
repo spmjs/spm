@@ -16,7 +16,7 @@ SPM 是一个基于命令行的前端项目管理工具，目前可以支持 JS 
 
 ## API 文档
 * 配置
-  * [[package.json]]
+  * [package.json](https://github.com/seajs/spm/wiki/package.json)
 		* [output](https://github.com/seajs/spm/wiki/package.json-:-output)
 		* [spmConfig](https://github.com/seajs/spm/wiki/package.json-:-spmConfig)
 		* [全局配置: ~/.spm/config.json](https://github.com/seajs/spm/wiki/%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%3A-~-.spm-config.json)
