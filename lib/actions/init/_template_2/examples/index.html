@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>DEMO {{project}}</title> 
+    <script src="../sea-modules/seajs/1.2.1/sea.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        seajs.config({
+            alias: {
+                '$': 'jquery/1.7.2/jquery',
+                'widget': 'widget/1.0.2/widget',
+                'templatable': 'widget/1.0.2/templatable',
+                '{{project}}': '../src/{{project}}.js'
+            }
+                
+        });
+    </script>
+  </head>
+<body>
+    <div id="{{project}}">
+        
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        seajs.use('{{project}}', function({{project}}) {
+            var w = new {{project}}({
+                model: {
+                    content: '我是传入的内容，点击我试试'
+                },
+                parentNode: '#{{project}}' 
+            });
+            w.render();
+        });
+    </script>
+</body>

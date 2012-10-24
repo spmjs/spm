@@ -14,8 +14,11 @@
     },
     "license": "",
     "dependencies": {
-        "$": "$",
-        "widget": "1.0.2"
+        "$": "jquery/1.7.2/jquery",
+        "widget": "1.0.2",
+        "templatable": "widget/1.0.2/templatable",
+        "handlebars": "1.0.0",
+        "seajs": "seajs/1.2.1/sea"
     },
     "tests": ["{{project}}"],
     "output": {
