@@ -92,6 +92,7 @@ describe('spm cmd build test', function() {
 
   it('test with-debug', function() {
     var cmd = baseCmd.slice(0);
+    cmd.push('--root=#');
     cmd.push('--name=public');
     cmd.push('--version=1.0.0');
     cmd.push('--output.main=.');  
