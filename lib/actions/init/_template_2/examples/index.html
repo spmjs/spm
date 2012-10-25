@@ -3,33 +3,42 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>DEMO {{project}}</title> 
+    <title>Widget Example - {{project}}</title> 
     <script src="../sea-modules/seajs/1.2.1/sea.js"></script>
     <script type="text/javascript" charset="utf-8">
         seajs.config({
             alias: {
                 '$': 'jquery/1.7.2/jquery',
                 'widget': 'widget/1.0.2/widget',
-                'templatable': 'widget/1.0.2/templatable',
                 '{{project}}': '../src/{{project}}.js'
             }
-                
         });
     </script>
   </head>
 <body>
-    <div id="{{project}}">
-        
+    <div id="{{project}}" class="example {{project}}">
+        <h3>我是标题，请点击我一下。</h3>
+        <p>我是段落，请将鼠标悬浮在我上面，我会变色的。</p>
     </div>
+
+    <!--
+    <div data-widget="{{project}}" data-color="yellow">
+        <h3>我是自动渲染的，请点击我一下。</h3>
+        <p>我是段落，请将鼠标悬浮在我上面，我会变色的。</p>
+    </div>
+    -->
+
     <script type="text/javascript" charset="utf-8">
         seajs.use('{{project}}', function({{project}}) {
             var w = new {{project}}({
-                model: {
-                    content: '我是传入的内容，点击我试试'
-                },
-                parentNode: '#{{project}}' 
+                element: '#{{project}}' 
             });
-            w.render();
         });
+        /**
+        seajs.use(['widget'], function(Widget) {
+            Widget.autoRenderAll();
+        });
+        **/
+
     </script>
 </body>
