@@ -34,9 +34,9 @@ describe('spm cmd build test', function() {
   it('test default name', function() {
     var cmd = baseCmd.slice(0);
     cmd.push('--root=#');
-    cmd.push('--version=1.0.0');
+    cmd.push('--version=1.1.0');
     var output = run(cmd);
-    expect(output).toMatch('#public/1.0.0/contact/model/m');
+    expect(output).toMatch('#public/1.1.0/contact/model/m');
   });
 
   it('test arg version', function() {

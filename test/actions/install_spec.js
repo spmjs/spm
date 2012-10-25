@@ -26,4 +26,22 @@ describe('spm install action', function() {
       return installSucc;
     });
   }); 
+
+  it('test install jquery to default directory', function() {
+    var installSucc = false
+    runs(function() {
+      install.run({modules: ['jquery', 'widget'], force: true, base: moduleDir}, function() {
+        installSucc = true;
+        expect(true).toBeTruthy();
+        var installModules = ls(path.join(moduleDir, 'sea-modules'));
+        // expect(installModules).toEqual(['base', 'class', 'events', 'handlerbars', 'jquery', 'widget']);
+        expect(installModules.length).toEqual(6);
+      });
+    });
+
+    waitsFor(function() {
+      return installSucc;
+    });
+  }); 
+
 });
