@@ -26,13 +26,14 @@ describe('spm cmd build test', function() {
     var cmd = baseCmd.slice(0);
     cmd.push('--name=name');
     cmd.push('--version=1.0.0');
+    cmd.push('--root=""');
     var output = run(cmd);
-    expect(output).toMatch('#name/1.0.0/contact/model/m');
+    expect(output).toMatch('name/1.0.0/contact/model/m');
   });
 
   it('test default name', function() {
     var cmd = baseCmd.slice(0);
-
+    cmd.push('--root=#');
     cmd.push('--version=1.0.0');
     var output = run(cmd);
     expect(output).toMatch('#public/1.0.0/contact/model/m');
