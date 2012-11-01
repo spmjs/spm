@@ -1,3 +1,4 @@
 {
-  "root": "alice"
+  "root": "alice",
+  "version": "1.0.0"
 }

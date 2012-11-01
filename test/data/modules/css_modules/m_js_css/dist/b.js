@@ -1,0 +1,1 @@
+define("alice/m_js_css/1.0.0/b",["./base2.css","./base1.css"],function(e,t){var n=e("./base2.css"),r=e("./base1.css")});
