@@ -1,3 +1,5 @@
+/** #cssModule/0.0.1/base.css **/
+
 @charset "utf-8";
 
 /* 
@@ -137,6 +139,9 @@ body .fn-hide {
 .fn-right {
 	float:right;
 }
+
+/** #cssModule/0.0.1/css3.less.css **/
+
 .comma-delimited {
   background: url(bg.jpg) no-repeat, url(bg.png) repeat-x top left, url(bg);
   text-shadow: -1px -1px 1px #ff0000, 6px 5px 5px #ffff00;
@@ -209,3 +214,8 @@ p::before {
     font-size: 12px;
   }
 }
+
+
+/** #cssModule/0.0.1/base/base_1.css **/
+
+.h4 { color: red}

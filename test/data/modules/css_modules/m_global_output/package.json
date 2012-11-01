@@ -1,0 +1,11 @@
+{
+  "parent": "../package.json",
+  "name": "m_global_output",
+  "version": "1.0.0",
+  "dependencies": {
+    "base": "alice/m_css_base/1.0.0/base1.css"
+  },
+  "output": {
+    "g1.css": ["g1.css", "base"]
+  }
+}
