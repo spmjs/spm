@@ -5,13 +5,11 @@ define("outputTest/0.0.1/a-debug", [], function(require, exports) {
 });
 
 
-
 define("outputTest/0.0.1/b-debug", [], function(require, exports) {
   exports.getB = function(id) {
 
   };
 });
-
 
 
 
@@ -22,13 +20,11 @@ define("outputTest/0.0.1/a-debug", [], function(require, exports) {
 });
 
 
-
 define("outputTest/0.0.1/b-debug", [], function(require, exports) {
   exports.getB = function(id) {
 
   };
 });
-
 
 
 
@@ -38,11 +34,9 @@ define("outputTest/0.0.1/c-debug", [], function(require, exports) {
   };
 });
 
-
 define("outputTest/0.0.1/plugins/p1-debug", [], function(require, exports) {
 
 });
-
 
 define("outputTest/0.0.1/allMerge-debug", ["./a-debug", "./b-debug", "./c-debug", "./plugins/p1-debug", "./plugins/p2-debug", "#jquery/1.7.2/jquery-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports) {
   var $ = require('#jquery/1.7.2/jquery-debug');
@@ -59,7 +53,6 @@ define("outputTest/0.0.1/allMerge-debug", ["./a-debug", "./b-debug", "./c-debug"
     widget.render(dom, module);
   };
 });
-
 
 define("outputTest/0.0.1/c-debug", [], function(require, exports) {
   exports.getC = function(id) {

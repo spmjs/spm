@@ -1,0 +1,10 @@
+{
+  "parent": "../package.json",
+  "name": "m_js_css",
+  "output": {
+    "a.js": ".",
+    "b.js": ".",
+    "base1.css": ".",
+    "base2.css": ["a.css", "b.css", "c.css"]
+  }
+}

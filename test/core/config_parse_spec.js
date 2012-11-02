@@ -91,7 +91,7 @@ describe("config parse test", function() {
       expect(sources.length).toBe(3);
       expect(sources[0]).toBe('arale.alipay.im:8001');
       expect(sources[1]).toBe('arale.alipay.im:8000');
-      expect(sources[2]).toBe('http://modules.aralejs.org');
+      expect(sources[2]).toBe('http://modules.seajs.org');
 
       // test object merge
       var dependencies = config.get('dependencies');

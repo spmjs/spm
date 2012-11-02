@@ -1,0 +1,8 @@
+{
+  "root": "#",
+  "name": "tplModule",
+  "version": "1.0.0",
+  "output": {
+    "a.js":"."
+  }
+}

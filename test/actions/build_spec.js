@@ -67,7 +67,6 @@ describe('spm build test', function() {
     var buildOver = false;
     runs(function() {
       executeBuildAction(relativeModuleDir, function(model) {
-        buildOver = true;
         expect(model.name).toEqual('relativeModule');
         var moduleCPath = path.join(relativeModuleDir, 'dist', 'lib', 'c-debug.js');
         expect(fsExt.existsSync(moduleCPath)).toBeTruthy();
@@ -80,6 +79,7 @@ describe('spm build test', function() {
         expect(code).toMatch(cDefReg);
         expect(code).toMatch(bDefReg);
         expect(code).toMatch(aDefReg);
+        buildOver = true;
       });
     });
 
@@ -92,7 +92,6 @@ describe('spm build test', function() {
     var buildOver = false;
     runs(function() {
       executeBuildAction(sampleModuleDir, function(model) {
-        buildOver = true;
         expect(model.name).toEqual('sampleModule');
         var spaceDefinePath = path.join(sampleModuleDir, 'dist', 'spaceDefine-debug.js');
         var modulePath = path.join(sampleModuleDir, 'dist', 'module-debug.js');
@@ -104,6 +103,7 @@ describe('spm build test', function() {
         var mreg = /define\("sampleModule\/0.0.1\/module-debug",/;
         expect(code).toMatch(sreg);
         expect(moduleCode).toMatch(mreg);
+        buildOver = true;
       });
     });
 
@@ -116,7 +116,6 @@ describe('spm build test', function() {
     var buildOver = false;
     runs(function() {
       executeBuildAction(sampleModuleDir, function(model) {
-        buildOver = true;
         var modulePath = path.join(sampleModuleDir, 'dist', 'debugRequire-debug.js');
         expect(fsExt.existsSync(modulePath)).toBeTruthy();
         
@@ -128,6 +127,7 @@ describe('spm build test', function() {
         expect(code).toMatch(defineReg);
         expect(code).toMatch(requireReg1);
         expect(code).toMatch(requireReg2);
+        buildOver = true;
       });
     });
 
@@ -140,7 +140,6 @@ describe('spm build test', function() {
     var buildOver = false;
     runs(function() {
       executeBuildAction(sampleModuleDir, function(model) {
-        buildOver = true;
         var modulePath = path.join(sampleModuleDir, 'dist', 'asyncRequire-debug.js');
         expect(fsExt.existsSync(modulePath)).toBeTruthy();
         
@@ -154,6 +153,7 @@ describe('spm build test', function() {
         expect(code).toMatch(defineReg);
         expect(code).toMatch(requireReg1);
         expect(code).toMatch(requireReg2);
+        buildOver = true;
       });
     });
 

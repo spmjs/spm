@@ -1,7 +1,7 @@
 {
     "name"          : "spm",
-    "version"       : "1.0.0",
-    "description"   : "A Package Manager for SeaJS",
+    "version"       : "1.1.0-dev",
+    "description"   : "Static Package Manager",
     "homepage"      : "https://github.com/seajs/spm",
     "keywords"      : ["seajs", "module", "package", "optimization", "tool"],
     "author"        : "Frank Wang <lifesinger@gmail.com>",

@@ -12,7 +12,6 @@ define("outputTest/0.0.1/arrayMerge-debug", ["./a-debug", "./b-debug", "./c-debu
 });
 
 
-
 define("outputTest/0.0.1/a-debug", [], function(require, exports) {
   exports.getA = function(id) {
 
@@ -20,13 +19,11 @@ define("outputTest/0.0.1/a-debug", [], function(require, exports) {
 });
 
 
-
 define("outputTest/0.0.1/b-debug", [], function(require, exports) {
   exports.getB = function(id) {
 
   };
 });
-
 
 
 
