@@ -29,7 +29,8 @@
         "csslint": "~0.9.9",
         "prompt": "~0.2.7",
         "connect": "~2.6.0",
-        "JSONPath": "~0.9.0"
+        "JSONPath": "~0.9.0",
+        "prettyjson": "~0.7.1"
     },
     "repository"    : {
         "type": "git",
