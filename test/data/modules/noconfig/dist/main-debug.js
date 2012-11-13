@@ -1,5 +1,5 @@
 define("#public/1.0.0/contact/model/m-debug", ["../../core/js/config-debug", "../../core/js/utils-debug"], function(require, exports, module) {
-  var tpl = '<div>hello</div><input name="nihai" value=\'{"name": "a"}\'/>';
+  var tpl = '<div>hello</div> <input name="nihai" value=\'{"name": "a"}\'/>';
   var config = require('../../core/js/config-debug'); 
   var utils = require('../../core/js/utils-debug'); 
   
