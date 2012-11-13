@@ -1,5 +1,5 @@
 {
-    "name": "{{project}}",
+    "name": "{{name}}",
     "version": "1.0.0",
     "root": "{{root}}",
     "description": "",
@@ -15,8 +15,8 @@
     "license": "",
     "dependencies": {
     },
-    "tests": ["{{project}}"],
+    "tests": ["{{name}}"],
     "output": {
-        "{{project}}.js": "."
+        "{{name}}.js": "."
     }
 }
