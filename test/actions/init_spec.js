@@ -19,7 +19,7 @@ describe('spm init action', function() {
     var initSucc = false
     var moduleName = 'testModule';
     runs(function() {
-      init.run({projectName: moduleName, base: path.join(moduleDir, moduleName), 'module-type': 1}, function() {
+      init.run({projectName: moduleName, base: path.join(moduleDir, moduleName), 'module-type': "name=base"}, function() {
         initSucc = true;
         expect(true).toBeTruthy();
         var initModule = ls(moduleDir);
