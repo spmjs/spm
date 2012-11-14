@@ -1,3 +1,14 @@
+## 2012.11.14, Version 1.1.0 (stable)
+1. 模板系统初步成型，支持源模板配置。
+2. spm search 目前相对功能还比较简单。
+3. 修复社区反馈相关问题。
+
+## 2012.10.27, Version 1.0.0 (stable)
+1. 修复社区反馈的问题
+2. 文档部分优化
+3. 提供了一个 hello-spm demo
+4. 只是 spmConfig 配置
+
 
 ## 2012.09.29 , Version 0.9.12(Unstable)
 
