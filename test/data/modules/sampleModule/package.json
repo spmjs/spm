@@ -15,6 +15,7 @@
         "spaceRequire.js": "default",
         "commentDefine.js": "default",
         "spaceDefine.js": "default",
-        "jsonModule.js": "."
+        "jsonModule.js": ".",
+        "module_contain_dot.js": "."
     }
 }
