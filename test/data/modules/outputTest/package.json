@@ -12,6 +12,10 @@
         "main": "allMerge.js",
         "includes": ["a.js", "b.js", ".", "c.js"]
       },
+      "new_module2.js": {
+        "main": "allMerge.js",
+        "includes": ["js/*js", "*"]
+      },
       "localMerge.js": ".",
       "allMerge.js": "*",
       "arrayMerge.js": ["arrayMerge.js", "a.js", "b.js", "c.js"],
