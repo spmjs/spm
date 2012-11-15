@@ -26,7 +26,7 @@ describe('spm install action', function() {
 
     waitsFor(function() {
       return installSucc;
-    });
+    }, 100000);
   }); 
 
   it('test install jquery to default directory', function() {
@@ -43,7 +43,7 @@ describe('spm install action', function() {
 
     waitsFor(function() {
       return installSucc;
-    });
+    }, 100000);
   }); 
 
 });

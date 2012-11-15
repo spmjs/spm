@@ -48,7 +48,6 @@ describe('spm init action', function() {
         var initModule = ls(moduleDir);
         expect(initModule).toEqual([moduleName]);
         var packageJsonPath = path.join(moduleDir, moduleName, 'package.json');
-console.info('-----22->', packageJsonPath)
         var packageJson = JSON.parse(fsExt.readFileSync(packageJsonPath));
 
         expect(packageJson.name).toEqual(moduleName);
