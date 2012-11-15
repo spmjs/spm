@@ -60,12 +60,12 @@ describe('spm build output plugin test', function() {
     var d2 = getRegByModel(model, 'a-debug');
     var d3 = getRegByModel(model, 'b-debug');
     var d4 = getRegByModel(model, 'c-debug');
-    var d5 = getRegById('#widget/1.0.0/auto-render-debug');
-    var d6 = getRegById('#base/1.0.0/base-debug');
-    var d7 = getRegById('#class/1.0.0/class-debug');
-    var d8 = getRegById('#events/1.0.0/events-debug');
-    var d9 = getRegById('#widget/1.0.0/widget-debug');
-    var d10 = getRegById('#base/1.0.0/aspect-debug');
+    var d5 = getRegById('arale/widget/1.0.2/auto-render-debug');
+    var d6 = getRegById('arale/base/1.0.1/base-debug');
+    var d7 = getRegById('arale/class/1.0.0/class-debug');
+    var d8 = getRegById('arale/events/1.0.0/events-debug');
+    var d9 = getRegById('arale/widget/1.0.2/widget-debug');
+    var d10 = getRegById('arale/base/1.0.1/aspect-debug');
 
     var d11 = getRegByModel(model, 'plugins/p1-debug');
     var d12 = getRegByModel(model, 'plugins/p2-debug');
@@ -116,11 +116,11 @@ describe('spm build output plugin test', function() {
     var d3 = getRegByModel(model, 'b-debug');
     var d4 = getRegByModel(model, 'c-debug');
 
-    var d5 = getRegById('#widget/1.0.0/auto-render-debug');
-    var d6 = getRegById('#base/1.0.0/base-debug');
-    var d7 = getRegById('#class/1.0.0/class-debug');
-    var d8 = getRegById('#events/1.0.0/events-debug');
-    var d9 = getRegById('#widget/1.0.0/widget-debug');
+    var d5 = getRegById('arale/widget/1.0.2/auto-render-debug');
+    var d6 = getRegById('arale/base/1.0.1/base-debug');
+    var d7 = getRegById('arale/class/1.0.0/class-debug');
+    var d8 = getRegById('arale/events/1.0.0/events-debug');
+    var d9 = getRegById('arale/widget/1.0.2/widget-debug');
 
     expect(excludeMergeCode).not.toMatch(jqReg);
 

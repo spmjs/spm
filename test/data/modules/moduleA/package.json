@@ -4,8 +4,8 @@
     "version": "0.9.17",
     "dependencies": {
         "$": "$",
-        "handlebars": "1.0.0",
-        "base": "0.9.16"
+        "handlebars": "gallery/handlbars/1.0.0/handlebars",
+        "base": "arlae/base/1.0.1/base"
     },
     "output": {
         "widget.js": ".",

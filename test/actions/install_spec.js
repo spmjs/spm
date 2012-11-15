@@ -13,12 +13,14 @@ describe('spm install action', function() {
   it('test install jquery', function() {
     var installSucc = false
     runs(function() {
-      install.run({modules: ['jquery', 'widget'], force: true, to: moduleDir}, function() {
+      install.run({modules: ['gallery.jquery', 'arale.widget'], force: true, to: moduleDir}, function() {
         installSucc = true;
         expect(true).toBeTruthy();
-        var installModules = ls(moduleDir);
+        var installWidgetModules = ls(path.join(moduleDir, 'arale'));
+        var installJqueryModules = ls(path.join(moduleDir, 'gallery'));
         // expect(installModules).toEqual(['base', 'class', 'events', 'handlerbars', 'jquery', 'widget']);
-        expect(installModules.length).toEqual(6);
+        expect(installWidgetModules.length).toEqual(4);
+        expect(installJqueryModules.length).toEqual(2);
       });
     });
 
@@ -30,12 +32,12 @@ describe('spm install action', function() {
   it('test install jquery to default directory', function() {
     var installSucc = false
     runs(function() {
-      install.run({modules: ['jquery', 'widget'], force: true, base: moduleDir}, function() {
+      install.run({modules: ['gallery.jquery', 'arale.widget'], force: true, base: moduleDir}, function() {
         installSucc = true;
         expect(true).toBeTruthy();
         var installModules = ls(path.join(moduleDir, 'sea-modules'));
         // expect(installModules).toEqual(['base', 'class', 'events', 'handlerbars', 'jquery', 'widget']);
-        expect(installModules.length).toEqual(6);
+        expect(installModules.length).toEqual(2);
       });
     });
 

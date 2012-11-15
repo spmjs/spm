@@ -19,7 +19,7 @@ define("outputTest/0.0.1/c-debug", [], function(require, exports) {
   };
 });
 
-define("#base/1.0.0/aspect-debug", [], function(require, exports) {
+define("arale/base/1.0.1/aspect-debug", [], function(require, exports) {
 
   // Aspect
   // ---------------------
@@ -90,8 +90,7 @@ define("#base/1.0.0/aspect-debug", [], function(require, exports) {
 
 });
 
-
-define("#base/1.0.0/attribute-debug", [], function(require, exports) {
+define("arale/base/1.0.1/attribute-debug", [], function(require, exports) {
 
   // Attribute
   // -----------------
@@ -104,21 +103,21 @@ define("#base/1.0.0/attribute-debug", [], function(require, exports) {
   // 负责 attributes 的初始化
   // attributes 是与实例相关的状态信息，可读可写，发生变化时，会自动触发相关事件
   exports.initAttrs = function(config, dataAttrsConfig) {
+
     // 合并来自 data-attr 的配置
     if (dataAttrsConfig) {
       config = config ? merge(dataAttrsConfig, config) : dataAttrsConfig;
     }
 
-    var specialProps = this.propsInAttrs || [];
-    var attrs, inheritedAttrs, userValues;
-
     // Get all inherited attributes.
-    inheritedAttrs = getInheritedAttrs(this, specialProps);
-    attrs = merge({}, inheritedAttrs);
+    var specialProps = this.propsInAttrs || [];
+    var inheritedAttrs = getInheritedAttrs(this, specialProps);
+    var attrs = merge({}, inheritedAttrs);
+    var userValues;
 
     // Merge user-specific attributes from config.
     if (config) {
-      userValues = normalize(config);
+      userValues = normalize(config, true);
       merge(attrs, userValues);
     }
 
@@ -235,6 +234,7 @@ define("#base/1.0.0/attribute-debug", [], function(require, exports) {
   // -------
 
   var toString = Object.prototype.toString;
+  var hasOwn = Object.prototype.hasOwnProperty;
 
   var isArray = Array.isArray || function(val) {
     return toString.call(val) === '[object Array]';
@@ -248,14 +248,37 @@ define("#base/1.0.0/attribute-debug", [], function(require, exports) {
     return toString.call(val) === '[object Function]';
   }
 
+  function isWindow(o) {
+    return o != null && o == o.window;
+  }
+
   function isPlainObject(o) {
-    return o &&
-      // 排除 boolean/string/number/function 等
-      // 标准浏览器下，排除 window 等非 JS 对象
-      // 注：ie8- 下，toString.call(window 等对象)  返回 '[object Object]'
-        toString.call(o) === '[object Object]' &&
-      // ie8- 下，排除 window 等非 JS 对象
-        ('isPrototypeOf' in o);
+    // Must be an Object.
+    // Because of IE, we also have to check the presence of the constructor
+    // property. Make sure that DOM nodes and window objects don't
+    // pass through, as well
+    if (!o || toString.call(o) !== "[object Object]" ||
+        o.nodeType || isWindow(o)) {
+      return false;
+    }
+
+    try {
+      // Not own constructor property must be Object
+      if (o.constructor &&
+          !hasOwn.call(o, "constructor") &&
+          !hasOwn.call(o.constructor.prototype, "isPrototypeOf")) {
+        return false;
+      }
+    } catch (e) {
+      // IE8,9 Will throw exceptions on certain host objects #9897
+      return false;
+    }
+
+    // Own properties are enumerated firstly, so to speed up,
+    // if last one is own, then all properties are own.
+    for (var key in o) {}
+
+    return key === undefined || hasOwn.call(o, key);
   }
 
   function isEmptyObject(o) {
@@ -415,7 +438,7 @@ define("#base/1.0.0/attribute-debug", [], function(require, exports) {
   //      readOnly: boolean
   //   }
   //
-  function normalize(attrs) {
+  function normalize(attrs, isUserValue) {
     // clone it
     attrs = merge({}, attrs);
 
@@ -423,6 +446,7 @@ define("#base/1.0.0/attribute-debug", [], function(require, exports) {
       var attr = attrs[key];
 
       if (isPlainObject(attr) &&
+          !isUserValue &&
           hasOwnProperties(attr, ATTR_SPECIAL_KEYS)) {
         continue;
       }
@@ -525,15 +549,14 @@ define("#base/1.0.0/attribute-debug", [], function(require, exports) {
 
 });
 
-
-define("#base/1.0.0/base-debug", ["./aspect-debug", "./attribute-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
+define("arale/base/1.0.1/base-debug", ["./aspect-debug", "./attribute-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug"], function(require, exports, module) {
 
   // Base
   // ---------
   // Base 是一个基础类，提供 Class、Events、Attrs 和 Aspect 支持。
 
-  var Class = require('#class/1.0.0/class-debug');
-  var Events = require('#events/1.0.0/events-debug');
+  var Class = require('arale/class/1.0.0/class-debug');
+  var Events = require('arale/events/1.0.0/events-debug');
   var Aspect = require('./aspect-debug');
   var Attribute = require('./attribute-debug');
 
@@ -558,7 +581,7 @@ define("#base/1.0.0/base-debug", ["./aspect-debug", "./attribute-debug", "#class
 
 });
 
-define("#class/1.0.0/class-debug", [], function(require, exports, module) {
+define("arale/class/1.0.0/class-debug", [], function(require, exports, module) {
 
   // Class
   // -----------------
@@ -783,7 +806,7 @@ define("#class/1.0.0/class-debug", [], function(require, exports, module) {
 
 })
 
-define("#events/1.0.0/events-debug", [], function() {
+define("arale/events/1.0.0/events-debug", [], function() {
 
   // Events
   // -----------------
@@ -942,9 +965,9 @@ define("#events/1.0.0/events-debug", [], function() {
   return Events
 })
 
-define("outputTest/0.0.1/excludeMergeB-debug", ["./a-debug", "./b-debug", "./c-debug", "#jquery/1.7.2/jquery-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports) {
-  var $ = require('#jquery/1.7.2/jquery-debug');
-  var widget = require('#widget/1.0.0/widget-debug');
+define("outputTest/0.0.1/excludeMergeB-debug", ["./a-debug", "./b-debug", "./c-debug", "gallery/jquery/1.7.2/jquery-debug", "arale/widget/1.0.2/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug"], function(require, exports) {
+  var $ = require('gallery/jquery/1.7.2/jquery-debug');
+  var widget = require('arale/widget/1.0.2/widget-debug');
   var moduleA = require('./a-debug');
   var moduleB = require('./b-debug');
   var modulec = require('./c-debug');

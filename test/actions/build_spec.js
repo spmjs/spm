@@ -149,7 +149,7 @@ describe('spm build test', function() {
         var requireReg1 = /require\.async\('\.\/module-debug'\)/;
         var requireReg2 = /require\.async\('module-debug'\)/;
         var requireReg2 = /require\.async\('$-debug'\)/;
-        var requireReg2 = /require\.async\('#base\/1.0.0\/base-debug'\)/;
+        var requireReg2 = /require\.async\('arale\/base\/1.0.1\/base-debug'\)/;
         expect(code).toMatch(defineReg);
         expect(code).toMatch(requireReg1);
         expect(code).toMatch(requireReg2);

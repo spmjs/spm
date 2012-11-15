@@ -3,9 +3,9 @@
     "root": "",
     "version": "0.0.1",
     "dependencies": {
-      "widget": "1.0.0",
-      "jquery": "1.7.2",
-      "$": "jquery/1.7.2/jquery"
+      "widget": "arale/widget/1.0.2/widget",
+      "jquery": "gallery/jquery/1.7.2/jquery",
+      "$": "gallery/jquery/1.7.2/jquery"
     },
     "output": {
       "new_module.js": {
@@ -21,10 +21,10 @@
       },
       "excludeMergeB.js": {
         "includes": "*",
-        "excludes": ["#widget/1.0.0/widget"]
+        "excludes": ["arale/widget/1.0.2/widget"]
       },
       "*": {
-        "excludes": ["#jquery/1.7.2/jquery", "plugins/p2.js"]
+        "excludes": ["gallery/jquery/1.7.2/jquery", "plugins/p2.js"]
       },
       "sites1": "sites/**/*.js",
       "plugins/*.js": "default"

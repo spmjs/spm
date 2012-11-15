@@ -2,6 +2,6 @@
     "parent": "../package.json",
     "dependencies": {
         "seajs": "#seajs/1.2.1/sea",
-        "handlebars": "1.0.0"
+        "handlebars": "gallery/handlebars/1.0.0/handlebars"
     }
 }
