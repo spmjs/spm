@@ -1,8 +1,10 @@
 **简单、放心的包管理工具 。**
 
-SPM 是一个基于命令行的前端项目管理工具，目前可以支持 JS 和 CSS 的项目。
 ----------
+
 [![Build Status](https://secure.travis-ci.org/spmjs/spm.png)](https://travis-ci.org/spmjs/spm)
+
+SPM 是一个基于命令行的前端项目管理工具，目前可以支持 JS 和 CSS 的项目。
 
 
 点击[安装](https://github.com/seajs/spm/wiki/%E5%AE%89%E8%A3%85)
