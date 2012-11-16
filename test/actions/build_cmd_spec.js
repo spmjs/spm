@@ -43,17 +43,17 @@ describe('spm cmd build test', function() {
     var cmd1 = baseCmd.slice(0);
     cmd1.push('--version=release101');
     var output1= run(cmd1);
-    expect(output1).toMatch('#public/release101/contact/model/m');
+    expect(output1).toMatch('public/release101/contact/model/m');
 
     var cmd2 = baseCmd.slice(0);
     cmd2.push('--version=release');
     var output2 = run(cmd2);
-    expect(output2).toMatch('#public/release/contact/model/m');
+    expect(output2).toMatch('public/release/contact/model/m');
 
     var cmd3 = baseCmd.slice(0);
     cmd3.push('--version=111');
     var output2 = run(cmd3);
-    expect(output2).toMatch('#public/111/contact/model/m');
+    expect(output2).toMatch('public/111/contact/model/m');
   });
 
   it('test arg dist', function() {
@@ -63,13 +63,13 @@ describe('spm cmd build test', function() {
     var cmd1 = cmd.slice(0);
     cmd1.push('--to=new_dist');
     var output1 = run(cmd1);
-    expect(output1).toMatch('#public/1.0.0/contact/model/m');
+    expect(output1).toMatch('public/1.0.0/contact/model/m');
     expect(fsExt.existsSync(path.join(basePath, 'new_dist'))).toBeTruthy();
 
     var cmd2 = cmd.slice(0);
     cmd2.push('--to=111');
     var output2 = run(cmd2);
-    expect(output2).toMatch('#public/1.0.0/contact/model/m');
+    expect(output2).toMatch('public/1.0.0/contact/model/m');
     expect(fsExt.existsSync(path.join(basePath, '111'))).toBeTruthy();
   });
 
@@ -77,6 +77,7 @@ describe('spm cmd build test', function() {
     var cmd = baseCmd.slice(0);
     cmd.push('--output.main=.');  
     cmd.push('--version=1.0.0');
+    cmd.push('--root=#');
 
     rm(path.join(basePath, 'dist'));
     run(cmd);
