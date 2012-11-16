@@ -1,5 +1,5 @@
 var ProjectFactory = require('../lib/core/project_factory.js');
-var Action = require('../lib/core/Action.js');
+var Action = require('../lib/core/action.js');
 
 global.getProjectModel = function(action, dir, callback) {
   if (arguments.length === 2) {
