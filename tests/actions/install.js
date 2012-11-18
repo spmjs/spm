@@ -1,3 +1,4 @@
+var should = require('should');
 require('shelljs/global');
 var path = require('path');
 
@@ -10,40 +11,24 @@ describe('spm install action', function() {
     rm('-rf', path.join(moduleDir, '*'));
   });
   
-  it('test install jquery', function() {
-    var installSucc = false
-    runs(function() {
-      install.run({modules: ['gallery.jquery', 'arale.widget'], force: true, to: moduleDir}, function() {
-        installSucc = true;
-        expect(true).toBeTruthy();
-        var installWidgetModules = ls(path.join(moduleDir, 'arale'));
-        var installJqueryModules = ls(path.join(moduleDir, 'gallery'));
-        // expect(installModules).toEqual(['base', 'class', 'events', 'handlerbars', 'jquery', 'widget']);
-        expect(installWidgetModules.length).toEqual(4);
-        expect(installJqueryModules.length).toEqual(2);
-      });
-    });
+  it('test install jquery', function(done) {
+    install.run({modules: ['gallery.jquery', 'arale.widget'], force: true, to: moduleDir}, function() {
+      var installWidgetModules = ls(path.join(moduleDir, 'arale'));
+      var installJqueryModules = ls(path.join(moduleDir, 'gallery'));
+      // expect(installModules).toEqual(['base', 'class', 'events', 'handlerbars', 'jquery', 'widget']);
 
-    waitsFor(function() {
-      return installSucc;
-    }, 100000);
+      installWidgetModules.should.have.length(4);
+      installJqueryModules.should.have.length(2);
+      done();
+    });
   }); 
 
   it('test install jquery to default directory', function() {
-    var installSucc = false
-    runs(function() {
-      install.run({modules: ['gallery.jquery', 'arale.widget'], force: true, base: moduleDir}, function() {
-        installSucc = true;
-        expect(true).toBeTruthy();
-        var installModules = ls(path.join(moduleDir, 'sea-modules'));
-        // expect(installModules).toEqual(['base', 'class', 'events', 'handlerbars', 'jquery', 'widget']);
-        expect(installModules.length).toEqual(2);
-      });
+    install.run({modules: ['gallery.jquery', 'arale.widget'], force: true, base: moduleDir}, function() {
+      var installModules = ls(path.join(moduleDir, 'sea-modules'));
+      // expect(installModules).toEqual(['base', 'class', 'events', 'handlerbars', 'jquery', 'widget']);
+      installModules.should.have.length(2);
     });
-
-    waitsFor(function() {
-      return installSucc;
-    }, 100000);
   }); 
 
 });

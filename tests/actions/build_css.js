@@ -100,6 +100,7 @@ describe('spm build test', function() {
 function executeBuildAction(moduleDir, callback) {
   build.run({
     base: moduleDir,
+    'source-files': [],
     'convert-style': 'none'
   }, callback);
 }
