@@ -1,0 +1,1 @@
+define("relativeModule/0.9.1/core/b",[],function(e,t){t.say=function(){console.log("say!")}}),define("relativeModule/0.9.1/core/a",["./b"],function(e,t){var n=e("./b");t.say=function(){n.say()}});

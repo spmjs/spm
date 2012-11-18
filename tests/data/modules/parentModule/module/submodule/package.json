@@ -1,0 +1,16 @@
+{
+    "name": "module",
+    "parent": "../package.json",
+    "version": "0.0.1",
+    "dependencies": {
+        "base": "arale/base/1.0.1/base"
+    },
+    "output": {
+        "module.js": "seajs",
+        "debugRequire.js": ".",
+        "asyncRequire.js": ".",
+        "spaceRequire.js": "default",
+        "commentDefine.js": "default",
+        "spaceDefine.js": "default"
+    }
+}

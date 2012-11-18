@@ -1,0 +1,11 @@
+{
+    "name": "parent",
+    "root": "alipay",
+    "sources": ["arale.alipay.im:8002"],
+    "dependencies": {
+        "$":"jquery/1.7.2/jquery",
+        "widget": "0.9.16"
+    },
+    "isBoolean": true 
+}
+

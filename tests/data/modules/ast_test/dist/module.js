@@ -1,0 +1,1 @@
+define("#ast_test/0.0.1/foo",[],function(e,t){t.say=function(){console.info("hello!")}}),define("#ast_test/0.0.1/module",["./foo"],function(e,t){var n=e("./foo");t.say=function(){n.say()}});

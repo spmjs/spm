@@ -1,0 +1,1 @@
+define([],function(){this.DEBUG=!0});

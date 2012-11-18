@@ -1,0 +1,13 @@
+{
+  "name": "app",
+  "root": "#",
+  "version": "0.0.1",
+  "dependencies": {
+    "xbox": "0.0.1",
+    "apop": "0.0.1"
+  },
+  "output": {
+    "app.js": "*",
+    "style.css": "style.css"
+  }
+}

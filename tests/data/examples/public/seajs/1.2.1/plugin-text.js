@@ -1,0 +1,1 @@
+define("seajs/plugin-text",["./plugin-base"],function(e){function t(e){return e.replace(/(["\\])/g,"\\$1").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/\t/g,"\\t").replace(/\f/g,"\\f")}var n=e("./plugin-base"),r=n.util;n.add({name:"text",ext:[".tpl",".htm",".html"],fetch:function(e,n){r.xhr(e,function(e){var i=t(e);r.globalEval('define([], "'+i+'")'),n()})}})});

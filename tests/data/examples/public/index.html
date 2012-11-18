@@ -1,0 +1,31 @@
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+      <title>spm examples</title>
+       <script type="text/javascript" charset="utf-8"  src="./seajs/1.2.1/sea-debug.js"></script>
+           
+       </script>
+       <script type="text/javascript" charset="utf-8">
+           seajs.config({
+               alias: {
+                 "$": "jquery/1.7.2/jquery"
+                 ,"app": "app/0.0.1/app"
+               } 
+           });
+       </script>
+       <script type="text/javascript" charset="utf-8">
+           //seajs.use(['$', 'ww'], function($, app) {
+           seajs.use(['$', 'app'], function($, app) {
+                $('#btn_test').on('click', function() {
+                    app.show();     
+                });
+           });
+       </script>
+  </head>
+  <body>
+      <div id="div_test">
+        <input id="btn_test" type="button" value="click me"/>
+      </div>
+  </body>
+</html>

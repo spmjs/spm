@@ -1,0 +1,1 @@
+define('lib-z', { name: 'z' });

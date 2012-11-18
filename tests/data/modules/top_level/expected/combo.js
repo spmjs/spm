@@ -1,0 +1,2 @@
+define("http://test.com/js/program.js",["./biz/increment"],function(a){var b=a("./biz/increment").increment;console.log("The result of inc(1) is",b(1))});
+define("http://test.com/js/biz/increment.js",["math"],function(a,b){var c=a("math").add;b.increment=function(a){return c(a,1)}});

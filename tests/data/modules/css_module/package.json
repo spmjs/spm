@@ -1,0 +1,10 @@
+{
+    "name": "cssModule",
+    "version": "0.0.1",
+    "dependencies": {
+    },
+    "output": {
+      "base.css": "default",
+      "base1.css": ["base.css", "css3.less", "base/base_1.css"]
+    }
+}

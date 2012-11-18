@@ -1,0 +1,12 @@
+{
+  "name": "apop",
+  "root": "#",
+  "version": "0.0.1",
+  "dependencies": {
+    "base": "1.0.0"
+  },
+  "output": {
+    "apop.js": "."
+  }
+}
+

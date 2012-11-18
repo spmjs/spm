@@ -1,0 +1,1 @@
+var devCheck=module.exports=Plugin.create("devCheck");devCheck.run=function(e,t){var n=e.version;/-dev$/.test(n)?t("find developing project!"):(console.info("find release project "+e.name),t())};

@@ -1,0 +1,1 @@
+define(["./math"],function(a,b){var c=a("./math").add;b.increment=function(a){return c(a,1)}});

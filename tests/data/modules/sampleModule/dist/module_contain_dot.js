@@ -1,0 +1,1 @@
+define("sampleModule/0.0.1/module_contain_dot",[],function(e,t){});
