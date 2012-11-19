@@ -33,7 +33,7 @@ describe('spm init action', function() {
 
   it('test init empty project by default name', function(done) {
     var moduleName = 'dir_name';
-    init.run({base: path.join(moduleDir, moduleName)}, function() {
+    init.run({base: path.join(moduleDir, moduleName), 'module-type': 'name=base'}, function() {
       var initModule = ls(moduleDir);
       initModule.should.eql([moduleName]);
       var packageJsonPath = path.join(moduleDir, moduleName, 'package.json');
