@@ -1,1 +1,0 @@
-define("seajs/plugin-coffee",["./plugin-base","coffee"],function(e){var t=e("./plugin-base"),n=e("coffee");t.add({name:"coffee",ext:[".coffee"],fetch:function(e,t){n.load(e,t)}})});

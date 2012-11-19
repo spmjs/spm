@@ -1,1 +1,0 @@
-define("sampleModule/0.0.1/jsonModule",[],{name:"jsonModule"});

@@ -1,1 +1,0 @@
-define("invalidNameModule/0.0.1/jquery.json-2.s",["$"],function(e,t){var n=e("$");t.get=function(e){return n(e)}});

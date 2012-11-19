@@ -1,1 +1,0 @@
-define("invalidNameModule/0.0.1/jqueryon-2.s.js-debug",["$-debug"],function(e,t){var n=e("undefined-debug");t.get=function(e){return n(e)}});

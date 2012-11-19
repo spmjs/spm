@@ -1,8 +1,0 @@
-{
-  "parent": "../package.json",
-  "name": "m_css_base",
-  "output": {
-    "base1.css": ".",
-    "base2.css": ["a.css", "b.css"]
-  }
-}
