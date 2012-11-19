@@ -1,1 +1,0 @@
-define("sampleModule/0.0.1/asyncRequire",[],function(e,t){var n=e.async("./module"),r=e.async("module"),i=e.async("$"),s=e.async("arale/base/1.0.1/base");t.say=function(){n.get(),r.get()}});

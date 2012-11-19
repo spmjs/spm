@@ -1,1 +1,0 @@
-define("sampleModule/0.0.1/module",[],function(e,t){t.get=function(e){return $(e)}});
