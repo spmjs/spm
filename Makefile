@@ -1,12 +1,36 @@
 
-TESTS = tests/actions/*
+TESTS = tests/actions/*.js
 REPORTER = dot
 
-test:
+test: test-action test-core test-plugin test-utils
+test-action:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
-		--timeout 6000 \
-		$(TESTS)
+		--timeout 10000 \
+		--globals ret \
+		--require should \
+		tests/actions/*.js
+
+test-core:
+	@NODE_ENV=test ./node_modules/.bin/mocha \
+		--reporter $(REPORTER) \
+		--require should \
+		--timeout 10000 \
+		tests/core/*.js
+
+test-plugin:
+	@NODE_ENV=test ./node_modules/.bin/mocha \
+		--reporter $(REPORTER) \
+		--require should \
+		--timeout 10000 \
+		tests/plugins/*.js
+
+test-utils:
+	@NODE_ENV=test ./node_modules/.bin/mocha \
+		--reporter $(REPORTER) \
+		--require should \
+		--timeout 10000 \
+		tests/utils/*.js
 
 
-.PHONY: test 
+.PHONY: test-action test-core test-plugin test-utils
