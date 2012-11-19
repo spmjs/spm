@@ -45,7 +45,7 @@
         "spm": "./bin/spm"
     },
     "scripts"       : {
-        "test": "node test/"
+        "test": "make test"
     },
     "preferGlobal"  : true
 }
