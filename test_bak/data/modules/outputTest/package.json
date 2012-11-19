@@ -1,0 +1,36 @@
+{
+    "name": "outputTest",
+    "root": "",
+    "version": "0.0.1",
+    "dependencies": {
+      "widget": "arale/widget/1.0.2/widget",
+      "jquery": "gallery/jquery/1.7.2/jquery",
+      "$": "gallery/jquery/1.7.2/jquery"
+    },
+    "output": {
+      "new_module.js": {
+        "main": "allMerge.js",
+        "includes": ["a.js", "b.js", ".", "c.js"]
+      },
+      "new_module2.js": {
+        "main": "allMerge.js",
+        "includes": ["js/*js", "*"]
+      },
+      "localMerge.js": ".",
+      "allMerge.js": "*",
+      "arrayMerge.js": ["arrayMerge.js", "a.js", "b.js", "c.js"],
+      "excludeMergeA.js": {
+        "includes": ".",
+        "excludes": ["a.js"]
+      },
+      "excludeMergeB.js": {
+        "includes": "*",
+        "excludes": ["arale/widget/1.0.2/widget"]
+      },
+      "*": {
+        "excludes": ["gallery/jquery/1.7.2/jquery", "plugins/p2.js"]
+      },
+      "sites1": "sites/**/*.js",
+      "plugins/*.js": "default"
+    }
+}

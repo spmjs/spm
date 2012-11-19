@@ -1,0 +1,44 @@
+{
+  "name": "",
+  "modules": {
+    "widget": {
+      "name": "widget",
+      "versions": {},
+      "root": "",
+      "tag": "",
+      "type": ""
+    },
+    "jquery": {
+      "name": "jquery",
+      "versions": {},
+      "root": "",
+      "tag": "",
+      "type": ""
+    }
+  },
+  "groups": ["alipay"],
+  "tag": "root"
+}
+
+{
+  "name": "widget",
+  "versions": {
+  
+  },
+  "root": "",
+  "tag": "",
+  "type": ""
+}
+
+{
+  "name": "alipay",
+  "modules": {
+      "xbox": {   
+      "name": "xbox",
+      "versions": {},
+      "root": "",
+      "tag": ""
+    }
+  },
+  "tag": "root"
+}

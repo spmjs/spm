@@ -1,0 +1,7 @@
+{
+   "name": "cycling",
+   "version": "0.0.1",
+   "output": {
+     "controller/c.js": "."
+   }
+}

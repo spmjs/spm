@@ -1,0 +1,18 @@
+{
+    "version": "0.0.1",
+    "name": "module",
+    "sources": ["arale.alipay.im:8001"],
+    "output": {
+        "switchable.js": ".",
+        "tabs.js": "default",
+        "slide.js": "default",
+        "accordion.js": "default",
+        "carousel.js": "default"
+    },
+    "dependencies": {
+        "widget": "1.0.0",
+        "easing": "1.0.0"
+    },
+    "isBoolean": false
+}
+

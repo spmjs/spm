@@ -1,0 +1,9 @@
+{
+    "name": "lessModule",
+    "version": "0.9.1",
+    "output": {
+        "main.js": ".",
+        "colors.less": "colors.less",
+        "merge.less": ["css3.less", "test.less"]
+    }
+}

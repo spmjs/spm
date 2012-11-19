@@ -1,0 +1,12 @@
+{
+  "name"          : "SeaJS",
+  "description"   : "SeaJS is a new kind of JavaScript Loader that makes it easy to build scalable web applications. SeaJS is designed to change the way you organize JavaScript.",
+  "homepage"      : "https://seajs.org/",
+  "keywords"      : ["loader", "modular", "CommonJS", "browser", "framework"],
+  "author"        : "Frank Wang <lifesinger@gmail.com>",
+  "contributors"  : [],
+  "dependencies"  : [],
+  "repository"    : {"type": "git", "url": "git://github.com/lifesinger/seajs.git"},
+  "main"          : "build/sea.js",
+  "version"       : "1.0.1"
+}
