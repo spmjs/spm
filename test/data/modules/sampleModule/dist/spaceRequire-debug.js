@@ -3,9 +3,9 @@ define("sampleModule/0.0.1/spaceRequire-debug", ["./module-debug"], function (re
   // var b= require('b-debug');
   // var c=require('c-debug');
 
-  var c= require('./module-debug');
-  var c = require('./module-debug');
-  var c=require('./module-debug');
+  var c= require('./module-debug.js');
+  var c = require('./module-debug.js');
+  var c=require('./module-debug.js');
 
   exports.get = function(id) {
     return $(id);
