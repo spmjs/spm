@@ -9,28 +9,28 @@ test-action:
 		--timeout 10000 \
 		--globals ret \
 		--require should \
-		tests/actions/*.js
+		test/actions/*.js
 
 test-core:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		--require should \
 		--timeout 10000 \
-		tests/core/*.js
+		test/core/*.js
 
 test-plugin:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		--require should \
 		--timeout 10000 \
-		tests/plugins/*.js
+		test/plugins/*.js
 
 test-utils:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		--require should \
 		--timeout 10000 \
-		tests/utils/*.js
+		test/utils/*.js
 
 
 .PHONY: test-action test-core test-plugin test-utils
