@@ -77,6 +77,7 @@ describe('spm build output plugin test', function() {
     allMergeCode.should.match(d11);
 
     allMergeCode.should.not.match(jqReg);
+    // 因为 全局排除
     allMergeCode.should.not.match(d12);
   
   });
