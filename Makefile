@@ -23,7 +23,7 @@ test-plugin:
 		--reporter $(REPORTER) \
 		--require should \
 		--timeout 10000 \
-		test/plugins/output_spec.js
+		test/plugins/*.js
 
 test-utils:
 	@NODE_ENV=test ./node_modules/.bin/mocha \

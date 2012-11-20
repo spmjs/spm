@@ -6,6 +6,6 @@
     "base2": "alice/m_css_base/1.0.0/base2.css"
   },
   "output": {
-    "g1.css": ["base2", "g1.css", "base"]
+    "g1.css": ["base2", "./g1.css", "base"]
   }
 }

@@ -187,20 +187,29 @@ describe('moduleHelp', function() {
 
     var m4 = './a.css';
 
+    var m5 = './b';
+    var m6 = 'jquery';
+
     // 不是相对模块不进行处理.
     help.getBaseModule(m0).should.eql('a');
-    help.getBaseModule(m0, D).should.eql('a-debug');
+    help.getDebugModule(m0, D).should.eql('a-debug.js');
     help.getBaseModule(m00).should.eql('./a');
-    help.getBaseModule(m00, D).should.eql('./a-debug');
+    help.getDebugModule(m00, D).should.eql('./a-debug.js');
 
     help.getBaseModule(m1).should.eql('./lib/a');
-    help.getBaseModule(m1, D).should.eql('./lib/a-debug');
+    help.getDebugModule(m1, D).should.eql('./lib/a-debug.js');
 
     help.getBaseModule(m3).should.eql('./a/b.tpl');
-    help.getBaseModule(m3, D).should.eql('./a/b.tpl');
+    help.getDebugModule(m3, D).should.eql('./a/b.tpl');
 
     help.getBaseModule(m4).should.eql('./a.css');
-    help.getBaseModule(m4, D).should.eql('./a-debug.css');
+    help.getDebugModule(m4, D).should.eql('./a-debug.css');
+
+    help.getDebugModule(m5, D).should.eql('./b-debug');
+    help.getDebugModule(m6, D).should.eql('jquery-debug');
+
+    help.getBaseModule(m5).should.eql(m5);
+    help.getBaseModule(m6).should.eql(m6);
   });
 
   it('version check', function() {
