@@ -6,7 +6,7 @@ test: test-action test-core test-plugin test-utils
 test-action:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
-		--timeout 10000 \
+		--timeout 20000 \
 		--globals ret \
 		--require should \
 		test/actions/*.js
