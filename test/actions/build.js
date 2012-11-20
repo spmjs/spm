@@ -106,7 +106,7 @@ describe('spm build', function() {
 
         var defineReg = /define\("sampleModule\/0.0.1\/debugRequire-debug", \[".\/module-debug"\]/;
         var requireReg1 = /require\('\.\/module-debug\.js'\)/;
-        var requireReg2 = /require\('\.\/module-debug'\)/;
+        var requireReg2 = /require\('\.\/module-debug\.js'\)/;
         code.should.match(defineReg);
         code.should.match(requireReg1);
         code.should.match(requireReg2);
@@ -125,7 +125,7 @@ describe('spm build', function() {
 
         var defineReg = /define\("sampleModule\/0.0.1\/asyncRequire-debug", \[\]/;
         var requireReg1 = /require\.async\('\.\/module-debug\.js'\)/;
-        var requireReg2 = /require\.async\('module-debug'\)/;
+        var requireReg2 = /require\.async\('module-debug\.js'\)/;
         var requireReg2 = /require\.async\('$-debug'\)/;
         var requireReg2 = /require\.async\('arale\/base\/1.0.1\/base-debug'\)/;
         code.should.match(defineReg);
