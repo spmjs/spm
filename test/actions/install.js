@@ -23,12 +23,12 @@ describe('spm install action', function() {
     });
   }); 
 
-  it('test install jquery to default directory', function() {
+  it('test install jquery to default directory', function(done) {
     install.run({modules: ['gallery.jquery', 'arale.widget'], force: true, base: moduleDir}, function() {
       var installModules = ls(path.join(moduleDir, 'sea-modules'));
       // expect(installModules).toEqual(['base', 'class', 'events', 'handlerbars', 'jquery', 'widget']);
       installModules.should.have.length(2);
+      done();
     });
   }); 
-
 });
