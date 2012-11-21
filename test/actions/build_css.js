@@ -63,8 +63,8 @@ describe('spm build test', function() {
       should.exist(code2);
 
       // 测试合并全局模块是否成功。
-      //code1.should.include('/** alice/m_css_base/1.0.0/a.css **/')
-      //code1.should.include('/** alice/m_css_base/1.0.0/b.css **/')
+      code1.should.include('/** alice/m_css_base/1.0.0/a.css **/')
+      code1.should.include('/** alice/m_css_base/1.0.0/b.css **/')
       code1.should.include('/** alice/m_css_base/1.0.0/base1.css **/')
 
       // 本地模块合并。
