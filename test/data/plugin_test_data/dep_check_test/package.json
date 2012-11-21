@@ -1,0 +1,8 @@
+{
+  "root": "plugin_test",
+  "name": "dep_check",
+  "dependencies": {
+    "$": "gallery/jquery/1.8.3/jquery",
+    "$_plugin": "gallery/jquery.plugin/1.8.2/jquery.plugin"
+  }
+}
