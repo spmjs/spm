@@ -52,27 +52,36 @@ describe('spm build test', function() {
     });
   });
 
-  it('test global css module require', function(done) {
-    executeBuildAction(globalRequireDir, function(model) {
-      var f1 = path.join(model.distDirectory, 'g1-debug.css');
-      var f2 = path.join(model.distDirectory, 'g1.css');
-      var code1 = fsExt.readFileSync(f1);
-      var code2 = fsExt.readFileSync(f2);
-
-      should.exist(code1);
-      should.exist(code2);
-
-      // 测试合并全局模块是否成功。
-      code1.should.include('/** alice/m_css_base/1.0.0/a.css **/')
-      code1.should.include('/** alice/m_css_base/1.0.0/b.css **/')
-      code1.should.include('/** alice/m_css_base/1.0.0/base1.css **/')
-
-      // 本地模块合并。
-      code1.should.include('/** alice/m_global_output/1.0.0/g1.css **/');
+  describe('global css module ', function() {
     
-      code2.should.include('.a{color:#000;background:#fff}.b{color:#000;background:#fff}');
-      code2.should.include('.g1{color:#000;background:#fff}.base1{color:#000;background:#fff}');
-      done();
+    beforeEach(function(done) {
+      executeBuildAction(baseModuleDir, function(model) {
+        done();
+      });
+    });
+    
+    it('test global css module merge', function(done) {
+      executeBuildAction(globalRequireDir, function(model) {
+        var f1 = path.join(model.distDirectory, 'g1-debug.css');
+        var f2 = path.join(model.distDirectory, 'g1.css');
+        var code1 = fsExt.readFileSync(f1);
+        var code2 = fsExt.readFileSync(f2);
+
+        should.exist(code1);
+        should.exist(code2);
+
+        // 测试合并全局模块是否成功。
+        code1.should.include('/** alice/m_css_base/1.0.0/a.css **/')
+        code1.should.include('/** alice/m_css_base/1.0.0/b.css **/')
+        code1.should.include('/** alice/m_css_base/1.0.0/base1.css **/')
+
+        // 本地模块合并。
+        code1.should.include('/** alice/m_global_output/1.0.0/g1.css **/');
+      
+        code2.should.include('.a{color:#000;background:#fff}.b{color:#000;background:#fff}');
+        code2.should.include('.g1{color:#000;background:#fff}.base1{color:#000;background:#fff}');
+        done();
+      });
     });
   });
 
