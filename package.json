@@ -29,7 +29,8 @@
         "connect": "~2.6.0",
         "JSONPath": "~0.9.0",
         "prettyjson": "~0.7.1",
-        "spm-env": "~1.0.0"
+        "spm-env": "~1.0.0",
+        "underscore": "~1.4.2"
     },
     "devDependencies": {
       "jasmine-node": "~1.0.26",
