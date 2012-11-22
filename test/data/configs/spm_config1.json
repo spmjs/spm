@@ -1,0 +1,12 @@
+{
+  "spmConfig": {
+    "upload": {
+      "override": true,
+      "to": "to1",
+      "src": "src1"
+    },
+    "build": {
+      "to": "to11"
+    }
+  }
+}
