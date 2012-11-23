@@ -1,0 +1,1 @@
+define("module",[],function(e,t){t.say=function(e){console.info("Im a!")}});

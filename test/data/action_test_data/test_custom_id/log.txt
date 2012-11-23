@@ -1,0 +1,51 @@
+Scanning for projects...
+
+------------------------------------------------------------------------
+Building widget 0.9.17
+------------------------------------------------------------------------
+--- SPM RESOURCES PLUGIN ---
+
+
+PORCESS MODULE ast-printer.js
+GENERATE ID    #widget/0.9.17/ast-printer
+RESOLVE DEPENDENCIES "ast-printer.js":  
+
+PORCESS MODULE auto-render.js
+GENERATE ID    #widget/0.9.17/auto-render
+RESOLVE DEPENDENCIES "auto-render.js":  $
+
+PORCESS MODULE daparser.js
+GENERATE ID    #widget/0.9.17/daparser
+RESOLVE DEPENDENCIES "daparser.js":  $
+
+PORCESS MODULE templatable.js
+GENERATE ID    #widget/0.9.17/templatable
+RESOLVE DEPENDENCIES "templatable.js":  ./ast-printer,$,#handlebars/1.0.0/handlebars
+
+PORCESS MODULE widget.js
+GENERATE ID    #widget/0.9.17/widget
+RESOLVE DEPENDENCIES "widget.js":  ./daparser,./auto-render,$,#base/0.9.16/base,#events/0.9.1/events,#class/0.9.2/class
+
+Spm resources plugin execution successfully!
+--- SPM DEPCHECK PLUGIN ---
+
+Spm depCheck plugin execution successfully!
+
+--- SPM OUTPUT PLUGIN ---
+
+Spm output plugin execution successfully!
+
+--- SPM COMPRESS PLUGIN ---
+
+Spm compress plugin execution successfully!
+
+--- SPM PACK PLUGIN ---
+
+Spm pack plugin execution successfully!
+
+
+  Successfully clean temp directory!
+
+------------------------------------------------------------------------
+BUILD SUCCESS!
+------------------------------------------------------------------------

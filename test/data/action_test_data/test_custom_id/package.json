@@ -1,0 +1,18 @@
+{
+    "name": "module",
+    "root": "action",
+    "version": "1.0.0",
+    "dependencies": {
+        "$": "$",
+        "base": "arlae/base/1.0.1/base"
+    },
+    "output": {
+        "a.js": ".",
+        "b.js": "."
+    },
+    "spmConfig": {
+      "*": {
+        "idRule": "{{moduleName}}/{{version}}"
+      }
+    }
+}
