@@ -115,7 +115,7 @@ describe('spm build', function() {
     });
   });
 
-  describe('test require async', function(done) {
+  describe('test require async', function() {
     it('require async module code', function(done) {
       executeBuildAction(sampleModuleDir, function(model) {
         var modulePath = path.join(sampleModuleDir, 'dist', 'asyncRequire-debug.js');
@@ -134,6 +134,22 @@ describe('spm build', function() {
         done();
       });
     });
+  });
+
+  describe('options parse test', function() {
+    it('test command arg read', function(done) {
+      build.run({
+        base: moduleAdir,
+        'source-files': [],
+        'extra-resources': ['test', 'example', 'src']
+      }, function(model) {
+        model.getConfig('extraResources').should.eql(['test', 'example', 'src'])
+        model.getConfig('extra-resources').should.eql(['test', 'example', 'src'])
+      console.info('-------->', model.getConfig('extra-resources'));
+      done();
+      }); 
+    });
+  
   });
 });
 
