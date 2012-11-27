@@ -1,4 +1,4 @@
 {
-  "sources": ["http://modules.seajs.org"],
+  "sources": ["http://modules.spmjs.org"],
   "root": ""
 }
