@@ -145,6 +145,9 @@ describe('moduleHelp', function() {
 
     var m5 = '../tpl/a.tpl';
 
+    var m7 = '/js/a.js';
+    var m8 = './js/b.js';
+
     help.getBaseDepModulePath(m0, m2).should.eql(m2);
     help.getBaseDepModulePath(m00, m2).should.eql(m2);
     help.getBaseDepModulePath(m0, m1).should.eql('./lib/a.js');
@@ -155,6 +158,11 @@ describe('moduleHelp', function() {
     help.getBaseDepModulePath(m1, m4).should.eql('./core/b.js');
 
     help.getBaseDepModulePath(m1, m5).should.eql('./tpl/a.tpl');
+
+    //help.getBaseDepModulePath(m0, m8).should.eql(m8);
+    //help.getBaseDepModulePath(m0, m7).should.eql(m7);
+    //help.getBaseDepModulePath(m0, m00).should.eql(m00);
+    //help.getBaseDepModulePath(m8, m7).should.eql(m7);
   });
 
   it('module getRelativeBaseModulePath', function() {
