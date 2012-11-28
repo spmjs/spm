@@ -1,6 +1,7 @@
 var should = require('should');
 var async = require('async');
 var path = require('path');
+var _ = require('underscore');
 var Config = require('../../lib/core/config_parse.js');
 
 describe("config parse test", function() {
@@ -180,6 +181,63 @@ describe("config parse test", function() {
         p.should.eql('parent_config.json');
       }, 500);
     });
+  });
+
+  describe('object merge test', function() {
+    var o1 = {
+      "sources": ["http://modules.seajs.org"],
+      "spmConfig": {
+         "build": {
+           "moduleBase1": "https://a.alipayobjects.com/static2",
+           "plugins": {
+             "build": {
+               "val": ["v1"],
+               "key": ["k1"],
+               "flag": false,
+               "after": "spm/release-check/1.0.0/check"
+             }
+           }
+         }
+      }
+    };  
+
+    var o2 = {
+      "sources": ["http://modules.seajs.org"],
+      "spmConfig": {
+        "build": {
+          "moduleBase2": "https://a.alipayobjects.com/static1",
+          "plugins": {
+            "build": {
+              "val": ["v2"],
+              "key": "k2",
+              "before": "spm/release-check/1.0.0/before",
+              "flag": true
+            }
+          }
+        }
+      }
+    };
+
+    Config.merge(o1, o2);
+
+    o1.spmConfig.build.moduleBase1.should.eql("https://a.alipayobjects.com/static2");
+    o1.spmConfig.build.moduleBase2.should.eql("https://a.alipayobjects.com/static1");
+
+    should.exists(o1.spmConfig.build.plugins.build.after);
+    should.exists(o1.spmConfig.build.plugins.build.before);
+
+    o1.spmConfig.build.plugins.build.val.should.have.length(2);
+    o1.spmConfig.build.plugins.build.key.should.have.length(2);
+
+    o1.spmConfig.build.plugins.build.flag.should.be.false;
+
+    should.not.exists(o2.spmConfig.build.plugins.build.after);
+    should.not.exists(o2.spmConfig.build.moduleBase1);
+
+    o2.spmConfig.build.plugins.build.val.should.have.length(1);
+    o2.spmConfig.build.plugins.build.key.should.eql("k2");
+
+    o2.spmConfig.build.plugins.build.flag.should.be.true;
   });
 
 });
