@@ -40,7 +40,7 @@ describe("config parse test", function() {
     it('test local and url config read', function(done) {
       config.on('end', function(config) {
         // test parse end
-        config.get('sources').should.have.length(2);
+        config.get('sources').should.have.length(3);
         Object.keys(config._obj).length.should.be.above(1);
       });
 
@@ -54,9 +54,10 @@ describe("config parse test", function() {
         // test array merge
         var sources = config.get('sources');
 
-        sources.should.have.length(2);
+        sources.should.have.length(3);
         sources[0].should.eql('arale.alipay.im:8001');
         sources[1].should.eql('arale.alipay.im:8000');
+        sources[2].should.eql('http://modules.spmjs.org');
 
         // test object merge
         var dependencies = config.get('dependencies');

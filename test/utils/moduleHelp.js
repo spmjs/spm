@@ -1,7 +1,7 @@
 var should = require('should');
 var path = require('path');
 var help = require('../../lib/utils/module_help.js');
-var env = require('spm-env');
+var env = require('../../lib/utils/env.js');
 
 describe('moduleHelp', function() {
   var j1 = 'lib/a.js';
@@ -55,7 +55,16 @@ describe('moduleHelp', function() {
     help.isRelative(m3).should.be.false;    
     help.isRelative(m4).should.be.false;    
     help.isRelative(m5).should.be.false;    
-    help.isRelative(m6).should.be.false;    
+    help.isRelative(m6).should.be.false;
+  });
+
+  it('relative module support base', function() {
+    var name = 'config.json';
+    var base = path.join(env.home, '.spm');
+
+    help.isRelative(name).should.be.false;
+    help.isRelative(name, base).should.be.true;
+    help.isRelative('a.js', base).should.be.false;
   });
 
 // ./module/p.js ==> plugin/p.js
