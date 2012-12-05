@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+var commander = require('commander')
+
+commander
+  .usage('<command> [options]')
+
+commander.parse(process.argv)

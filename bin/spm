@@ -5,15 +5,6 @@ var fs = require('fs')
 var os = require('os').type()
 var child_process = require('child_process')
 
-function spawn(command, args, options) {
-  if (os === 'Windows_NT') {
-    spawn = function(command, args, options) {
-      args = ['/c', command].concat(args)
-      command = 'cmd'
-    }
-  }
-  return child_process.spawn(command, args, options)
-}
 
 var commander = require('commander')
 var program = require('../lib/terminal/program')
@@ -81,14 +72,32 @@ if (subcmd == 'help') {
     commander.emit('--help')
     process.exit()
   }
-  child_process.exec('spm ' + helpcmd + ' --help', function(err, stdout) {
+
+  var bin = executable(helpcmd) 
+  child_process.exec(bin + ' --help', function(err, stdout) {
     if (err) {
       throw err;
     }
     process.stdout.write(stdout)
   })
 } else {
+  spawn(executable(subcmd), args, {stdio: 'inherit', customFds: [0, 1, 2]})
+}
 
+
+// helpers
+// ----------
+function spawn(command, args, options) {
+  if (os === 'Windows_NT') {
+    spawn = function(command, args, options) {
+      args = ['/c', command].concat(args)
+      command = 'cmd'
+    }
+  }
+  return child_process.spawn(command, args, options)
+}
+
+function executable(subcmd) {
   // find executable
   var bin = 'spm-' + subcmd
 
@@ -102,6 +111,5 @@ if (subcmd == 'help') {
       }
     })
   }
-
-  spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]})
+  return bin
 }
