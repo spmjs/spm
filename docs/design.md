@@ -35,7 +35,7 @@ in ``scripts/post-install.js``:
 
 ```js
 var spm = require('spm');
-spm.install_plugin('spm-uglifyjs')
+spm.installPlugin('spm-uglifyjs')
 // this will register spm-uglifyjs to ~/.spm/plugins
 ```
 
@@ -45,7 +45,7 @@ in ``scripts/uninstall.js``:
 
 ```js
 var spm = require('spm');
-spm.uninstall_plugin('spm-uglifyjs')
+spm.uninstallPlugin('spm-uglifyjs')
 // this will remove spm-uglifyjs from ~/.spm/plugins
 ```
 
