@@ -45,7 +45,8 @@ commander.on('--help', function() {
   }
 
   if (extensions.length) {
-    console.log('\n  ' + color.bold(color.blue('Extensions:')))
+    console.log()
+    console.log('  ' + color.bold(color.blue('Extensions:')))
     console.log()
     extensions.forEach(function(cmd) {
       program.printHelp(cmd)
