@@ -1,0 +1,6 @@
+{
+  "name": "spm",
+  "version": "2.0.0-dev",
+  "description": "Static Package Manager",
+  "preferGlobal": true
+}
