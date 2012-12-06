@@ -7,7 +7,7 @@ var child_process = require('child_process')
 
 var commander = require('commander')
 var program = require('../lib/terminal/program')
-var color = require('../lib/terminal/color')
+require('../lib/terminal/color').colorful()
 var plugin = require('../lib/core/plugin')
 var spawn = require('../lib/utils').spawn
 
@@ -26,7 +26,7 @@ plugin.trigger('registerCommand')
 commander.helpInformation = function() {
  return [
    '',
-   '  ' + color.cyan('♨') + '  ' + color.bold('Static Package Manager'),
+   '  ' + '♨'.to.cyan.color + '  ' + 'Static Package Manager'.to.bold.color,
    '',
    '  Usage: ' + this._name + ' ' + this.usage(),
    '' + this.commandHelp(),
@@ -46,7 +46,7 @@ commander
 // sub command help
 commander.on('--help', function() {
   if (program.builtins.length) {
-    console.log('  ' + color.bold(color.green('Commands:')))
+    console.log('  ' + 'Commands:'.to.bold.green.color)
     console.log()
     program.builtins.forEach(function(cmd) {
       program.printHelp(cmd)
@@ -55,7 +55,7 @@ commander.on('--help', function() {
 
   if (program.extensions.length) {
     console.log()
-    console.log('  ' + color.bold(color.blue('Extensions:')))
+    console.log('  ' + 'Extensions:'.to.bold.blue.color)
     console.log()
     program.extensions.forEach(function(cmd) {
       program.printHelp(cmd)
@@ -113,7 +113,7 @@ function executable(subcmd) {
     if (subcmd === cmd.name) return cmd.executable
   }
   console.log()
-  console.log(color.red("  Can't find command: " +  subcmd))
+  console.log(("  Can't find command: " +  subcmd).to.red.color)
   console.log()
   return null
 }
