@@ -1,0 +1,58 @@
+#!/usr/bin/env node
+
+var commander = require('commander')
+var color = require('../lib/terminal/color')
+var config = require('../lib/core/config')
+
+commander.usage('[section.key] [value]')
+commander.option('--show', 'show your spm configuration')
+
+
+commander.on('--help', function() {
+  console.log()
+  console.log('  ' + color.green('Config:'))
+  console.log()
+  console.log('    Config file is located at ' + color.bold('~/.spm/spmrc') + ' with ini format.')
+  console.log()
+  console.log('    Overview of the config file:')
+  console.log()
+  console.log('    ' + color.magenta('[user]'))
+  console.log('    ' + color.cyan('username') + ' = spm')
+  console.log('    ' + color.cyan('password') + ' = 123')
+  console.log()
+  console.log('    ' + color.magenta('[source:spm]'))
+  console.log('    ' + color.cyan('url') + ' = ' + color.underline('http://modules.spmjs.org'))
+  console.log()
+  console.log('    ' + color.magenta('[source:alipay]'))
+  console.log('    ' + color.cyan('url') + ' = ' + color.underline('http://modules.alipay.im'))
+  console.log()
+  console.log()
+  console.log('  ' + color.blue('Examples:'))
+  console.log()
+  console.log('    $ ' + color.magenta('spm config ') + color.cyan('user.username') + ' Firstname Lastname')
+  console.log('    $ ' + color.magenta('spm config ') + color.cyan('source:spm.url') + ' http://modules.spmjs.org')
+  console.log()
+})
+
+commander.parse(process.argv)
+
+if (commander.show) {
+  config.show()
+  process.exit()
+}
+
+if (commander.args.length < 2) {
+  process.stdout.write(commander.helpInformation());
+  commander.emit('--help')
+  process.exit()
+} else if (commander.args[0].indexOf('.') == -1) {
+  process.stdout.write(commander.helpInformation());
+  commander.emit('--help')
+  process.exit()
+} else {
+  var key = commander.args[0]
+  var value = commander.args.slice(1).join(' ')
+  var data = {}
+  data[key] = value
+  config.config(data)
+}
