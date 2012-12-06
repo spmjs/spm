@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+var commander = require('commander')
+var plugin = require('../lib/core/plugin')
+
+commander.usage('<command>')
+
+commander
+  .command('add <plugin>')
+  .description('add a spm plugin')
+  .action(plugin.add)
+
+commander
+  .command('remove <plugin>')
+  .description('remove a spm plugin')
+  .action(plugin.remove)
+
+commander
+  .command('enable <plugin>')
+  .description('enable a spm plugin')
+  .action(plugin.enable)
+
+commander
+  .command('disable <plugin>')
+  .description('disable a spm plugin')
+  .action(plugin.disable)
+
+commander
+  .command('show')
+  .description('show all spm plugins')
+  .action(plugin.show)
+
+commander.parse(process.argv)
