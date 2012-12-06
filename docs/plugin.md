@@ -63,3 +63,8 @@ An action plugin will add a subcommand to spm. Let's write a plugin:
     $ spm hello sing a song
     sing a song
     ```
+
+
+## Lifecycle plugin
+
+A lifecycle plugin will run the specified command at the specified time.
