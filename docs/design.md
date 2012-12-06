@@ -34,8 +34,7 @@ A spm plugin should define ``scripts`` in its package.json:
 in ``scripts/post-install.js``:
 
 ```js
-var spm = require('spm');
-spm.installPlugin('spm-uglifyjs')
+require('spm').installPlugin('spm-uglifyjs')
 // this will register spm-uglifyjs to ~/.spm/plugins
 ```
 
@@ -44,8 +43,7 @@ When ``npm install spm-uglifyjs -g``, it will run ``scripts/post-install.js`` af
 in ``scripts/uninstall.js``:
 
 ```js
-var spm = require('spm');
-spm.uninstallPlugin('spm-uglifyjs')
+require('spm').uninstallPlugin('spm-uglifyjs')
 // this will remove spm-uglifyjs from ~/.spm/plugins
 ```
 
@@ -61,9 +59,7 @@ When ``npm uninstall spm-uglifyjs -g``, it will run ``scripts/uninstall.js`` aft
 2. register plugins' commands:
 
     ```js
-    plugins.forEach(function(plugin) {
-        plugin.register_command && plugin.register_command();
-    });
+    plugin.trigger('registerCommand')
     ```
 
 3. parse command line and distribute command. For example ``spm help``:
