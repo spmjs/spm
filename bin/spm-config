@@ -6,6 +6,7 @@ var config = require('../lib/core/config')
 
 commander.usage('[section.key] [value]')
 commander.option('--show', 'show your spm configuration')
+commander.option('--remove <section>', 'remove a section')
 
 
 commander.on('--help', function() {
@@ -38,6 +39,10 @@ commander.parse(process.argv)
 
 if (commander.show) {
   config.show()
+  process.exit()
+}
+if (commander.remove) {
+  config.remove(commander.remove)
   process.exit()
 }
 
