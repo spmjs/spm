@@ -8,6 +8,7 @@ var child_process = require('child_process')
 
 var commander = require('commander')
 var program = require('../lib/terminal/program')
+var logging = require('../lib/terminal/logging')
 var color = require('../lib/terminal/color')
 var plugin = require('../lib/core/plugin')
 
@@ -69,14 +70,15 @@ if (subcmd == 'help') {
   }
 
   var bin = executable(helpcmd) 
-  child_process.exec(bin + ' --help', function(err, stdout) {
+  bin && child_process.exec(bin + ' --help', function(err, stdout) {
     if (err) {
       throw err;
     }
     process.stdout.write(stdout)
   })
 } else {
-  spawn(executable(subcmd), args, {stdio: 'inherit', customFds: [0, 1, 2]})
+  var bin = executable(subcmd)
+  bin && spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]})
 }
 
 
@@ -98,13 +100,14 @@ function executable(subcmd) {
 
   var local = path.join(__dirname, bin)
   if (fs.existsSync(local)) {
-    bin = local
-  } else {
-    program.extensions.forEach(function(cmd) {
-      if (subcmd === cmd.name) {
-        bin = cmd.executable
-      }
-    })
+    return local
   }
-  return bin
+
+  program.extensions.forEach(function(cmd) {
+    if (subcmd === cmd.name) {
+      return cmd.executable
+    }
+  })
+  logging.error("Can't find command: %s", subcmd)
+  return null
 }
