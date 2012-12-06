@@ -65,10 +65,8 @@ if (!subcmd) {
 
 if (typeof subcmd === 'string' && subcmd.indexOf('.') !== -1 && commander.args.length > 1) {
   var value = commander.args.slice(1).join(' ')
-  var data = {}
-  data[subcmd] = value
   console.log()
-  config.config(data)
+  config.config(subcmd, value)
   console.log()
 } else if (typeof subcmd === 'string' && typeof lastcmd === 'string') {
   console.log()
