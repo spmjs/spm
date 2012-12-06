@@ -27,6 +27,12 @@ commander
   .action(plugin.disable)
 
 commander
+  .command('create')
+  .description('create a spm plugin')
+  .action(createPlugin)
+
+
+commander
   .command('show')
   .description('show all spm plugins')
   .action(plugin.show)
@@ -54,5 +60,31 @@ var subcmd = commander.args[0]
 if (!subcmd) {
   process.stdout.write(commander.helpInformation());
   commander.emit('--help')
+  process.exit()
+}
+
+function createPlugin() {
+  var name = commander.args[1];
+  var version = '1.0.0'
+  var bin = false
+  if (!name) {
+    commander.prompt('plugin name: ', function(name) {
+      if (name.indexOf('spm-') !== 0) {
+        name = 'spm-' + name
+      }
+      commander.confirm('create bin file? ', function(ok) {
+        bin = ok
+        write(name, version, bin)
+      })
+    })
+  } else {
+    commander.confirm('create bin file? ', function(ok) {
+      bin = ok
+      write(name, version, bin)
+    })
+  }
+}
+
+function write(name, version, bin) {
   process.exit()
 }
