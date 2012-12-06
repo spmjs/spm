@@ -2,5 +2,14 @@
   "name": "spm",
   "version": "2.0.0-dev",
   "description": "Static Package Manager",
-  "preferGlobal": true
+  "dependencies": {
+    "commander": ">=1.1.1"
+  },
+  "bin": {
+    "spm": "bin/spm",
+    "spm-build": "bin/spm-build",
+    "spm-config": "bin/spm-config",
+    "spm-install": "bin/spm-install",
+    "spm-plugin": "bin/spm-plugin"
+  }
 }

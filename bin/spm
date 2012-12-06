@@ -19,15 +19,9 @@ files.toString().split(',').forEach(function(f) {
   program.registerBuiltin(name, module.description)
 })
 
+// register extentions
 plugin.trigger('registerCommand')
 
-// for test
-program.registerExtension('init', 'initialize template')
-
-
-
-var builtins = program.listBuiltin()
-var extensions = program.listExtensions()
 
 commander
   .version(require('../package').version)
@@ -36,19 +30,19 @@ commander
 
 // sub command help
 commander.on('--help', function() {
-  if (builtins.length) {
+  if (program.builtins.length) {
     console.log('  ' + color.bold(color.green('Commands:')))
     console.log()
-    builtins.forEach(function(cmd) {
+    program.builtins.forEach(function(cmd) {
       program.printHelp(cmd)
     })
   }
 
-  if (extensions.length) {
+  if (program.extensions.length) {
     console.log()
     console.log('  ' + color.bold(color.blue('Extensions:')))
     console.log()
-    extensions.forEach(function(cmd) {
+    program.extensions.forEach(function(cmd) {
       program.printHelp(cmd)
     })
   }
