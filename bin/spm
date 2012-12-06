@@ -9,20 +9,20 @@ var child_process = require('child_process')
 var commander = require('commander')
 var program = require('../lib/terminal/program')
 var color = require('../lib/terminal/color')
+var plugin = require('../lib/core/plugin')
 
 // register builtin command
-program.registerBuiltin('install', 'install a cmd module')
-program.registerBuiltin('build', 'build a cmd module')
-program.registerBuiltin('help', 'show help information')
+var files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'core'))
+files.toString().split(',').forEach(function(f) {
+  var name = f.replace('.js', '')
+  var module = require('../lib/core/' + name)
+  program.registerBuiltin(name, module.description)
+})
+
+plugin.trigger('registerCommand')
 
 // for test
 program.registerExtension('init', 'initialize template')
-
-/*
-plugins.forEach(function(plugin) {
-  plugin.registerCommand()
-})
-*/
 
 
 
