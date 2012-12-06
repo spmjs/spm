@@ -117,11 +117,11 @@ function executable(subcmd) {
     return local
   }
 
-  program.extensions.forEach(function(cmd) {
-    if (subcmd === cmd.name) {
-      return cmd.executable
-    }
-  })
+  var extensions = program.extensions
+  for (var i = 0; i < extensions.length; i++) {
+    var cmd = extensions[i]
+    if (subcmd === cmd.name) return cmd.executable
+  }
   console.log()
   console.log(color.red("  Can't find command: " +  subcmd))
   console.log()
