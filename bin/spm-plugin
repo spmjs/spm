@@ -80,31 +80,23 @@ if (!subcmd) {
 
 function createPlugin() {
   console.log()
-  var name = commander.args[1];
   var version = '1.0.0'
-  var bin = false
-  if (!name) {
-    commander.prompt('  plugin name: ', function(name) {
-      if (name.indexOf('spm-') !== 0) {
-        name = 'spm-' + name
-      }
-      commander.confirm('  create bin file? ', function(ok) {
-        bin = ok
-        write(name, version, bin)
+  commander.prompt('  plugin name: ', function(name) {
+    if (name.indexOf('spm-') !== 0) {
+      name = 'spm-' + name
+    }
+    commander.prompt('  plugin description: ', function(description) {
+      commander.confirm('  create bin file? ', function(bin) {
+        write(name, description, version, bin)
       })
     })
-  } else {
-    commander.confirm('  create bin file? ', function(ok) {
-      bin = ok
-      write(name, version, bin)
-    })
-  }
+  })
 }
 
-function write(name, version, bin) {
+function write(name, description, version, bin) {
   // write package
   var package = '{\n  "name": "%s",\n  "version": "%s",\n'
-  package += '  "description": "spm plugin",\n  "scripts": {\n'
+  package += '  "description": "%s",\n  "scripts": {\n'
   package += '    "postinstall": "scripts/post-install.js",\n'
   package += '    "uninstall": "scripts/uninstall.js"\n  }'
   if (bin) {
@@ -112,7 +104,7 @@ function write(name, version, bin) {
     package += util.format('    "%s": "bin/%s"\n  }', name, name)
   }
   package += '\n}'
-  package = util.format(package, name, version)
+  package = util.format(package, name, version, description)
   safeWrite(path.join(name, 'package.json'))
 
   fs.writeFileSync(path.join(name, 'package.json'), package)
@@ -134,10 +126,10 @@ function write(name, version, bin) {
     script = [
       "var spm = require('spm')",
       "exports.registerCommand = function() {",
-      "  spm.registerCommand('%s', '%s', 'spm plugin description')",
+      "  spm.registerCommand('%s', '%s', '%s')",
       "}"
     ].join('\n')
-    script = util.format(script, name.slice(4), name)
+    script = util.format(script, name.slice(4), name, description)
   } else {
     script = ''
   }
