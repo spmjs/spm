@@ -48,3 +48,11 @@ commander.on('--help', function() {
 })
 
 commander.parse(process.argv)
+
+var subcmd = commander.args[0]
+
+if (!subcmd) {
+  process.stdout.write(commander.helpInformation());
+  commander.emit('--help')
+  process.exit()
+}
