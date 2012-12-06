@@ -8,7 +8,6 @@ var child_process = require('child_process')
 
 var commander = require('commander')
 var program = require('../lib/terminal/program')
-var logging = require('../lib/terminal/logging')
 var color = require('../lib/terminal/color')
 var plugin = require('../lib/core/plugin')
 
@@ -23,6 +22,21 @@ files.toString().split(',').forEach(function(f) {
 // register extentions
 plugin.trigger('registerCommand')
 
+
+commander.helpInformation = function() {
+ return [
+   '',
+   '  ' + color.cyan('♨') + '  ' + color.bold('Static Package Manager'),
+   '',
+   '  Usage: ' + this._name + ' ' + this.usage(),
+   '' + this.commandHelp(),
+   '  Options:',
+   '',
+   '' + this.optionHelp().replace(/^/gm, '    '),
+   '',
+   ''
+  ].join('\n');
+}
 
 commander
   .version(require('../package').version)
@@ -108,6 +122,8 @@ function executable(subcmd) {
       return cmd.executable
     }
   })
-  logging.error("Can't find command: %s", subcmd)
+  console.log()
+  console.log(color.red("  Can't find command: " +  subcmd))
+  console.log()
   return null
 }

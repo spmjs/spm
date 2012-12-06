@@ -5,8 +5,25 @@ var color = require('../lib/terminal/color')
 var config = require('../lib/core/config')
 
 commander.usage('[section.key] [value]')
-commander.option('--show', 'show your spm configuration')
-commander.option('--remove <section>', 'remove a section')
+
+commander
+  .command('remove <section>')
+  .description('remove a section')
+  .action(config.remove)
+
+commander
+  .command('show')
+  .description('show your spm configuration')
+  .action(config.show)
+
+commander
+  .command('help')
+  .description('show this help menu')
+  .action(function() {
+    process.stdout.write(commander.helpInformation());
+    commander.emit('--help')
+    process.exit()
+  })
 
 
 commander.on('--help', function() {
@@ -37,27 +54,24 @@ commander.on('--help', function() {
 
 commander.parse(process.argv)
 
-if (commander.show) {
-  config.show()
-  process.exit()
-}
-if (commander.remove) {
-  config.remove(commander.remove)
+var subcmd = commander.args[0]
+var lastcmd = commander.args[commander.args.length - 1]
+
+if (!subcmd) {
+  process.stdout.write(commander.helpInformation());
+  commander.emit('--help')
   process.exit()
 }
 
-if (commander.args.length < 2) {
-  process.stdout.write(commander.helpInformation());
-  commander.emit('--help')
-  process.exit()
-} else if (commander.args[0].indexOf('.') == -1) {
-  process.stdout.write(commander.helpInformation());
-  commander.emit('--help')
-  process.exit()
-} else {
-  var key = commander.args[0]
+if (typeof subcmd === 'string' && subcmd.indexOf('.') !== -1 && commander.args.length > 1) {
   var value = commander.args.slice(1).join(' ')
   var data = {}
-  data[key] = value
+  data[subcmd] = value
+  console.log()
   config.config(data)
+  console.log()
+} else if (typeof subcmd === 'string' && typeof lastcmd === 'string') {
+  console.log()
+  console.log(color.red("  Can't find command: " +  subcmd))
+  console.log()
 }
