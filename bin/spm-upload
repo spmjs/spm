@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var commander = require('commander')
-var color = require('../lib/terminal/color')
+require('../lib/terminal/color').colorful()
 var logging = require('../lib/terminal/logging')
 var uploader = require('../lib/core/upload')
 
@@ -28,14 +28,14 @@ commander
 
 commander.on('--help', function() {
   console.log()
-  console.log('  ' + color.bold(color.blue('Examples:')))
+  console.log('  ' + 'Examples:'.to.bold.blue.color)
   console.log()
   console.log('   upload a standard cmd module is simple')
-  console.log('   $ ' + color.magenta('spm upload'))
+  console.log('   $ ' + 'spm upload'.to.magenta.color)
   console.log()
   console.log('   upload to a specified source')
   console.log()
-  console.log('   $ ' + color.magenta('spm upload ') + color.cyan('-s') + ' arale')
+  console.log('   $ ' + 'spm upload '.to.magenta.color + '-s'.to.cyan.color + ' arale')
   console.log()
 });
 

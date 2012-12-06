@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var commander = require('commander')
-var color = require('../lib/terminal/color')
+require('../lib/terminal/color').colorful()
 var logging = require('../lib/terminal/logging')
 var builder = require('../lib/core/build')
 
@@ -34,17 +34,17 @@ commander
 
 commander.on('--help', function() {
   console.log()
-  console.log('  ' + color.bold(color.blue('Examples:')))
+  console.log('  ' + 'Examples:'.to.bold.blue.color)
   console.log()
   console.log('   Build a standard cmd module is simple')
   console.log()
-  console.log('   $ ' + color.magenta('spm build'))
+  console.log('   $ ' + 'spm build'.to.magenta.color)
   console.log()
   console.log('   Just build a file with spm')
   console.log()
-  console.log('   $ ' + color.magenta('spm build') + ' ' + color.cyan('-F') + ' a.js ' + color.cyan('-O') + ' dist')
+  console.log('   $ ' + 'spm build'.to.magenta.color + ' ' + '-F'.to.cyan.color + ' a.js ' + '-O'.to.cyan.color + ' dist')
   console.log()
-  console.log('   For more information: ' + color.underline('http://spmjs.org/docs/build.html'))
+  console.log('   For more information: ' + 'http://spmjs.org/docs/build.html'.to.underline.color)
   console.log()
 });
 

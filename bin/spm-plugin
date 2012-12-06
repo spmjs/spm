@@ -5,7 +5,7 @@ var commander = require('commander')
 var util = require('util')
 var path = require('path')
 var safeWrite = require('../lib/utils').safeWrite
-var color = require('../lib/terminal/color')
+require('../lib/terminal/color').colorful()
 var plugin = require('../lib/core/plugin')
 
 commander.usage('<command>')
@@ -56,15 +56,15 @@ commander.on('--help', function() {
   console.log()
   console.log('  Featured Plugins:')
   console.log()
-  console.log('    ' + color.grey('★') + '  spm-init')
-  console.log('    ' + color.grey('★') + '  spm-uglifyjs')
-  console.log('    ' + color.grey('★') + '  spm-deploy')
+  console.log('    ' + '★'.to.bold.grey.color + '  spm-init')
+  console.log('    ' + '★'.to.bold.grey.color + '  spm-uglifyjs')
+  console.log('    ' + '★'.to.bold.grey.color + '  spm-deploy')
   console.log()
-  console.log('    find more plugins on ' + color.underline(color.blue('https://github.com/spmjs')))
+  console.log('    find more plugins on ' + 'https://github.com/spmjs'.to.underline.bold.color)
   console.log()
-  console.log('    install a plugin by ' + color.magenta('npm install'))
+  console.log('    install a plugin by ' + 'npm install'.to.magenta.color)
   console.log()
-  console.log('    $ ' + color.magenta('npm install ') + color.green('spm-init') + color.magenta(' -g'))
+  console.log('    $ ' + 'npm install '.to.magenta.color + 'spm-init'.to.green.color + ' -g'.to.magenta.color)
   console.log()
 })
 
@@ -145,7 +145,7 @@ function write(name, description, version, bin) {
   }
 
   console.log()
-  console.log('plugin ' + color.green(name) + ' has been created.')
+  console.log('plugin ' + name.to.green.color + ' has been created.')
   console.log()
   process.exit()
 }

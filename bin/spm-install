@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var commander = require('commander')
-var color = require('../lib/terminal/color')
+require('../lib/terminal/color').colorful()
 var logging = require('../lib/terminal/logging')
 var installer = require('../lib/core/install')
 
@@ -27,21 +27,21 @@ commander
 
 commander.on('--help', function() {
   console.log()
-  console.log('  ' + color.bold(color.blue('Examples:')))
+  console.log('  ' + 'Examples:'.to.bold.blue)
   console.log()
-  console.log('   $ ' + color.magenta('spm install') + ' gallery.jquery')
-  console.log('   $ ' + color.magenta('spm install') + ' gallery.jquery' +
-              color.cyan('@1.7.2'))
+  console.log('   $ ' + 'spm install'.to.magenta.color + ' gallery.jquery')
+  console.log('   $ ' + 'spm install'.to.magenta.color + ' gallery.jquery' +
+              '@1.7.2'.to.cyan.color)
   console.log()
   console.log('   you can also install from github')
   console.log()
-  console.log('   $ ' + color.magenta('spm install') + ' aralejs/base')
-  console.log('   $ ' + color.magenta('spm install') + ' aralejs/base' +
-              color.cyan('@1.0.0'))
+  console.log('   $ ' + 'spm install'.to.magenta.color + ' aralejs/base')
+  console.log('   $ ' + 'spm install'.to.magenta.color + ' aralejs/base' +
+              '@1.0.0'.to.cyan.color)
   console.log()
   console.log('   you can also install a tarball')
   console.log()
-  console.log('   $ ' + color.magenta('spm install ') + color.underline('http://aralejs.org/base/1.0.0/base.tgz'))
+  console.log('   $ ' + 'spm install '.to.magenta.color + 'http://aralejs.org/base/1.0.0/base.tgz'.to.underline.color)
   console.log()
 });
 
