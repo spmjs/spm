@@ -1,6 +1,6 @@
 {
     "name": "outputTest",
-    "root": "",
+    "root": "test",
     "version": "0.0.1",
     "dependencies": {
       "widget": "arale/widget/1.0.2/widget",

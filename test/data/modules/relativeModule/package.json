@@ -1,6 +1,6 @@
 {
     "name": "relativeModule",
-    "root": "",
+    "root": "test",
     "version": "0.9.1",
     "output": {
         "lib/c.js": ".",

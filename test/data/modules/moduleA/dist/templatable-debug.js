@@ -1,4 +1,4 @@
-define("#moduleA/0.9.17/ast-printer-debug", [], function(require, exports) {
+define("test/moduleA/0.9.17/ast-printer-debug", [], function(require, exports) {
 
     // Handlebars AST Printer
     // -----------------------
@@ -86,7 +86,7 @@ define("#moduleA/0.9.17/ast-printer-debug", [], function(require, exports) {
 
 });
 
-define("#moduleA/0.9.17/templatable-debug", ["./ast-printer-debug", "$-debug", "gallery/handlbars/1.0.0/handlebars-debug"], function(require, exports, module) {
+define("test/moduleA/0.9.17/templatable-debug", ["./ast-printer-debug", "$-debug", "gallery/handlbars/1.0.0/handlebars-debug"], function(require, exports, module) {
 
     var $ = require('$-debug');
     var Handlebars = require('gallery/handlbars/1.0.0/handlebars-debug');

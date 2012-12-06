@@ -16,7 +16,7 @@ describe('spm init action', function() {
     rm('-rf', path.join(moduleDir, '*'));
   });
   
-  it('test init empty project by default', function(done) {
+  it.skip('test init empty project by default', function(done) {
     var moduleName = 'testModule';
     init.run({projectName: moduleName, base: path.join(moduleDir, moduleName), 'module-type': "name=base"}, function() {
       var initModule = ls(moduleDir);
@@ -31,7 +31,7 @@ describe('spm init action', function() {
     });
   }); 
 
-  it('test init empty project by default name', function(done) {
+  it.skip('test init empty project by default name', function(done) {
     var moduleName = 'dir_name';
     init.run({base: path.join(moduleDir, moduleName), 'module-type': 'name=base'}, function() {
       var initModule = ls(moduleDir);

@@ -1,4 +1,4 @@
-define("#moduleA/0.9.17/daparser-debug", ["$-debug"], function(require, exports) {
+define("test/moduleA/0.9.17/daparser-debug", ["$-debug"], function(require, exports) {
 
     // DAParser
     // --------
@@ -176,7 +176,7 @@ define("#moduleA/0.9.17/daparser-debug", ["$-debug"], function(require, exports)
 
 });
 
-define("#moduleA/0.9.17/auto-render-debug", ["$-debug"], function(require, exports) {
+define("test/moduleA/0.9.17/auto-render-debug", ["$-debug"], function(require, exports) {
 
     var $ = require('$-debug');
 
@@ -234,7 +234,7 @@ define("#moduleA/0.9.17/auto-render-debug", ["$-debug"], function(require, expor
 
 });
 
-define("#moduleA/0.9.17/widget-debug", ["./daparser-debug", "./auto-render-debug", "arlae/base/1.0.1/base-debug", "$-debug"], function(require, exports, module) {
+define("test/moduleA/0.9.17/widget-debug", ["./daparser-debug", "./auto-render-debug", "arlae/base/1.0.1/base-debug", "$-debug"], function(require, exports, module) {
 
     // Widget
     // ---------

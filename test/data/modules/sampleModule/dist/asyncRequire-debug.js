@@ -1,4 +1,4 @@
-define("sampleModule/0.0.1/asyncRequire-debug", [], function(require, exports) {
+define("test/sampleModule/0.0.1/asyncRequire-debug", [], function(require, exports) {
   var m1 = require.async('./module-debug.js');
   var m2 = require.async('module.js-debug');
   var m3 = require.async('$-debug');

@@ -50,8 +50,8 @@ describe('spm build', function() {
         var distCodePath = path.join(model.distDirectory, 'jquery.json-2.s-debug.js');
         var moduleDebugCode = fsExt.readFileSync(distCodePath);
         should.exist(moduleDebugCode);
-        model.getModuleId('jquery.json-2.s.js').should.eql('invalidNameModule/0.0.1/jquery.json-2.s');
-        var defineReg = /define\("invalidNameModule\/0\.0\.1\/jquery\.json-2\.s-debug/;
+        model.getModuleId('jquery.json-2.s.js').should.eql('test/invalidNameModule/0.0.1/jquery.json-2.s');
+        var defineReg = /define\("test\/invalidNameModule\/0\.0\.1\/jquery\.json-2\.s-debug/;
         defineReg.test(moduleDebugCode).should.be.true;
         done();
       });
@@ -67,9 +67,9 @@ describe('spm build', function() {
         
         var code = fsExt.readFileSync(moduleCPath);
 
-        var cDefReg = /define\("relativeModule\/0.9.1\/lib\/c-debug", \["..\/core\/a-debug", "..\/core\/b-debug"\]/;
-        var bDefReg = /define\("relativeModule\/0.9.1\/core\/b-debug", \[\]/;
-        var aDefReg = /define\("relativeModule\/0.9.1\/core\/a-debug", \[".\/b-debug"\]/;
+        var cDefReg = /define\("test\/relativeModule\/0.9.1\/lib\/c-debug", \["..\/core\/a-debug", "..\/core\/b-debug"\]/;
+        var bDefReg = /define\("test\/relativeModule\/0.9.1\/core\/b-debug", \[\]/;
+        var aDefReg = /define\("test\/relativeModule\/0.9.1\/core\/a-debug", \[".\/b-debug"\]/;
         code.should.match(cDefReg);
         code.should.match(bDefReg);
         code.should.match(aDefReg);
@@ -88,8 +88,8 @@ describe('spm build', function() {
         fsExt.existsSync(modulePath).should.be.true;
         var code = fsExt.readFileSync(spaceDefinePath);
         var moduleCode = fsExt.readFileSync(modulePath);
-        var sreg = /define\("sampleModule\/0.0.1\/spaceDefine-debug",/;
-        var mreg = /define\("sampleModule\/0.0.1\/module-debug",/;
+        var sreg = /define\("test\/sampleModule\/0.0.1\/spaceDefine-debug",/;
+        var mreg = /define\("test\/sampleModule\/0.0.1\/module-debug",/;
         code.should.match(sreg);
         moduleCode.should.match(mreg);
         done();
@@ -104,7 +104,7 @@ describe('spm build', function() {
         fsExt.existsSync(modulePath).should.be.true;
         var code = fsExt.readFileSync(modulePath);
 
-        var defineReg = /define\("sampleModule\/0.0.1\/debugRequire-debug", \[".\/module-debug"\]/;
+        var defineReg = /define\("test\/sampleModule\/0.0.1\/debugRequire-debug", \[".\/module-debug"\]/;
         var requireReg1 = /require\('\.\/module-debug\.js'\)/;
         var requireReg2 = /require\('\.\/module-debug\.js'\)/;
         code.should.match(defineReg);
@@ -123,7 +123,7 @@ describe('spm build', function() {
         
         var code = fsExt.readFileSync(modulePath);
 
-        var defineReg = /define\("sampleModule\/0.0.1\/asyncRequire-debug", \[\]/;
+        var defineReg = /define\("test\/sampleModule\/0.0.1\/asyncRequire-debug", \[\]/;
         var requireReg1 = /require\.async\('\.\/module-debug\.js'\)/;
         var requireReg2 = /require\.async\('module-debug\.js'\)/;
         var requireReg2 = /require\.async\('$-debug'\)/;
@@ -145,8 +145,8 @@ describe('spm build', function() {
       }, function(model) {
         model.getConfig('extraResources').should.eql(['test', 'example', 'src'])
         model.getConfig('extra-resources').should.eql(['test', 'example', 'src'])
-      console.info('-------->', model.getConfig('extra-resources'));
-      done();
+        // console.info('-------->', model.getConfig('extra-resources'));
+        done();
       }); 
     });
   

@@ -1,1 +1,1 @@
-define("sampleModule/0.0.1/spaceDefine",[],function(e,t){t.get=function(e){return $(e)}});
+define("test/sampleModule/0.0.1/spaceDefine",[],function(e,t){t.get=function(e){return $(e)}});

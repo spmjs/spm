@@ -32,6 +32,7 @@ describe('coffee plugin test', function() {
       coffeePlugin.execute(model, function() {
         var scripts1 = fsExt.listFiles(src);
         var scripts2 = fsExt.listFiles(build);
+console.info('-------', scripts1, scripts2);
         scripts1.length.should.eql(scripts2.length);
 
         var srcScripts = fsExt.listFiles(src, /coffee$/);

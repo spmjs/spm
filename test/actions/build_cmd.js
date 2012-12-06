@@ -22,23 +22,23 @@ baseCmd.push('--src=public');
 //baseCmd.push('--to=222');
 //baseCmd.push('--output.main=.');  
 
-describe('spm cmd build test', function() {
+describe('spm cmd build', function() {
 
   it('test arg name', function() {
     var cmd = baseCmd.slice(0);
     cmd.push('--name=name');
     cmd.push('--version=1.0.0');
-    cmd.push('--root=""');
+    cmd.push('--root=test');
     var output = run(cmd);
-    output.should.include('name/1.0.0/contact/model/m');
+    output.should.include('test/name/1.0.0/contact/model/m');
   });
 
   it('test default name', function() {
     var cmd = baseCmd.slice(0);
-    cmd.push('--root=#');
+    cmd.push('--root=test');
     cmd.push('--version=1.1.0');
     var output = run(cmd);
-    output.should.include('#public/1.1.0/contact/model/m');
+    output.should.include('test/public/1.1.0/contact/model/m');
   });
 
   it('test arg version', function() {
@@ -79,7 +79,7 @@ describe('spm cmd build test', function() {
     var cmd = baseCmd.slice(0);
     cmd.push('--output.main=.');  
     cmd.push('--version=1.0.0');
-    cmd.push('--root=#');
+    cmd.push('--root=test');
 
     rm(path.join(basePath, 'dist'));
     run(cmd);
@@ -87,15 +87,15 @@ describe('spm cmd build test', function() {
     fsExt.existsSync(path.join(basePath, 'dist', 'main-debug.js')).should.be.true;
     var code = cat(path.join('dist', 'main-debug.js'));
 
-    code.should.include('#public/1.0.0/core/js/config-debug');
-    code.should.include('"#public/1.0.0/core/js/utils-debug"');
-    code.should.include('#public/1.0.0/contact/model/m-debug');
-    code.should.include('#public/1.0.0/main-debug');
+    code.should.include('test/public/1.0.0/core/js/config-debug');
+    code.should.include('test/public/1.0.0/core/js/utils-debug');
+    code.should.include('test/public/1.0.0/contact/model/m-debug');
+    code.should.include('test/public/1.0.0/main-debug');
   });
 
   it('test with-debug', function() {
     var cmd = baseCmd.slice(0);
-    cmd.push('--root=#');
+    cmd.push('--root=test');
     cmd.push('--name=public');
     cmd.push('--version=1.0.0');
     cmd.push('--output.main=.');  
@@ -112,7 +112,7 @@ describe('spm cmd build test', function() {
     (files1.indexOf('main.js') > -1).should.be.true;
 
     var code1 = cat(path.join(dist1, 'main-debug.js'));
-    code1.should.include('#public/1.0.0/main-debug');
+    code1.should.include('test/public/1.0.0/main-debug');
     
     var cmd2 = cmd.slice(0);
     var dist2 = 'debug_empty';
@@ -125,7 +125,7 @@ describe('spm cmd build test', function() {
     (files2.indexOf('main.js') > -1).should.be.true;
 
     var code2 = cat(path.join(dist2, 'main.js'));
-    code2.should.include('#public/1.0.0/main');
+    code2.should.include('test/public/1.0.0/main');
 
     var cmd3 = cmd.slice(0);
     var dist3 = 'debug_custom';
@@ -139,7 +139,7 @@ describe('spm cmd build test', function() {
     (files3.indexOf('main.js') > -1).should.be.true;
 
     var code3 = cat(path.join(dist3, 'main-src.js'));
-    code3.should.include('#public/1.0.0/main-src');
+    code3.should.include('test/public/1.0.0/main-src');
   
   });
 });

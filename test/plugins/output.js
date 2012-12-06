@@ -18,7 +18,7 @@ describe('spm build output plugin test', function() {
     });
   });
 
-  var jqReg = getRegById('#jquery/1.7.2/jquery-debug');
+  var jqReg = getRegById('gallery/jquery/1.7.2/jquery-debug');
 
   it('test module build', function() {
     model.name.should.eql('outputTest'); 
@@ -26,10 +26,10 @@ describe('spm build output plugin test', function() {
  
   it('test arrayMerge ', function() {
     var arrayMergeCode = getDistCode('arrayMerge-debug.js'); 
-    var d1 = /define\("outputTest\/0.0.1\/arrayMerge-debug/;
-    var d2 = /define\("outputTest\/0.0.1\/a-debug"/;
-    var d3 = /define\("outputTest\/0.0.1\/b-debug"/;
-    var d4 = /define\("outputTest\/0.0.1\/c-debug"/;
+    var d1 = /define\("test\/outputTest\/0.0.1\/arrayMerge-debug/;
+    var d2 = /define\("test\/outputTest\/0.0.1\/a-debug"/;
+    var d3 = /define\("test\/outputTest\/0.0.1\/b-debug"/;
+    var d4 = /define\("test\/outputTest\/0.0.1\/c-debug"/;
     arrayMergeCode.should.match(d1);
     arrayMergeCode.should.match(d2);
     arrayMergeCode.should.match(d3);
@@ -38,10 +38,10 @@ describe('spm build output plugin test', function() {
 
   it('test local merge ', function() {
     var localMergeCode = getDistCode('localMerge-debug.js'); 
-    var d1 = /define\("outputTest\/0.0.1\/localMerge-debug/;
-    var d2 = /define\("outputTest\/0.0.1\/a-debug"/;
-    var d3 = /define\("outputTest\/0.0.1\/b-debug"/;
-    var d4 = /define\("outputTest\/0.0.1\/c-debug"/;
+    var d1 = /define\("test\/outputTest\/0.0.1\/localMerge-debug/;
+    var d2 = /define\("test\/outputTest\/0.0.1\/a-debug"/;
+    var d3 = /define\("test\/outputTest\/0.0.1\/b-debug"/;
+    var d4 = /define\("test\/outputTest\/0.0.1\/c-debug"/;
     localMergeCode.should.match(d1);
     localMergeCode.should.match(d2);
     localMergeCode.should.match(d3);
@@ -135,7 +135,7 @@ function getRegById(id) {
 }
 
 function getRegByModel(model, moduleName) {
-  return new RegExp('define' + '\\("' + model.name + '\\/' + model.version + '\\/' + moduleName);
+  return new RegExp('define' + '\\("' + model.root + '\\/' +  model.name + '\\/' + model.version + '\\/' + moduleName);
 }
 function executeBuildAction(moduleDir, callback) {
   build.run({

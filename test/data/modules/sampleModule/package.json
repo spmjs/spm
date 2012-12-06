@@ -1,6 +1,6 @@
 {
     "name": "sampleModule",
-    "root": "",
+    "root": "test",
     "version": "0.0.1",
     "dependencies": {
         "$": "$",
