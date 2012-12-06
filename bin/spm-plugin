@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
+var fs = require('fs')
 var commander = require('commander')
+var util = require('util')
+var path = require('path')
+var safeWrite = require('../lib/utils').safeWrite
 var color = require('../lib/terminal/color')
 var plugin = require('../lib/core/plugin')
 
@@ -30,6 +34,17 @@ commander
   .command('create')
   .description('create a spm plugin')
   .action(createPlugin)
+
+
+commander
+  .command('help')
+  .description('show this help menu')
+  .action(function() {
+    process.stdout.write(commander.helpInformation());
+    commander.emit('--help')
+    process.exit()
+  })
+
 
 
 commander
@@ -64,21 +79,22 @@ if (!subcmd) {
 }
 
 function createPlugin() {
+  console.log()
   var name = commander.args[1];
   var version = '1.0.0'
   var bin = false
   if (!name) {
-    commander.prompt('plugin name: ', function(name) {
+    commander.prompt('  plugin name: ', function(name) {
       if (name.indexOf('spm-') !== 0) {
         name = 'spm-' + name
       }
-      commander.confirm('create bin file? ', function(ok) {
+      commander.confirm('  create bin file? ', function(ok) {
         bin = ok
         write(name, version, bin)
       })
     })
   } else {
-    commander.confirm('create bin file? ', function(ok) {
+    commander.confirm('  create bin file? ', function(ok) {
       bin = ok
       write(name, version, bin)
     })
@@ -86,5 +102,58 @@ function createPlugin() {
 }
 
 function write(name, version, bin) {
+  // write package
+  var package = '{\n  "name": "%s",\n  "version": "%s",\n'
+  package += '  "description": "spm plugin",\n  "scripts": {\n'
+  package += '    "postinstall": "scripts/post-install.js",\n'
+  package += '    "uninstall": "scripts/uninstall.js"\n  }'
+  if (bin) {
+    package += ',\n  "bin": {\n'
+    package += util.format('    "%s": "bin/%s"\n  }', name, name)
+  }
+  package += '\n}'
+  package = util.format(package, name, version)
+  safeWrite(path.join(name, 'package.json'))
+
+  fs.writeFileSync(path.join(name, 'package.json'), package)
+
+  // write scripts
+  var file = path.join(name, 'scripts', 'post-install.js')
+  safeWrite(file)
+  var script = util.format("#!/usr/bin/env node\nrequire('spm').installPlugin('%s')", name)
+  fs.writeFileSync(file, script)
+  fs.chmodSync(file, 0755)
+
+  script = util.format("#!/usr/bin/env node\nrequire('spm').uninstallPlugin('%s')", name)
+  file = path.join(name, 'scripts', 'uninstall.js')
+  fs.writeFileSync(file, script)
+  fs.chmodSync(file, 0755)
+
+  // write index.js
+  if (bin) {
+    script = [
+      "var spm = require('spm')",
+      "exports.registerCommand = function() {",
+      "  spm.registerCommand('%s', '%s', 'spm plugin description')",
+      "}"
+    ].join('\n')
+    script = util.format(script, name.slice(4), name)
+  } else {
+    script = ''
+  }
+  fs.writeFileSync(path.join(name, 'index.js'), script)
+
+  // write bin
+  if (bin) {
+    file = path.join(name, 'bin', name)
+    safeWrite(file)
+    script = "#!/usr/bin/env node\nvar commander = require('commander')\n"
+    fs.writeFileSync(file, script)
+    fs.chmodSync(file, 0755)
+  }
+
+  console.log()
+  console.log('plugin ' + color.green(name) + ' has been created.')
+  console.log()
   process.exit()
 }
