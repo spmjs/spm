@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+var commander = require('commander')
+var color = require('../lib/terminal/color')
+var logging = require('../lib/terminal/logging')
+var installer = require('../lib/core/install')
+
+commander.usage('[options] name[@version]')
+
+commander
+  .option('-u, --username <username>', 'default value from user.username')
+  .option('-p, --password <password>', 'default value from user.password')
+  .option('-s, --source <source>', 'default value will be the first source')
+  .option('-f, --force', 'force to download a unstable module')
+  .option('-v, --verbose', 'show more logs')
+  .option('-q, --quiet', 'show less logs')
+
+commander
+  .command('help')
+  .description('show this help menu')
+  .action(function() {
+    process.stdout.write(commander.helpInformation());
+    commander.emit('--help')
+    process.exit()
+  })
+
+
+commander.on('--help', function() {
+  console.log()
+  console.log('  ' + color.bold(color.blue('Examples:')))
+  console.log()
+  console.log('   $ ' + color.magenta('spm install') + ' gallery.jquery')
+  console.log('   $ ' + color.magenta('spm install') + ' gallery.jquery' +
+              color.cyan('@1.7.2'))
+  console.log()
+  console.log('   you can also install from github')
+  console.log()
+  console.log('   $ ' + color.magenta('spm install') + ' aralejs/base')
+  console.log('   $ ' + color.magenta('spm install') + ' aralejs/base' +
+              color.cyan('@1.0.0'))
+  console.log()
+  console.log('   you can also install a tarball')
+  console.log()
+  console.log('   $ ' + color.magenta('spm install ') + color.underline('http://aralejs.org/base/1.0.0/base.tgz'))
+  console.log()
+});
+
+commander.parse(process.argv)
+
+// verbose vs quiet
+logging.setlevel(commander)
+
+// run install
+installer.run(commander)
