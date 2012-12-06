@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var commander = require('commander')
+var color = require('../lib/terminal/color')
 var plugin = require('../lib/core/plugin')
 
 commander.usage('<command>')
@@ -29,5 +30,21 @@ commander
   .command('show')
   .description('show all spm plugins')
   .action(plugin.show)
+
+commander.on('--help', function() {
+  console.log()
+  console.log('  Featured Plugins:')
+  console.log()
+  console.log('    ' + color.grey('★') + '  spm-init')
+  console.log('    ' + color.grey('★') + '  spm-uglifyjs')
+  console.log('    ' + color.grey('★') + '  spm-deploy')
+  console.log()
+  console.log('    find more plugins on ' + color.underline(color.blue('https://github.com/spmjs')))
+  console.log()
+  console.log('    install a plugin by ' + color.magenta('npm install'))
+  console.log()
+  console.log('    $ ' + color.magenta('npm install ') + color.green('spm-init') + color.magenta(' -g'))
+  console.log()
+})
 
 commander.parse(process.argv)
