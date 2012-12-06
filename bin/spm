@@ -100,7 +100,7 @@ function executable(subcmd) {
   if (fs.existsSync(local)) {
     bin = local
   } else {
-    extensions.forEach(function(cmd) {
+    program.extensions.forEach(function(cmd) {
       if (subcmd === cmd.name) {
         bin = cmd.executable
       }
