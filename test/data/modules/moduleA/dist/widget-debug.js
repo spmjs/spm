@@ -234,7 +234,7 @@ define("test/moduleA/0.9.17/auto-render-debug", ["$-debug"], function(require, e
 
 });
 
-define("test/moduleA/0.9.17/widget-debug", ["./daparser-debug", "./auto-render-debug", "arlae/base/1.0.1/base-debug", "$-debug"], function(require, exports, module) {
+define("test/moduleA/0.9.17/widget-debug", ["./daparser-debug", "./auto-render-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug", "$-debug"], function(require, exports, module) {
 
     // Widget
     // ---------
@@ -243,7 +243,7 @@ define("test/moduleA/0.9.17/widget-debug", ["./daparser-debug", "./auto-render-d
     // 和 methods。Widget 基类约定了这四要素创建时的基本流程和最佳实践。
 
 
-    var Base = require('arlae/base/1.0.1/base-debug');
+    var Base = require('arale/base/1.0.1/base-debug');
     var $ = require('$-debug');
     var DAParser = require('./daparser-debug');
     var AutoRender = require('./auto-render-debug');
