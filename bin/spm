@@ -2,7 +2,6 @@
 
 var path = require('path')
 var fs = require('fs')
-var os = require('os').type()
 var child_process = require('child_process')
 
 
@@ -10,6 +9,7 @@ var commander = require('commander')
 var program = require('../lib/terminal/program')
 var color = require('../lib/terminal/color')
 var plugin = require('../lib/core/plugin')
+var spawn = require('../lib/utils').spawn
 
 // register builtin command
 var files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'core'))
@@ -98,16 +98,6 @@ if (subcmd == 'help') {
 
 // helpers
 // ----------
-function spawn(command, args, options) {
-  if (os === 'Windows_NT') {
-    spawn = function(command, args, options) {
-      args = ['/c', command].concat(args)
-      command = 'cmd'
-    }
-  }
-  return child_process.spawn(command, args, options)
-}
-
 function executable(subcmd) {
   // find executable
   var bin = 'spm-' + subcmd
