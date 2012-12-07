@@ -6,7 +6,7 @@ var util = require('util')
 var path = require('path')
 var safeWrite = require('../lib/utils').safeWrite
 require('../lib/terminal/color').colorful()
-var plugin = require('../lib/core/plugin')
+var plugin = require('../lib/system/plugin')
 
 commander.usage('<command>')
 

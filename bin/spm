@@ -8,19 +8,23 @@ var child_process = require('child_process')
 var commander = require('commander')
 var program = require('../lib/terminal/program')
 require('../lib/terminal/color').colorful()
-var plugin = require('../lib/core/plugin')
+var plugin = require('../lib/system/plugin')
+var config = require('../lib/system/config')
+var spm = require('../lib/spm')
 var spawn = require('../lib/utils').spawn
 
-// register builtin command
+// register core commands
+var cores = []
 var files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'core'))
 files.toString().split(',').forEach(function(f) {
   var name = f.replace('.js', '')
   var module = require('../lib/core/' + name)
-  program.registerBuiltin(name, module.description)
+  cores.push(new program.Command(name, module.description))
 })
 
 // register extentions
 plugin.trigger('registerCommand')
+var extensions = spm.extensionCommands()
 
 
 commander.helpInformation = function() {
@@ -39,25 +43,31 @@ commander.helpInformation = function() {
 }
 
 commander
-  .version(require('../package').version)
+  .version(spm.version)
   .usage('<command> [options]')
 
 
 // sub command help
 commander.on('--help', function() {
-  if (program.builtins.length) {
-    console.log('  ' + 'Commands:'.to.bold.green.color)
+  console.log('  ' + 'System Commands:'.to.bold.magenta.color)
+  console.log()
+  program.printHelp(new program.Command('plugin', plugin.description))
+  program.printHelp(new program.Command('config', config.description))
+  console.log()
+
+  if (cores.length) {
+    console.log('  ' + 'Core Commands:'.to.bold.green.color)
     console.log()
-    program.builtins.forEach(function(cmd) {
+    cores.forEach(function(cmd) {
       program.printHelp(cmd)
     })
   }
 
-  if (program.extensions.length) {
+  if (extensions.length) {
     console.log()
-    console.log('  ' + 'Extensions:'.to.bold.blue.color)
+    console.log('  ' + 'Extension Commands:'.to.bold.blue.color)
     console.log()
-    program.extensions.forEach(function(cmd) {
+    extensions.forEach(function(cmd) {
       program.printHelp(cmd)
     })
   }
@@ -107,7 +117,6 @@ function executable(subcmd) {
     return local
   }
 
-  var extensions = program.extensions
   for (var i = 0; i < extensions.length; i++) {
     var cmd = extensions[i]
     if (subcmd === cmd.name) return cmd.executable
