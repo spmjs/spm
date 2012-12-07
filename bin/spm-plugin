@@ -100,7 +100,7 @@ function write(name, description, version, bin) {
   package += '    "postinstall": "scripts/post-install.js",\n'
   package += '    "uninstall": "scripts/uninstall.js"\n  }'
   if (bin) {
-    package += ',\n  "bin": {\n'
+    package += ',\n  "preferGlobal": "true",\n  "bin": {\n'
     package += util.format('    "%s": "bin/%s"\n  }', name, name)
   }
   package += '\n}'

@@ -1,6 +1,7 @@
 {
   "name": "spm",
   "version": "2.0.0-dev",
+  "preferGlobal": "true",
   "description": "Static Package Manager",
   "dependencies": {
     "commander": ">=1.1.1"
