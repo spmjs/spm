@@ -42,6 +42,7 @@ commander
   .action(function() {
     process.stdout.write(commander.helpInformation());
     commander.emit('--help')
+    commander.emit('--more-help')
     process.exit()
   })
 
@@ -53,18 +54,20 @@ commander
   .action(plugin.show)
 
 commander.on('--help', function() {
+  console.log('  install a plugin by ' + 'npm install'.to.magenta.color)
   console.log()
-  console.log('  Featured Plugins:')
+  console.log('  $ ' + 'npm install '.to.magenta.color + 'spm-init'.to.green.color + ' -g'.to.magenta.color)
   console.log()
-  console.log('    ' + '★'.to.bold.grey.color + '  spm-init')
-  console.log('    ' + '★'.to.bold.grey.color + '  spm-uglifyjs')
-  console.log('    ' + '★'.to.bold.grey.color + '  spm-deploy')
+})
+
+commander.on('--more-help', function() {
+  console.log('  ' + 'Featured Plugins:'.to.bold.blue.color)
+  console.log()
+  console.log('    ' + '★'.to.grey.color + '  spm-init')
+  console.log('    ' + '★'.to.grey.color + '  spm-uglifyjs')
+  console.log('    ' + '★'.to.grey.color + '  spm-deploy')
   console.log()
   console.log('    find more plugins on ' + 'https://github.com/spmjs'.to.underline.bold.color)
-  console.log()
-  console.log('    install a plugin by ' + 'npm install'.to.magenta.color)
-  console.log()
-  console.log('    $ ' + 'npm install '.to.magenta.color + 'spm-init'.to.green.color + ' -g'.to.magenta.color)
   console.log()
 })
 

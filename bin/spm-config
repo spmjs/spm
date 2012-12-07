@@ -18,17 +18,26 @@ commander
 
 commander
   .command('help')
-  .description('show this help menu')
+  .description('show more help information')
   .action(function() {
     process.stdout.write(commander.helpInformation());
     commander.emit('--help')
+    commander.emit('--more-help')
     process.exit()
   })
 
 
 commander.on('--help', function() {
+  console.log('  ' + 'How to use:'.to.bold.blue.color)
   console.log()
-  console.log('  ' + 'Config:'.to.green.color)
+  console.log('    $ ' + 'spm config '.to.magenta.color + 'user.username'.to.cyan.color + ' Firstname Lastname')
+  console.log('    $ ' + 'spm config '.to.magenta.color + 'source:spm.url '.to.cyan.color + 'http://modules.spmjs.org'.to.underline.color)
+  console.log()
+})
+
+commander.on('--more-help', function() {
+  console.log()
+  console.log('  ' + 'Configuration:'.to.green.color)
   console.log()
   console.log('    Config file is located at ' + '~/.spm/spmrc'.to.bold.color + ' with ini format.')
   console.log()
@@ -44,13 +53,8 @@ commander.on('--help', function() {
   console.log('    ' + '[source:alipay]'.to.magenta.color)
   console.log('    ' + 'url'.to.cyan.color + ' = ' + 'http://modules.alipay.im'.to.underline.color)
   console.log()
-  console.log()
-  console.log('  ' + 'Examples:'.to.blue.color)
-  console.log()
-  console.log('    $ ' + 'spm config '.to.magenta.color + 'user.username'.to.cyan.color + ' Firstname Lastname')
-  console.log('    $ ' + 'spm config '.to.magenta.color + 'source:spm.url'.to.cyan.color + ' http://modules.spmjs.org')
-  console.log()
 })
+
 
 commander.parse(process.argv)
 
