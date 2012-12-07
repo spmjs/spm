@@ -18,7 +18,7 @@ commander
   .option('--module-name <name>', 'module name, default: package.name')
   .option('--module-version <version>', 'module version, default: package.version')
   .option('--module-root <root>', 'module root, default: package.root')
-  .option('--interrupt', 'always throw error')
+  .option('--interrupt', 'stop the process when warn or error')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
 
