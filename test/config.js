@@ -1,6 +1,6 @@
 var should = require('should')
 require('../index').logging.setlevel('error')
-var config = require('../lib/core/config')
+var config = require('../lib/system/config')
 
 describe('config', function() {
   it('should get section.key', function() {
