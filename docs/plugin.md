@@ -67,4 +67,20 @@ An action plugin will add a subcommand to spm. Let's write a plugin:
 
 ## Lifecycle plugin
 
-A lifecycle plugin will run the specified command at the specified time.
+A lifecycle plugin will run the specified command at the specified time, it
+should be synchronous.
+
+## Event plugin
+
+
+```
+exports.registerListener = function() {
+    spm.on('upload', function() {
+        console.log('upload')
+    })
+
+    spm.on('compile', function() {
+        console.log('compile')
+    })
+}
+```
