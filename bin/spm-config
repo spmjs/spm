@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var commander = require('commander')
-require('../lib/terminal/color').colorful()
+require('colorful').colorful()
 var config = require('../lib/system/config')
 
 commander.usage('[section.key] [value]')

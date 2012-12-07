@@ -73,7 +73,7 @@ should be synchronous.
 ## Event plugin
 
 
-```
+```js
 exports.registerListener = function() {
     spm.on('upload', function() {
         console.log('upload')
@@ -84,3 +84,20 @@ exports.registerListener = function() {
     })
 }
 ```
+
+## Logging
+
+Logging is import for spm, use the logging provided by spm:
+
+```js
+var logging = require('spm').logging
+```
+
+There are 6 API for you:
+
+1. start: this means the start of your program (or function).
+2. end: this means the end of your program (or function), if you ``start``, you must ``end.
+3. debug: use it for debug information, for example http request.
+4. info: the normal information.
+5. warn: if there is something you want to warn people.
+6. error: logging the error message.

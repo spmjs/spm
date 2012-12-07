@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 var commander = require('commander')
-require('../lib/terminal/color').colorful()
-var logging = require('../lib/terminal/logging')
+require('colorful').colorful()
+var logging = require('../lib/spm').logging
 var builder = require('../lib/core/build')
 
 commander.usage('[options]')
@@ -53,7 +53,7 @@ commander.on('--help', function() {
 commander.parse(process.argv)
 
 // verbose vs quiet
-logging.setlevel(commander)
+logging.config(commander)
 
 // run install
 builder.run(commander)

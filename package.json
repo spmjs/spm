@@ -6,6 +6,7 @@
   "dependencies": {
     "async": ">=0.1.22",
     "request": ">=2.12.0",
+    "colorful": ">=1.0.0",
     "commander": ">=1.1.1"
   },
   "devDependencies": {

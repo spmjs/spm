@@ -6,8 +6,8 @@ var child_process = require('child_process')
 
 
 var commander = require('commander')
-var program = require('../lib/terminal/program')
-require('../lib/terminal/color').colorful()
+var program = require('colorful').program
+require('colorful').colorful()
 var plugin = require('../lib/system/plugin')
 var config = require('../lib/system/config')
 var spm = require('../lib/spm')
