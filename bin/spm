@@ -16,7 +16,7 @@ var spawn = require('../lib/utils').spawn
 
 commander.helpInformation = function() {
   // register extentions
-  plugin.trigger('registerCommand')
+  plugin.blockCall('registerCommand')
   return [
     '',
     '  ' + '♨'.to.cyan.color + '  ' + 'Static Package Manager'.to.bold.color,
@@ -110,7 +110,7 @@ function executable(subcmd) {
   }
 
   // register extentions
-  plugin.trigger('registerCommand')
+  plugin.blockCall('registerCommand')
   var extensions = spm.extensionCommands()
   for (var i = 0; i < extensions.length; i++) {
     var cmd = extensions[i]
