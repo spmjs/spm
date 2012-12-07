@@ -1,5 +1,5 @@
 var should = require('should')
-require('../index').logging.setlevel('error')
+require('../index').logging.config('error')
 var config = require('../lib/system/config')
 
 describe('config', function() {
