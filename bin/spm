@@ -38,33 +38,26 @@ commander
 
 // sub command help
 commander.on('--help', function() {
+  var files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'core'))
+  console.log('  ' + 'Core Commands:'.to.bold.green.color)
+  console.log()
+  files.toString().split(',').forEach(function(f) {
+    var name = f.replace('.js', '')
+    var module = require('../lib/core/' + name)
+    program.printHelp(new program.Command(name, module.description))
+  })
+
+  console.log()
   console.log('  ' + 'System Commands:'.to.bold.magenta.color)
   console.log()
   program.printHelp(new program.Command('plugin', plugin.description))
   program.printHelp(new program.Command('config', config.description))
   console.log()
 
-  // register core commands
-  var cores = []
-  var files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'core'))
-  files.toString().split(',').forEach(function(f) {
-    var name = f.replace('.js', '')
-    var module = require('../lib/core/' + name)
-    cores.push(new program.Command(name, module.description))
-  })
-
-  if (cores.length) {
-    console.log('  ' + 'Core Commands:'.to.bold.green.color)
-    console.log()
-    cores.forEach(function(cmd) {
-      program.printHelp(cmd)
-    })
-  }
-
   var extensions = spm.extensionCommands()
   if (extensions.length) {
     console.log()
-    console.log('  ' + 'Extension Commands:'.to.bold.blue.color)
+    console.log('  ' + 'Plugin Commands:'.to.bold.blue.color)
     console.log()
     extensions.forEach(function(cmd) {
       program.printHelp(cmd)
