@@ -14,11 +14,11 @@
     "should": "*"
   },
   "bin": {
-    "spm": "bin/spm",
-    "spm-build": "bin/spm-build",
-    "spm-config": "bin/spm-config",
-    "spm-install": "bin/spm-install",
-    "spm-plugin": "bin/spm-plugin"
+    "spm": "bin/spm.js",
+    "spm-build": "bin/spm-build.js",
+    "spm-config": "bin/spm-config.js",
+    "spm-install": "bin/spm-install.js",
+    "spm-plugin": "bin/spm-plugin.js"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec"
