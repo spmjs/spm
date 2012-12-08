@@ -86,15 +86,19 @@ if (subcmd == 'help') {
   }
 
   var bin = executable(helpcmd);
-  bin && child_process.exec(bin + ' --help', function(err, stdout) {
-    if (err) {
-      throw err;
-    }
-    process.stdout.write(stdout);
-  });
+  if (bin) {
+    child_process.exec(bin + ' --help', function(err, stdout) {
+      if (err) {
+        throw err;
+      }
+      process.stdout.write(stdout);
+    });
+  }
 } else {
   var bin = executable(subcmd);
-  bin && spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
+  if (bin) {
+    spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
+  }
 }
 
 

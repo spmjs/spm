@@ -1,1 +1,1 @@
-module.exports = require('./lib/spm')
+module.exports = require('./lib/spm');

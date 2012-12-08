@@ -98,31 +98,31 @@ function createPlugin() {
 
 function write(name, description, version, bin) {
   // write package
-  var package = '{\n  "name": "%s",\n  "version": "%s",\n';
-  package += '  "description": "%s",\n  "scripts": {\n';
-  package += '    "postinstall": "scripts/post-install.js",\n';
-  package += '    "uninstall": "scripts/uninstall.js"\n  }';
+  var script = '{\n  "name": "%s",\n  "version": "%s",\n';
+  script += '  "description": "%s",\n  "scripts": {\n';
+  script += '    "postinstall": "scripts/post-install.js",\n';
+  script += '    "uninstall": "scripts/uninstall.js"\n  }';
   if (bin) {
-    package += ',\n  "preferGlobal": "true",\n  "bin": {\n';
-    package += util.format('    "%s": "bin/%s"\n  }', name, name);
+    script += ',\n  "preferGlobal": "true",\n  "bin": {\n';
+    script += util.format('    "%s": "bin/%s"\n  }', name, name);
   }
-  package += '\n}';
-  package = util.format(package, name, version, description);
+  script += '\n}';
+  script = util.format(script, name, version, description);
   safeWrite(path.join(name, 'package.json'));
 
-  fs.writeFileSync(path.join(name, 'package.json'), package);
+  fs.writeFileSync(path.join(name, 'package.json'), script);
 
   // write scripts
   var file = path.join(name, 'scripts', 'post-install.js');
   safeWrite(file);
-  var script = util.format("#!/usr/bin/env node\nrequire('spm').installPlugin('%s')", name);
+  script = util.format("#!/usr/bin/env node\nrequire('spm').installPlugin('%s')", name);
   fs.writeFileSync(file, script);
-  fs.chmodSync(file, 0755);
+  fs.chmodSync(file, '0755');
 
   script = util.format("#!/usr/bin/env node\nrequire('spm').uninstallPlugin('%s')", name);
   file = path.join(name, 'scripts', 'uninstall.js');
   fs.writeFileSync(file, script);
-  fs.chmodSync(file, 0755);
+  fs.chmodSync(file, '0755');
 
   // write index.js
   if (bin) {
@@ -144,7 +144,7 @@ function write(name, description, version, bin) {
     safeWrite(file);
     script = "#!/usr/bin/env node\nvar commander = require('commander')\n";
     fs.writeFileSync(file, script);
-    fs.chmodSync(file, 0755);
+    fs.chmodSync(file, '0755');
   }
 
   console.log();
