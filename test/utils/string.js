@@ -43,7 +43,6 @@ describe('string util ', function() {
     var s6 = 'srcName';
     var s7 = 'src-Name';
 
-
     string.splitCamelStr(s1).should.eql(s1);
     string.splitCamelStr(s2).should.eql(s2);
     string.splitCamelStr(s3).should.eql('a-b');
@@ -51,5 +50,17 @@ describe('string util ', function() {
     string.splitCamelStr(s5).should.eql('ab-cD');
     string.splitCamelStr(s6).should.eql('src-name');
     string.splitCamelStr(s7).should.eql(s7);
+  });
+
+  it('test bigCamelStr method', function() {
+    var s1 = 'abc-def';
+    var s2 = 'a';
+    var s3 = 'ab';
+    var s4 = 'a-b';
+
+    string.bigCamelStr(s1).should.eql('AbcDef');
+    string.bigCamelStr(s2).should.eql(s2);
+    string.bigCamelStr(s3).should.eql(s3);
+    string.bigCamelStr(s4).should.eql('AB');
   });
 });
