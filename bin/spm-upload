@@ -3,7 +3,7 @@
 var commander = require('commander');
 require('colorful').colorful();
 var logging = require('../lib/spm').logging;
-var uploader = require('../lib/core/upload');
+var uploader = require('../lib/builtin/upload');
 
 commander.usage('[options] name');
 

@@ -38,20 +38,20 @@ commander
 
 // sub command help
 commander.on('--help', function() {
-  var files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'core'));
-  console.log('  ' + 'Core Commands:'.to.bold.green.color);
-  console.log();
-  files.toString().split(',').forEach(function(f) {
-    var name = f.replace('.js', '');
-    var module = require('../lib/core/' + name);
-    program.printHelp(new program.Command(name, module.description));
-  });
-
-  console.log();
   console.log('  ' + 'System Commands:'.to.bold.magenta.color);
   console.log();
   program.printHelp(new program.Command('plugin', plugin.description));
   program.printHelp(new program.Command('config', config.description));
+  console.log();
+
+  var files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'builtin'));
+  console.log('  ' + 'Builtin Commands:'.to.bold.green.color);
+  console.log();
+  files.toString().split(',').forEach(function(f) {
+    var name = f.replace('.js', '');
+    var module = require('../lib/builtin/' + name);
+    program.printHelp(new program.Command(name, module.description));
+  });
   console.log();
 
   var extensions = spm.extensionCommands();
