@@ -30,7 +30,7 @@ test-utils:
 		--reporter $(REPORTER) \
 		--require should \
 		--timeout 10000 \
-		test/utils/*.js
+		test/utils/uglifyjs.js
 
 
 .PHONY: test-action test-core test-plugin test-utils
