@@ -85,24 +85,26 @@ console.info('isTopLevel--->', node instanceof UglifyJS.AST_Toplevel);
     
     // optionally you can pass another argument with options:
     var ast = UglifyJS.parse(code, {
-        filename : "slide.js" // default is null
+        filename : "slide.js", // default is null,
+        comments: true
     });
 
     var call_expression = null;
     var replace = new UglifyJS.TreeTransformer(function(node, descend) {
       if (node instanceof UglifyJS.AST_Call && node.start.value === 'require') {
+        node = node.clone();
         var temp = call_expression;
         call_expression = node;
         descend(node, this);
         call_expression = temp;
-        return true;
+        return node;
       }
       if (node instanceof UglifyJS.AST_Lambda) {
         var tmp = call_expression;
         call_expression = null;
         descend(node, this);
         call_expression = tmp;
-        return true;
+        return node;
       }
 
       if (node instanceof UglifyJS.AST_String && call_expression) {
@@ -112,9 +114,40 @@ console.info('isTopLevel--->', node instanceof UglifyJS.AST_Toplevel);
           value: node.getValue() + '-debug'
         });
       }
+      return node.clone();
     });
 
     var ast2 = ast.transform(replace);
-    //console.info('---->', ast2.print_to_string({beautify: true}));
+    console.info('--new-->', ast2.print_to_string({beautify: true, comments: true}));
+    console.info('--old-->', ast.print_to_string({beautify: true, comments: true}));
+  });
+
+  it('test clone', function() {
+    var code = fsExt.readFileSync(astModule, 'dist/slide-debug.js');
+    
+    // optionally you can pass another argument with options:
+    var ast = UglifyJS.parse(code, {
+        filename : "slide.js", // default is null,
+        comments: true
+    });
+
+    // this is the transformer
+    var deep_clone = new UglifyJS.TreeTransformer(function(node, descend){
+        node = node.clone();
+        // the descend function expects two arguments:
+        // the node to dive into, and the tree walker
+        // `this` here is the tree walker (=== deep_clone).
+        // by descending into the *cloned* node, we keep the original intact
+        descend(node, this);
+        return node;
+    });
+    
+    // in ast2 we'll get a deep copy of ast
+    var ast2 = ast.transform(deep_clone);
+    
+    // let's change AST now:
+    
+    console.log('clone---1-->', ast.print_to_string({ beautify: true, comments: true}));
+    console.log('clone---2-->', ast2.print_to_string({ beautify: true, comments: true}));
   });
 });
