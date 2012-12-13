@@ -1,1 +1,1 @@
-<div>tpl</div>
+<div class="div" name='abc'>tpl</div>
