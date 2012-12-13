@@ -1,1 +1,1 @@
-define("#tplModule/1.0.0/a",[],function(b,c){c.say=function(){console.info("a---->",a)}});
+define("#tplModule/1.0.0/a",[],function(b,c){b.async("./c.htm"),c.say=function(){console.info("a---->",a)}});

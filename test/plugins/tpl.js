@@ -15,9 +15,9 @@ describe('spm tpl test', function() {
       var moduleDebugCode = fsExt.readFileSync(distCodePath);
 
       should.exist(moduleDebugCode);
-      moduleDebugCode.should.include('<div>tpl</div>');
-      moduleDebugCode.should.include('<div>html</div>');
-      moduleDebugCode.should.include('<div>htm</div>');
+      moduleDebugCode.should.include("var b1 = \"<div class=\\\"div\\\" name='abc'>tpl</div>");
+      moduleDebugCode.should.include("var a = require('./a.html");
+      moduleDebugCode.should.include('var b2 = require.async("./c.htm");');
       done();
     });
   });
