@@ -67,9 +67,9 @@ describe('spm build', function() {
         
         var code = fsExt.readFileSync(moduleCPath);
 
-        var cDefReg = /define\("test\/relativeModule\/0.9.1\/lib\/c-debug", \["..\/core\/a-debug", "..\/core\/b-debug"\]/;
+        var cDefReg = /define\("test\/relativeModule\/0.9.1\/lib\/c-debug", \[ "..\/core\/a-debug", "..\/core\/b-debug" \]/;
         var bDefReg = /define\("test\/relativeModule\/0.9.1\/core\/b-debug", \[\]/;
-        var aDefReg = /define\("test\/relativeModule\/0.9.1\/core\/a-debug", \[".\/b-debug"\]/;
+        var aDefReg = /define\("test\/relativeModule\/0.9.1\/core\/a-debug", \[ ".\/b-debug" \]/;
         code.should.match(cDefReg);
         code.should.match(bDefReg);
         code.should.match(aDefReg);
@@ -104,9 +104,9 @@ describe('spm build', function() {
         fsExt.existsSync(modulePath).should.be.true;
         var code = fsExt.readFileSync(modulePath);
 
-        var defineReg = /define\("test\/sampleModule\/0.0.1\/debugRequire-debug", \[".\/module-debug"\]/;
-        var requireReg1 = /require\('\.\/module-debug\.js'\)/;
-        var requireReg2 = /require\('\.\/module-debug\.js'\)/;
+        var defineReg = /define\("test\/sampleModule\/0.0.1\/debugRequire-debug", \[ ".\/module-debug" \]/;
+        var requireReg1 = /require\("\.\/module-debug\.js"\)/;
+        var requireReg2 = /require\("\.\/module-debug\.js"\)/;
         code.should.match(defineReg);
         code.should.match(requireReg1);
         code.should.match(requireReg2);
@@ -124,10 +124,10 @@ describe('spm build', function() {
         var code = fsExt.readFileSync(modulePath);
 
         var defineReg = /define\("test\/sampleModule\/0.0.1\/asyncRequire-debug", \[\]/;
-        var requireReg1 = /require\.async\('\.\/module-debug\.js'\)/;
-        var requireReg2 = /require\.async\('module-debug\.js'\)/;
-        var requireReg2 = /require\.async\('$-debug'\)/;
-        var requireReg2 = /require\.async\('arale\/base\/1.0.1\/base-debug'\)/;
+        var requireReg1 = /require\.async\("\.\/module-debug\.js"\)/;
+        var requireReg2 = /require\.async\("module-debug\.js"\)/;
+        var requireReg2 = /require\.async\("$-debug"\)/;
+        var requireReg2 = /require\.async\("arale\/base\/1.0.1\/base-debug"\)/;
         code.should.match(defineReg);
         code.should.match(requireReg1);
         code.should.match(requireReg2);

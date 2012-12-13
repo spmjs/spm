@@ -95,12 +95,12 @@ describe('spm build test', function() {
       should.exist(code1);
       should.exist(code2);
 
-      code1.should.include('define("alice/m_js_css/1.0.0/a-debug", ["./base2.css"]');
-      code1.should.include("var c = require('./base2.css')");
+      code1.should.include('define("alice/m_js_css/1.0.0/a-debug", [ "./base2.css" ]');
+      code1.should.include('var c = require("./base2.css")');
 
-      code2.should.include('define("alice/m_js_css/1.0.0/b-debug", ["./base2.css", "./base1.css"]');
-      code2.should.include("var d = require('./base1.css')");
-      code2.should.include("var c = require('./base2.css')");
+      code2.should.include('define("alice/m_js_css/1.0.0/b-debug", [ "./base2.css", "./base1.css" ]');
+      code2.should.include("var d = require(\"./base1.css\")");
+      code2.should.include("var c = require(\"./base2.css\")");
       done();
     });
   });

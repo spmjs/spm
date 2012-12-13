@@ -1,1 +1,1 @@
-define(function(e,t,n){var r=e("./contact/model/m.js"),i=e("$"),s=e("base");t.say=function(e){r.say(),console.info(i(e)),console.info(s)}});
+define(function(a,b){var d=a("./contact/model/m.js"),e=a("$"),f=a("base");b.say=function(a){d.say(),console.info(e(a)),console.info(f)}});

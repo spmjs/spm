@@ -1,1 +1,1 @@
-define("test/sampleModule/0.0.1/asyncRequire",[],function(e,t){var n=e.async("./module.js"),r=e.async("module.js"),i=e.async("$"),s=e.async("arale/base/1.0.1/base");t.say=function(){n.get(),r.get()}});
+define("test/sampleModule/0.0.1/asyncRequire",[],function(a,b){var c=a.async("./module.js"),d=a.async("module.js");a.async("$"),a.async("arale/base/1.0.1/base"),b.say=function(){c.get(),d.get()}});
