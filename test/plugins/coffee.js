@@ -17,9 +17,10 @@ describe('coffee plugin test', function() {
   resources.setOpts(opts);
   clean.setOpts(opts);
 
-  beforeEach(function() {
+  beforeEach(function(done) {
     getProjectModel(dir, function(model) {
       resources.execute(model, function() {
+        done();
       });
     });
   });
@@ -32,7 +33,7 @@ describe('coffee plugin test', function() {
       coffeePlugin.execute(model, function() {
         var scripts1 = fsExt.listFiles(src);
         var scripts2 = fsExt.listFiles(build);
-console.info('-------', scripts1, scripts2);
+        console.log('-------', scripts1, scripts2);
         scripts1.length.should.eql(scripts2.length);
 
         var srcScripts = fsExt.listFiles(src, /coffee$/);
