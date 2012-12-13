@@ -20,28 +20,31 @@ describe('less project test', function() {
   resources.setOpts(opts);
   clean.setOpts(opts);
 
-  beforeEach(function() {
+  beforeEach(function(done) {
      
     getProjectModel(dir, function(model) {
       resources.execute(model, function() {
+        done();
       });
     });
   });
 
-  afterEach(function() {
+  afterEach(function(done) {
     getProjectModel(dir, function(model) {
       clean.execute(model, function() {
+        done();
       });
     });
   });
 
-  it('test less plugin', function() {
+  it('test less plugin', function(done) {
     getProjectModel(dir, function(model) {
       var src = model.srcDirectory;
       var build = model.buildDirectory;
       // console.info('lesss---->', less);
       // console.info('result---->', jshint.errors);
       // console.info('result---->', result);
+      done();
     });
   });
 });

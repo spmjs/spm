@@ -8,7 +8,6 @@ require('../module.js');
 describe('depCheck plugin test', function() {
   var action = "build";
   var opts = Opts.get(action);
-  var dir = path.join(path.dirname(module.filename), "../data/modules/lessModule/");
  
   var plugin = require('../../lib/plugins/depCheck.js');
 
