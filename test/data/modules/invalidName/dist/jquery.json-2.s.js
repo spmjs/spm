@@ -1,1 +1,1 @@
-define("test/invalidNameModule/0.0.1/jquery.json-2.s",["$"],function(e,t){var n=e("$");t.get=function(e){return n(e)}});
+define("test/invalidNameModule/0.0.1/jquery.json-2.s",["$"],function(a,b){var c=a("$");b.get=function(a){return c(a)}});;

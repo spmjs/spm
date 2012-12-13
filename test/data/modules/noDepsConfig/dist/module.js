@@ -1,1 +1,1 @@
-define("test/noDepsConfig/0.0.1/module",["$"],function(e,t){var n=e("$");t.get=function(e){return n(e)}});
+define("test/noDepsConfig/0.0.1/module",["$"],function(a,b){var c=a("$");b.get=function(a){return c(a)}});;

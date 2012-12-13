@@ -9,6 +9,10 @@ define("arale/switchable/0.9.11/slide-debug", ["./switchable-debug", "$-debug", 
         }
     });
 
+    var d;
+    (function() {
+      d = require('./f'); 
+    }());
     // require('./e');
     exports.b = (function() {
       return {

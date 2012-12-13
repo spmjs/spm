@@ -17,7 +17,6 @@ describe('uglify-js ', function() {
     var call_expression = null;
     var walker = new UglifyJS.TreeWalker(function(node, descend) {
       if (node instanceof UglifyJS.AST_Call && node.start.value === 'define') {
-console.info('isTopLevel--->', node instanceof UglifyJS.AST_Toplevel);
         var temp = call_expression;
         call_expression = node;
         descend();
@@ -36,7 +35,7 @@ console.info('isTopLevel--->', node instanceof UglifyJS.AST_Toplevel);
       if (node instanceof UglifyJS.AST_Array && call_expression) {
         descend();
         return true;
-        console.info('---->', node.start, node.end)
+        // console.info('---->', node.start, node.end)
       }
       if (node instanceof UglifyJS.AST_String && call_expression) {
         console.log("Found string: %s at %d,%d", node.getValue(),
@@ -118,8 +117,8 @@ console.info('isTopLevel--->', node instanceof UglifyJS.AST_Toplevel);
     });
 
     var ast2 = ast.transform(replace);
-    console.info('--new-->', ast2.print_to_string({beautify: true, comments: true}));
-    console.info('--old-->', ast.print_to_string({beautify: true, comments: true}));
+    //console.info('--new-->', ast2.print_to_string({beautify: true, comments: true}));
+    //console.info('--old-->', ast.print_to_string({beautify: true, comments: true}));
   });
 
   it('test clone', function() {
@@ -147,7 +146,7 @@ console.info('isTopLevel--->', node instanceof UglifyJS.AST_Toplevel);
     
     // let's change AST now:
     
-    console.log('clone---1-->', ast.print_to_string({ beautify: true, comments: true}));
-    console.log('clone---2-->', ast2.print_to_string({ beautify: true, comments: true}));
+    //console.log('clone---1-->', ast.print_to_string({ beautify: true, comments: true}));
+    //console.log('clone---2-->', ast2.print_to_string({ beautify: true, comments: true}));
   });
 });
