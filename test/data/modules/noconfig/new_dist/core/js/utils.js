@@ -1,1 +1,1 @@
-define(function(a,b){b.log=function(a){console.info("[log] "+a)}});;
+define(function(a,b){b.log=function(a){console.info("[log] "+a)}});

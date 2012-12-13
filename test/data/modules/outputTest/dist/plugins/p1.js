@@ -1,1 +1,1 @@
-define("test/outputTest/0.0.1/plugins/p1",[],function(){});;
+define("test/outputTest/0.0.1/plugins/p1",[],function(){});

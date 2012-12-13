@@ -1,1 +1,1 @@
-define({name:"config",version:"1.0"});;
+define({name:"config",version:"1.0"});

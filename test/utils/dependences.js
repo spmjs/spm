@@ -48,7 +48,6 @@ describe('test dependences', function() {
     var code4 = fsExt.readFileSync(astModule, 'src/widget.js');
     var ast4 = UglifyJS.parse(code4);
     var deps4 = dependences.parse(ast4);
-console.info('----->', deps4)
   });
 
   it('test replaceRequire method', function() {
