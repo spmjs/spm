@@ -3,12 +3,13 @@ define( function (require, exports) {
   // var b= require('b');
   // var c=require('c');
 
-  var c= require('./module.js');
-  var c = require('./module.js');
+  var a= require('./module.js');
+  var b = require('./module.js');
   var c=require('./module.js');
 
   exports.get = function(id) {
-    return $(id);
+
+    return $(id) + a + b + c;
   };
 });
 
