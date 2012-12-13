@@ -3,6 +3,9 @@ var path = require('path');
 
 var dependences = require('../../lib/utils/dependences.js');
 var fsExt = require('../../lib/utils/fs_ext.js');
+var moduleHelp = require('../../lib/utils/module_help.js');
+
+require('../module.js');
 
 var astModule = path.join(path.dirname(module.filename), "../data/modules/ast_test/");
 var sampleModule = path.join(path.dirname(module.filename), "../data/modules/sampleModule/");
@@ -48,9 +51,45 @@ describe('test dependences', function() {
     var code4 = fsExt.readFileSync(astModule, 'src/widget.js');
     var ast4 = UglifyJS.parse(code4);
     var deps4 = dependences.parse(ast4);
+    deps4.should.eql([ 'base', '$', './daparser', './auto-render' ]);
   });
 
-  it('test replaceRequire method', function() {
-  
+  it('test replaceRequire method', function(done) {
+
+    getProjectModel(astModule, function(model) {
+      var modulePath = path.join(astModule, 'src/module.js');
+      var slidePath = path.join(astModule, 'src/slide.js');
+      var widgetPath = path.join(astModule, 'src/widget.js');
+
+      var moduleCode = dependences.replaceRequire(fsExt.readFileSync(modulePath), model, '-debug');
+      var slideCode = dependences.replaceRequire(fsExt.readFileSync(slidePath), model, '-debug');
+      var widgetCode = dependences.replaceRequire(fsExt.readFileSync(widgetPath), model, '-debug');
+
+      // console.info('moduleCode----', moduleCode); 
+      // console.info('slideCode----', slideCode); 
+      // console.info('widgetCode----', widgetCode); 
+
+      // 注释不应被替换
+      moduleCode.should.include('// var b = require(\'./a\');');
+      moduleCode.should.include('var c = require(\'./c\');');
+      moduleCode.should.include('var foo = require("./foo-debug.js");');
+
+      // css 文件和模块部文件不应该替换.
+      moduleCode.should.include('var alice = require("./a.css");');
+      moduleCode.should.include('var tpl = require("./b.tpl");');
+
+      slideCode.should.include('var module = require.async("./a0-debug.js");');
+      slideCode.should.include('var Switchable = require("./switchable-debug.js");');
+      slideCode.should.include('d = require("./f-debug");');
+      slideCode.should.include('m1: require("./c-debug"),');
+      slideCode.should.include('// require(\'./d\')');
+      slideCode.should.include('m3: require.async("./a1-debug")');
+
+      widgetCode.should.include('var Base = require("base-debug");');
+      widgetCode.should.include('AutoRender = require("./auto-render-debug");');
+      widgetCode.should.include('Widget.StaticsWhiteList = [ "autoRender" ];');
+
+      done();
+    });
   });
 });
