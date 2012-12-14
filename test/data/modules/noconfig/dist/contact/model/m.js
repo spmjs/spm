@@ -1,1 +1,1 @@
-define(function(a,b){var c='<div>hello</div> <input name="nihai" value=\'{"name": "a"}\'/>',d=a("../../core/js/config.js"),e=a("../../core/js/utils.js");b.say=function(){e.log("tpl----->"+c),e.log("config--->",d)}});
+define(function(a,b){var c='<div>hello</div>\n<input name="nihai" value=\'{"name": "a"}\'/>',d=a("../../core/js/config.js"),e=a("../../core/js/utils.js");b.say=function(){e.log("tpl----->"+c),e.log("config--->",d)}});

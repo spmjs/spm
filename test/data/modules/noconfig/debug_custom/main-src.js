@@ -1,5 +1,5 @@
 define("test/public/1.0.0/contact/model/m-src", [ "../../core/js/config-src", "../../core/js/utils-src" ], function(require, exports, module) {
-    var tpl = '<div>hello</div> <input name="nihai" value=\'{"name": "a"}\'/>';
+    var tpl = '<div>hello</div>\n<input name="nihai" value=\'{"name": "a"}\'/>';
     var config = require("../../core/js/config-src.js");
     var utils = require("../../core/js/utils-src.js");
     exports.say = function() {
