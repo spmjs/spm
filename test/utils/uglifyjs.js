@@ -178,8 +178,8 @@ describe('uglify-js ', function() {
     var ast = getAst(astModule, 'src/foo.js'); 
     var walker = new UglifyJS.TreeWalker(function(node, descend) {
       if (node instanceof UglifyJS.AST_Call && node.start.value === 'seajs') {
-        console.info('2---------------');
-        console.info(node);
+        //console.info('2---------------');
+        //console.info(node);
         return true;
       }
     });

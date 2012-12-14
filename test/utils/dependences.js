@@ -31,15 +31,15 @@ describe('test dependences', function() {
   });
 
   it('test parseStatic method', function() {
-    var deps = dependences._parseStatic(ast);
+    var deps = dependences.parseStatic(ast);
     deps.should.eql([ './switchable-debug', '$-debug', 'arale/easing/1.0.0/easing-debug' ]);
   });
 
   it('test parseDynamic method', function() {
-    var deps = dependences._parseDynamic(ast);
+    var deps = dependences.parseDynamic(ast);
     deps.should.eql([ './switchable-debug', './f', './c', './b' ]);
 
-    var deps2 = dependences._parseDynamic(ast2);
+    var deps2 = dependences.parseDynamic(ast2);
     deps2.should.have.length(0);
 
     var code = fsExt.readFileSync(astModule, 'src/config.js');
