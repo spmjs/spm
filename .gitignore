@@ -19,3 +19,4 @@ node_modules/
 .buildpath
 .settings
 .yml
+_site

@@ -2,7 +2,7 @@ var should = require('should');
 var require = require('./testutils');
 var dep = require('../lib/library/dependency');
 
-describe('find define dependencies', function() {
+describe('dependency.parseDefine', function() {
   it('find ./a as dependency', function() {
     var code = [
       "define('id', ['./a'], function(require, exports, module) {",
@@ -54,7 +54,7 @@ describe('find define dependencies', function() {
 });
 
 
-describe('find require dependencies', function() {
+describe('dependency.parseRequire', function() {
   it('find jquery as dependency', function() {
     var code = [
       "define('id', ['./a'], function(require, exports, module) {",
