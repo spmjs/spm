@@ -1,5 +1,6 @@
 var should = require('should');
 require('../index').logging.config('error');
+var require = require('./testutils');
 var config = require('../lib/system/config');
 
 describe('config', function() {

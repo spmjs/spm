@@ -1,3 +1,4 @@
+var should = require('should');
 var require = require('./testutils');
 var dep = require('../lib/library/dependency');
 
