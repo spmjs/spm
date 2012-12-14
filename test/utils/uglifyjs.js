@@ -149,4 +149,48 @@ describe('uglify-js ', function() {
     //console.log('clone---1-->', ast.print_to_string({ beautify: true, comments: true}));
     //console.log('clone---2-->', ast2.print_to_string({ beautify: true, comments: true}));
   });
+
+  it('test ast parse speed', function() {
+    console.time('test ast parse');
+    var ast = getAst(astModule, 'src/jquery-debug.js');
+
+    var find = false;
+    var walker = new UglifyJS.TreeWalker(function(node, descend) {
+      if (node instanceof UglifyJS.AST_Call && node.start.value === 'require') {
+        find = true;
+        return true;
+      }
+    });
+    ast.walk(walker);
+
+    console.info('find require--->', find);
+    console.timeEnd('test ast parse');
+  });
+
+  it('test regexp parse speed', function() {
+    var jqueryCode = fsExt.readFileSync(path.join(astModule, 'src/jquery-debug.js'));
+    console.time('test regexp parse');
+    console.info('find require ', /require\(/.test(jqueryCode));
+    console.timeEnd('test regexp parse');
+  });
+
+  it('test replace ast_call node', function() {
+    var ast = getAst(astModule, 'src/foo.js'); 
+    var walker = new UglifyJS.TreeWalker(function(node, descend) {
+      if (node instanceof UglifyJS.AST_Call && node.start.value === 'seajs') {
+        console.info('2---------------');
+        console.info(node);
+        return true;
+      }
+    });
+    ast.walk(walker);
+  });
 });
+
+function getAst(base, name) {
+  var code = fsExt.readFileSync(path.join(base, name));
+  return UglifyJS.parse(code, {
+    filename : name, // default is null,
+    comments: true
+  });
+}
