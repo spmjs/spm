@@ -1,5 +1,6 @@
 define(function(require, exports) {
-  var b = seajs.importStyle('abc', 'def');
+  var b = require('./a.css'); 
+
   exports.say = function() {
     console.info('hello!');
   };

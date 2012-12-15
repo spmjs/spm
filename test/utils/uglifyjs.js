@@ -175,15 +175,33 @@ describe('uglify-js ', function() {
   });
 
   it('test replace ast_call node', function() {
-    var ast = getAst(astModule, 'src/foo.js'); 
-    var walker = new UglifyJS.TreeWalker(function(node, descend) {
+
+    var ast = UglifyJS.parse('var c = seajs.importStyle(".a{color:#000;background:#fff}", "alice/a.css");');
+    var seajsNode = null;
+    var findImportStyle = new UglifyJS.TreeWalker(function(node, descend) {
       if (node instanceof UglifyJS.AST_Call && node.start.value === 'seajs') {
-        //console.info('2---------------');
-        //console.info(node);
+        seajsNode = node.clone();
         return true;
       }
     });
-    ast.walk(walker);
+
+    ast.walk(findImportStyle);
+
+    var ast2 = getAst(astModule, 'src/foo.js');
+
+    var replace = new UglifyJS.TreeTransformer(function(node, descend) {
+      if (node instanceof UglifyJS.AST_Call && node.start.value === 'require') {
+        //console.info(node);
+        if (seajsNode) {
+          return seajsNode.clone();
+        }
+        return node.clone();
+      }
+    });
+    ast2.transform(replace);
+    var code2 = ast2.print_to_string({beautify: true});
+    code2.should.include('seajs.importStyle');
+    code2.should.not.include('require(');
   });
 });
 
