@@ -5,7 +5,7 @@ require('../module.js');
 
 var fsExt = require('../../lib/utils/fs_ext.js');
 var spm = require('../../lib/spm.js'); // require('spm');
-var depsPlugin = require('../../lib/plugins/dependencies.js');
+var depUtil = require('../../lib/utils/dependences.js');
 var build = spm.getAction('build');
 
 var moduleAdir = path.join(path.dirname(module.filename), "../data/modules/moduleA/");
@@ -35,7 +35,7 @@ describe('spm build', function() {
 
         should.exist(moduleDebugCode);
 
-        var deps = depsPlugin.parseDependencies(null, moduleDebugCode);
+        var deps = depUtil.parse(moduleDebugCode);
         deps.forEach(function(dep) {
           /undefined/.test(dep).should.be.false;
         });

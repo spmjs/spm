@@ -93,14 +93,4 @@ describe('test dependences', function() {
       done();
     });
   });
-
-  it('test parse require', function() {
-    var code = fsExt.readFileSync(astModule, 'src/module1.js');
-    // optionally you can pass another argument with options:
-    ast = UglifyJS.parse(code, {
-        filename : "module1.js" // default is null
-    });
-    var deps = dependences.parse(ast);
-    deps.should.eql([]);
-  });
 });

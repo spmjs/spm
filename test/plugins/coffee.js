@@ -1,6 +1,8 @@
 var should = require('should');
 var path = require('path');
 var fsExt = require('../../lib/utils/fs_ext.js');
+var isCoffee = require('../../lib/utils/module_help.js').isCoffee;
+var depUtil = require('../../lib/utils/dependences.js');
 var Opts = require('../../lib/utils/opts.js');
 require('../module.js');
 
@@ -42,8 +44,6 @@ describe('coffee plugin test', function() {
         srcScripts.should.have.length(1);
         buildScripts.should.have.length(1);
 
-        var coffeeModPattern = model.getReqModRegByType('[^\"\']+\\.coffee');
-
         var srcCode = fsExt.listFiles(src, /js$/).map(function(f) {
           return fsExt.readFileSync(f);
         });
@@ -52,8 +52,21 @@ describe('coffee plugin test', function() {
           return fsExt.readFileSync(f);
         });
         
-        coffeeModPattern.test(srcCode[0]).should.be.true;
-        coffeeModPattern.test(buildCode[0]).should.be.false;
+        var srcModDeps = depUtil.parse(srcCode[0]);
+        var hasCoffee = srcModDeps.some(function(dep) {
+           console.info('----->', dep)
+          return isCoffee(dep);
+        });
+
+           console.info('----2->', hasCoffee)
+        hasCoffee.should.be.true;
+
+        var buildModDeps = depUtil.parse(buildCode[0]);
+        var buildHasCoffee = buildModDeps.some(function(dep) {
+           console.info('-3---->', dep)
+          return isCoffee(dep);
+        });
+        buildHasCoffee.should.be.false;
       });
 
       clean.execute(model, function() {
