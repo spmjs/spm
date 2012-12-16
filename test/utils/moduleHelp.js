@@ -77,6 +77,9 @@ describe('moduleHelp', function() {
   var n6 = 'a.tpl';
   var n7 = 'a.b#';
 
+  var n8 = './js/module';
+  var n9 = 'js/a/b.js';
+
   it('module normalize test', function() {
     help.normalize(j1).should.eql(j1);
     help.normalize(j2).should.eql(j2);
@@ -93,6 +96,8 @@ describe('moduleHelp', function() {
     help.normalize(n5).should.eql(n5);
     help.normalize(n6).should.eql(n6);
     help.normalize(n7).should.eql(n7);
+    help.normalize(n8).should.eql(n8 + '.js');
+    help.normalize(n9).should.eql(n9);
   });
 
   it('module unique ', function() {
