@@ -2,6 +2,7 @@ var UglifyJS = require('uglify-js');
 var path = require('path');
 
 var fsExt = require('../../lib/utils/fs_ext.js');
+var min = require('../../lib/compress/uglify.js');
 
 var astModule = path.join(path.dirname(module.filename), "../data/modules/ast_test/");
 
@@ -202,6 +203,14 @@ describe('uglify-js ', function() {
     var code2 = ast2.print_to_string({beautify: true});
     code2.should.include('seajs.importStyle');
     code2.should.not.include('require(');
+  });
+
+  it('test code lint', function() {
+    var filepath = path.join(astModule, 'src/code_check.js');
+    min(filepath, function() {
+      console.info('min succ');
+    });
+
   });
 });
 
