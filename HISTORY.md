@@ -1,3 +1,17 @@
+## 2012.12.16, Version 1.3.0 (stable)
+
+
+### 优化增强
+- ✔ #495 spm upload 增加上传模块成功提示
+- ✔ #499 升级 uglifyjs 模块 
+
+### Bug Fix
+- ✔ #489 spm init 模板错误
+- ✔ #494 spm upload 的时候，在判断模块状态时，只判断符合当前源配置 roots 的源
+- ✔ #503 spm upload 新模块时，忽略 stable 的检查
+- ✔ #502 怎么配置私有源？
+
+
 ## 2012.12.09, Version 1.2.0 (stable)
 ### 新特性 & 优化增强
 
