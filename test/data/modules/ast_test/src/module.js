@@ -13,4 +13,15 @@ define(function(require, exports) {
   exports.say = function() {
     foo.say();  // var c = require('./d');
   };
+
+  exports.hi1 = function() {
+    var hello = 'nihao';
+    return hello;
+  };
+
+  exports.hi1 = function() {
+    eval('var dd = 11');
+    var hello = 'nihao';
+    return hello;
+  };
 });
