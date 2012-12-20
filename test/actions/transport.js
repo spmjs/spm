@@ -2,14 +2,11 @@ var should = require('should');
 require('shelljs/global');
 var path = require('path');
 
-var transport = require('../../lib/spm.js').getAction('transport');
-var Transport = require('../../lib/actions/transport.js');
-
 var fsExt = require('../../lib/utils/fs_ext.js');
 
 var DATA_DIR = path.join(__dirname, '../data/transports/');
 
-describe('spm transport action', function() {
+describe.skip('spm transport action', function() {
   afterEach(function() {
     rm('-rf', path.join(DATA_DIR, 'seajs', '1.2.1'));
   });
