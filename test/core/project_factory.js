@@ -1,10 +1,13 @@
 var should = require('should');
 var path = require('path');
 var fsExt = require('../../lib/utils/fs_ext.js');
+var Action = require('../../lib/core/action.js');
+var ProjectFactory = require('../../lib/core/project_factory.js');
 require('../module.js');
 
 describe('project model parse test', function() {
   var spmConfigTestModuleDir = path.join(path.dirname(module.filename), "../data/modules/spmConfigTest/");
+  var spmConfigTestModuleDir2 = path.join(path.dirname(module.filename), "../data/modules/spmConfigTest2/");
   var spmConfigTestCustomId= path.join(path.dirname(module.filename), "../data/action_test_data/test_custom_id");
 
   describe('spm config parse', function() {
@@ -36,6 +39,32 @@ describe('project model parse test', function() {
     it('test custom id rule', function() {
       getProjectModel('build', spmConfigTestCustomId, function(model) {
          model.getModuleId('a').should.eql('a/1.0.0');
+      });
+    });
+
+    it('test spmConfig parse', function(done) {
+      var options = {
+        base: spmConfigTestModuleDir2,
+        baseModInfo: {
+          root: 'test',
+          name: 'gallery',
+          version: "1.0.0",
+          output: {"*.js": "default"},
+          spmConfig: {
+            "*": {
+              "idRule": "{{moduleName}}/{{version}}",
+              "with-debug": ""
+            },
+            "build": {
+              "src": "./"
+            }
+          }
+        }
+      };
+      options = Action.prototype.createOptions(options);
+      ProjectFactory.getProjectModel('build', options, function(model) {
+        model.getModuleId('module').should.eql('module/1.0.0');
+        done();
       });
     });
   });
