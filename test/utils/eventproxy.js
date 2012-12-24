@@ -1,15 +1,18 @@
-/**
-var EventProxy = require('eventproxy');
+var EventProxy = require('../../lib/utils/event_proxy.js');
 var _ = require('underscore');
 
 describe('eventproxy', function() {
   it('test mulit event emit', function(done) {
     var obj = {};
     
-    var ep = EventProxy.create('e1', 'e2', 'e3', function() {
+    var ep = EventProxy.create('e1', 'e2', 'e3', function(data) {
       done();
       _.keys(obj).should.have.length(3);
-      console.info('all done', arguments);
+      data['e1'].should.eql('a');
+      data['e2'].should.eql('b');
+      data['e3'].should.eql('c');
+      data['e5'].should.eql('e');
+      console.info('all done', data);
     });
 
 
@@ -21,15 +24,16 @@ describe('eventproxy', function() {
     setTimeout(function() {
       obj.age = 2;
       ep.emit('e2', "b");
-      ep._callbacks.e4 = [null];
+      ep.add('e5');
+      setTimeout(function() {
+        ep.emit('e5', 'e'); 
+      }, 500);
     }, 200);
 
     setTimeout(function() {
       obj.sex = 3;
       ep.emit('e3', "c");
-      console.info('=====>', ep._callbacks.all)
     }, 300);
     
   });
 });
-**/

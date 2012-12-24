@@ -415,7 +415,7 @@ describe('uglifyjs use', function() {
     toplevel.walk(walker);
   });
 
-  it('transform test', function() {
+  it.skip('transform test', function() {
     // sample AST
     console.info();
 
@@ -442,7 +442,7 @@ describe('uglifyjs use', function() {
     console.log(ast2.print_to_string({ beautify: true })); 
   });
 
-  it('transform test2', function() {
+  it.skip('transform test2', function() {
       // in this hash we will map string to a variable name
     var strings = {};
     
@@ -506,6 +506,46 @@ describe('uglifyjs use', function() {
     console.log("Original:");
     console.log(ast.print_to_string({ beautify: true }));
   
+  });
+
+  it('obj node', function() {
+    var code1 = 'var a = "123";';
+    var ast1 = UglifyJS.parse(code1);
+
+    //var code2 = '{name:["abc","def"]}';
+    var obj2 = {name: ["abc", "def"]};
+
+    var code2 = fsExt.readFileSync(process.cwd(), '/package.json');
+
+    //var code2 = "{name: 1}";
+   // var code2 = '(' + JSON.stringify(obj2) + ')';
+    code2 = '(' + code2 + ')';
+    //console.info('code2', code2)
+    var ast2 = UglifyJS.parse(code2);
+    var body;
+    var call;
+    var findJsonNode = new UglifyJS.TreeWalker(function(node, descend) {
+      if (node instanceof UglifyJS.AST_Object) {
+         console.info('23----->')
+         if (findJsonNode.parent().start.value === '(') {
+            body = node;
+         }
+      }
+    });
+    var ast3 = ast2.walk(findJsonNode);
+    console.info(ast2)
+     var replaceJson = new UglifyJS.TreeTransformer(null, function(node, descend) {
+      if (node instanceof UglifyJS.AST_String) {
+        //console.info('------>', node.getValue());
+      //console.info('--2222---->', node);
+        //return ast2.body[0];
+        return body;
+      }
+    });
+
+    var ast3 = ast1.transform(replaceJson);
+
+    console.info('----->', ast3.print_to_string())
   });
 });
 
