@@ -1,7 +1,7 @@
 **简单、放心的包管理工具 。**
 ===
 
-[![Build Status](https://secure.travis-ci.org/spmjs/spm.png)](https://travis-ci.org/spmjs/spm)
+[![Build Status](https://travis-ci.org/spmjs/spm.png?branch=master)](https://travis-ci.org/spmjs/spm)
 
 SPM 是一个基于命令行的前端项目管理工具，目前可以支持 JS 和 CSS 的项目。
 
