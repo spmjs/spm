@@ -154,7 +154,7 @@ describe("config parse test", function() {
         should.exists(spmConfig);
 
         var upload = spmConfig.upload;
-        upload.roots.should.eql(["arale", "gallery"]);
+        upload.roots.should.eql(["arale", "gallery", "spm"]);
         done();
       })
     });
