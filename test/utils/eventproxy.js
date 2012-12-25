@@ -1,4 +1,5 @@
 var EventProxy = require('../../lib/utils/event_proxy.js');
+var should = require('should');
 var _ = require('underscore');
 
 describe('eventproxy', function() {
@@ -8,8 +9,7 @@ describe('eventproxy', function() {
     var ep = EventProxy.create('e1', 'e2', 'e3', function(data) {
       done();
       _.keys(obj).should.have.length(3);
-      data['e1'].should.eql('a');
-      data['e2'].should.eql('b');
+      should.equal(data['e2'], null);
       data['e3'].should.eql('c');
       data['e5'].should.eql('e');
       console.info('all done', data);
@@ -23,7 +23,7 @@ describe('eventproxy', function() {
 
     setTimeout(function() {
       obj.age = 2;
-      ep.emit('e2', "b");
+      ep.emit('e2');
       ep.add('e5');
       setTimeout(function() {
         ep.emit('e5', 'e'); 
