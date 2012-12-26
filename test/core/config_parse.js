@@ -2,7 +2,7 @@ var should = require('should');
 var async = require('async');
 var path = require('path');
 var _ = require('underscore');
-var Config = require('../../lib/core/config_parse.js');
+var Config = require('../../lib/utils/config_parse.js');
 
 describe("config parse test", function() {
   var json1 = path.join(path.dirname(module.filename), "../data/configs/config_1.json");
