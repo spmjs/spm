@@ -1,4 +1,4 @@
-var logging = require('../lib/utils').logging;
+var logging = require('colorful').logging;
 logging.config('error');
 
 module.exports = function(file) {
