@@ -16,7 +16,6 @@ lint:
 
 out = _site/coverage.html
 coverage:
-	@rm ${out}
 	@rm -rf lib-cov
 	@jscoverage lib lib-cov
 	@SPM_COVERAGE=1 $(MAKE) test reporter=html-cov > ${out}

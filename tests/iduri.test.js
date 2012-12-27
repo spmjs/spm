@@ -44,3 +44,26 @@ describe('iduri.generateId', function() {
     }).should.equal('#alice/button.css');
   });
 });
+
+describe('iduri.name2id', function() {
+  it('should generate id from relative path', function() {
+    iduri.name2id({
+      root: 'arale',
+      name: 'base',
+      version: '1.0.0',
+      filename: 'class.js'
+    }, './event.js').should.equal('arale/base/1.0.0/event');
+  });
+
+  it('should generate id from dependencies', function() {
+    iduri.name2id({
+      dependencies: {
+        'jquery': 'gallery/jquery/1.7.2/jquery'
+      }
+    }, 'jquery').should.equal('gallery/jquery/1.7.2/jquery');
+  });
+
+  it('should generate id from nothing', function() {
+    iduri.name2id({}, 'hello').should.equal('hello');
+  });
+});
