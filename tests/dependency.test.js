@@ -95,7 +95,20 @@ describe('dependency.replaceRequire', function() {
     code = dep.replaceRequire(code, function(value) {
       return {jquery: '$', undersocre: '_'}[value];
     });
-    code.should.include('require("$")');
-    code.should.include('require("_")');
+    code.print_to_string().should.include('require("$")');
+    code.print_to_string().should.include('require("_")');
+  });
+});
+
+describe('dependency.replaceDefine', function() {
+  it('replace id and dependencies', function() {
+    var code = "define({})";
+    code = dep.replaceDefine(code, 'id', ['a']);
+    code.should.equal('define("id", ["a"], {})');
+  });
+
+  it('will not replace define', function() {
+    var code = "define({}); define({})";
+    dep.replaceDefine(code, 'id', ['a']).should.not.include('id');
   });
 });
