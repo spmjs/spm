@@ -83,3 +83,19 @@ describe('dependency.parseRequire', function() {
     dep.parseRequire(code).should.have.length(0);
   });
 });
+
+describe('dependency.replaceRequire', function() {
+  it('can replace jquery and underscore', function() {
+    var code = [
+      "define(function(require) {",
+      "  var jquery = require('jquery');",
+      "  var undersocre = require('undersocre');",
+      "})"
+    ].join('\n');
+    code = dep.replaceRequire(code, function(value) {
+      return {jquery: '$', undersocre: '_'}[value];
+    });
+    code.should.include('require("$")');
+    code.should.include('require("_")');
+  });
+});
