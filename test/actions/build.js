@@ -13,6 +13,7 @@ var invalidNameModuleDir = path.join(path.dirname(module.filename), "../data/mod
 var noDepsConfigModuleDir = path.join(path.dirname(module.filename), "../data/modules/noDepsConfig/");
 var relativeModuleDir = path.join(path.dirname(module.filename), "../data/modules/relativeModule/");
 var sampleModuleDir = path.join(path.dirname(module.filename), "../data/modules/sampleModule/");
+var localeModuleDir = path.join(path.dirname(module.filename), "../data/modules/locale_module/");
 
 describe('spm build', function() {
 
@@ -150,6 +151,25 @@ describe('spm build', function() {
       }); 
     });
   
+  });
+
+  describe('test vars module parse', function() {
+    it('require async module code', function(done) {
+      executeBuildAction(localeModuleDir, function(model) {
+        var calendarModPath = path.join(localeModuleDir, 'dist', 'calendar-debug.js');
+        fsExt.existsSync(calendarModPath).should.be.true;
+        var code = fsExt.readFileSync(calendarModPath);
+
+        var defineReg = /define\("test\/locale_module\/1.0.0\/calendar-debug", \[ ".\/i18n\/{{locale}}\/lang-debug"/;
+        var requireReg1 = /require\("\.\/i18n\/\{\{locale\}\}\/lang-debug"\)/;
+        var requireReg2 = /require\("\.\/i18n\/{{locale}}\/lang-debug\.js"\)/;
+        code.should.match(defineReg);
+        code.should.match(requireReg1);
+        code.should.match(requireReg2);
+
+        done();
+      });
+    });
   });
 });
 

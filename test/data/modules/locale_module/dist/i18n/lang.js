@@ -1,0 +1,1 @@
+define("test/locale_module/1.0.0/i18n/lang",[],{});

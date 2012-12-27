@@ -1,0 +1,20 @@
+{
+  "root": "test",
+  "name": "locale_module",
+  "version": "1.0.0",
+  "description": "test locale",
+  "dependencies": {
+    "$": "$",
+    "moment": "gallery/moment/1.6.2/moment",
+    "base": "arale/base/1.0.1/base",
+    "overlay": "arale/overlay/0.9.12/overlay",
+    "widget": "arale/widget/1.0.2/widget",
+    "templatable": "arale/widget/1.0.2/templatable"
+  },
+  "output": {
+    "calendar.js": ".",
+    "calendar.css": ".",
+    "i18n/lang.js": ".",
+    "i18n/zh-cn/lang.js": "."
+  }
+}
