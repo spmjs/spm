@@ -14,6 +14,7 @@ var noDepsConfigModuleDir = path.join(path.dirname(module.filename), "../data/mo
 var relativeModuleDir = path.join(path.dirname(module.filename), "../data/modules/relativeModule/");
 var sampleModuleDir = path.join(path.dirname(module.filename), "../data/modules/sampleModule/");
 var localeModuleDir = path.join(path.dirname(module.filename), "../data/modules/locale_module/");
+var requireVarsModuleDir = path.join(path.dirname(module.filename), "../data/modules/require_vars_module/");
 
 describe('spm build', function() {
 
@@ -167,7 +168,19 @@ describe('spm build', function() {
         code.should.match(requireReg1);
         code.should.match(requireReg2);
 
-        done();
+        executeBuildAction(requireVarsModuleDir, function(model) {
+
+          var varsModPath = path.join(requireVarsModuleDir, 'dist', 'vars-debug.js');
+          fsExt.existsSync(varsModPath).should.be.true;
+          var code = fsExt.readFileSync(varsModPath);
+            
+          var defineReg = /define\("test\/require_vars_module\/1.0.0\/vars-debug", \[ "test\/locale_module\/1.0.0\/calendar-debug", "test\/locale_module\/1.0.0\/i18n\/\{\{locale\}\}\/lang-debug"/;
+          var requireReg1 = /require\("test\/locale_module\/1.0.0\/calendar-debug"\)/;
+          code.should.match(defineReg);
+          code.should.match(requireReg1);
+          done();
+        });
+
       });
     });
   });

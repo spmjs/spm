@@ -1,0 +1,3 @@
+define("test/require_vars_module/1.0.0/vars-debug", [ "test/locale_module/1.0.0/calendar-debug", "test/locale_module/1.0.0/i18n/{{locale}}/lang-debug", "$-debug", "gallery/moment/1.6.2/moment-debug", "arale/overlay/0.9.12/overlay-debug", "arale/position/1.0.0/position-debug", "arale/iframe-shim/1.0.0/iframe-shim-debug", "arale/widget/1.0.2/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug", "arale/widget/1.0.2/templatable-debug", "gallery/handlebars/1.0.0/handlebars-debug" ], function(require, exports, module) {
+    var calendar = require("test/locale_module/1.0.0/calendar-debug");
+});

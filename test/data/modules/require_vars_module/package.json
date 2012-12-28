@@ -1,0 +1,12 @@
+{
+  "root": "test",
+  "name": "require_vars_module",
+  "version": "1.0.0",
+  "description": "test vars module require",
+  "dependencies": {
+    "calendar": "test/locale_module/1.0.0/calendar"
+  },
+  "output": {
+    "vars.js": "."
+  }
+}
