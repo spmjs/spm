@@ -95,8 +95,8 @@ describe('dependency.replaceRequire', function() {
     code = dep.replaceRequire(code, function(value) {
       return {jquery: '$', undersocre: '_'}[value];
     });
-    code.print_to_string().should.include('require("$")');
-    code.print_to_string().should.include('require("_")');
+    code.should.include('require("$")');
+    code.should.include('require("_")');
   });
 });
 
