@@ -109,20 +109,18 @@ describe('iduri.generateId', function() {
       filename: 'button.css'
     }).should.equal('#alice/button.css');
   });
-});
 
-describe('iduri.name2id', function() {
   it('should generate id from relative path', function() {
-    iduri.name2id({
+    iduri.generateId({
       root: 'arale',
       name: 'base',
       version: '1.0.0',
       filename: 'class.js'
-    }, './event.js').should.equal('arale/base/1.0.0/event');
+    }, './event.js').should.equal('./event');
   });
 
   it('should generate id from dependencies', function() {
-    iduri.name2id({
+    iduri.generateId({
       dependencies: {
         'jquery': 'gallery/jquery/1.7.2/jquery'
       }
@@ -130,6 +128,6 @@ describe('iduri.name2id', function() {
   });
 
   it('should generate id from nothing', function() {
-    iduri.name2id({}, 'hello').should.equal('hello');
+    iduri.generateId({}, 'hello').should.equal('hello');
   });
 });
