@@ -6,7 +6,7 @@ SPM 是基于 nodejs 的静态文件管理工具，所以在安装 SPM 之前，
 
 你可以在 [nodejs.org](http://nodejs.org/) 下载安装包安装，也可以通过包管理器（比如在 Mac 上用 homebrew，同时推荐在 Mac 上用 homebrew）。
 
-安装完成后也许还需要设置环境变量 NODE_PATH，Linux & Mac 用户在自己的 shell 配置文件(.bash_profile | .bashrc | .zshrc)里设置，如
+安装完成后也许还需要设置环境变量 `NODE_PATH`，Linux & Mac 用户在自己的 shell 配置文件(.bash_profile | .bashrc | .zshrc)里设置，如
 
 ```
 export NODE_PATH="/usr/local/share/npm/lib/node_modules"
@@ -38,7 +38,11 @@ $ npm install spm -g
 
 ## 使用指南
 
+### 配置
 
+### 模块
+
+### 命令
 
 ## 开发者指南
 
