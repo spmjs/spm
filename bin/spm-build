@@ -8,17 +8,19 @@ var builder = require('../lib/builtin/build');
 commander.usage('[options]');
 
 commander
-  .option('-u, --username <username>', 'default value from user.username')
-  .option('-p, --password <password>', 'default value from user.password')
-  .option('-s, --source <source>', 'default value will be the first source')
-  .option('-f, --force', 'force to download a unstable module')
-  .option('-I, --input-directory <dir>', 'input directory, default: src')
-  .option('-O, --output-directory <dir>', 'output directory, default: dist')
-  .option('-F, --files <files>', 'default: all files in input directory', list)
-  .option('--module-name <name>', 'module name, default: package.name')
-  .option('--module-version <version>', 'module version, default: package.version')
-  .option('--module-root <root>', 'module root, default: package.root')
+  .option('-C, --config', 'config file: [package.json]')
+  .option('-I, --input-directory <dir>', 'input directory: [src]')
+  .option('-O, --output-directory <dir>', 'output directory: [dist]')
+  .option('-F, --files <files>', 'all files in input directory', list)
+  .option('--module-name <name>', 'module name: {package.name}')
+  .option('--module-version <version>', 'module version: {package.version}')
+  .option('--module-root <root>', 'module root: {package.root}')
+  .option('--module-format <format>', 'id format: [{{root}}/{{name}}/{{version}}/{{filename}}]')
+  .option('-u, --username <username>', 'username for source')
+  .option('-p, --password <password>', 'password for source')
+  .option('-s, --source <source>', 'source name')
   .option('--interrupt', 'stop the process when warn or error')
+  .option('-f, --force', 'force to download a unstable module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs');
 
