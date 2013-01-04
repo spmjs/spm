@@ -1,0 +1,6 @@
+div:after {
+  content: "hello div";
+}
+span:after {
+  content: 'hello span';
+}

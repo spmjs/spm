@@ -4,7 +4,7 @@ var require = require('./testutils');
 var dependency = require('../lib/library/dependency');
 var build = require('../lib/builtin/build');
 
-describe('build', function() {
+describe('build.compileJS', function() {
   it('can compile js with no dependencies', function() {
     var file = path.join(__dirname, 'data', 'no-deps.js');
     var data = build.compileJS(null, file);
@@ -49,5 +49,21 @@ describe('build', function() {
     ].join('\n');
     var data = build.compileJS(code, 'defined-deps.js');
     data.should.equal(code);
+  });
+});
+
+describe('build.compileTPL', function() {
+  it('will transform tpl to js', function() {
+    var file = path.join(__dirname, 'data', 'simple.tpl');
+    var data = build.compileTPL(null, file);
+    data.should.include('"id"');
+  });
+});
+
+describe('build.compileCSS', function() {
+  it('will transform css to js', function() {
+    var file = path.join(__dirname, 'data', 'simple.css');
+    var data = build.compileCSS(null, file);
+    data.should.include('seajs.importStyle');
   });
 });
