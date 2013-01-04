@@ -11,7 +11,6 @@ commander
   .option('-C, --config', 'config file: [package.json]')
   .option('-I, --input-directory <dir>', 'input directory: [src]')
   .option('-O, --output-directory <dir>', 'output directory: [dist]')
-  .option('-F, --files <files>', 'all files in input directory', list)
   .option('--module-name <name>', 'module name: {package.name}')
   .option('--module-version <version>', 'module version: {package.version}')
   .option('--module-root <root>', 'module root: {package.root}')
@@ -42,9 +41,9 @@ commander.on('--help', function() {
   console.log();
   console.log('   $ ' + 'spm build'.to.magenta.color);
   console.log();
-  console.log('   Just build a file with spm');
+  console.log('   Build from another source');
   console.log();
-  console.log('   $ ' + 'spm build'.to.magenta.color + ' ' + '-F'.to.cyan.color + ' a.js ' + '-O'.to.cyan.color + ' dist');
+  console.log('   $ ' + 'spm build'.to.magenta.color + ' ' + '-I'.to.cyan.color + ' lib ' + '-O'.to.cyan.color + ' dist');
   console.log();
   console.log('   For more information: ' + 'http://spmjs.org/docs/build.html'.to.underline.color);
   console.log();
