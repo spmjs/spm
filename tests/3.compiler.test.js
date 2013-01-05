@@ -12,7 +12,8 @@ describe('compiler.JSCompiler', function() {
   it('can compile js with no dependencies', function(done) {
     var file = path.join(__dirname, 'data', 'no-deps.js');
     var jsc = new JSCompiler(file);
-    jsc.compile(function(data) {
+    jsc.compile(function(err, data) {
+      if (err) throw err;
       data.should.include('[]');
       done();
     });
@@ -20,7 +21,8 @@ describe('compiler.JSCompiler', function() {
   it('can compile js with a relative dependency', function(done) {
     var file = path.join(__dirname, 'data', 'one-relative-dep.js');
     var jsc = new JSCompiler(file);
-    jsc.compile(function(data) {
+    jsc.compile(function(err, data) {
+      if (err) throw err;
       data.should.include('["./no-deps"]');
       done();
     });
@@ -28,7 +30,8 @@ describe('compiler.JSCompiler', function() {
   it('can compile js with a chain of relative dependencies', function(done) {
     var file = path.join(__dirname, 'data', 'chain-dep4.js');
     var jsc = new JSCompiler(file);
-    jsc.compile(function(data) {
+    jsc.compile(function(err, data) {
+      if (err) throw err;
       var deps = dependency.parseDefine(data);
       deps.should.have.length(4);
       done();
@@ -41,7 +44,7 @@ describe('compiler.JSCompiler', function() {
         jquery: "gallery/jquery/1.8.3/jquery"
       }
     });
-    jsc.compile(function(data) {
+    jsc.compile(function(err, data) {
       data.should.include('["gallery/jquery/1.8.3/jquery"]');
       done();
     });
@@ -82,7 +85,7 @@ describe('compiler.JtplCompiler', function() {
     var data = jtpl.compile();
     data.should.include('"id"');
 
-    jtpl.compile(function(data) {
+    jtpl.compile(function(err, data) {
       data.should.include('"id"');
       done();
     });
@@ -106,7 +109,7 @@ describe('compiler.JCSSCompiler', function() {
     var data = jcss.compile();
     data.should.include('seajs.importStyle');
 
-    jcss.compile(function(data) {
+    jcss.compile(function(err, data) {
       data.should.include('seajs.importStyle');
       done();
     });
