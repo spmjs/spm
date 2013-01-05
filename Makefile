@@ -7,6 +7,7 @@ all:
 specs := $(shell find ./tests -name '*.test.js' ! -path "*node_modules/*")
 reporter = spec
 test:
+	@rm -fr .spm-build
 	@node_modules/.bin/mocha --reporter ${reporter} ${specs}
 
 
