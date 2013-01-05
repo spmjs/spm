@@ -12,7 +12,7 @@ test:
 
 files := $(shell find . -name '*.js' ! -path "*node_modules/*" ! -path "*dist/*" ! -path "*tests/data/*" ! -path "*tests/cases/*" ! -path "*tests/issues/*")
 lint:
-	@node_modules/.bin/jshint ${files} --config=scripts/config-lint.js
+	@node_modules/.bin/jshint ${files} --config=scripts/lint.json
 
 out = _site/coverage.html
 coverage:
