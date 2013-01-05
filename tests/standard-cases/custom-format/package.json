@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "format": "{{name}}",
   "output": {
-    "format": "."
+    "format.js": "."
   }
 }

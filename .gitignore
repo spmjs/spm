@@ -16,6 +16,7 @@ Thumbs.db
 *.swo
 *.log
 node_modules/
+dist/
 .spm-build
 .buildpath
 .settings
