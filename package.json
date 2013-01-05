@@ -4,6 +4,7 @@
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "dependencies": {
+    "arale": ">=0.2.0",
     "async": ">=0.1.22",
     "underscore": ">=1.4.3",
     "request": ">=2.12.0",
