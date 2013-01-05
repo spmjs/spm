@@ -1,0 +1,8 @@
+{
+  "root": "test",
+  "name": "relative",
+  "version": "0.1.0",
+  "output": {
+    "relative.js": "."
+  }
+}
