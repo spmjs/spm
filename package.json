@@ -30,7 +30,8 @@
         "JSONPath": "~0.9.0",
         "prettyjson": "~0.7.1",
         "spm-env": "~1.0.0",
-        "underscore": "~1.4.2"
+        "underscore": "~1.4.2",
+        "commander": "~1.1.1"
     },
     "devDependencies": {
       "jasmine-node": "~1.0.26",
