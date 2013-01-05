@@ -1,3 +1,18 @@
+## 2013.1.4, Version 1.5.2 (stable)
+### 新特性 & 优化增强
+- ✔ #565 spm install 支持模板变量的检查
+
+### Bug Fix
+- ✔ #563 关于spm build的一个奇怪的bug
+
+## 2012.12.31, Version 1.5.1 (stable)
+
+### 新特性 & 优化增强
+
+- ✔ #559 重新整理 spm transport 文档
+- ✔ #555 本地server与线上源的同步功能
+- ✔ #551 spm transport 优化
+
 ## 2012.12.28, Version 1.5.0 (stable)
 ### 新功能
 - ✔ #550 增加 build-config 参数，允许用户指定打包的配置文件
