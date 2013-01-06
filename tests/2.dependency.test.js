@@ -112,3 +112,20 @@ describe('dependency.replaceDefine', function() {
     dep.replaceDefine(code, 'id', ['a']).should.not.include('id');
   });
 });
+
+describe('dependency.transformDebug', function() {
+  it('should be debug id', function() {
+    var code = "define('id', [], {})";
+    dep.transformDebug(code).should.include('id-debug');
+  });
+  it('should be debug require', function() {
+    var code = "define(function(require){ require('jquery') })";
+    dep.transformDebug(code).should.include('jquery-debug');
+  });
+  it('should have id-debug, jquery-debug', function() {
+    var code = "define('id', [], function(require){ require('jquery') })";
+    var data = dep.transformDebug(code);
+    data.should.include('id-debug');
+    data.should.include('jquery-debug');
+  });
+});
