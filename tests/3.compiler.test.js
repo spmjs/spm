@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var should = require('should');
 var require = require('./testutils');
-var dependency = require('../lib/library/dependency');
+var ast = require('../lib/library/ast');
 var compiler = require('../lib/library/compiler');
 
 var datadir = path.join(__dirname, 'data');
@@ -32,7 +32,7 @@ describe('compiler.JSCompiler', function() {
     var jsc = new JSCompiler(file);
     jsc.compile(function(err, data) {
       if (err) throw err;
-      var deps = dependency.parseDefine(data);
+      var deps = ast.parseDefine(data).dependencies;
       deps.should.have.length(4);
       done();
     });
@@ -57,7 +57,7 @@ describe('compiler.JSCompiler', function() {
       }
     });
     var data = jsc.compile();
-    var deps = dependency.parseDefine(data);
+    var deps = ast.parseDefine(data).dependencies;
     deps.should.include('gallery/jquery/1.8.3/jquery');
     deps.should.include('./chain-dep0');
   });

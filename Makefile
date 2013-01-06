@@ -6,8 +6,7 @@ all:
 
 specs := $(shell find ./tests -name '*.test.js' ! -path "*node_modules/*")
 reporter = spec
-test:
-	@rm -fr .spm-build
+test: clean
 	@node_modules/.bin/mocha --reporter ${reporter} ${specs}
 
 
@@ -25,5 +24,9 @@ coverage:
 	@echo "Built Report to ${out}"
 	@echo
 
+clean:
+	@rm -fr .spm-build
+	@find tests -name '.spm-build' -exec rm -fr {} +
+	@find tests -name 'dist' -exec rm -fr {} +
 
 .PHONY: all build test lint coverage
