@@ -2,14 +2,14 @@ var should = require('should');
 var require = require('./testutils');
 var ast = require('../lib/library/ast');
 
-describe('ast.parseDefine', function() {
+describe('ast.parseDefines', function() {
   it('find ./a as dependency', function() {
     var code = [
       "define('id', ['./a'], function(require, exports, module) {",
       "  var jquery = require('jquery');",
       "})"
     ].join('\n');
-    var parsed = ast.parseDefine(code);
+    var parsed = ast.parseDefines(code)[0];
     parsed.id.should.equal('id');
     parsed.dependencies.should.includeEql('./a');
   });
@@ -20,7 +20,7 @@ describe('ast.parseDefine', function() {
       "  var jquery = require('jquery');",
       "})"
     ].join('\n');
-    var parsed = ast.parseDefine(code);
+    var parsed = ast.parseDefines(code)[0];
     parsed.dependencies.should.includeEql('b');
   });
 
@@ -30,7 +30,7 @@ describe('ast.parseDefine', function() {
       "  var jquery = require('jquery');",
       "})"
     ].join('\n');
-    var parsed = ast.parseDefine(code);
+    var parsed = ast.parseDefines(code)[0];
     parsed.id.should.equal('id');
     parsed.dependencies.should.eql(['a', 'b']);
   });
@@ -43,8 +43,15 @@ describe('ast.parseDefine', function() {
       "define('id2', ['c', 'd'], function(require, exports, module) {",
       "})"
     ].join('\n');
-    var parsed = ast.parseDefine(code);
-    parsed.dependencies.should.eql(['a', 'b', 'c', 'd']);
+    var parsed = ast.parseDefines(code);
+    parsed.should.have.length(2);
+    var deps = [];
+    parsed.forEach(function(ret) {
+      ret.dependencies.forEach(function(dep) {
+        deps.push(dep);
+      });
+    });
+    deps.should.eql(['a', 'b', 'c', 'd']);
   });
 
   it('should not find the define in define', function() {
@@ -55,13 +62,13 @@ describe('ast.parseDefine', function() {
       "  })",
       "})"
     ].join('\n');
-    var parsed = ast.parseDefine(code);
+    var parsed = ast.parseDefines(code)[0];
     parsed.id.should.equal('id');
     parsed.dependencies.should.eql(['a', 'b']);
   });
 
   it('should have factory {}', function() {
-    var parsed = ast.parseDefine('define({})');
+    var parsed = ast.parseDefines('define({})')[0];
     should.exists(parsed.factory);
   });
 });

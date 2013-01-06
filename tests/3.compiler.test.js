@@ -32,7 +32,7 @@ describe('compiler.JSCompiler', function() {
     var jsc = new JSCompiler(file);
     jsc.compile(function(err, data) {
       if (err) throw err;
-      var deps = ast.parseDefine(data).dependencies;
+      var deps = ast.parseDefines(data)[0].dependencies;
       deps.should.have.length(4);
       done();
     });
@@ -57,7 +57,7 @@ describe('compiler.JSCompiler', function() {
       }
     });
     var data = jsc.compile();
-    var deps = ast.parseDefine(data).dependencies;
+    var deps = ast.parseDefines(data)[0].dependencies;
     deps.should.include('gallery/jquery/1.8.3/jquery');
     deps.should.include('./chain-dep0');
   });
