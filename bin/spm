@@ -6,7 +6,7 @@ var child_process = require('child_process');
 
 
 var commander = require('commander');
-var program = require('colorful').program;
+var program = require('../lib/utils/program');
 require('colorful').colorful();
 var plugin = require('../lib/system/plugin');
 var config = require('../lib/system/config');
@@ -40,8 +40,8 @@ commander
 commander.on('--help', function() {
   console.log('  ' + 'System Commands:'.to.bold.magenta.color);
   console.log();
-  program.printHelp(new program.Command('plugin', plugin.description));
-  program.printHelp(new program.Command('config', config.description));
+  program.printHelp(new program('plugin', plugin.description));
+  program.printHelp(new program('config', config.description));
   console.log();
 
   var files = fs.readdirSync(path.join(__dirname, '..', 'lib', 'builtin'));
@@ -50,7 +50,7 @@ commander.on('--help', function() {
   files.toString().split(',').forEach(function(f) {
     var name = f.replace('.js', '');
     var module = require('../lib/builtin/' + name);
-    program.printHelp(new program.Command(name, module.description));
+    program.printHelp(new program(name, module.description));
   });
   console.log();
 
