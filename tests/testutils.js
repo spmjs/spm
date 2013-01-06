@@ -1,5 +1,5 @@
 var logging = require('colorful').logging;
-logging.config('error');
+logging.level = 'disabled';
 
 module.exports = function(file) {
   if (process.env.SPM_COVERAGE) {

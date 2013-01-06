@@ -1,4 +1,5 @@
 var should = require('should');
+var logging = require('colorful').logging;
 var require = require('./testutils');
 var iduri = require('../lib/library/iduri');
 
@@ -129,5 +130,31 @@ describe('iduri.generateId', function() {
 
   it('should generate id from nothing', function() {
     iduri.generateId({}, 'hello').should.equal('hello');
+  });
+});
+
+describe('iduri.validateId', function() {
+  it('should be invalid error', function(done) {
+    logging.once('logging-error', function(data) {
+      data.should.include('{{root}}');
+      done();
+    });
+    iduri.validateId('{{root}}').should.equal(false);
+  });
+  it('should invalid CMD warn', function(done) {
+    logging.once('logging-warn', function(data) {
+      data.should.include('CMD');
+      data.should.include('abc');
+      done();
+    });
+    iduri.validateId('abc').should.equal(false);
+  });
+  it('should be invalid CMD error', function(done) {
+    logging.once('logging-error', function(data) {
+      data.should.include('CMD');
+      data.should.include('abc');
+      done();
+    });
+    iduri.validateId('abc', {strict: true}).should.equal(false);
   });
 });
