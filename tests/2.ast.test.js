@@ -94,6 +94,18 @@ describe('ast.getRequires', function() {
     ast.getRequires(code).should.eql(['jquery-ui', 'moment']);
   });
 
+  it('has id, but no dependencies', function() {
+    var code = [
+      "define('id', function(require, exports, module) {",
+      "  var jquery = require('jquery-ui');",
+      "  var moment = require('moment');",
+      "})"
+    ].join('\n');
+    ast.parseDefines(code)[0].id.should.equal('id');
+    ast.getRequires(code).should.eql(['jquery-ui', 'moment']);
+  });
+
+
   it('find nothing as dependency', function() {
     var code = [
       "define('id', ['a', 'b'], function(require, exports, module) {",
