@@ -3,7 +3,7 @@ var path = require('path');
 var fsExt = require('../../lib/utils/fs_ext.js');
 var isCoffee = require('../../lib/utils/module_help.js').isCoffee;
 var depUtil = require('../../lib/utils/dependences.js');
-var Opts = require('../../lib/utils/opts.js');
+var Opts = require('../../lib/utils/commander.js');
 require('../module.js');
 
 describe('coffee plugin test', function() {

@@ -3,7 +3,7 @@ var should = require('should');
 var path = require('path');
 var ProjectFactory = require('../../lib/core/project_factory.js');
 var fsExt = require('../../lib/utils/fs_ext.js');
-var Opts = require('../../lib/utils/opts.js');
+var Opts = require('../../lib/utils/commander.js');
 var less = require('less');
 require('../module.js');
 
