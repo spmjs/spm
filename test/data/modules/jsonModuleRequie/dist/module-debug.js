@@ -14,11 +14,17 @@ define("test/sampleModule/0.0.1/jsonModule-debug", [], {
     } ]
 });
 
-define("test/sampleModule/0.0.1/module-debug", [ "./jsonModule-debug" ], function(require, exports) {
+define([ "a", "b", "c", "d" ]);
+
+define("foo bar");
+
+define("test/sampleModule/0.0.1/module-debug", [ "./jsonModule-debug", "./jsonModule2-debug", "./jsonModule3-debug" ], function(require, exports) {
     // var a = require('a');
     // var b = require('b');
     // var c = require('c');
     var d = require("./jsonModule-debug.js");
+    var e = require("./jsonModule2-debug.js");
+    var f = require("./jsonModule3-debug.js");
     exports.get = function(id) {
         return $(id);
     };
