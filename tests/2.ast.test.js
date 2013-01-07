@@ -1,6 +1,6 @@
 var should = require('should');
 var require = require('./testutils');
-var ast = require('../lib/library/ast');
+var ast = require('../lib/sdk/ast');
 
 describe('ast.parseDefines', function() {
   it('find ./a as dependency', function() {

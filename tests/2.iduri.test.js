@@ -1,7 +1,7 @@
 var should = require('should');
 var logging = require('colorful').logging;
 var require = require('./testutils');
-var iduri = require('../lib/library/iduri');
+var iduri = require('../lib/sdk/iduri');
 
 
 describe('iduri.resolve', function() {

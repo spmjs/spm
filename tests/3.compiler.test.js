@@ -2,8 +2,8 @@ var fs = require('fs');
 var path = require('path');
 var should = require('should');
 var require = require('./testutils');
-var ast = require('../lib/library/ast');
-var compiler = require('../lib/library/compiler');
+var ast = require('../lib/sdk/ast');
+var compiler = require('../lib/sdk/compiler');
 
 var datadir = path.join(__dirname, 'data');
 
