@@ -12,7 +12,7 @@ var astModule = path.join(path.dirname(module.filename), "../data/modules/ast_te
 var sampleModule = path.join(path.dirname(module.filename), "../data/modules/sampleModule/");
 
 describe('test dependences', function() { 
-  var ast, ast2;
+  var ast, ast2, ast3;
 
   beforeEach(function() {
     var code = fsExt.readFileSync(astModule, 'dist/slide-debug.js');
@@ -27,11 +27,11 @@ describe('test dependences', function() {
     ast2 = UglifyJS.parse(code2, {
         filename : "asyncRequire.js" // default is null
     });
-    
   });
 
   it('test parseStatic method', function() {
-    var deps = dependences.parseStatic(ast);
+    //var deps = dependences.parseStatic(ast, 'arale/switchable/0.9.11/slide-debug');
+    var deps = dependences.parseStatic(ast); 
     deps.should.eql([ './switchable-debug', '$-debug', 'arale/easing/1.0.0/easing-debug' ]);
   });
 
@@ -93,4 +93,18 @@ describe('test dependences', function() {
       done();
     });
   });
+
+  it('test parse json module dependncies', function() {
+    var code3 = fsExt.readFileSync(astModule, 'src/jsonModule.js');
+    var ast3 = dependences.getAst(code3);
+    var deps = dependences.parse(ast3);
+    deps.should.have.length(0);
+
+    var code4 = fsExt.readFileSync(astModule, 'src/jsonModule1.js');
+    var ast4 = dependences.getAst(code4);
+    var deps = dependences.parse(ast4, 'ast_test/jsonModule');
+    console.info('deps----->', deps);
+    deps.should.have.length(0);
+  });
+  
 });

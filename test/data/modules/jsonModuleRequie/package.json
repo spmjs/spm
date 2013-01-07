@@ -1,0 +1,14 @@
+{
+    "name": "sampleModule",
+    "root": "test",
+    "version": "0.0.1",
+    "dependencies": {
+        "$": "$",
+        "seajs": "#seajs/1.2.1/sea",
+        "handlebars": "gallery/handlebars/1.0.0/handlebars",
+        "base": "arale/base/1.0.1/base"
+    },
+    "output": {
+        "module.js": "."
+    }
+}
