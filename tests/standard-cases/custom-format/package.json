@@ -1,8 +1,4 @@
 {
   "name": "format",
-  "version": "0.1.0",
-  "format": "{{name}}",
-  "output": {
-    "format.js": "."
-  }
+  "version": "0.1.0"
 }

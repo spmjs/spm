@@ -1,9 +1,5 @@
 {
   "root": "test",
   "name": "file",
-  "version": "0.1.0",
-  "output": {
-    "a.txt": ".",
-    "a/": "b/"
-  }
+  "version": "0.1.0"
 }

@@ -14,7 +14,7 @@ describe('building cases', function() {
     var absdir = path.join(casedir, name);
     it(name, function() {
       build.run({
-        config: path.join(absdir, 'package.json'),
+        config: path.join(absdir, 'binding.spm'),
         inputDirectory: path.join(absdir, 'src'),
         outputDirectory: path.join(absdir, 'dist')
       });
