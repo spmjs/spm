@@ -47,7 +47,7 @@
         "spm": "./bin/spm"
     },
     "scripts"       : {
-        "test": "make test-action"
+        "test": "make test"
     },
     "preferGlobal"  : true
 }
