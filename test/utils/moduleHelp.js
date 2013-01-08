@@ -319,8 +319,8 @@ describe('moduleHelp', function() {
     var id = 'arale/widget/1.0.2/widget';
     var deps = ['arale/base/1.0.1/base', './templatable.js'];
 
-    var cmdCode = 'define("arale/widget/1.0.2/widget", ["arale/base/1.0.1/base", "./templatable.js"], function(require, exports) {\n console.info(\'a\')});'
-
+    var cmdCode = 'define("arale/widget/1.0.2/widget", [ "arale/base/1.0.1/base", "./templatable.js" ], function(require, exports) {\n    console.info("a");\n});'
+      
     help.filterIdAndDeps(code, id, deps).should.eql(cmdCode);
   });
 

@@ -9,6 +9,9 @@
         "base": "arale/base/1.0.1/base"
     },
     "output": {
-        "module.js": "."
+        "module.js": ".",
+        "jsonModule.js": ".",
+        "jsonModule2.js": ".",
+        "jsonModule3.js": "."
     }
 }

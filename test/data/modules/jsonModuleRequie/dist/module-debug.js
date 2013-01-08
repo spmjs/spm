@@ -14,9 +14,9 @@ define("test/sampleModule/0.0.1/jsonModule-debug", [], {
     } ]
 });
 
-define([ "a", "b", "c", "d" ]);
+define("test/sampleModule/0.0.1/jsonModule2-debug", [], [ "a", "b", "c", "d" ]);
 
-define("foo bar");
+define("test/sampleModule/0.0.1/jsonModule3-debug", [], "foo bar");
 
 define("test/sampleModule/0.0.1/module-debug", [ "./jsonModule-debug", "./jsonModule2-debug", "./jsonModule3-debug" ], function(require, exports) {
     // var a = require('a');

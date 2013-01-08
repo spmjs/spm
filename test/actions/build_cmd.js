@@ -140,7 +140,6 @@ describe('spm cmd build', function() {
 
     var code3 = cat(path.join(dist3, 'main-src.js'));
     code3.should.include('test/public/1.0.0/main-src');
-  
   });
 });
 

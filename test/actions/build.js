@@ -13,6 +13,7 @@ var invalidNameModuleDir = path.join(path.dirname(module.filename), "../data/mod
 var noDepsConfigModuleDir = path.join(path.dirname(module.filename), "../data/modules/noDepsConfig/");
 var relativeModuleDir = path.join(path.dirname(module.filename), "../data/modules/relativeModule/");
 var sampleModuleDir = path.join(path.dirname(module.filename), "../data/modules/sampleModule/");
+var jsonModuleDir = path.join(path.dirname(module.filename), "../data/modules/jsonModuleRequie/");
 var localeModuleDir = path.join(path.dirname(module.filename), "../data/modules/locale_module/");
 var requireVarsModuleDir = path.join(path.dirname(module.filename), "../data/modules/require_vars_module/");
 
@@ -183,6 +184,32 @@ describe('spm build', function() {
 
       });
     });
+
+    describe('test wrapped cmd modules', function() {
+      it('test module merge', function(done) {
+        executeBuildAction(jsonModuleDir, function(model) {
+          var code = getCode(jsonModuleDir, 'dist/module.js');
+
+          // 插件合并的莫开是否 id 都已经替换.
+          var ids = depUtil.parseDefine(code);
+          ids.should.eql([ 'test/sampleModule/0.0.1/jsonModule',
+            'test/sampleModule/0.0.1/jsonModule2',
+            'test/sampleModule/0.0.1/jsonModule3',
+            'test/sampleModule/0.0.1/module' ]);
+
+          // 检查单个文件
+
+          var code1 = fsExt.readFileSync(jsonModuleDir, 'dist/jsonModule.js');
+          var code2 = fsExt.readFileSync(jsonModuleDir, 'dist/jsonModule2.js');
+          var code3 = fsExt.readFileSync(jsonModuleDir, 'dist/jsonModule3.js');
+
+          code1.should.include('define("test/sampleModule/0.0.1/jsonModule",[],{');
+          code2.should.include('define("test/sampleModule/0.0.1/jsonModule2",[],[');
+          code3.should.include('define("test/sampleModule/0.0.1/jsonModule3",[],"');
+          done();
+        });
+      });
+    });
   });
 });
 
@@ -192,3 +219,9 @@ function executeBuildAction(moduleDir, callback) {
     'source-files': []
   }, callback);
 }
+
+function getCode(dir, name) {
+  return fsExt.readFileSync(dir, name);
+}
+
+
