@@ -41,10 +41,6 @@ if grep "error" <<< $result; then
     lintFailed=1
 fi
 
-if [[ $lint_errors -gt 0 ]]; then
-    failCommit "Lint Errors"
-fi
-
 echo 'Running Tests...'
 result=$(make test)
 if grep -q FAILURES <<< $result; then
