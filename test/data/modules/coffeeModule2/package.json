@@ -1,0 +1,9 @@
+{
+    "root": "test",
+    "name": "coffee-module2",
+    "version": "1.0.0",
+    "output": {
+        "Commons.coffee": ".",
+        "SubModule_A.coffee.js": "."
+    }
+}
