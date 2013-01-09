@@ -2,8 +2,8 @@
 TESTS = tests/actions/*.js
 REPORTER = dot
 
-test: test-action test-core test-plugin test-utils
-test-action:
+test: test-actions test-core test-plugins test-utils
+test-actions:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		--timeout 20000 \
@@ -18,7 +18,7 @@ test-core:
 		--timeout 10000 \
 		test/core/*.js
 
-test-plugin:
+test-plugins:
 	@NODE_ENV=test ./node_modules/.bin/mocha \
 		--reporter $(REPORTER) \
 		--require should \
@@ -33,4 +33,4 @@ test-utils:
 		test/utils/*.js
 
 
-.PHONY: test-action test-core test-plugin test-utils
+.PHONY: test-actions test-core test-plugins test-utils
