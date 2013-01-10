@@ -86,7 +86,7 @@ describe('coffee plugin test', function() {
     it('coffee module success build', function(done) {
       build.run({base: dir2}, function() {
 
-        var code = fsExt.readFileSync(dir2, 'dist/Commons.Coffee-debug.js');
+        var code = fsExt.readFileSync(dir2, 'dist/Commons.coffee-debug.js');
         code.should.include('define("test/coffee-module2/1.0.0/SubModule_A.coffee-debug"');
         code.should.include('define("test/coffee-module2/1.0.0/SubModule_B.coffee-debug"');
         code.should.include('define("test/coffee-module2/1.0.0/Commons.coffee-debug"');
