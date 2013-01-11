@@ -1,3 +1,28 @@
+## 2013.1.11, Version 1.6.0 (stable)
+
+### 注意
+1. 模块版本的命令参数由 **version** 改为 **ver**
+2. 命令参数如果是 **aa-bb** 的形式，那么对应的 spmConfig 需要是 **aaBb** 的形式
+
+### 新功能
+- ✔ #577 Wrapped cmd modules 支持
+
+### 非兼容式修改
+- ✔ #576 spm 命令行参数 output 格式修改
+- ✔ #572 spm 命令行参数相关重构。从 optimist 改为了 commander
+
+### 优化增强
+- ✔ #446 优化日志信息
+- ✔ #580 spm deploy 支持没有配置的本地部署
+- ✔ #583 coffee-script 升级到 1.4.0
+
+### Bug Fix
+- ✔ #588 build CoffeeScript 模块时出现错误
+- ✔ #574 require 链式操作时，替换错误 
+- ✔ #573 纯object的cmd模块依赖打包错误
+- ✔ #571 spm deploy --to=xxx 失败
+
+
 ## 2013.1.4, Version 1.5.2 (stable)
 ### 新特性 & 优化增强
 - ✔ #565 spm install 支持模板变量的检查
