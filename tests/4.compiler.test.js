@@ -40,7 +40,7 @@ describe('compiler.JSCompiler', function() {
   it('can compile js with a key-value dependency', function(done) {
     var file = path.join(__dirname, 'data', 'key-value-dep.js');
     var jsc = new JSCompiler(file, {
-      dependencies: {
+      alias: {
         jquery: "gallery/jquery/1.8.3/jquery"
       }
     });
@@ -52,7 +52,7 @@ describe('compiler.JSCompiler', function() {
   it('can compile js with key-value and chain relative dependencies', function() {
     var file = path.join(__dirname, 'data', 'chain-key-value-dep.js');
     var jsc = new JSCompiler(file, {
-      dependencies: {
+      alias: {
         jquery: "gallery/jquery/1.8.3/jquery"
       }
     });

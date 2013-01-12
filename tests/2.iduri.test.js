@@ -122,7 +122,7 @@ describe('iduri.generateId', function() {
 
   it('should generate id from dependencies', function() {
     iduri.generateId({
-      dependencies: {
+      alias: {
         'jquery': 'gallery/jquery/1.7.2/jquery'
       }
     }, 'jquery').should.equal('gallery/jquery/1.7.2/jquery');
