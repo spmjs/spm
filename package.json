@@ -30,7 +30,9 @@
         "prettyjson": "~0.7.1",
         "spm-env": "~1.0.0",
         "underscore": "~1.4.2",
-        "commander": "~1.1.1"
+        "underscore.string": "~2.3.0",
+        "commander": "~1.1.1",
+        "grunt": "~0.3.17"
     },
     "devDependencies": {
       "jasmine-node": "~1.0.26",

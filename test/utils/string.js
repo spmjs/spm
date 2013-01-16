@@ -1,4 +1,10 @@
 var string = require('../../lib/utils/string.js');
+var _ = require('underscore');
+var _s = require('underscore.string');
+_.mixin(_s.exports());
+
+//console.info(111, _.camelize('a-bc'));
+//console.info(_('a-bc').chain().camelize().capitalize().value())
 
 describe('string util ', function() { 
   it('test camel method', function() {
