@@ -2,7 +2,7 @@
 
 var commander = require('commander');
 require('colorful').colorful();
-var config = require('../lib/system/config');
+var config = require('../lib/commands/config');
 
 commander.usage('[section.key] [value]');
 

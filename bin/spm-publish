@@ -3,16 +3,16 @@
 var commander = require('commander');
 require('colorful').colorful();
 var logging = require('../lib/spm').logging;
-var uploader = require('../lib/builtin/upload');
+var publisher = require('../lib/commands/publish');
 
 commander.usage('[options] name');
 
 commander
-  .option('-u, --username <username>', 'default value from user.username')
-  .option('-p, --password <password>', 'default value from user.password')
-  .option('-s, --source <source>', 'default value will be the first source')
-  .option('-f, --force', 'force to upload an exists module')
-  .option('--release', 'module is stable for release')
+  .option('-u, --username <username>', 'username for source')
+  .option('-p, --password <password>', 'password for source')
+  .option('-s, --source <source>', 'source name')
+  .option('--tag <tag>', 'publish module with a tag: [stable]')
+  .option('-f, --force', 'force to publish an exists module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs');
 
@@ -30,12 +30,13 @@ commander.on('--help', function() {
   console.log();
   console.log('  ' + 'Examples:'.to.bold.blue.color);
   console.log();
-  console.log('   upload a standard cmd module is simple');
-  console.log('   $ ' + 'spm upload'.to.magenta.color);
+  console.log('   publish a standard cmd module is simple');
   console.log();
-  console.log('   upload to a specified source');
+  console.log('   $ ' + 'spm publish'.to.magenta.color);
   console.log();
-  console.log('   $ ' + 'spm upload '.to.magenta.color + '-s'.to.cyan.color + ' arale');
+  console.log('   publish to a specified source');
+  console.log();
+  console.log('   $ ' + 'spm publish'.to.magenta.color + '-s'.to.cyan.color + ' arale');
   console.log();
 });
 
@@ -45,4 +46,4 @@ commander.parse(process.argv);
 logging.config(commander);
 
 // run install
-uploader.run(commander);
+publisher.run(commander);
