@@ -1,0 +1,33 @@
+{
+  "root": "test",
+  "name": "test_plugin",
+  "version": "0.0.1",
+  "dependencies": {
+  },
+  "output": {
+    "module.js": "."
+  },
+  "plugins": {
+    "online-status": "spm/online-status/1.0.0/check",
+    "recess": {
+      "id":  "spm/plugin-recess/1.0.0/recess",
+      "config": {
+        "compile": true,
+        "compress": false,
+        "noIDs": false
+      }
+    }
+  },
+  "spmConfig": {
+    "*": {
+      "plugins": {
+        "compile": {
+          "after": "recess/recess"
+        },
+        "clean": {
+          "before": "online-status/check"
+        }
+      }
+    }
+  }
+}
