@@ -12,9 +12,9 @@
     "recess": {
       "id":  "spm/plugin-recess/1.0.0/recess",
       "config": {
-        "compile": true,
+        "compile": false,
         "compress": false,
-        "noIDs": false
+        "noIDs":true 
       }
     }
   },
