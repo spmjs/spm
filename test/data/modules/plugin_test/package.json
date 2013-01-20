@@ -9,20 +9,13 @@
   },
   "plugins": {
     "online-status": "spm/online-status/1.0.0/check",
-    "recess": {
-      "id":  "spm/plugin-recess/1.0.0/recess",
-      "config": {
-        "compile": false,
-        "compress": false,
-        "noIDs":true 
-      }
-    }
+    "recess2": "npm:spm-plugin-recess@1.0.0"
   },
   "spmConfig": {
     "*": {
       "plugins": {
         "compile": {
-          "after": "recess/recess"
+          "after": "recess2/recess"
         },
         "clean": {
           "before": "online-status/check"
