@@ -1,6 +1,6 @@
 var should = require('should');
 var logging = require('colorful').logging;
-var require = require('./testutils');
+var require = require('./_require');
 var iduri = require('../lib/sdk/iduri');
 
 

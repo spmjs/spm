@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var should = require('should');
-var require = require('./testutils');
+var require = require('./_require');
 var ast = require('../lib/sdk/ast');
 var compiler = require('../lib/sdk/compiler');
 

@@ -1,5 +1,5 @@
 var should = require('should');
-var require = require('./testutils');
+var require = require('./_require');
 var config = require('../lib/commands/config');
 
 describe('config', function() {
