@@ -29,4 +29,8 @@ clean:
 	@find tests -name '.spm-build' -exec rm -fr {} +
 	@find tests -name 'dist' -exec rm -fr {} +
 
+theme = ~/.spm/themes/one
+documentation:
+	@nico build --theme ${theme} -C scripts/nico.json
+
 .PHONY: all build test lint coverage
