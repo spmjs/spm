@@ -1,6 +1,6 @@
 var should = require('should');
 var require = require('./_require');
-var config = require('../lib/commands/config');
+var config = require('../lib/config');
 
 describe('config', function() {
   it('should get section.key', function() {
