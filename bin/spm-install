@@ -3,7 +3,7 @@
 var commander = require('commander');
 require('colorful').colorful();
 var logging = require('../lib/spm').logging;
-var installer = require('../lib/commands/install');
+var installer = require('../lib/install');
 
 commander.usage('[options] name[@version]');
 

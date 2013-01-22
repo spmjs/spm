@@ -10,6 +10,7 @@
   "lastsemic": true,
   "asi": false,
   "boss": true,
+  "expr": true,
   "strict": false,
   "es5": true,
   "funcscope": true,

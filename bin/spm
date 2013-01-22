@@ -8,8 +8,8 @@ var child_process = require('child_process');
 var commander = require('commander');
 var program = require('../lib/utils/program');
 require('colorful').colorful();
-var plugin = require('../lib/commands/plugin');
-var config = require('../lib/commands/config');
+var plugin = require('../lib/plugin');
+var config = require('../lib/config');
 var spm = require('../lib/spm');
 var spawn = require('../lib/utils').spawn;
 

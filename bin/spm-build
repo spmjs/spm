@@ -8,13 +8,9 @@ var builder = require('../lib/commands/build');
 commander.usage('[options]');
 
 commander
-  .option('-C, --config', 'config file: [package.json]')
+  .option('-C, --config', 'config file: [binding.spm]')
   .option('-I, --input-directory <dir>', 'input directory: [src]')
   .option('-O, --output-directory <dir>', 'output directory: [dist]')
-  .option('--module-name <name>', 'module name: {package.name}')
-  .option('--module-version <version>', 'module version: {package.version}')
-  .option('--module-root <root>', 'module root: {package.root}')
-  .option('--module-format <format>', 'id format: [{{root}}/{{name}}/{{version}}/{{filename}}]')
   .option('-u, --username <username>', 'username for source')
   .option('-p, --password <password>', 'password for source')
   .option('-s, --source <source>', 'source name')
