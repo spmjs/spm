@@ -2,8 +2,8 @@
 
 var commander = require('commander');
 require('colorful').colorful();
-var logging = require('../lib/spm').logging;
-var publisher = require('../lib/publish');
+var spm = require('../lib/spm');
+var logging = spm.logging;
 
 commander.usage('[options] name');
 
@@ -36,7 +36,7 @@ commander.on('--help', function() {
   console.log();
   console.log('   publish to a specified source');
   console.log();
-  console.log('   $ ' + 'spm publish'.to.magenta.color + '-s'.to.cyan.color + ' arale');
+  console.log('   $ ' + 'spm publish'.to.magenta.color + ' -s'.to.cyan.color + ' arale');
   console.log();
 });
 
@@ -46,4 +46,4 @@ commander.parse(process.argv);
 logging.config(commander);
 
 // run install
-publisher.run(commander);
+spm.publish(commander);

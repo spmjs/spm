@@ -8,15 +8,11 @@ var child_process = require('child_process');
 var commander = require('commander');
 var program = require('../lib/utils/program');
 require('colorful').colorful();
-var plugin = require('../lib/plugin');
-var config = require('../lib/config');
 var spm = require('../lib/spm');
 var spawn = require('../lib/utils').spawn;
 
 
 commander.helpInformation = function() {
-  // register extentions
-  plugin.blockCall('registerCommand');
   return [
     '',
     '  ' + '♨'.to.cyan.color + '  ' + 'Static Package Manager'.to.bold.color,
@@ -51,7 +47,7 @@ commander.on('--help', function() {
   program.printHelp(new program('publish', 'publish a module'))
   console.log();
 
-  var extensions = spm.extensionCommands();
+  var extensions = spm.plugin.plugins();
   if (extensions.length) {
     console.log();
     console.log('  ' + 'Plugin Commands:'.to.bold.blue.color);
@@ -111,8 +107,7 @@ function executable(subcmd) {
   }
 
   // register extentions
-  plugin.blockCall('registerCommand');
-  var extensions = spm.extensionCommands();
+  var extensions = spm.plugin.plugins();
   for (var i = 0; i < extensions.length; i++) {
     var cmd = extensions[i];
     if (subcmd === cmd.name) return cmd.executable;
