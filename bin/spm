@@ -110,7 +110,7 @@ function executable(subcmd) {
   var extensions = spm.plugin.plugins();
   for (var i = 0; i < extensions.length; i++) {
     var cmd = extensions[i];
-    if (subcmd === cmd.name) return cmd.executable;
+    if (subcmd === cmd.name) return cmd.binary;
   }
   console.log();
   console.log(("  Can't find command: " + subcmd).to.red.color);
