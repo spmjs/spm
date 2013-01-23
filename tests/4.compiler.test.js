@@ -69,7 +69,7 @@ describe('compiler.JSCompiler', function() {
   });
   it('will write file to .spm-build', function(done) {
     var file = path.join(datadir, 'no-deps.js');
-    var jsc = new JSCompiler(file, {inputDirectory: datadir});
+    var jsc = new JSCompiler(file, {source: datadir});
     jsc.run(function(err) {
       if (err) throw err;
       fs.existsSync(path.join('.spm-build', 'no-deps.js')).should.equal(true);
@@ -93,7 +93,7 @@ describe('compiler.JtplCompiler', function() {
 
   it('will write file to .spm-build', function(done) {
     var file = path.join(datadir, 'simple.tpl');
-    var jtpl = new compiler.JtplCompiler(file, {inputDirectory: datadir});
+    var jtpl = new compiler.JtplCompiler(file, {source: datadir});
     jtpl.run(function(err) {
       if (err) throw err;
       fs.existsSync(path.join('.spm-build', 'simple.tpl.js')).should.equal(true);
@@ -117,7 +117,7 @@ describe('compiler.JCSSCompiler', function() {
 
   it('will write file to .spm-build', function(done) {
     var file = path.join(datadir, 'simple.css');
-    var jtpl = new compiler.JCSSCompiler(file, {inputDirectory: datadir});
+    var jtpl = new compiler.JCSSCompiler(file, {source: datadir});
     jtpl.run(function(err) {
       if (err) throw err;
       fs.existsSync(path.join('.spm-build', 'simple.css.js')).should.equal(true);

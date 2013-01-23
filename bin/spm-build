@@ -3,7 +3,7 @@
 var commander = require('commander');
 require('colorful').colorful();
 var logging = require('../lib/spm').logging;
-var builder = require('../lib/commands/build');
+var build = require('../lib/spm').build;
 
 commander.usage('[options]');
 
@@ -53,7 +53,7 @@ commander.parse(process.argv);
 logging.config(commander);
 
 // run install
-builder.run(commander);
+build(commander);
 
 function list(val) {
   return val.split(',');
