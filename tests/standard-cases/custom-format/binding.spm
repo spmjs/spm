@@ -1,6 +1,0 @@
-{
-  "format": "{{name}}",
-  "output": {
-    "format.js": "."
-  }
-}

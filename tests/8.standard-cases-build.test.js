@@ -13,11 +13,7 @@ describe('building cases', function() {
   cases.forEach(function(name) {
     var absdir = path.join(casedir, name);
     it(name, function() {
-      build.run({
-        config: path.join(absdir, 'binding.spm'),
-        inputDirectory: path.join(absdir, 'src'),
-        outputDirectory: path.join(absdir, 'dist')
-      });
+      build.run({cwd: absdir});
     });
   });
 });
