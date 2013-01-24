@@ -42,9 +42,9 @@ commander.on('--help', function() {
 
   console.log('  ' + 'Module Commands:'.to.bold.green.color);
   console.log();
-  program.printHelp(new program('build', 'build a distributable module'))
-  program.printHelp(new program('install', 'install a module'))
-  program.printHelp(new program('publish', 'publish a module'))
+  program.printHelp(new program('build', 'build a distributable module'));
+  program.printHelp(new program('install', 'install a module'));
+  program.printHelp(new program('publish', 'publish a module'));
   console.log();
 
   var extensions = spm.plugin.plugins();
@@ -70,7 +70,7 @@ if (!subcmd) {
   process.exit();
 }
 
-if (subcmd == 'help') {
+if (subcmd === 'help') {
   var helpcmd = commander.args[1];
   if (!helpcmd) {
     process.stdout.write(commander.helpInformation());

@@ -32,13 +32,12 @@ done
 
 echo 'Running Jshint...'
 result=$(make lint)
-if grep "error" <<< $result; then
-    num=$(grep "[0-9]+ error" <<< "$result")
-    testFail "Jshint: $num"
+if [ $? != 0 ]; then
     echo "$result"
     echo ''
     echo 'Jslint fail'
     lintFailed=1
+    failCommit "Lint Errors"
 fi
 
 echo 'Running Tests...'

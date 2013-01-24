@@ -9,10 +9,8 @@ reporter = spec
 test: clean
 	@node_modules/.bin/mocha --reporter ${reporter} ${specs}
 
-
-files := $(shell find . -name '*.js' ! -path "*node_modules/*" ! -path "*dist/*" ! -path "*tests/data/*" ! -path "*tests/*cases/*" ! -path "*tests/issues/*" ! -path "*.spm-build/*")
 lint:
-	@node_modules/.bin/jshint ${files}
+	@grunt jshint
 
 out = _site/coverage.html
 coverage:
