@@ -24,9 +24,6 @@ describe('iduri.resolve', function() {
   });
 
   it('should resolve as git', function() {
-    meta = iduri.resolve('lepture/nico');
-    meta.type.should.equal('git');
-
     meta = iduri.resolve('git@github.com:lepture/nico');
     meta.type.should.equal('git');
 
@@ -43,6 +40,9 @@ describe('iduri.resolve', function() {
   });
 
   it('should resolve as spm', function() {
+    meta = iduri.resolve('lepture/nico');
+    meta.type.should.equal('spm');
+
     meta = iduri.resolve('lepture.nico');
     meta.type.should.equal('spm');
 
