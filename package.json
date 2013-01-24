@@ -4,7 +4,6 @@
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "dependencies": {
-    "arale": "~0.2.0",
     "semver": "~1.1.2",
     "async": "~0.1.22",
     "fs-extra": "~0.3.2",
@@ -20,7 +19,7 @@
   },
   "devDependencies": {
     "sinon": "*",
-    "grunt-contrib-jshint": "*",
+    "jshint": "*",
     "mocha": "*",
     "should": "*"
   },

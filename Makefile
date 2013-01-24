@@ -9,8 +9,11 @@ reporter = spec
 test: clean
 	@node_modules/.bin/mocha --reporter ${reporter} ${specs}
 
+jsfiles := $(shell find ./ -name '*.js' ! -path "*utils/tar.js" ! -path "*node_modules/*" ! -path "*cases/*" ! -path "*data/*" ! -path "*scripts/*");
+binfiles := $(shell find ./bin/*);
 lint:
-	@grunt jshint
+	@node_modules/.bin/jshint ${jsfiles}
+	@node_modules/.bin/jshint ${binfiles}
 
 out = _site/coverage.html
 coverage:
