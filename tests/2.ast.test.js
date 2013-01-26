@@ -117,7 +117,7 @@ describe('ast.getRequires', function() {
 });
 
 describe('ast.replaceRequire', function() {
-  it('can replace jquery and underscore', function() {
+  it('can replace jquery and lodash', function() {
     var code = [
       "define(function(require) {",
       "  var jquery = require('jquery');",

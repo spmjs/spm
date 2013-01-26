@@ -87,9 +87,9 @@ describe('iduri.basename', function() {
 describe('iduri.extname', function() {
 });
 
-describe('iduri.generateId', function() {
+describe('iduri.pkg2id', function() {
   it('generate id without format config', function() {
-    iduri.generateId({
+    iduri.pkg2id({
       root: 'arale',
       name: 'class',
       version: '1.0.0',
@@ -98,63 +98,63 @@ describe('iduri.generateId', function() {
   });
 
   it('generate id with format config', function() {
-    iduri.generateId({
-      format: '{{filename}}',
+    iduri.pkg2id({
       root: 'alice',
       filename: 'button.css'
-    }).should.equal('button.css');
+    }, '<%= filename %>').should.equal('button.css');
 
-    iduri.generateId({
-      format: '#{{root}}/{{filename}}',
+    iduri.pkg2id({
       root: 'alice',
       filename: 'button.css'
-    }).should.equal('#alice/button.css');
+    },'#<%= root %>/<%= filename %>').should.equal('#alice/button.css');
   });
 
   it('should generate id from relative path', function() {
-    iduri.generateId({
+    iduri.pkg2id({
       root: 'arale',
       name: 'base',
       version: '1.0.0',
       filename: 'class.js'
     }, './event.js').should.equal('./event');
   });
+});
 
-  it('should generate id from dependencies', function() {
-    iduri.generateId({
+describe('iduri.alias2id', function() {
+  it('should generate id from alias', function() {
+    iduri.alias2id({
       alias: {
         'jquery': 'gallery/jquery/1.7.2/jquery'
       }
     }, 'jquery').should.equal('gallery/jquery/1.7.2/jquery');
   });
-
-  it('should generate id from nothing', function() {
-    iduri.generateId({}, 'hello').should.equal('hello');
+  it('should generate id from relative path', function() {
+    iduri.alias2id({
+      alias: {
+        'jquery': 'gallery/jquery/1.7.2/jquery'
+      }
+    }, './events.js').should.equal('./events');
   });
 });
 
-describe('iduri.validateId', function() {
+describe('iduri.validate', function() {
   it('should be invalid error', function(done) {
     logging.once('logging-error', function(data) {
-      data.should.include('{{root}}');
       done();
     });
-    iduri.validateId('{{root}}').should.equal(false);
+    iduri.validate('//a').should.equal(false);
   });
   it('should invalid CMD warn', function(done) {
     logging.once('logging-warn', function(data) {
       data.should.include('CMD');
-      data.should.include('abc');
       done();
     });
-    iduri.validateId('abc').should.equal(false);
+    iduri.validate('abc').should.equal(false);
   });
   it('should be invalid CMD error', function(done) {
     logging.once('logging-error', function(data) {
       data.should.include('CMD');
-      data.should.include('abc');
       done();
     });
-    iduri.validateId('abc', {strict: true}).should.equal(false);
+    iduri.validate('abc', {strict: true}).should.equal(false);
   });
 });
