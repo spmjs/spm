@@ -74,22 +74,9 @@ describe('test dep graph', function() {
     n7.addEdge(n6);
     n7.addEdge(n3);
 
+    var mergePaths = Graph.findSubNodeDepPath(g);
     var mergeSort = g.clone();
-    // 有多少个入度为 0 的节点，就有几个连通子图.
-    var topNodes = mergeSort.nodes.filter(function(node) {
-      return node.inEdges.length == 0;
-    });
-
-    // 由于原来拍过序的模块缺少路径信息。所以需要重新获取.
-    var sorted = g.sort().map(function(node) {
-      return mergeSort.getNode(node.name);
-    });
-console.info('s---->', sorted.map(function(n) {return n.name}))
-
-    var mergePaths = topNodes.map(function(node) {
-      return Graph.findSubNodeDepPath(sorted, node);
-    });
-
+   
     // 可能有多条合并路径，取决于被依赖数为0的模块个数.
     mergePaths.forEach(function(mergePath) {
       console.info('a------》',mergePath.map(function(n) {return n.name}))

@@ -3,7 +3,8 @@
     "upload": {
       "override": "abc",
       "to": "to2",
-      "dest": "dest2"
+      "dest": "dest2",
+      "roots": ["arale", "gallery", "spm"]
     }
   }
 }
