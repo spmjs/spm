@@ -1,7 +1,7 @@
 var fs = require('fs');
 var should = require('should');
-var require = require('./_require');
-var spmrc = require('../lib/sdk/spmrc');
+var _require = require('./_require');
+var spmrc = _require('../lib/sdk/spmrc');
 
 describe('spmrc', function() {
   spmrc.spmrcfile = 'tmp/spmrc';

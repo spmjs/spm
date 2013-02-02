@@ -1,12 +1,12 @@
 var should = require('should');
 var logging = require('colorful').logging;
-var require = require('./_require');
-var iduri = require('../lib/sdk/iduri');
+var _require = require('./_require');
+var iduri = _require('../lib/sdk/iduri');
 
 
 describe('iduri.validate', function() {
   it('should be invalid error', function(done) {
-    logging.once('logging-error', function(data) {
+    logging.once('logging-error', function() {
       done();
     });
     iduri.validate('//a').should.equal(false);
