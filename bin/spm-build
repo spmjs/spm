@@ -12,7 +12,6 @@ commander
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
   .option('--encoding <encoding>', 'file encoding: [utf8]')
-  .option('--interrupt', 'stop the process when warn or error');
 
 
 commander.on('--help', function() {

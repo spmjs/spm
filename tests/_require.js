@@ -1,5 +1,5 @@
-var logging = require('colorful').logging;
-logging.level = 'silent';
+var log = require('..').log;
+log.quiet = true;
 
 module.exports = function(file) {
   if (process.env.SPM_COVERAGE) {
