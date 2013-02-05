@@ -12,7 +12,9 @@ commander
   .option('-s, --source <source>', 'default value will be the first source')
   .option('-f, --force', 'force to download a unstable module')
   .option('-v, --verbose', 'show more logs')
-  .option('-q, --quiet', 'show less logs');
+  .option('-q, --quiet', 'show less logs')
+  .option('--no-color', 'disable colorful print');
+
 
 commander
   .command('help')

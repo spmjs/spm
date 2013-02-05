@@ -14,7 +14,9 @@ commander
   .option('--tag <tag>', 'publish module with a tag: [stable]')
   .option('-f, --force', 'force to publish an exists module')
   .option('-v, --verbose', 'show more logs')
-  .option('-q, --quiet', 'show less logs');
+  .option('-q, --quiet', 'show less logs')
+  .option('--no-color', 'disable colorful print');
+
 
 commander
   .command('help')
