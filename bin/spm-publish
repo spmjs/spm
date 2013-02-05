@@ -3,7 +3,7 @@
 var commander = require('commander');
 require('colorful').colorful();
 var spm = require('../lib/spm');
-var logging = spm.logging;
+var log = spm.log;
 
 commander.usage('[options] name');
 
@@ -43,7 +43,12 @@ commander.on('--help', function() {
 commander.parse(process.argv);
 
 // verbose vs quiet
-logging.config(commander);
+log.config(commander);
 
 // run install
-spm.publish(commander);
+console.log();
+console.log('    start publishing ' + '=>'.to.magenta.color);
+console.log();
+spm.publish(commander, function() {
+  console.log();
+});

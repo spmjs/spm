@@ -2,8 +2,7 @@
 
 var commander = require('commander');
 require('colorful').colorful();
-var logging = require('../lib/spm').logging;
-var installer = require('../lib/install');
+var spm = require('..');
 
 commander.usage('[options] name[@version]');
 
@@ -49,7 +48,10 @@ commander.on('--help', function() {
 commander.parse(process.argv);
 
 // verbose vs quiet
-logging.config(commander);
+spm.log.config(commander);
 
 // run install
-installer.run(commander);
+console.log();
+console.log('    start installing ' + '=>'.to.magenta.color);
+console.log();
+spm.install(commander);

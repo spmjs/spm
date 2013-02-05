@@ -2,8 +2,7 @@
 
 var commander = require('commander');
 require('colorful').colorful();
-var logging = require('../lib/spm').logging;
-var build = require('../lib/spm').build;
+var spm = require('..');
 
 commander.usage('[options]');
 
@@ -36,7 +35,10 @@ commander.on('--help', function() {
 commander.parse(process.argv);
 
 // verbose vs quiet
-logging.config(commander);
+spm.log.config(commander);
 
 // run install
-build(commander);
+console.log();
+console.log('    start building ' + '=>'.to.magenta.color);
+console.log();
+spm.build(commander);
