@@ -44,5 +44,6 @@ Install packages from spmjs.org.
 
 Low level API:
 
-- [`spm.sdk.ast`](./ast)
-- [`spm.sdk.yuan`](./yuan)
+- [`spm.sdk.ast`](https://github.com/spmjs/cmd-util/blob/master/docs/ast.md)
+- `spm.sdk.iduri`
+- `spm.sdk.yuan`

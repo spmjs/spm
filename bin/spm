@@ -2,13 +2,10 @@
 
 var path = require('path');
 var fs = require('fs');
-var child_process = require('child_process');
-
-
 var commander = require('commander');
-var program = require('../lib/utils/program');
 require('colorful').colorful();
-var spm = require('../lib/spm');
+var spm = require('..');
+var program = require('../lib/utils/program');
 var spawn = require('../lib/utils').spawn;
 
 
@@ -87,12 +84,7 @@ if (subcmd === 'help') {
 
   var bin = executable(helpcmd);
   if (bin) {
-    child_process.exec(bin + ' --help', function(err, stdout) {
-      if (err) {
-        throw err;
-      }
-      process.stdout.write(stdout);
-    });
+    spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
   }
 } else {
   var bin = executable(subcmd);

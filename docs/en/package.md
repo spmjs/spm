@@ -2,9 +2,15 @@
 
 ----------
 
+spm follows the [Common Module Definition](https://github.com/spmjs/specification) packaging standards, compatible with nodejs' package.json.
+
+CMD [packaging draft](https://github.com/spmjs/specification/blob/master/draft/package.md) add an additional namespace, which is `family`. spm add another namespace, which is `spm`.
+
+A full example of `package.json`:
+
 ```json
 {
-    "root": "arale",
+    "family": "arale",
     "name": "base",
     "version": "1.0.0",
     "description": "base is ....",
@@ -13,7 +19,7 @@
         "type": "git",
         "url": "https://github.com/aralejs/base.git"
     },
-    "keywords": ["infrastructure"],
+    "keywords": ["class"],
 
     "spm": {
         "alias": {
@@ -24,7 +30,7 @@
             "base.js": "."
         },
         "engines": {
-            "seajs": "seajs/1.2.0/sea"
+            "seajs": "seajs/1.2.0/sea.js"
         }
     }
 }

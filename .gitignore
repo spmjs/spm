@@ -17,6 +17,7 @@ Thumbs.db
 *.log
 node_modules/
 dist/
+tmp/
 .spm-build
 .buildpath
 .settings
