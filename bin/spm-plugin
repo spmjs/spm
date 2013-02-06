@@ -24,32 +24,16 @@ commander
   .description('list all plugins')
   .action(plugin.list);
 
-commander
-  .command('help')
-  .description('show this help menu')
-  .action(function() {
-    process.stdout.write(commander.helpInformation());
-    commander.emit('--help');
-    commander.emit('--more-help');
-    process.exit();
-  });
-
-
 commander.on('--help', function() {
-  console.log('  install a plugin by ' + 'npm install'.to.magenta.color);
+  console.log('  ' + 'How to use:'.to.bold.blue.color);
   console.log();
-  console.log('  $ ' + 'npm install '.to.magenta.color + 'spm-init'.to.green.color + ' -g'.to.magenta.color);
+  console.log('  install a plugin by ' + 'npm install'.to.cyan.color);
   console.log();
-});
-
-commander.on('--more-help', function() {
-  console.log('  ' + 'Featured Plugins:'.to.bold.blue.color);
+  console.log('  $ ' + 'npm install '.to.cyan.color + 'spm-init'.to.magenta.color + ' -g');
   console.log();
-  console.log('    ' + '★'.to.grey.color + '  spm-init');
-  console.log('    ' + '★'.to.grey.color + '  spm-uglifyjs');
-  console.log('    ' + '★'.to.grey.color + '  spm-deploy');
+  console.log('  install a plugin by ' + 'spm plugin'.to.cyan.color);
   console.log();
-  console.log('    find more plugins on ' + 'https://github.com/spmjs'.to.underline.bold.color);
+  console.log('  $ ' + 'spm plugin install '.to.cyan.color + 'spm-init'.to.magenta.color + ' -g');
   console.log();
 });
 
