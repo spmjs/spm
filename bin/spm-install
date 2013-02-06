@@ -53,7 +53,4 @@ commander.parse(process.argv);
 spm.log.config(commander);
 
 // run install
-console.log();
-console.log('    start installing ' + '=>'.to.magenta.color);
-console.log();
 spm.install(commander);
