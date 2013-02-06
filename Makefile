@@ -4,7 +4,7 @@ all:
 	@chmod -R +x .git/hooks/
 
 
-specs := $(shell find ./tests -name '2*.test.js' ! -path "*node_modules/*")
+specs := $(shell find ./tests -name '*.test.js' ! -path "*node_modules/*")
 reporter = spec
 test: clean
 	@node_modules/.bin/mocha --reporter ${reporter} ${specs}

@@ -2,7 +2,7 @@
   "name": "format",
   "version": "0.1.0",
   "spm": {
-    "format": "{{name}}",
+    "format": "{{ name }}",
     "output": {
       "format.js": "."
     }

@@ -1,5 +1,5 @@
 {
-  "root": "test",
+  "family": "test",
   "name": "relative",
   "version": "0.1.0",
   "spm": {

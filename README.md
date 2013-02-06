@@ -11,7 +11,7 @@ We have a regular release schedule:
 
 1. monthly release for big features or API changes
 2. weekly(maybe longer) release for small features and bug fix
-3. daily(maybe days) release in canary channel
+3. daily(maybe days) release in ninja channel
 
 ### Stable Channel
 
