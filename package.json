@@ -4,8 +4,8 @@
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "dependencies": {
-    "cmd-util": "*",
-    "grunt-spm-build": "*",
+    "cmd-util": "0.1.1a1",
+    "grunt-spm-build": "0.1.1a1",
     "semver": "~1.1.2",
     "async": "~0.1.22",
     "fstream": "~0.1.21",
@@ -25,12 +25,7 @@
     "should": "*"
   },
   "bin": {
-    "spm": "bin/spm",
-    "spm-build": "bin/spm-build",
-    "spm-config": "bin/spm-config",
-    "spm-install": "bin/spm-install",
-    "spm-publish": "bin/spm-publish",
-    "spm-plugin": "bin/spm-plugin"
+    "spm": "bin/spm"
   },
   "scripts": {
     "test": "make test"
