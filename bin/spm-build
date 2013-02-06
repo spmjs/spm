@@ -39,6 +39,4 @@ spm.log.config(commander);
 
 // run install
 console.log();
-console.log('    start building ' + '=>'.to.magenta.color);
-console.log();
 spm.build(commander);

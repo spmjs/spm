@@ -49,8 +49,6 @@ log.config(commander);
 
 // run install
 console.log();
-console.log('    start publishing ' + '=>'.to.magenta.color);
-console.log();
 spm.publish(commander, function() {
   console.log();
 });
