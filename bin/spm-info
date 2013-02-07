@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+var commander = require('commander');
+require('colorful').colorful();
+var spm = require('..');
+
+commander.usage('[options] name[@version]');
+
+commander
+  .option('-u, --username <username>', 'default value from user.username')
+  .option('-p, --password <password>', 'default value from user.password')
+  .option('-s, --source <source>', 'default value will be the first source')
+  .option('--no-color', 'disable colorful print');
+
+
+commander.on('--help', function() {
+  console.log();
+  console.log('  ' + 'Examples:'.to.bold.blue);
+  console.log();
+  console.log('   $', 'spm info'.to.magenta.color, 'seajs');
+  console.log('   $', 'spm info'.to.magenta.color, 'arale/base');
+  console.log();
+});
+
+commander.parse(process.argv);
+
+// color
+spm.log.config(commander);
+
+if (!commander.args[0]) {
+  process.stdout.write(commander.helpInformation());
+  commander.emit('--help');
+  process.exit();
+}
+
+// run install
+console.log();
+spm.info(commander);
