@@ -2,11 +2,35 @@
 
 var path = require('path');
 var fs = require('fs');
+var os = require('os');
 var commander = require('commander');
 require('colorful').colorful();
 var spm = require('..');
 var program = require('../lib/utils/program');
 var spawn = require('../lib/utils').spawn;
+
+if (!process.env.NODE_PATH) {
+  console.log();
+  if (process.env.SHELL === '/bin/zsh') {
+    console.log('  Please set environment variable NODE_PATH in ~/.zshrc:');
+  } else if (process.env.SHELL === '/bin/bash') {
+    console.log('  Please set environment variable NODE_PATH in ~/.bashrc:');
+  } else {
+    console.log('  Please set environment variable NODE_PATH:');
+  }
+  console.log();
+
+  var nodepath = __dirname.replace(/\/spm\/bin$/, '');
+  if (/node_modules$/.test(nodepath) && !fs.existsSync(path.join(nodepath, '.bin'))) {
+    if (os.platform() === 'win32') {
+      console.log('    NODE_PATH=' + nodepath);
+    } else {
+      console.log('    export NODE_PATH=' + nodepath);
+    }
+  }
+  console.log();
+  process.exit();
+}
 
 
 commander.helpInformation = function() {
@@ -88,7 +112,7 @@ if (subcmd === 'help') {
     spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
   }
 } else {
-  var bin = executable(subcmd);
+  bin = executable(subcmd);
   if (bin) {
     spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
   }
