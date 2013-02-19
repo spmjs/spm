@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+var commander = require('commander');
+require('colorful').colorful();
+var spm = require('..');
+
+commander.usage('[options] <query>');
+
+commander
+  .option('-s, --source <source>', 'default value will be the first source')
+  .option('--no-color', 'disable colorful print');
+
+
+commander.on('--help', function() {
+  console.log();
+  console.log('  ' + 'Examples:'.to.bold.blue);
+  console.log();
+  console.log('   $', 'spm search'.to.magenta.color, 'dom');
+  console.log();
+});
+
+commander.parse(process.argv);
+
+// color
+spm.log.config(commander);
+
+if (!commander.args[0]) {
+  process.stdout.write(commander.helpInformation());
+  commander.emit('--help');
+  process.exit();
+}
+
+// run install
+console.log();
+spm.search(commander);

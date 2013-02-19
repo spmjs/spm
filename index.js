@@ -11,6 +11,7 @@ exports.config = require('./lib/config');
 exports.install = require('./lib/install');
 exports.info = require('./lib/info');
 exports.publish = require('./lib/publish');
+exports.search = require('./lib/search');
 
 exports.build = require('./lib/build');
 
