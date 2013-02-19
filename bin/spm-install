@@ -4,7 +4,7 @@ var commander = require('commander');
 require('colorful').colorful();
 var spm = require('..');
 
-commander.usage('[options] name[@version]');
+commander.usage('[options] name[@version] [destination]');
 
 commander
   .option('-u, --username <username>', 'default value from user.username')
@@ -21,7 +21,7 @@ commander.on('--help', function() {
   console.log('  ' + 'Examples:'.to.bold.blue);
   console.log();
   console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery');
-  console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery/jquery');
+  console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery/jquery assets');
   console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery/jquery' +
               '@1.8.2'.to.cyan.color);
   console.log();
