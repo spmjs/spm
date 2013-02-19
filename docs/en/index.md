@@ -83,3 +83,46 @@ or:
 Want to write your own plugin? Checkout the [plugin](./plugin.md) section.
 
 ## Build
+
+Build is a **transport** process, it is not a code to binary process.
+
+For example, we have a package **spm/hello**:
+
+```
+package.json
+src/
+    hello.js
+```
+
+The source code of `hello.js` is as simple as:
+
+```js
+define(function(require) {
+    require('jquery')
+})
+```
+
+After `spm build`, it should be:
+
+```js
+define('spm/hello/1.0.0/hello', ['jquery/jquery/1.7.2/jquery'], function(require) {
+    require('jquery/jquery/1.7.2/jquery')
+})
+```
+
+The package structure will be:
+
+```
+package.json
+src/
+    hello.js
+dist/
+    hello.js
+```
+
+Get more information on [build](./build.md).
+
+
+## Info & Search
+
+## Install & Publish

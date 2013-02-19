@@ -30,7 +30,7 @@ A full example of `package.json`:
             "base.js": "."
         },
         "engines": {
-            "seajs": "seajs/1.2.0/sea.js"
+            "seajs": "seajs/seajs/1.2.0/sea.js"
         }
     }
 }
