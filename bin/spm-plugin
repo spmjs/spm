@@ -33,7 +33,7 @@ commander.on('--help', function() {
   console.log();
   console.log('  install a plugin by ' + 'spm plugin'.to.cyan.color);
   console.log();
-  console.log('  $ ' + 'spm plugin install '.to.cyan.color + 'spm-init'.to.magenta.color + ' -g');
+  console.log('  $ ' + 'spm plugin install '.to.cyan.color + 'init'.to.magenta.color);
   console.log();
 });
 
