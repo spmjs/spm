@@ -30,11 +30,14 @@ clean:
 	@find tests -name '.spm-build' -exec rm -fr {} +
 	@find tests -name 'dist' -exec rm -fr {} +
 
-theme = ~/.spm/themes/one
+theme = _theme
 documentation:
 	@nico build --theme ${theme} -C scripts/nico.json
 
 server:
-	@nico server --theme ${theme} -C scripts/nico.json
+	@nico server --theme ${theme} -C scripts/nico.json --watch
+
+publish-doc: documentation
+	@ghp-import _site -p
 
 .PHONY: all build test lint coverage

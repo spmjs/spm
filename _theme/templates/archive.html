@@ -1,0 +1,11 @@
+{%- extends "layout.html" -%}
+{%- block title %}{{pagination.title}}{% endblock %}
+
+{%- block document %}
+<h1 class="entry-title">{{pagination.title}}</h1>
+<ol class="entry-list">
+  {%- for item in pagination.items %}
+  <li><a href="{{permalink_url(item)}}">{{item.title}}</a><time datetime="{{item.pubdate|xmldatetime}}">{{item.pubdate|date('Y-m-d')}}</time></li>
+  {%- endfor %}
+</ol>
+{% endblock -%}

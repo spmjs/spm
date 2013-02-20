@@ -21,28 +21,16 @@ Suggestions for Linux:
    export PATH="$PATH:$HOME/dist/node/bin"
    ```
 
-- add `~/dist/node/lib/node_modules` to `NODE_PATH` in your bashrc or zshrc:
-
-   ```
-   export NODE_PATH="$HOME/dist/node/lib/node_modules
-   ```
-
 Putting node in your home directory or some place need no sudo privellege makes things simple. You don't have to `sudo npm install <package>` anymore.
 
 Suggestions for Mac:
 
 - just like Linux, you can do the same thing.
 - homebrew is another good choice.
-- don't forget to add `NODE_PATH` environment variable in your bashrc or zshrc.
 
 Suggestions for Windows:
 
 - do whatever you want, I don't think there is another choice.
-- don't forget to add `NODE_PATH` environment variable, it should be:
-
-   ```
-   NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules
-   ```
 
 
 ## Installation
@@ -59,6 +47,17 @@ If you want to try the latest version of spm, try the ninja channel:
 
 You can also grab the code from [github](https://github.com/spmjs/spm2) and install from the source code.
 
+Try with `spm` now:
+
+    $ spm
+
+If you haven't set `NODE_PATH`, it will prompt an information like:
+
+```
+Please set environment variable NODE_PATH in ~/.zshrc:
+
+    export NODE_PATH=/usr/local/share/npm/lib/node_modules
+```
 
 ## Commands
 

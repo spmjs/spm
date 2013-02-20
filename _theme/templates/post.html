@@ -1,0 +1,15 @@
+{%- extends "layout.html" -%}
+{%- block title %}{{post.title}}{% endblock %}
+
+{%- block document %}
+<div class="hentry">
+  <h1 class="entry-title">{{post.title}}</h1>
+  <div class="entry-meta">
+    <time class="updated" datetime="{{post.pubdate|xmldatetime}}">{{post.pubdate|date('Y-m-d')}}</time>
+  </div>
+  {%- if post.description %}
+  <blockquote class="entry-description">{{post.description}}</blockquote>
+  {%- endif %}
+  <div class="entry-content">{{post.html|linkfix}}</div>
+</div>
+{% endblock -%}

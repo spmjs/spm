@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="{{system.name}} {{system.version}}">
+    <meta name="theme" content="{{theme.name}} {{theme.version}}">
+    <title>{% block title%}{% endblock %}</title>
+    {%- if config.feedurl %}
+    <link rel="alternate" type="application/rss+xml" href="{{config.feedurl}}" title="{{config.sitename}}" />
+    {%- endif %}
+    <link rel="stylesheet" href="{{static_url('one.css')}}" />
+    <link rel="stylesheet" href="{{static_url('syntax.css')}}" />
+    {%- block afterstyle %}{% endblock %}
+    {%- if config.google %}
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{config.google}}']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    {%- endif %}
+  </head>
+  <body>
+    <div class="navigation" role="navigation">
+      <div class="container">
+        <a class="home" href="{{content_url('index.html')}}">{{config.sitename}}</a>
+        {%- if config.navigation %}
+        <div class="menu">
+          {%- for item in config.navigation %}
+          <a href="{{content_url(item.link)}}">{{item.title}}</a>
+          {%- endfor %}
+        </div>
+        {%- endif %}
+      </div>
+    </div>
+    <div class="document">
+      {%- block document %}
+      {%- endblock %}
+    </div>
+    <div class="footer">
+      {%- if config.footer %}
+      <p>{{config.footer}}</p>
+      {%- endif %}
+      <p class="copyright">powered by <a href="{{system.homepage}}">{{system.name}}</a> {{system.version}}</p>
+    </div>
+    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="{{static_url('one.js')}}"></script>
+    {%- if config.github %}
+    <div class="github"><a class="github-link" href="{{config.github}}">Fork me on GitHub</a></div>
+    {%- endif %}
+  </body>
+</html>
