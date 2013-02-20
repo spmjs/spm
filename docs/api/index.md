@@ -4,6 +4,8 @@ The API of spm.
 
 -------
 
+Get the interface of spm:
+
 ```js
 var spm = require('spm')
 ```
@@ -12,9 +14,9 @@ var spm = require('spm')
 
 The version of spm.
 
-## spm.logging
+## spm.log
 
-Always use `spm.logging` in your program, never use `console`.
+Always use `spm.log` in your program, never use `console`.
 
 ## spm.plugin
 
@@ -44,6 +46,8 @@ Install packages from spmjs.org.
 
 Low level API:
 
+- `spm.sdk.spmrc`
 - [`spm.sdk.ast`](https://github.com/spmjs/cmd-util/blob/master/docs/ast.md)
 - `spm.sdk.iduri`
 - `spm.sdk.yuan`
+- `spm.sdk.grunt`

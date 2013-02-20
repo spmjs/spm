@@ -57,6 +57,7 @@ If you haven't set `NODE_PATH`, it will prompt an information like:
 Please set environment variable NODE_PATH in ~/.zshrc:
 
     export NODE_PATH=/usr/local/share/npm/lib/node_modules
+
 ```
 
 ## Commands
@@ -85,7 +86,7 @@ Want to write your own plugin? Checkout the [plugin](./plugin.md) section.
 
 Build is a **transport** process, it is not a code to binary process.
 
-For example, we have a package **spm/hello**:
+For example, we have a package **hello**:
 
 ```
 package.json
@@ -96,16 +97,39 @@ src/
 The source code of `hello.js` is as simple as:
 
 ```js
-define(function(require) {
-    require('jquery')
+define(function(require, exports, module) {
+    exports.name = 'hello'
+    exports.jquery = require('jquery')
 })
 ```
+
+The `package.json` (more information on [package](./package.md) section) is as simple as:
+
+```js
+{
+    "family": "lepture",
+    "name": "hello",
+    "version": "1.0.0",
+    "description": "hello spm",
+    "spm": {
+        "alias": {
+            "jquery": "jquery/jquery/1.7.2/jquery"
+        }
+    }
+}
+```
+
+Install the requirements and build the package:
+
+    $ spm install
+    $ spm build
 
 After `spm build`, it should be:
 
 ```js
-define('spm/hello/1.0.0/hello', ['jquery/jquery/1.7.2/jquery'], function(require) {
-    require('jquery/jquery/1.7.2/jquery')
+define('lepture/hello/1.0.0/hello', ['jquery/jquery/1.7.2/jquery'], function(require) {
+    exports.name = 'hello'
+    exports.jquery = require('jquery/jquery/1.7.2/jquery')
 })
 ```
 
@@ -117,11 +141,50 @@ src/
     hello.js
 dist/
     hello.js
+    hello-debug.js
 ```
 
 Get more information on [build](./build.md).
 
 
+## Install
+
+You have used `spm install` in the build process, learn more about `install` with:
+
+```
+$ spm help install
+```
+
+There is also an online manual for you [spm install](../cli/install.md).
+
+
+## Publish & Unpublish
+
+We need your contribution, publishing a package helps a lot.
+
+Register an account at [spmjs.org](https://spmjs.org). Replace `family` in `package.json` with your account name (`lepture` is my account name).
+
+And now you can publish your package with:
+
+    $ spm publish
+
+Get more help on publish:
+
+    $ spm help publish
+
+- You can also read our online manual [spm publish](../cli/publish.md).
+- Find more information on [package](./package.md).
+
+
 ## Info & Search
 
-## Install & Publish
+You can't miss it, let's try:
+
+```
+$ spm help info
+$ spm help search
+```
+
+## READ MORE
+
+
