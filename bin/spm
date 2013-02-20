@@ -20,7 +20,7 @@ if (!process.env.NODE_PATH) {
   }
   console.log();
 
-  var nodepath = __dirname.replace(/\/spm\/bin$/, '');
+  var nodepath = __dirname.replace(/(\/|\\)spm(\/|\\)bin$/, '');
   if (/node_modules$/.test(nodepath) && !fs.existsSync(path.join(nodepath, '.bin'))) {
     if (os.platform() === 'win32') {
       console.log('    NODE_PATH=' + nodepath);
@@ -152,12 +152,12 @@ function executable(subcmd) {
     commands.forEach(function(cmd) {
       console.log('    $', 'spm'.to.magenta.color, cmd.to.cyan.color);
     });
-  } else {
-    console.log("  It is not a built-in command, maybe it's a plugin.");
-    console.log("  Try install this plugin: ");
-    console.log();
-    console.log('    $', 'spm plugin'.to.magenta.color, 'install', subcmd.to.cyan.color);
   }
+  console.log();
+  console.log("  It is not a built-in command, maybe it's a plugin.");
+  console.log("  Try install this plugin: ");
+  console.log();
+  console.log('    $', 'spm plugin'.to.magenta.color, 'install', subcmd.to.cyan.color);
   console.log();
   return null;
 }
