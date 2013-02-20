@@ -7,7 +7,7 @@ var commander = require('commander');
 require('colorful').colorful();
 var spm = require('..');
 var program = require('../lib/utils/program');
-var spawn = require('../lib/utils').spawn;
+var spawn = require('win-fork');
 
 if (!process.env.NODE_PATH) {
   console.log();

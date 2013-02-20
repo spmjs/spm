@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "2.0.0a3",
+  "version": "2.0.0a4",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "dependencies": {
@@ -16,6 +16,7 @@
     "request": "~2.12.0",
     "colorful": "~1.2.0",
     "uglify-js": "~2.2.2",
+    "win-fork": "~1.1.0",
     "commander": "~1.1.1"
   },
   "devDependencies": {
