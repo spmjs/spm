@@ -157,8 +157,8 @@ hr {
   position: fixed;
   top: 40px;
   left: -50px;
-  border: 2px solid #d64;
-  box-shadow: 0 0 8px #d64;
+  border: 2px solid #121622;
+  box-shadow: 0 0 8px #555;
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   -o-transform: rotate(-45deg);
@@ -166,7 +166,7 @@ hr {
   transform: rotate(-45deg);
 }
 .github:hover {
-  box-shadow: 0 0 12px #d54;
+  box-shadow: 0 0 12px #444;
 }
 .github .github-link {
   display: block;
@@ -174,9 +174,9 @@ hr {
   font-size: 14px;
   padding: 2px 0;
   width: 200px;
-  border: 1px dotted #d40;
-  background-color: #d42;
-  color: #ECEDEE;
+  border: 1px dotted #383c46;
+  background-color: #121622;
+  color: #ecedee;
   text-decoration: none;
   text-align: center;
 }
@@ -188,8 +188,7 @@ hr {
 .navigation {
   font-size: 14px;
   background-color: #333;
-  background-color: #d64;
-  box-shadow: 0 0 10px #cc2d00 inset;
+  box-shadow: 0 0 10px #000 inset;
   padding: 3px 10px;
   opacity: 0.9;
 }
