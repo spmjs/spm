@@ -109,7 +109,7 @@ blockquote {
   margin: 0;
   padding: 0 0 0 7px;
   color: #555;
-  border-left: 1px solid #d64;
+  border-left: 3px solid #d64;
 }
 blockquote p:last-child {
   margin-bottom: 0.2em;
@@ -268,6 +268,15 @@ hr {
 }
 .entry-title {
   margin-top: 10px;
+}
+.entry-toc {
+  padding-bottom: 16px;
+}
+.entry-toc li {
+  list-style-type: circle;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 3px;
 }
 .entry-content h2 {
   border-top: 1px solid #eee;
