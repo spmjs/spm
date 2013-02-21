@@ -156,14 +156,14 @@ hr {
 .github {
   position: fixed;
   top: 40px;
-  right: -50px;
+  left: -50px;
   border: 2px solid #d64;
   box-shadow: 0 0 8px #d64;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 .github:hover {
   box-shadow: 0 0 12px #d54;
@@ -180,7 +180,7 @@ hr {
   text-decoration: none;
   text-align: center;
 }
-@media (max-width: 890px) {
+@media (max-width: 960px) {
   .github {
     display: none;
   }
@@ -193,16 +193,16 @@ hr {
   padding: 3px 10px;
   opacity: 0.9;
 }
+.navigation .menu {
+  text-align: right;
+}
 .navigation .home {
   float: left;
+  margin-right: 30px;
   font-weight: bold;
   text-transform: uppercase;
   color: #555;
   color: rgba(222, 222, 222, 0.8);
-}
-.navigation .menu {
-  float: right;
-  text-align: right;
 }
 .menu a {
   margin-left: 14px;
@@ -213,8 +213,8 @@ hr {
   color: #ffc38c;
 }
 .container {
-  max-width: 640px;
-  *width: 650px;
+  max-width: 980px;
+  *width: 980px;
   margin: 0 auto;
   zoom: 1;
 }
@@ -224,11 +224,24 @@ hr {
   visibility: none;
   clear: both;
 }
-.document {
-  max-width: 640px;
-  *width: 650px;
+.mainbody {
+  position: relative;
+  max-width: 980px;
+  *width: 980px;
   margin: 0 auto;
   padding: 30px 10px;
+}
+.mainbody .hentry {
+  margin-left: 30%;
+}
+.mainbody .sidebar {
+  position: absolute;
+  top: 30px;
+  width: 30%;
+  max-width: 250px;
+}
+.sidebar .active, .sidebar .active a {
+  color: #d64;
 }
 .entry-description {
   color: #676867;
@@ -244,6 +257,14 @@ hr {
   .entry-title, .entry-content h2 {
     margin: 40px -10px 30px;
     padding: 14px 10px;
+  }
+  .mainbody .hentry {
+    margin-left: 0;
+  }
+  .mainbody .sidebar {
+    position: static;
+    width: auto;
+    max-width: auto;
   }
 }
 .entry-title {
@@ -300,14 +321,6 @@ a.title-permalink:hover {
   color: #5784bf;
   background-color: #eee;
 }
-.document:after {
-  content: "❦";
-  display: block;
-  text-align: center;
-  font-size: 36px;
-  color: #d64;
-}
-
 .footer {
   margin: 0 auto;
   max-width: 500px;

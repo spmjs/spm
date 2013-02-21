@@ -1,5 +1,7 @@
 # package.json
 
+- pubdate: 2013-02-23
+
 ----------
 
 spm follows the [Common Module Definition](https://github.com/spmjs/specification) packaging standards, compatible with nodejs' package.json.

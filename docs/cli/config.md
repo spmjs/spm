@@ -1,6 +1,6 @@
 # spm-config
 
-- pubdate: 2012-01-23
+- pubdate: 2013-02-23
 
 configuration of spm
 

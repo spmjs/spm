@@ -1,6 +1,6 @@
 # spm
 
-- pubdate: 2013-02-20
+- pubdate: 2013-02-22
 
 static package manager
 

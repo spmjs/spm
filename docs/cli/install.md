@@ -1,6 +1,6 @@
 # spm-install
 
-- pubdate: 2012-01-23
+- pubdate: 2013-02-25
 
 install a module from source
 

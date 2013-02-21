@@ -1,6 +1,20 @@
 {%- extends "layout.html" -%}
 {%- block title %}{{post.title}}{% endblock %}
 
+{%- block sidebar %}
+<div class="sidebar">
+  <h2 class="sidebar-title">Table of Content</h2>
+  {{post.toc}}
+
+  <h2 class="sidebar-title">Documentation</h2>
+  <ul>
+    {%- for item in resource.publicPosts|directory(post.directory) %}
+    <li{%if item.id == post.id%} class="active"{%endif%}><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
+    {%- endfor %}
+  </ul>
+</div>
+{%- endblock %}
+
 {%- block document %}
 <div class="hentry">
   <h1 class="entry-title">{{post.title}}</h1>

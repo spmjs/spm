@@ -1,6 +1,6 @@
 # spm-publish
 
-- pubdate: 2012-01-23
+- pubdate: 2013-02-25
 
 publish module to source
 

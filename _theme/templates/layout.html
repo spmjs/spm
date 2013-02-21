@@ -39,9 +39,9 @@
         {%- endif %}
       </div>
     </div>
-    <div class="document">
-      {%- block document %}
-      {%- endblock %}
+    <div class="mainbody">
+      {%- block document %}{% endblock %}
+      {%- block sidebar %}{% endblock %}
     </div>
     <div class="footer">
       {%- if config.footer %}

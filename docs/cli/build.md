@@ -1,6 +1,6 @@
 # spm-build
 
-- pubdate: 2012-01-21
+- pubdate: 2013-02-25
 
 build a cmd-compatible distribution
 
