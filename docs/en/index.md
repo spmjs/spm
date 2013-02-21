@@ -1,5 +1,7 @@
 # spm
 
+- pubdate: 2013-02-21
+
 spm is a static package manager, it's **not a build tools**.
 
 ------
@@ -114,6 +116,9 @@ The `package.json` (more information on [package](./package.md) section) is as s
     "spm": {
         "alias": {
             "jquery": "jquery/jquery/1.7.2/jquery"
+        },
+        "output": {
+            "hello.js": ["hello.js"]
         }
     }
 }
@@ -185,6 +190,16 @@ $ spm help info
 $ spm help search
 ```
 
-## READ MORE
+## Config
 
+The configuration file is located at `~/.spm/spmrc`. It is in ini format:
 
+```ini
+[user]
+username = lepture
+
+[source:private]
+url = http://source.your-company.com
+```
+
+More information can be found at [config](./config.md) section.

@@ -27,7 +27,7 @@ A full example of `package.json`:
             "events": "arale/events/1.0.0/events"
         },
         "output": {
-            "base.js": "."
+            "base.js": ["base.js", "aspect.js", "attribute.js"]
         },
         "engines": {
             "seajs": "seajs/seajs/1.2.0/sea.js"
@@ -35,3 +35,7 @@ A full example of `package.json`:
     }
 }
 ```
+
+## spm.alias
+
+## spm.output
