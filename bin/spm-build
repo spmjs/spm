@@ -27,7 +27,7 @@ commander.on('--help', function() {
   console.log();
   console.log('   $ ' + 'spm build'.to.magenta.color + ' ' + '-I'.to.cyan.color + ' lib ' + '-O'.to.cyan.color + ' dist');
   console.log();
-  console.log('   For more information: ' + 'http://spmjs.org/docs/build.html'.to.underline.color);
+  console.log('   For more information: ' + 'http://docs.spmjs.org/en/build'.to.underline.color);
   console.log();
 });
 

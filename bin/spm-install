@@ -7,8 +7,6 @@ var spm = require('..');
 commander.usage('[options] name[@version] [destination]');
 
 commander
-  .option('-u, --username <username>', 'default value from user.username')
-  .option('-p, --password <password>', 'default value from user.password')
   .option('-s, --source <source>', 'default value will be the first source')
   .option('-f, --force', 'force to download a unstable module')
   .option('-v, --verbose', 'show more logs')
