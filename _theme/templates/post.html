@@ -3,9 +3,6 @@
 
 {%- block sidebar %}
 <div class="sidebar">
-  <h2 class="sidebar-title">Table of Content</h2>
-  {{post.toc}}
-
   <h2 class="sidebar-title">Documentation</h2>
   <ul>
     {%- for item in resource.publicPosts|directory(post.directory) %}
@@ -21,6 +18,14 @@
   {%- if post.description %}
   <blockquote class="entry-description">{{post.description}}</blockquote>
   {%- endif %}
+
+  {%- if post.toc %}
+  <div class="entry-toc">
+    <h3>Table of Contents</h3>
+    {{post.toc}}
+  </div>
+  {%- endif %}
+
   <div class="entry-content">{{post.html|linkfix}}</div>
   <div class="entry-meta">
     <time class="updated" datetime="{{post.pubdate|xmldatetime}}">{{post.pubdate|date('Y-m-d')}}</time>
