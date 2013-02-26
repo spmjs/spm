@@ -1,10 +1,10 @@
 {
   "name": "spm",
-  "version": "2.0.0a4",
+  "version": "2.0.0b1",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "dependencies": {
-    "cmd-util": "0.1.1a1",
+    "cmd-util": "0.1.1a2",
     "grunt-spm-build": "0.1.1a2",
     "semver": "~1.1.2",
     "async": "~0.1.22",
