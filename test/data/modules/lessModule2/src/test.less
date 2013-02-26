@@ -1,0 +1,69 @@
+@import "css3.less";
+
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+
+#header { color: @light-blue; }
+
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+
+#menu a {
+  color: #111;
+  .bordered;
+}
+
+.post a {
+  color: red;
+  .bordered;
+}
+
+#header {
+  color: black;
+
+  .navigation {
+	font-size: 12px;
+  }
+  .logo {
+	width: 300px;
+  }
+}
+
+.clearfix {
+	display: block;
+	zoom: 1;
+
+	&:after {
+		content: " ";
+		display: block;
+		font-size: 0;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+
+@base: 5%;
+@filler: @base * 2;
+@other: @base + @filler;
+
+@base-color: #888 / 4;
+background-color: @base-color + #111;
+height: 100% / 2 + @filler;
+
+@var: 1px + 5;
+
+#bundle {
+  .button {
+	display: block;
+	border: 1px solid black;
+	background-color: grey;
+	:hover { background-color: white }
+  }
+  .tab { }
+  .citation { }
+}
+
+@import "colors.less";

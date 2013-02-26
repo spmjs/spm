@@ -1,0 +1,9 @@
+{
+    "name": "lessModule2",
+    "root": "test",
+    "version": "0.9.1",
+    "type": "css",
+    "output": {
+        "test.less": "test.less"
+    }
+}

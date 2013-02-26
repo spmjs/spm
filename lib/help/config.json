@@ -1,4 +1,3 @@
 {
-  "sources": ["http://modules.spmjs.org"],
-  "root": ""
+  "sources": ["http://modules.spmjs.org"]
 }
