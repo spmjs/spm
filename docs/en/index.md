@@ -163,6 +163,25 @@ $ spm help install
 There is also an online manual for you [spm install](../cli/install.md).
 
 
+## Register & Login
+
+You can register an account at [spmjs.org](https://spmjs.org). You can also register your account with `spm`:
+
+    $ spm login
+
+    do you have an account? (Y/n)
+
+And answer no. It will prompt:
+
+    do you have an account? (Y/n) n
+
+    username:
+    email:
+    password:
+
+If you answer yes, you can login now.
+
+
 ## Publish & Unpublish
 
 We need your contribution, publishing a package helps a lot.
@@ -179,6 +198,18 @@ Get more help on publish:
 
 - You can also read our online manual [spm publish](../cli/publish.md).
 - Find more information on [package](./package.md).
+
+If you accidentally published a broken version, you can force to publish the version again:
+
+    $ spm publish -f
+
+You can also unpublish it:
+
+    $ spm unpublish family/name@version
+
+You can even delete the whole project (**you can never recovery it again**):
+
+    $ spm unpublish family/name
 
 
 ## Info & Search
