@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var commander = require('commander');
+var spm = require('..');
+
+commander.usage('[options]');
+
+commander
+  .option('-u, --username <username>', 'username of your account')
+  .option('-p, --password <password>', 'password of your account')
+  .option('-s, --source <source>', 'default value will be the first source');
+
+commander.parse(process.argv);
+
+
+// run install
+spm.login(commander);

@@ -10,7 +10,9 @@ exports.config = require('./lib/config');
 
 exports.install = require('./lib/install');
 exports.info = require('./lib/info');
+exports.login = require('./lib/login');
 exports.publish = require('./lib/publish');
+exports.unpublish = require('./lib/unpublish');
 exports.search = require('./lib/search');
 
 exports.build = require('./lib/build');

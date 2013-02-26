@@ -56,9 +56,11 @@ commander
 var moduleCommands = {
   build: 'build a module',
   info: 'information of a module',
+  login: 'login your account',
   search: 'search modules',
   install: 'install a module',
-  publish: 'publish a module'
+  publish: 'publish a module',
+  unpublish: 'unpublish a module'
 };
 
 // sub command help
@@ -70,7 +72,7 @@ commander.on('--help', function() {
   program.printHelp(new program('help', 'show help information'));
   console.log();
 
-  console.log('  ' + 'Module Commands:'.to.bold.green.color);
+  console.log('  ' + 'Package Commands:'.to.bold.green.color);
   console.log();
   Object.keys(moduleCommands).forEach(function(key) {
     program.printHelp(new program(key, moduleCommands[key]));

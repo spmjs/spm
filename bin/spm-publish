@@ -48,6 +48,4 @@ spm.log.config(commander);
 
 // run install
 console.log();
-spm.publish(commander, function() {
-  console.log();
-});
+spm.publish(commander);
