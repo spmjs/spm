@@ -4,7 +4,7 @@
     "version": "0.9.1",
     "output": {
         "main.js": ".",
-        "colors.less": "colors.less",
-        "merge.less": ["css3.less", "test.less"]
+        "colors.css": "colors.css",
+        "merge.css": ["css3.css", "test.css"]
     }
 }
