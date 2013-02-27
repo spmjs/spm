@@ -1,0 +1,11 @@
+{
+    "name": "stylusModule",
+    "root": "test",
+    "version": "0.9.1",
+    "dependencies": {
+        "base": "alice/base/1.0.0/base.css"
+    },
+    "output": {
+        "basic.css": "."
+    }
+}

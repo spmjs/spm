@@ -1,0 +1,12 @@
+/* dependency: @import url(alice/base/1.0.0/base.css) */
+/** test/stylusModule/0.9.1/basic.css **/
+body a {
+  font: 12px/1.3 "Lucida Grande", Arial, sans-serif;
+  background: #000;
+  color: #ccc;
+}
+form input {
+  padding: 5px;
+  border: 1px solid;
+}
+
