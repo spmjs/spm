@@ -32,4 +32,4 @@ if (!commander.args[0]) {
 
 // run install
 console.log();
-spm.search(commander);
+spm.search({source: commander.source, query: commander.args[0]});
