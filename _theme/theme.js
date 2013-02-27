@@ -10,7 +10,9 @@ exports.filters = {
       return item.directory === dir;
     });
     return posts.sort(function(a, b) {
-      return a.pubdate - b.pubdate;
+      var aIndex = parseInt(a.meta.index || 100, 10);
+      var bIndex = parseInt(b.meta.index || 100, 10);
+      return aIndex - bIndex;
     });
   }
 };

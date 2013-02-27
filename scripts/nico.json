@@ -6,7 +6,6 @@
   "github": "https://github.com/spmjs/spm2",
   "navigation": [
     {"link": "en/index.html", "title": "English"},
-    {"link": "zh/index.html", "title": "中文文档"},
     {"link": "api/index.html", "title": "API"},
     {"link": "cli/index.html", "title": "Manual"}
   ],

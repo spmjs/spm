@@ -1,6 +1,7 @@
 # package.json
 
 - pubdate: 2013-02-23
+- index: 5
 
 ----------
 
