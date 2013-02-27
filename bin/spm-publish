@@ -11,6 +11,7 @@ commander
   .option('-p, --password <password>', 'password for source')
   .option('-s, --source <source>', 'source name')
   .option('--tag <tag>', 'publish module with a tag: [stable]')
+  .option('--doc <doc>', 'upload docs instead of package')
   .option('-f, --force', 'force to publish an exists module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
@@ -46,6 +47,9 @@ commander.parse(process.argv);
 // verbose vs quiet
 spm.log.config(commander);
 
-// run install
 console.log();
-spm.publish(commander);
+if (commander.doc) {
+  spm.upload(commander);
+} else {
+  spm.publish(commander);
+}
