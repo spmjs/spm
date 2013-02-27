@@ -4,7 +4,7 @@ var commander = require('commander');
 require('colorful').colorful();
 var spm = require('..');
 
-commander.usage('[options] name[@version] [destination]');
+commander.usage('[options] family/name[@version] [destination]');
 
 commander
   .option('-s, --source <source>', 'default value will be the first source')
@@ -32,4 +32,10 @@ commander.parse(process.argv);
 spm.log.config(commander);
 
 // run install
-spm.install(commander);
+spm.install({
+  source: commander.source,
+  force: commander.force,
+  parallel: commander.parallel,
+  query: commander.args[0],
+  destination: commander.args[2]
+});
