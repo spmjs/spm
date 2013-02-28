@@ -99,7 +99,7 @@ describe('spm build test', function() {
       //code1.should.include('var c = require("./base2.css")');
 
       code2.should.include('define("alice/m_js_css/1.0.0/b-debug", []');
-      code2.should.include("var d = require(\"./base1.css\")");
+      code2.should.include("var d = require(\"alice/m_js_css/1.0.0/base1.css\")");
       //code2.should.include("var c = require(\"./base2.css\")");
       done();
     });
