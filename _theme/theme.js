@@ -5,6 +5,7 @@ exports.filters = {
   linkfix: function(html) {
     return html.replace(/(href="\..*?)\.md"/g, '$1"');
   },
+
   directory: function(posts, dir) {
     posts = posts.filter(function(item) {
       return item.directory === dir;
