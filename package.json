@@ -1,6 +1,6 @@
 {
     "name"          : "spm",
-    "version"       : "1.7.0",
+    "version"       : "1.8.0-dev",
     "description"   : "Static Package Manager",
     "homepage"      : "https://github.com/spmjs/spm",
     "keywords"      : ["seajs", "module", "package", "optimization", "tool"],
