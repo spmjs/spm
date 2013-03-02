@@ -161,7 +161,7 @@ You have used `spm install` in the build process, learn more about `install` wit
 $ spm help install
 ```
 
-There is also an online manual for you [spm install](../cli/install.md).
+There is also an [online manual](../cli/install.md) and the [desgin pattern](./install.md) bebind it.
 
 
 ## Register & Login
