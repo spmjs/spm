@@ -37,5 +37,5 @@ spm.install({
   force: commander.force,
   parallel: commander.parallel,
   query: commander.args[0],
-  destination: commander.args[2]
+  dest: commander.args[1]
 });
