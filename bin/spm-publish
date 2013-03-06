@@ -15,6 +15,7 @@ commander
   .option('-f, --force', 'force to publish an exists module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
+  .option('--no-tarball', 'do not upload a tarball')
   .option('--no-color', 'disable colorful print');
 
 
