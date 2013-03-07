@@ -34,7 +34,9 @@
         "underscore.string": "~2.3.0",
         "commander": "~1.1.1",
         "grunt": "~0.3.17",
-        "npm": "~1.2.1"
+        "npm": "~1.2.1",
+        "nib": "~0.9.1",
+        "canvas": "~1.0.1"
     },
     "devDependencies": {
       "jasmine-node": "~1.0.26",
