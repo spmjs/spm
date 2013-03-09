@@ -11,7 +11,7 @@ commander
   .option('-f, --force', 'force to download a unstable module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
-  .option('--parallel', 'parallel installation')
+  .option('--parallel <number>', 'parallel installation')
   .option('--no-color', 'disable colorful print');
 
 
