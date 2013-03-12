@@ -3,8 +3,6 @@
   "name": "relative",
   "version": "0.1.0",
   "spm": {
-    "output": {
-      "relative.js": "."
-    }
+    "output": ["relative.js"]
   }
 }
