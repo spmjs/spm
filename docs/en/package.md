@@ -1,6 +1,6 @@
 # package.json
 
-- pubdate: 2013-02-23
+- pubdate: 2013-03-13
 - index: 5
 
 ----------
@@ -25,20 +25,115 @@ A full example of `package.json`:
     "keywords": ["class"],
 
     "spm": {
+        "source": "src",
+        "output": ["base.js", "i18n/*"],
         "alias": {
             "class": "arale/class/1.0.0/class",
             "events": "arale/events/1.0.0/events"
         },
-        "output": {
-            "base.js": ["base.js", "aspect.js", "attribute.js"]
+        "devAlias": {
+            "mocha" "gallery/mocha/1.0.0/mocha",
+            "expect" "gallery/expect/1.0.0/expect"
         },
         "engines": {
             "seajs": "seajs/seajs/1.2.0/sea.js"
-        }
+        },
+        "platforms": {
+            "ie": [6, 7],
+            "firefox": ["13"],
+            "chrome": [20]
+        },
+        "platforms": ["ie/6", "chrome/20", "firefox"]
     }
 }
 ```
 
 ## spm.alias
 
+
 ## spm.output
+
+Output is an array that contains the files for distribution, it will auto concat the relative dependencies.
+
+### Single File
+
+For example:
+
+```js
+// a.js
+define(function(require) {
+    require('./b')
+});
+
+// b.js
+define(function(require) {
+    require('./c')
+});
+
+// c.js
+define(function(require) {
+});
+```
+
+Now define your output as:
+
+```json
+{
+    "output": ["a.js", "c.js"]
+}
+```
+
+It will create a `a.js` and a `c.js` in the `dist` directory. The `dist/a.js` contains code of `src/a.js`, `src/b.js` and `src/c.js`. The `dist/c.js` will only contain the code of `src/c.js`, because it requires nothing.
+
+
+### Glob Pattern
+
+Output also support glob patterns. Take an example:
+
+```
+package.json
+src/
+    i18n/
+        en.js
+        zh.js
+        fr.js
+```
+
+Now define your output as:
+
+```json
+{
+    "output": ["i18n/*.js"]
+}
+```
+
+And it will distribute every js files to `dist` folder.
+
+If your folder structure is something like this:
+
+```
+src/
+    i18n/
+        locale.js
+        en/
+            locale.js
+        zh/
+            zh_CN/
+                locale.js
+            zh_TW/
+                locale.js
+```
+
+You should define your output as:
+
+```json
+{
+    "output": ["i18n/**/*"]
+}
+```
+
+## merge from old package.json
+
+1. `root` is deprecated, use `family` instead.
+2. `dependencies` is deprecated, use `spm.alias` instead.
+3. `output` changed
