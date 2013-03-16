@@ -81,7 +81,6 @@ commander.on('--help', function() {
 
   var extensions = spm.plugin.plugins();
   if (extensions.length) {
-    console.log();
     console.log('  ' + 'Plugin Commands:'.to.bold.blue.color);
     console.log();
     extensions.forEach(function(cmd) {
