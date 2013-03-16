@@ -4,22 +4,47 @@
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "dependencies": {
-    "cmd-util": "~0.3.1",
-    "spmrc": "~0.1.0",
-    "grunt-spm-build": "~0.2.0",
-    "semver": "~1.1.2",
-    "async": "~0.1.22",
-    "fstream": "~0.1.21",
-    "fstream-ignore": "~0.0.6",
-    "inherits": "~1.0.0",
-    "tar": "~0.1.14",
-    "lodash": "~0.9.0",
-    "grunt": "~0.4.1",
-    "request": "~2.12.0",
-    "colorful": "~1.2.0",
-    "uglify-js": "~2.2.2",
     "win-spawn": "~1.1.0",
-    "commander": "~1.1.1"
+    "inherits": "~1.0.0",
+    "fstream": "~0.1.22",
+    "fstream-ignore": "~0.0.6",
+    "spmrc": "~0.1.0",
+    "semver": "~1.1.4",
+    "async": "~0.1.22",
+    "tar": "~0.1.16",
+    "request": "~2.16.2",
+    "colorful": "~1.2.0",
+    "commander": "~1.1.1",
+    "cmd-util": "~0.3.1",
+
+    "uglify-js": "~2.2.5",
+    "graceful-fs": "1.2.0",
+
+    "lodash": "~1.0.1",
+    "grunt": "~0.4.1",
+    "grunt-spm-build": "~0.2.0"
+  },
+  "bundledDependencies": [
+    "win-spawn",
+    "inherits",
+    "fstream",
+    "fstream-ignore",
+    "spmrc",
+    "semver",
+    "async",
+    "tar",
+    "request",
+    "colorful",
+    "commander",
+    "cmd-util",
+
+    "uglify-js",
+    "graceful-fs",
+    "lodash"
+  ],
+  "peerDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-spm-build": "~0.2.0"
   },
   "devDependencies": {
     "sinon": "*",
