@@ -24,28 +24,6 @@
     "grunt": "~0.4.1",
     "grunt-spm-build": "~0.2.0"
   },
-  "bundledDependencies": [
-    "win-spawn",
-    "inherits",
-    "fstream",
-    "fstream-ignore",
-    "spmrc",
-    "semver",
-    "async",
-    "tar",
-    "request",
-    "colorful",
-    "commander",
-    "cmd-util",
-
-    "uglify-js",
-    "graceful-fs",
-    "lodash"
-  ],
-  "peerDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-spm-build": "~0.2.0"
-  },
   "devDependencies": {
     "sinon": "*",
     "jshint": "*",
