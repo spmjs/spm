@@ -61,7 +61,8 @@ li {
 li ul, li ol {
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 1em;
+  margin-left: 0;
+  padding-left: 2em;
 }
 li ul {
   list-style: disc;

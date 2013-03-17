@@ -5,8 +5,8 @@
 <div class="sidebar">
   <h2 class="sidebar-title">Documentation</h2>
   <ul>
-    {%- for item in resource.publicPosts|directory(post.directory) %}
-    <li{%if item.id == post.id%} class="active"{%endif%}><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
+    {%- for item in resource.posts|directory(post.directory) %}
+    <li{%if item.id == post.id%} class="active"{%endif%}><a href="./{{item.meta.filename}}">{{item.title}}</a></li>
     {%- endfor %}
   </ul>
 </div>

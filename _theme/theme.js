@@ -7,13 +7,15 @@ exports.filters = {
   },
 
   directory: function(posts, dir) {
-    posts = posts.filter(function(item) {
-      return item.directory === dir;
-    });
-    return posts.sort(function(a, b) {
+    var ret = Object.keys(posts).map(function(key) {
+      return posts[key];
+    }).filter(function(item) {
+      return item.meta.directory === dir;
+    }).sort(function(a, b) {
       var aIndex = parseInt(a.meta.index || 100, 10);
       var bIndex = parseInt(b.meta.index || 100, 10);
       return aIndex - bIndex;
     });
+    return ret;
   }
 };
