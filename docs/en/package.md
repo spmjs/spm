@@ -9,7 +9,7 @@ spm follows the [Common Module Definition](https://github.com/spmjs/specificatio
 
 CMD [packaging draft](https://github.com/spmjs/specification/blob/master/draft/package.md) add an additional namespace, which is `family`. spm add another namespace, which is `spm`.
 
-A full example of `package.json`:
+Here is an example of `package.json`:
 
 ```json
 {
@@ -48,8 +48,50 @@ A full example of `package.json`:
 }
 ```
 
+## family
+
+This is the account name on http://spmjs.org.
+
+## name
+
+This is your package's name.
+
+## version
+
+The version of your package. We only accept version like this:
+
+```
+1.0.0
+```
+
+The regexp is `\d+\.\d+\.\d+`.
+
+## description
+
+Put a description in it. It's a string. This helps people discover your package, as it's listed in `spm search`.
+
+
+## keywords
+
+Put keywords in it. It's an array of strings. This helps people discover your package as it's listed in `spm search`.
+
+## homepage
+
+The url to the project homepage.
+
+## repository
+
+The repository of your project.
+
+## private
+
+If you set `"private": true` in your package.json, then spm will refuse to publish it to https://spmjs.org.
+
+This is a way to prevent accidental publication of private repositories. But you can publish to other source center.
+
 ## spm.alias
 
+Alias.
 
 ## spm.output
 
