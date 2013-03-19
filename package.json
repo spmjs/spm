@@ -15,7 +15,7 @@
     "request": "~2.16.2",
     "colorful": "~2.0.1",
     "commander": "~1.1.1",
-    "cmd-util": "~0.3.2",
+    "cmd-util": "~0.3.3",
 
     "uglify-js": "~2.2.5",
     "clean-css": "~0.10.1",
