@@ -1,6 +1,6 @@
 # spm
 
-- pubdate: 2013-02-21
+- pubdate: 2013-03-20
 - index: 0
 
 spm is a static package manager, it's **not a build tools**.
@@ -73,8 +73,6 @@ or:
 
     $ spm help
 
-![spm help](../assets/spm-help.png)
-
 You can get more help information of a sub-command by:
 
     $ spm build -h
@@ -118,9 +116,7 @@ The `package.json` (more information on [package](./package.md) section) is as s
         "alias": {
             "jquery": "jquery/jquery/1.7.2/jquery"
         },
-        "output": {
-            "hello.js": ["hello.js"]
-        }
+        "output": ["hello.js"]
     }
 }
 ```

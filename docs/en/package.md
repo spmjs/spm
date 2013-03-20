@@ -42,11 +42,15 @@ Here is an example of `package.json`:
             "ie": [6, 7],
             "firefox": ["13"],
             "chrome": [20]
-        },
-        "platforms": ["ie/6", "chrome/20", "firefox"]
+        }
     }
 }
 ```
+
+Platforms can be an array:
+
+    "platforms": ["ie/6", "chrome/20", "firefox"]
+
 
 ## family
 
@@ -174,7 +178,7 @@ You should define your output as:
 }
 ```
 
-## merge from old package.json
+## Old Time
 
 1. `root` is deprecated, use `family` instead.
 2. `dependencies` is deprecated, use `spm.alias` instead.

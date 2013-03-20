@@ -1,11 +1,39 @@
 # Plugin
 
-- pubdate: 2013-02-25
+- pubdate: 2013-03-20
+- index: 10
 
 ----------
 
 
-## Register
+Plugins are commands that can be excuted(indexed) by `spm`.
+
+Lets try:
+
+```
+$ npm install spm-init -g
+```
+
+`spm-init` is a spm plugin, when you excute `spm -h`, you will find that spm has a plugin commands called `init`.
+
+Create a plugin is simple with `spm-init`. Get the template:
+
+```
+$ git clone git://github.com/spmjs/template-spmplugin.git ~/.spm/init/spmplugin
+```
+
+And now, you can create a plugin:
+
+```
+$ spm init spmplugin
+```
+
+
+## The background
+
+Learn the background of spm plugins.
+
+### Install
 
 Thanks for npm's `postinstall` policy.
 
@@ -46,7 +74,7 @@ You will see init on spm now:
     $ spm help
 
 
-## Uninstall
+### Uninstall
 
 Add in your `package.json`:
 
@@ -70,3 +98,8 @@ spm.plugin.uninstall('init')
 Make this script excutable by:
 
     $ chmod +x scripts/postinstall.js
+
+
+## Plugins
+
+You can find some offical plugins on [github](https://github.com/spmjs).

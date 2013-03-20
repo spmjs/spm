@@ -1,0 +1,12 @@
+{%- extends "layout.html" -%}
+{%- block title %}{{post.title}}{% endblock %}
+
+{%- block document %}
+<div class="center">
+  <h1 class="entry-title">{{post.title}}</h1>
+  {%- if post.description %}
+  <blockquote class="entry-description">{{post.description}}</blockquote>
+  {%- endif %}
+  <div class="entry-content">{{post.html|linkfix}}</div>
+</div>
+{% endblock -%}

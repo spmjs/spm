@@ -1,8 +1,9 @@
 # yuan
 
-- pubdate: 2013-01-23
+- pubdate: 2013-03-20
+- index: 5
 
-communication with yuan.
+communication with spmjs.org.
 
 -----
 
@@ -12,25 +13,30 @@ var yuan = require('spm').sdk.yuan
 
 This is a lower API, for higher API, use `spm.publish` or `spm.install`.
 
-## Login
+## login
 
-```js
-yuan({username: 'spm', password: 'spm'})
-    .login(function(err, response, body) {
-        console.log(body.data);
-    })
-```
+Login your account.
 
-## Publish
+## register
 
-```js
-yuan({
-    auth: 'auth code ....',
-    distfile: './hello.tgz',
-    root: 'spmjs',
-    name: 'spm',
-    version': '1.0.0'
-}).publish(function(err, response, body) {
-    console.log(body);
-});
-```
+Register an account.
+
+## info
+
+Get information of a module.
+
+## Search
+
+Search modules.
+
+## publish
+
+Publish a module.
+
+## unpublish
+
+Unpublish a module.
+
+## upload
+
+Upload docs.

@@ -352,3 +352,6 @@ a.title-permalink:hover {
     padding-bottom: 10px;
   }
 }
+.center {
+  text-align: center;
+}
