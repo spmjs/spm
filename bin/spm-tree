@@ -62,9 +62,14 @@ function tree(f, paths, depth) {
 
   if (pkg.spm && pkg.spm.alias) {
     var alias = pkg.spm.alias;
+    var devAlias = pkg.spm.devAlias || {};
 
     var deps = Object.keys(alias).map(function(key) {
-      var parsed = spm.sdk.module.parseIdentify(alias[key]);
+      var depfile = alias[key];
+      if (depfile === key) {
+        depfile = devAlias[key] || depfile;
+      }
+      var parsed = spm.sdk.module.parseIdentify(depfile);
       if (parsed && parsed.family && parsed.name && parsed.version) {
         return parsed;
       }
