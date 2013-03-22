@@ -28,3 +28,4 @@ exports.sdk.spmrc = require('spmrc');
 exports.sdk.iduri = require('./lib/sdk/iduri');
 exports.sdk.yuan = require('./lib/sdk/yuan');
 exports.sdk.grunt = require('./lib/sdk/grunt');
+exports.sdk.module = require('./lib/sdk/module');

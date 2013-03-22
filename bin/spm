@@ -55,6 +55,7 @@ commander
 
 var moduleCommands = {
   build: 'build a module',
+  tree: 'show dependencies tree',
   info: 'information of a module',
   login: 'login your account',
   search: 'search modules',
