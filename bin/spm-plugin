@@ -48,9 +48,9 @@ if (!subcmd) {
 }
 
 function install(plugin) {
-  var exec = require('child_process').exec;
-  exec('npm install spm-' + plugin + ' -g', function(err, stdout, stderr) {
-    console.info(stdout);
-    console.error(stderr);
-  });
+  if (!/^spm-/.test(plugin)) {
+    plugin = 'spm-' + plugin;
+  }
+  var spawn = require('win-spawn');
+  spawn('npm', ['install', '-g', plugin], {stdio: 'inherit', customFds: [0, 1, 2]});
 }
