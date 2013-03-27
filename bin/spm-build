@@ -11,8 +11,8 @@ commander
   .option('-O, --output-directory <dir>', 'output directory: [dist]')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
+  .option('-f, --force', 'force to build')
   .option('--encoding <encoding>', 'file encoding: [utf8]')
-  .option('--force', 'force to build')
   .option('--no-color', 'disable colorful print');
 
 

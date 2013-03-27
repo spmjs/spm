@@ -8,6 +8,7 @@ commander.usage('[options] <query>');
 
 commander
   .option('-s, --source <source>', 'default value will be the first source')
+  .option('-v --verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
 
 
