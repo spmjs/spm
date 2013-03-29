@@ -26,18 +26,9 @@ coverage:
 	@echo
 
 clean:
-	@rm -fr .spm-build
-	@find tests -name '.spm-build' -exec rm -fr {} +
+	@rm -fr .build
+	@find tests -name '.build' -exec rm -fr {} +
 	@find tests -name 'dist' -exec rm -fr {} +
 
-theme = _theme
-documentation:
-	@nico build --theme ${theme} -C scripts/nico.json
 
-server:
-	@nico server --theme ${theme} -C scripts/nico.json --watch
-
-publish-doc: documentation
-	@ghp-import _site -p
-
-.PHONY: all build test lint coverage
+.PHONY: all test lint coverage clean
