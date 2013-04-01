@@ -4,10 +4,11 @@ var commander = require('commander');
 require('colorful').colorful();
 var spm = require('..');
 
-commander.usage('[options] family/name[@version] [destination]');
+commander.usage('[options] family/name[@version]');
 
 commander
-  .option('-s, --source <source>', 'default value will be the first source')
+  .option('-s, --source <source>', 'the source repo name')
+  .option('-d, --destination <dest>', 'the destination, default: sea-modules')
   .option('-f, --force', 'force to download a unstable module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
@@ -20,7 +21,7 @@ commander.on('--help', function() {
   console.log('  ' + 'Examples:'.to.bold.blue);
   console.log();
   console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery');
-  console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery/jquery assets');
+  console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery/jquery arale/class');
   console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery/jquery' +
               '@1.8.2'.to.cyan.color);
   console.log();
@@ -34,8 +35,8 @@ spm.log.config(commander);
 // run install
 spm.install({
   source: commander.source,
+  destination: commander.destination,
   force: commander.force,
   parallel: commander.parallel,
-  query: commander.args[0],
-  dest: commander.args[1]
+  query: commander.args
 });
