@@ -18,6 +18,7 @@ commander.on('--help', function() {
   console.log();
   console.log('   $', 'spm info'.to.magenta.color, 'jquery');
   console.log('   $', 'spm info'.to.magenta.color, 'arale/class');
+  console.log('   $', 'spm info'.to.magenta.color, 'arale/class@stable');
   console.log('   $', 'spm info'.to.magenta.color, 'arale/class@1.0.0');
   console.log();
 });
