@@ -31,12 +31,6 @@ if (!process.env.NODE_PATH) {
   console.log();
   process.exit();
 }
-process.on('exit', function(code) {
-  if (code === 1) {
-    commander.emit('--help');
-  }
-});
-
 
 commander.helpInformation = function() {
   return [
@@ -58,7 +52,22 @@ commander
   .usage('<command> [options]');
 
 
-var moduleCommands = {
+process.on('exit', function(code) {
+  if (code === 1) {
+    process.stdout.write([
+      '  Options:',
+      '',
+      '' + commander.optionHelp().replace(/^/gm, '    '),
+      '',
+      ''
+    ].join('\n'));
+
+    commander.emit('--help');
+  }
+});
+
+
+var packageCommands = {
   build: 'build a module',
   tree: 'show dependencies tree',
   info: 'information of a module',
@@ -80,8 +89,8 @@ commander.on('--help', function() {
 
   console.log('  ' + 'Package Commands:'.to.bold.green.color);
   console.log();
-  Object.keys(moduleCommands).forEach(function(key) {
-    program.printHelp(new program(key, moduleCommands[key]));
+  Object.keys(packageCommands).forEach(function(key) {
+    program.printHelp(new program(key, packageCommands[key]));
   });
   console.log();
 
@@ -138,7 +147,7 @@ function executable(subcmd) {
     return local;
   }
 
-  var commands = Object.keys(moduleCommands);
+  var commands = Object.keys(packageCommands);
 
   // register extentions
   var extensions = spm.plugin.plugins();
