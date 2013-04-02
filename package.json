@@ -20,6 +20,7 @@
     "semver": "~1.1.4",
     "async": "~0.1.22",
     "tar": "~0.1.16",
+    "form-data": "~0.0.7",
     "request": "~2.16.2",
     "colorful": "~2.0.2",
     "commander": "~1.1.1",
