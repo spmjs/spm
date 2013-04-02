@@ -235,3 +235,7 @@ function getSimilarCommands(cmd, commands) {
     return getPoint(cmd, b) - getPoint(cmd, a);
   });
 }
+
+process.on('exit', function() {
+  console.log();
+});
