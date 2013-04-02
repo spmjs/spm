@@ -54,6 +54,12 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**April 2st, 2013** `2.0.1`
+
+- Parsing dependencies from alias [#13](https://github.com/spmjs/spm2/issues/13)
+- Fix customized installation of non-cmd module
+- Fix installation of devAlias and engines
+
 **April 1st, 2013** `2.0.0`
 
 First version of spm with:
