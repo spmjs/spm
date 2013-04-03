@@ -54,6 +54,11 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**April 3rd, 2013** `2.0.2`
+
+- Fix publish docs [#17](https://github.com/spmjs/spm2/issues/17)
+- Friendly notification when 401
+
 **April 2st, 2013** `2.0.1`
 
 - Parsing dependencies from alias [#13](https://github.com/spmjs/spm2/issues/13)
