@@ -2,13 +2,16 @@
 
 var commander = require('commander');
 require('colorful').colorful();
+var path = require('path');
 var spm = require('..');
+var spmrc = require('spmrc');
 
 commander.usage('[options] family/name[@version]');
 
 commander
   .option('-s, --source <source>', 'the source repo name')
   .option('-d, --destination <dest>', 'the destination, default: sea-modules')
+  .option('-g, --global', 'install the package to ~/.spm/sea-modules')
   .option('-f, --force', 'force to download a unstable module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
@@ -31,6 +34,10 @@ commander.parse(process.argv);
 
 // verbose vs quiet
 spm.log.config(commander);
+
+if (commander.global) {
+  commander.destination = path.join(spmrc.get('user.home'), '.spm', 'sea-modules');
+}
 
 // run install
 spm.install({
