@@ -4,6 +4,7 @@ var path = require('path');
 var resolve = path.resolve;
 var commander = require('commander');
 var archy = require('archy');
+var spmrc = require('spmrc');
 
 require('colorful').colorful();
 var spm = require('..');
@@ -12,22 +13,12 @@ commander
   .option('-d, --depth <n>', 'set the depth to <n>', Infinity)
   .option('--no-color', 'disable colorful print');
 
-
-commander.on('--help', function() {
-  console.log();
-  console.log('  ' + 'Examples:'.to.bold.blue);
-  console.log();
-  console.log('   $', 'spm info'.to.magenta.color, 'jquery');
-  console.log('   $', 'spm info'.to.magenta.color, 'arale/class');
-  console.log('   $', 'spm info'.to.magenta.color, 'arale/class@1.0.0');
-  console.log();
-});
-
 commander.parse(process.argv);
 
 // color
 spm.log.config(commander);
 
+var cache = {};
 var file = spm.sdk.grunt.file;
 
 if (!file.exists('package.json')) {
@@ -36,7 +27,7 @@ if (!file.exists('package.json')) {
 }
 
 console.log();
-console.log(indent(archy(tree('package.json'))));
+console.log(indent(archy(color(tree('package.json')))));
 
 function tree(f, paths, depth) {
   depth = depth || 0;
@@ -48,7 +39,7 @@ function tree(f, paths, depth) {
   }
   var pkg = require(f);
 
-  paths = paths || ['sea-modules'];
+  paths = paths || ['sea-modules', path.join(spmrc.get('user.home'), '.spm', 'sea-modules')];
 
   var node = {};
   var title = '';
@@ -57,7 +48,15 @@ function tree(f, paths, depth) {
   } else {
     title = pkg.name;
   }
-  node.label = title.to.cyan + ('@' + pkg.version).to.grey;
+  node.label = title + '@' + pkg.version;
+
+  if (cache[title] && cache[title] !== pkg.version) {
+    cache[title] = 'conflict';
+  }
+  if (!cache[title]) {
+    cache[title] = pkg.version;
+  }
+
   if (++depth > commander.depth) return node;
 
   if (pkg.spm && pkg.spm.alias) {
@@ -83,13 +82,34 @@ function tree(f, paths, depth) {
   return node;
 }
 
+function color(node) {
+  if (node.nodes) {
+    node.nodes = node.nodes.map(color);
+  }
+  if (node.label) {
+    var bits = node.label.split('@');
+    var title = bits[0];
+    var version = bits[1];
+    if (cache[title] === 'conflict') {
+      node.label = title.to.yellow + ('@' + version).to.red;
+      if (commander.color === false) {
+        node.label = '{' + title + '@' + version + '}';
+      }
+    } else {
+      node.label = title.to.cyan + ('@' + version).to.grey;
+    }
+  }
+  return node;
+}
+
 function lookup(paths, pkg) {
   var pkgfile;
   paths.some(function(f) {
     var fpath = path.join(f, pkg.family, pkg.name, pkg.version, 'package.json');
-    if (file.exists(fpath));
-    pkgfile = fpath;
-    return true;
+    if (file.exists(fpath)) {
+      pkgfile = fpath;
+      return true;
+    }
   });
   if (!pkgfile) {
     throw new Error('failed to resolve location of ' + pkg.family + '/' + pkg.name + '@' + pkg.version);
