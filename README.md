@@ -54,6 +54,11 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**April 9th, 2013** `2.0.3`
+
+- Fix spm-tree, pretty log on conflict dependencies
+- Install global with `spm install -g`
+
 **April 3rd, 2013** `2.0.2`
 
 - Fix publish docs [#17](https://github.com/spmjs/spm2/issues/17)
