@@ -9,28 +9,12 @@ var spm = require('..');
 var program = require('../lib/utils/program');
 var spawn = require('win-spawn');
 
-if (!process.env.NODE_PATH) {
+process.on('exit', function() {
   console.log();
-  if (process.env.SHELL === '/bin/zsh') {
-    console.log('  Please set environment variable NODE_PATH in ~/.zshrc:');
-  } else if (process.env.SHELL === '/bin/bash') {
-    console.log('  Please set environment variable NODE_PATH in ~/.bashrc:');
-  } else {
-    console.log('  Please set environment variable NODE_PATH:');
-  }
-  console.log();
+});
 
-  var nodepath = __dirname.replace(/(\/|\\)spm(\/|\\)bin$/, '');
-  if (/node_modules$/.test(nodepath) && !fs.existsSync(path.join(nodepath, '.bin'))) {
-    if (os.platform() === 'win32') {
-      console.log('    NODE_PATH=' + nodepath);
-    } else {
-      console.log('    export NODE_PATH=' + nodepath);
-    }
-  }
-  console.log();
-  process.exit();
-}
+var nodepath = __dirname.replace(/(\/|\\)spm(\/|\\)bin$/, '');
+program.findNodePath(nodepath);
 
 commander.helpInformation = function() {
   return [
@@ -156,6 +140,15 @@ function executable(subcmd) {
     commands.push(cmd.name);
   }
 
+  // notification for spm build
+  if (subcmd === 'build') {
+    console.log();
+    console.log("  `build` is not a part of spm now. You can install it:");
+    console.log();
+    console.log("      $ npm install spm-build -g");
+    process.exit();
+  }
+
   // guess commands
   commands = getSimilarCommands(subcmd, commands);
   console.log();
@@ -234,7 +227,3 @@ function getSimilarCommands(cmd, commands) {
     return getPoint(cmd, b) - getPoint(cmd, a);
   });
 }
-
-process.on('exit', function() {
-  console.log();
-});

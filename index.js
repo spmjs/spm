@@ -21,9 +21,6 @@ exports.log = require('./lib/utils/log');
 
 // register sdk
 exports.sdk = {};
-exports.sdk.ast = require('cmd-util').ast;
-exports.sdk.spmrc = require('spmrc');
 exports.sdk.iduri = require('./lib/sdk/iduri');
 exports.sdk.yuan = require('./lib/sdk/yuan');
 exports.sdk.file = require('./lib/sdk/file');
-exports.sdk.module = require('./lib/sdk/module');
