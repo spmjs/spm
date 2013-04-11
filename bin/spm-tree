@@ -19,7 +19,7 @@ commander.parse(process.argv);
 spm.log.config(commander);
 
 var cache = {};
-var file = spm.sdk.grunt.file;
+var file = spm.sdk.file;
 
 if (!file.exists('package.json')) {
   console.log('   package.json missing.');
