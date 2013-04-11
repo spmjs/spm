@@ -16,8 +16,6 @@ exports.upload = require('./lib/publish').upload;
 exports.unpublish = require('./lib/unpublish');
 exports.search = require('./lib/search');
 
-exports.build = require('./lib/build');
-
 // plugins should use spm.log
 exports.log = require('./lib/utils/log');
 

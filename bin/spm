@@ -68,7 +68,6 @@ process.on('exit', function(code) {
 
 
 var packageCommands = {
-  build: 'build a module',
   tree: 'show dependencies tree',
   info: 'information of a module',
   login: 'login your account',
