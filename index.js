@@ -18,6 +18,7 @@ exports.search = require('./lib/search');
 
 // plugins should use spm.log
 exports.log = require('./lib/utils/log');
+exports.run = require('./lib/utils/run');
 
 // register sdk
 exports.sdk = {};

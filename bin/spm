@@ -114,6 +114,7 @@ if (subcmd === 'help') {
 } else {
   bin = executable(subcmd);
   if (bin) {
+    spm.run.record(subcmd);
     spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
   }
 }
