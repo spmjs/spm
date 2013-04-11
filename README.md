@@ -2,8 +2,14 @@
 
 ---------------------------
 
-This is a total rewrite of spm, it is still on heavy development.
-You should use the old [spm](https://github.com/spmjs/spm) right now.
+spm is a package manager, **it is not build tools**.
+
+If you are looking for a build tool, you should use grunt, and some grunt tasks.
+
+Some useful links of build:
+
+- https://github.com/spmjs/grunt-cmd-transport
+- https://github.com/spmjs/grunt-cmd-concat
 
 ## Release
 
@@ -32,20 +38,12 @@ $ npm install spm@ninja -g
 Use ninja release at your own risk. This branch may contain experimental features, and it may break your heart.
 
 
-## Repositories
+## Plugins
 
-This is the main spm repository. It is the interface of spm.
-
-However, some functional parts are in other repositories:
-
-- [grunt-spm-build][] is the real source of `spm build`.
-- [cmd-util][] is the core parser.
-
-If you have any problem about `build`, you should open an issue at [grunt-spm-build][].
-
-[grunt-spm-build]: https://github.com/spmjs/grunt-spm-build
-[cmd-util]: https://github.com/spmjs/cmd-util
-
+- https://github.com/spmjs/spm-deploy
+- https://github.com/spmjs/spm-init
+- https://github.com/spmjs/spm-status
+- https://github.com/spmjs/spm-doc
 
 ## Contribute
 
