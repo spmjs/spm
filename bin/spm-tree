@@ -8,6 +8,7 @@ var spmrc = require('spmrc');
 
 require('colorful').colorful();
 var spm = require('..');
+var parseIdentify = require('../lib/sdk/module').parseIdentify;
 
 commander
   .option('-d, --depth <n>', 'set the depth to <n>', Infinity)
@@ -34,7 +35,6 @@ function tree(f, paths, depth) {
   f = resolve(f);
   if (!file.exists(f)) {
     console.log('  can not find ' + path.relative(process.cwd(), f));
-    console.log();
     return {};
   }
   var pkg = require(f);
@@ -68,7 +68,7 @@ function tree(f, paths, depth) {
       if (depfile === key) {
         depfile = devAlias[key] || depfile;
       }
-      var parsed = spm.sdk.module.parseIdentify(depfile);
+      var parsed = parseIdentify(depfile);
       if (parsed && parsed.family && parsed.name && parsed.version) {
         return parsed;
       }
