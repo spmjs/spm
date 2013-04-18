@@ -132,11 +132,14 @@ function executable(subcmd) {
 
   var commands = Object.keys(packageCommands);
 
-  // register extentions
   var extensions = spm.plugin.plugins();
   for (var i = 0; i < extensions.length; i++) {
     var cmd = extensions[i];
-    if (subcmd === cmd.name) return cmd.binary;
+
+    if (subcmd === cmd.name) {
+      return cmd.binary;
+    }
+
     commands.push(cmd.name);
   }
 
@@ -149,24 +152,39 @@ function executable(subcmd) {
     process.exit();
   }
 
-  // guess commands
-  commands = getSimilarCommands(subcmd, commands);
-  console.log();
-  console.log("  Can't find command: " + subcmd.to.cyan.color);
-  console.log();
-  if (commands.length) {
-    console.log("  It may be a mistake of the similar commands:");
+  function printSimilar() {
+    // guess commands
+    commands = getSimilarCommands(subcmd, commands);
     console.log();
-    commands.forEach(function(cmd) {
-      console.log('    $', 'spm'.to.magenta.color, cmd.to.cyan.color);
-    });
+    console.log("  Can't find command (or target): " + subcmd.to.cyan.color);
+    console.log();
+    if (commands.length) {
+      console.log("  It may be a mistake of the similar commands:");
+      console.log();
+      commands.forEach(function(cmd) {
+        console.log('    $', 'spm'.to.magenta.color, cmd.to.cyan.color);
+      });
+    }
+    console.log();
+    console.log("  It is not a built-in command, maybe it's a plugin.");
+    console.log("  Try install this plugin: ");
+    console.log();
+    console.log('    $', 'spm plugin'.to.magenta.color, 'install', subcmd.to.cyan.color);
   }
-  console.log();
-  console.log("  It is not a built-in command, maybe it's a plugin.");
-  console.log("  Try install this plugin: ");
-  console.log();
-  console.log('    $', 'spm plugin'.to.magenta.color, 'install', subcmd.to.cyan.color);
-  console.log();
+
+  try {
+    var grunt = require('spm-grunt');
+    console.log();
+    grunt.invokeTask(subcmd, {}, function() {
+      printSimilar();
+    });
+  } catch (e) {
+    if (e.code === 'MODULE_NOT_FOUND') {
+      printSimilar();
+    } else {
+      spm.log.error('error', e);
+    }
+  }
   return null;
 }
 
