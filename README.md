@@ -52,6 +52,12 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**To be decided** `2.1.0`
+
+- Remove spm-build, spm focus on package management.
+- spm can invoke tasks in gruntfile.
+- various bugfix.
+
 **April 9th, 2013** `2.0.3`
 
 - Fix spm-tree, pretty log on conflict dependencies
