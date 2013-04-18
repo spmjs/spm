@@ -9,13 +9,13 @@ var spmrc = require('spmrc');
 commander.usage('[options] family/name[@version]');
 
 commander
-  .option('-s, --source <source>', 'the source repo name')
-  .option('-d, --destination <dest>', 'the destination, default: sea-modules')
+  .option('-s, --source [name]', 'the source repo name')
+  .option('-d, --destination [dir]', 'the destination, default: sea-modules')
   .option('-g, --global', 'install the package to ~/.spm/sea-modules')
   .option('-f, --force', 'force to download a unstable module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
-  .option('--parallel <number>', 'parallel installation')
+  .option('--parallel [number]', 'parallel installation')
   .option('--no-color', 'disable colorful print');
 
 

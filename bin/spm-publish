@@ -7,9 +7,9 @@ var spm = require('..');
 commander.usage('[options] name');
 
 commander
-  .option('--tag <tag>', 'publish module with a tag: [stable]')
-  .option('--doc <doc>', 'upload docs instead of package')
-  .option('-s, --source <source>', 'source name')
+  .option('--tag [tag]', 'publish module with a tag: [stable]')
+  .option('--doc [dir]', 'upload docs instead of package')
+  .option('-s, --source [name]', 'source name in spmrc')
   .option('-f, --force', 'force to publish an exists module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')

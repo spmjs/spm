@@ -7,7 +7,7 @@ var spm = require('..');
 commander.usage('[options] family/name[@version]');
 
 commander
-  .option('-s, --source <source>', 'default value will be the first source')
+  .option('-s, --source [name]', 'default value will be the first source')
   .option('-v --verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
 
