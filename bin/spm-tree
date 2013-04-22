@@ -32,6 +32,7 @@ console.log(indent(archy(color(tree('package.json')))));
 
 function tree(f, paths, depth) {
   depth = depth || 0;
+  if (!f) return {};
   f = resolve(f);
   if (!file.exists(f)) {
     console.log('  can not find ' + path.relative(process.cwd(), f));
@@ -112,7 +113,8 @@ function lookup(paths, pkg) {
     }
   });
   if (!pkgfile) {
-    throw new Error('failed to resolve location of ' + pkg.family + '/' + pkg.name + '@' + pkg.version);
+    spm.log.error('package', pkg.family + '/' + pkg.name + '@' + pkg.version + ' not found');
+    return null;
   }
   return pkgfile;
 }
