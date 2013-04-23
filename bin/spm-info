@@ -8,7 +8,8 @@ commander.usage('[options] family/name[@version]');
 
 commander
   .option('-s, --source [name]', 'default value will be the first source')
-  .option('-v --verbose', 'show more log')
+  .option('-v, --verbose', 'show more log')
+  .option('-q, --quiet', 'show less log')
   .option('--no-color', 'disable colorful print');
 
 
@@ -36,4 +37,8 @@ if (!commander.args[0]) {
 
 // run install
 console.log();
-spm.info({source: commander.source, query: commander.args[0]});
+spm.info({
+  source: commander.source,
+  query: commander.args[0],
+  quiet: commander.quiet
+});
