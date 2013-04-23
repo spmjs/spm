@@ -24,7 +24,11 @@ tmp/
 .buildpath
 .settings
 .yml
-_site
+.jshintignore
+.jshintrc
+.travis.yml
+.cache/
+_site/
 tests/
 docs/
 _theme/
