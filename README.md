@@ -40,6 +40,7 @@ Use ninja release at your own risk. This branch may contain experimental feature
 
 ## Plugins
 
+- https://github.com/spmjs/spm-build
 - https://github.com/spmjs/spm-deploy
 - https://github.com/spmjs/spm-init
 - https://github.com/spmjs/spm-status
