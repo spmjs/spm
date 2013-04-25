@@ -53,7 +53,13 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
-**To be decided** `2.1.0`
+**To be decied** `2.1.1`
+
+- Various bugfixed
+- Add quiet option for spm info
+- Fix NODE PATH on windows
+
+**April 22nd, 2013** `2.1.0`
 
 - Remove spm-build, spm focus on package management.
 - spm can invoke tasks in gruntfile.
