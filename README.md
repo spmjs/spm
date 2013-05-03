@@ -2,7 +2,7 @@
 
 ===
 
-> `SPM2` 已正式发布，所有相关问题请移步 https://github.com/spmjs/spm2。
+> `SPM2` 已正式发布，所有相关问题请移步 https://github.com/spmjs/spm2 。
 
 > [SPM2 文档](http://docs.spmjs.org)
 
