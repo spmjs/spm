@@ -53,7 +53,7 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
-**To be decied** `2.1.1`
+**May 6th, 2013** `2.1.1`
 
 - Various bugfixed
 - Add quiet option for spm info
