@@ -1,5 +1,7 @@
 # Static Package Manager
 
+[![NPM version](https://badge.fury.io/js/spm.png)](http://badge.fury.io/js/spm)
+
 ---------------------------
 
 spm is a package manager, **it is not build tools**.
