@@ -53,6 +53,11 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**June 5th, 2013** `2.1.2`
+
+- Bugfix for installation
+- API for configuration of installation
+
 **May 6th, 2013** `2.1.1`
 
 - Various bugfixed
