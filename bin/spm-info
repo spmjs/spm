@@ -26,9 +26,6 @@ commander.on('--help', function() {
 
 commander.parse(process.argv);
 
-// color
-spm.log.config(commander);
-
 if (!commander.args[0]) {
   process.stdout.write(commander.helpInformation());
   commander.emit('--help');
@@ -40,5 +37,6 @@ console.log();
 spm.info({
   source: commander.source,
   query: commander.args[0],
-  quiet: commander.quiet
+  quiet: commander.quiet,
+  verbose: commander.verbose
 });
