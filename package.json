@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "keywords": [

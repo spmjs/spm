@@ -13,14 +13,6 @@ Some useful links of build:
 - https://github.com/spmjs/grunt-cmd-transport
 - https://github.com/spmjs/grunt-cmd-concat
 
-## Release
-
-We have a regular release schedule:
-
-1. monthly release for big features or API changes
-2. weekly(maybe longer) release for small features and bug fix
-3. daily(maybe days) release in ninja channel
-
 ### Stable Channel
 
 Get the latest stable spm with:
@@ -28,17 +20,6 @@ Get the latest stable spm with:
 ```
 $ npm install spm -g
 ```
-
-### Ninja Channel
-
-Get the latest spm in ninja channel with:
-
-```
-$ npm install spm@ninja -g
-```
-
-Use ninja release at your own risk. This branch may contain experimental features, and it may break your heart.
-
 
 ## Plugins
 
@@ -54,6 +35,11 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 
 ## Changelog
+
+**June 24th, 2013** `2.1.3`
+
+- Show more information on `spm info`
+- Publish doc with version
 
 **June 5th, 2013** `2.1.2`
 
