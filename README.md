@@ -36,6 +36,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**June 25th, 2013** `2.1.4`
+
+- callback error when install
+
 **June 24th, 2013** `2.1.3`
 
 - Show more information on `spm info`
