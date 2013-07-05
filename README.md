@@ -36,7 +36,7 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
-**July 5th, 2013** `2.1.5`
+**July 5th, 2013** `2.1.6`
 
 - add callback for spm.publish
 
