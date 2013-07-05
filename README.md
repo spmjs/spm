@@ -36,6 +36,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**July 5th, 2013** `2.1.5`
+
+- add callback for spm.publish
+
 **June 25th, 2013** `2.1.4`
 
 - callback error when install
