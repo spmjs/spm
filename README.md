@@ -36,6 +36,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**July 16th, 2013** `2.1.7`
+
+- fix spm-install dont support uppercase filename bug
+
 **July 5th, 2013** `2.1.6`
 
 - add callback for spm.publish
