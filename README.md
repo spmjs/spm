@@ -36,6 +36,12 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**July 30th, 2013** `2.1.10`
+
+- Configure proxy
+- Install self
+- Add preinstall hook
+
 **July 22th, 2013** `2.1.9`
 
 - Update dependencies
