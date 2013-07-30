@@ -6,4 +6,6 @@ if (process.getuid && process.getuid() === 0) {
   console.log('$ sudo chown -R $USER /usr/local');
   console.log('');
   console.log('More information on http://howtonode.org/introduction-to-npm');
+  // don't install spm now
+  process.exit(1);
 }
