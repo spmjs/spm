@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 if (process.getuid && process.getuid() === 0) {
   console.log('');
   console.log('NO SUDO PLEASE!!!')
