@@ -36,6 +36,12 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**Aug 14th, 2013** `2.1.11`
+
+- Check the way to check sudoer
+- Update dependencies
+- Fix path.delimiter for windows #76
+
 **July 30th, 2013** `2.1.10`
 
 - Configure proxy
