@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-if (process.getuid && process.getuid() === 0) {
+if (process.env.SUDO_USER) {
   console.log('');
   console.log('NO SUDO PLEASE!!!')
   console.log('Maybe you need run:');
