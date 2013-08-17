@@ -1,6 +1,8 @@
 **简单、放心的包管理工具 。**
 
-## spm 已不维护，请异步 https://github.com/spmjs/spm2
+## spm 已不维护，请移步：
+
+https://github.com/spmjs/spm2
 
 
 ## 讨论和报告 Bug
@@ -11,6 +13,6 @@
 
 ## License
 
-SPM is available under the terms of the [MIT License](http://modules.spmjs.org/LICENSE.md).
+SPM is available under the terms of the MIT License.
 
 
