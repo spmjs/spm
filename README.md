@@ -8,7 +8,7 @@ spm is a package manager, **it is not build tools**.
 
 If you are looking for a build tool, Grunt(gruntjs.com - http://gruntjs.com) will be a good choice.
 
-Useful links for building seajs project(seajs.org - http://seajs.org, and it's github address - https://github.com/seajs/seajs):
+Useful links for building seajs project(seajs.org - http://seajs.org, and it's github address - https://github.com/seajs/seajs ):
 
 - https://github.com/spmjs/grunt-cmd-transport
 - https://github.com/spmjs/grunt-cmd-concat
