@@ -5,6 +5,7 @@ var resolve = path.resolve;
 var commander = require('commander');
 var archy = require('archy');
 var spmrc = require('spmrc');
+var log = require('../lib/utils/log');
 
 require('colorful').colorful();
 var spm = require('..');
@@ -22,6 +23,29 @@ spm.log.config(commander);
 var cache = {};
 var file = spm.sdk.file;
 
+var query = commander.args[0];
+
+// handle "spm tree arale/class"
+if (query) {
+  // don't show spm install log message
+  log.quiet = true;
+  spm.install.fetch(query, function(err, dest) {
+    spm.install({
+      source: commander.source,
+      destination: dest + '/sea-modules/',
+      force: commander.force,
+      parallel: commander.parallel,
+      query: commander.args
+    }, function() {
+      process.chdir(dest);
+      log.quiet = false;
+      console.log(indent(archy(color(tree('package.json')))));
+    });
+  });
+  return;
+}
+
+// handle "spm tree"
 if (!file.exists('package.json')) {
   console.log('   package.json missing.');
   process.exit(1);
