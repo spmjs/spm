@@ -36,6 +36,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**Aug 14th, 2013** `2.1.12`
+
+- Support query argument for spm tree
+
 **Aug 14th, 2013** `2.1.11`
 
 - Check the way to check sudoer
