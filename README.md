@@ -39,6 +39,7 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 **Aug 14th, 2013** `2.1.12`
 
 - Support query argument for spm tree
+- Optimize prompt for network error
 
 **Aug 14th, 2013** `2.1.11`
 
