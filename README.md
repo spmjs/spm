@@ -21,6 +21,20 @@ Get the latest stable spm with:
 $ npm install spm -g
 ```
 
+## Usage
+
+```
+$ spm help
+```
+
+```
+$ spm install seajs
+$ spm install jquery/jquery
+$ spm install gallery/moment
+```
+
+You can find plenty of modules in [spmjs.org](https://spmjs.org/).
+
 ## Plugins
 
 - https://github.com/spmjs/spm-build
