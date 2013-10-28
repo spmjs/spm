@@ -8,6 +8,10 @@ var spm = require('..');
 var program = require('../lib/utils/program');
 var spawn = require('win-spawn');
 
+process.on('exit', function() {
+  console.log();
+});
+
 var nodepath = __dirname.replace(/(\/|\\)spm(\/|\\)bin$/, '');
 program.findNodePath(nodepath);
 

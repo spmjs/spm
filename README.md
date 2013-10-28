@@ -50,6 +50,12 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**Oct 28th, 2013** `2.2.0`
+
+- Verify package.name when publishing module
+- Support for `--save` and `--save-dev` arguments
+- Show latest version on spm info
+
 **Aug 14th, 2013** `2.1.12`
 
 - Support query argument for spm tree
