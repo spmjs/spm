@@ -15,6 +15,8 @@ commander
   .option('-f, --force', 'force to download a unstable module')
   .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
+  .option('--save', 'save alias to package.json')
+  .option('--save-dev', 'save devAlias to package.json')
   .option('--parallel [number]', 'parallel installation')
   .option('--no-color', 'disable colorful print');
 
@@ -45,5 +47,7 @@ spm.install({
   destination: commander.destination,
   force: commander.force,
   parallel: commander.parallel,
+  save: commander.save,
+  saveDev: commander.saveDev,
   query: commander.args
 });
