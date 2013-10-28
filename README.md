@@ -55,6 +55,7 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 - Verify package.name when publishing module
 - Support for `--save` and `--save-dev` arguments
 - Show latest version on spm info
+- Auto check update every month
 
 **Aug 14th, 2013** `2.1.12`
 
