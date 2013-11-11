@@ -7,7 +7,6 @@ require('colorful').colorful();
 var spm = require('..');
 var program = require('../lib/utils/program');
 var spawn = require('win-spawn');
-var checkUpdate = require('../lib/utils/check-update');
 
 process.on('exit', function() {
   console.log();
@@ -88,38 +87,36 @@ commander.on('--help', function() {
   console.log();
 });
 
-checkUpdate(function() {
-  commander.parse(process.argv);
+commander.parse(process.argv);
 
-  var args = process.argv.slice(3);
-  var subcmd = commander.args[0];
+var args = process.argv.slice(3);
+var subcmd = commander.args[0];
 
-  if (!subcmd) {
+if (!subcmd) {
+  process.stdout.write(commander.helpInformation());
+  commander.emit('--help');
+  process.exit();
+}
+
+if (subcmd === 'help') {
+  var helpcmd = commander.args[1];
+  if (!helpcmd) {
     process.stdout.write(commander.helpInformation());
     commander.emit('--help');
     process.exit();
   }
 
-  if (subcmd === 'help') {
-    var helpcmd = commander.args[1];
-    if (!helpcmd) {
-      process.stdout.write(commander.helpInformation());
-      commander.emit('--help');
-      process.exit();
-    }
-
-    var bin = executable(helpcmd);
-    if (bin) {
-      spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
-    }
-  } else {
-    bin = executable(subcmd);
-    if (bin) {
-      spm.run.record(subcmd);
-      spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
-    }
+  var bin = executable(helpcmd);
+  if (bin) {
+    spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
   }
-});
+} else {
+  bin = executable(subcmd);
+  if (bin) {
+    spm.run.record(subcmd);
+    spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
+  }
+  }
 
 
 // helpers
