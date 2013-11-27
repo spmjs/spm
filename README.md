@@ -50,6 +50,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**Nov 27th, 2013** `2.2.3`
+
+- Show source url when publishing
+
 **Oct 28th, 2013** `2.2.0`
 
 - Verify package.name when publishing module
