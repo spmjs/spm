@@ -1,145 +1,15 @@
 # Static Package Manager
 
-[![NPM version](https://badge.fury.io/js/spm.png)](http://badge.fury.io/js/spm)
+**spm 3.0.0 还在开发中，请先使用 spm2**
 
----------------------------
+- 源码 https://github.com/spmjs/spm/tree/2.x
+- 站点 https://spmjs.org/
 
-spm is a package manager, **it is not build tools**.
+## 讨论和报告 Bug
 
-If you are looking for a build tool, Grunt(gruntjs.com - http://gruntjs.com) will be a good choice.
+* [查看所有 issue](https://github.com/spmjs/spm/issues)
+* [新建 issue](https://github.com/spmjs/spm/issues/new)
 
-Useful links for building seajs project(seajs.org - http://seajs.org, and it's github address - https://github.com/seajs/seajs ):
+## License
 
-- https://github.com/spmjs/grunt-cmd-transport
-- https://github.com/spmjs/grunt-cmd-concat
-
-### Stable Channel
-
-Get the latest stable spm with:
-
-```
-$ npm install spm -g
-```
-
-## Usage
-
-```
-$ spm help
-```
-
-```
-$ spm install seajs
-$ spm install jquery/jquery
-$ spm install gallery/moment
-```
-
-You can find plenty of modules in [spmjs.org](https://spmjs.org/).
-
-## Plugins
-
-- https://github.com/spmjs/spm-build
-- https://github.com/spmjs/spm-deploy
-- https://github.com/spmjs/spm-init
-- https://github.com/spmjs/spm-status
-- https://github.com/spmjs/spm-doc
-
-## Contribute
-
-Yes, please do contribute. But before this, you should read our [Contributing Guide](https://github.com/spmjs/spm2/blob/master/CONTRIBUTING.md).
-
-
-## Changelog
-
-**Nov 27th, 2013** `2.2.4`
-
-- Show source url when publishing
-
-**Oct 28th, 2013** `2.2.0`
-
-- Verify package.name when publishing module
-- Support for `--save` and `--save-dev` arguments
-- Show latest version on spm info
-- Auto check update every month
-
-**Aug 14th, 2013** `2.1.12`
-
-- Support query argument for spm tree
-- Optimize prompt for network error
-
-**Aug 14th, 2013** `2.1.11`
-
-- Check the way to check sudoer
-- Update dependencies
-- Fix path.delimiter for windows #76
-
-**July 30th, 2013** `2.1.10`
-
-- Configure proxy
-- Install self
-- Add preinstall hook
-
-**July 22th, 2013** `2.1.9`
-
-- Update dependencies
-
-**July 16th, 2013** `2.1.7`
-
-- fix spm-install dont support uppercase filename bug
-
-**July 5th, 2013** `2.1.6`
-
-- add callback for spm.publish
-
-**June 25th, 2013** `2.1.4`
-
-- callback error when install
-
-**June 24th, 2013** `2.1.3`
-
-- Show more information on `spm info`
-- Publish doc with version
-
-**June 5th, 2013** `2.1.2`
-
-- Bugfix for installation
-- API for configuration of installation
-
-**May 6th, 2013** `2.1.1`
-
-- Various bugfixed
-- Add quiet option for spm info
-- Fix NODE PATH on windows
-
-**April 22nd, 2013** `2.1.0`
-
-- Remove spm-build, spm focus on package management.
-- spm can invoke tasks in gruntfile.
-- various bugfix.
-
-**April 9th, 2013** `2.0.3`
-
-- Fix spm-tree, pretty log on conflict dependencies
-- Install global with `spm install -g`
-
-**April 3rd, 2013** `2.0.2`
-
-- Fix publish docs [#17](https://github.com/spmjs/spm2/issues/17)
-- Friendly notification when 401
-
-**April 2st, 2013** `2.0.1`
-
-- Parsing dependencies from alias [#13](https://github.com/spmjs/spm2/issues/13)
-- Fix customized installation of non-cmd module
-- Fix installation of devAlias and engines
-
-**April 1st, 2013** `2.0.0`
-
-First version of spm with:
-
-- tree
-- info
-- search
-- install
-- login
-- publish
-- unpublish
+SPM is available under the terms of the MIT License.
