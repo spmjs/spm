@@ -6,6 +6,7 @@ var output = '_site/coverage.html';
 var outputJSON = '_site/coverage.json';
 require('colorful').colorful();
 var spm = require('..');
+var mochaBrowser = require('mocha-browser');
 
 console.log();
 console.log('  Starting service for test runner ...'.to.cyan.color);
@@ -14,6 +15,13 @@ spm.doc({
   server: true,
   quiet: true
 }, function() {
+
+  mochaBrowser({
+    page: 'http://127.0.0.1:8000/tests/runner.html',
+    reporter: 'spec'
+  }, function() {
+  });
+  return;
 
   exeq([
     'mocha-browser http://127.0.0.1:8000/tests/runner.html',
