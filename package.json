@@ -33,6 +33,7 @@
     "cmd-util": "~0.3.10",
     "archy": "~0.0.2",
     "rimraf": "~2.1.4",
+    "nico": "lepture/nico",
     "lodash": "~1.3.1"
   },
   "devDependencies": {
