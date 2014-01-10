@@ -12,7 +12,6 @@ commander
   .option('-p, --port <8000>', 'local server port')
   .option('-f --force', 'force build without cache')
   .option('-v --verbose', 'show more logging')
-  .option('-v --verbose', 'show more logging')
   .option('-q --quiet', 'show less logging')
   .option('clean', 'clean _site folder')
   .option('build', 'build documentation')

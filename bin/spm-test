@@ -5,13 +5,16 @@ var path = require('path');
 var output = '_site/coverage.html';
 var outputJSON = '_site/coverage.json';
 require('colorful').colorful();
-
 var spm = require('..');
+
+console.log();
+console.log('  Starting service for test runner ...'.to.cyan.color);
 
 spm.doc({
   server: true,
   quiet: true
 }, function() {
+
   exeq([
     'mocha-browser http://127.0.0.1:8000/tests/runner.html',
     'rm -fr ' + path.join('_site', 'src-cov'),
@@ -35,7 +38,8 @@ spm.doc({
       console.log('  You can see more detail in ' + output.to.cyan.color);
     } catch(e) {
       console.log('');
-      console.log(('fail to output ' + outputJSON).to.red.color);
+      console.log(e);
+      console.log(('Fail to output ' + outputJSON).to.red.color);
     }
     process.exit(0);
   }).run();
