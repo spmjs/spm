@@ -57,7 +57,10 @@ var packageCommands = {
   search: 'search modules',
   install: 'install a module',
   publish: 'publish a module',
-  unpublish: 'unpublish a module'
+  unpublish: 'unpublish a module',
+  init: 'initialize a module',
+  test: 'test a module',
+  doc: 'documentation manager'
 };
 
 // sub command help

@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+var commander = require('commander');
+var spm = require('..');
+require('colorful').colorful();
+
+commander.usage('[options]');
+commander.version(require('../package').version);
+
+commander
+  .option('-s, --source <spmjs>', 'source for publishing')
+  .option('-p, --port <8000>', 'local server port')
+  .option('-f --force', 'force build without cache')
+  .option('-v --verbose', 'show more logging')
+  .option('-v --verbose', 'show more logging')
+  .option('-q --quiet', 'show less logging')
+  .option('clean', 'clean _site folder')
+  .option('build', 'build documentation')
+  .option('server', 'start a server for documentation')
+  .option('watch', 'start a server of watching source')
+  .option('publish', 'publish documentation for public');
+
+commander.on('--help', function() {
+  console.log('  Examples:'.to.bold.blue.color);
+  console.log();
+  console.log('    $ spm doc');
+  console.log('    $ spm doc clean');
+  console.log('    $ spm doc build');
+  console.log('    $ spm doc build -f');
+  console.log('    $ spm doc server');
+  console.log('    $ spm doc watch');
+  console.log('    $ spm doc watch --port 8080');
+  console.log('    $ spm doc publish');
+  console.log('    $ spm doc publish -s alipay');
+});
+
+commander.parse(process.argv);
+
+if (!process.argv[2]) {
+  commander.help();
+}
+
+console.log();
+
+spm.doc(commander);
