@@ -176,17 +176,9 @@ function executable(subcmd) {
   }
 
   try {
-    var grunt = require('spm-grunt');
-    console.log();
-    grunt.invokeTask(subcmd, {}, function() {
-      printSimilar();
-    });
+    printSimilar();
   } catch (e) {
-    if (e.code === 'MODULE_NOT_FOUND') {
-      printSimilar();
-    } else {
-      spm.log.error('error', e);
-    }
+    spm.log.error('error', e);
   }
   return null;
 }
