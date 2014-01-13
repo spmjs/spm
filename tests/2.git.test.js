@@ -13,7 +13,7 @@ describe('git', function() {
 
   it('get remote', function(done) {
     git.remote(function(err, remote) {
-      remote.should.equal('git@github.com:spmjs/spm2');
+      remote.should.equal('git@github.com:spmjs/spm.git');
       done();
     });
   });
