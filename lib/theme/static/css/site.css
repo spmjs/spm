@@ -1,15 +1,8 @@
 @font-face {
-    font-family: 'Actor';
+    font-family: 'Marmelad';
     font-style: normal;
     font-weight: 400;
-    src: local('Actor Regular'), local('Actor-Regular'), url(Actor.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Marmelad';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Marmelad'), local('Marmelad-Regular'), url(marmelad.woff) format('woff');
+    src: local('Marmelad'), local('Marmelad-Regular'), url(marmelad.woff) format('woff');
 }
 
 body {
