@@ -1,0 +1,28 @@
+{%- set pkg = config.package %}
+
+{%- if engines|length %}
+{%- for file in engines %}
+<script src="{{content_url('')}}{{file}}?nowrap"></script>
+{%- endfor %}
+{%- endif %}
+
+{%- set deps = dependencies %}
+
+<script>
+  (function() {
+  seajs.config({
+    base: "{{content_url('')}}",
+    alias: {
+      "$": 'jquery/jquery/1.7.2/jquery',
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug',
+      "jquery": 'jquery/jquery/1.7.2/jquery',
+      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
+      "handlebars": "gallery/handlebars/1.0.2/handlebars"
+    }
+  });
+
+  seajs.config({
+    alias: {{deps|clean_alias|json_encode}}
+  });
+})();
+</script>

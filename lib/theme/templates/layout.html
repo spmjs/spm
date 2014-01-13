@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="{{theme.lang}}">
+  <head>
+    <meta charset="UTF-8">
+    <title>{%- block title %}{{theme.name|title}}{% endblock -%}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="{{system.name}} {{system.version}}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    {%- block assets %}
+    <link type="image/x-icon" href="{{static_url('css/favicon.ico')}}" rel="icon">
+    <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
+    <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
+    <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
+    {%- include "snippet/head.html" %}
+    <!--[if lt IE 9]>
+    <script src="{{static_url('js/html5shiv.js')}}"></script>
+    <![endif]-->
+    {%- endblock %}
+    {%- block afterstyle %}{% endblock %}
+  </head>
+  <body class="{%- if config.isCssModule %}alice{%- endif %}">
+    <div id="body-wrapper">
+      {%- block body %}
+      <aside id="sidebar-wrapper">
+      <h1>
+          <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a><sup class="package-root"><a href="/">{{config.package.root}}{{config.package.family}}</a></sup>
+      </h1>
+        <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#{{config.package.family}}-{{config.package.name}}" title="点击查看此组件发布情况">{{config.package.version}}</a></p>
+        <p class="description">{{config.package.description}}</p>
+        <p class="keywords" style="display: none;">{{config.package.keywords[0]}}</p>
+        {%- if config.package.repository %}
+        <a class="source" href="{{config.package.repository.url|gitRepoUrl}}" target="_blank">View the Project</a>
+        {%- endif %}
+        {%- block sidebar %}
+        <ul id="navigation" role="navigation">
+          <li><a href="{{content_url('index.html')}}">文档</a></li>
+          {%- set example = resource.pages|find('examples') %}
+          {%- if example %}
+          <li><a href="{{permalink_url(example)}}">演示</a></li>
+          {%- endif %}
+          {%- if theme.hasHistory %}
+          <li><a href="{{content_url('history.html')}}">历史</a></li>
+          {%- endif %}
+          {%- if theme.hasTest %}
+          <li><a class="test-link" href="{{content_url('tests/runner.html')}}" target="_blank">用例</a></li>
+          {%- endif %}
+          {%- if config.package.bugs %}
+          <li><a class="issue-link" href="{{config.package.bugs.url}}" target="_blank">讨论</a></li>
+          {%- endif %}
+        </ul>
+        {%- endblock %}
+        {%- block subsidebar %}
+        {%- endblock %}
+      </aside>
+      {%- block afterside %}{% endblock %}
+      <div id="content-wrapper">
+        <div id="content">{% block content %}{% endblock %}</div>
+      </div>
+      {%- endblock %}
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+        <p class="powered">
+        {%- block footer %}{% endblock %}
+        {%- include "snippet/foot.html" %}
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

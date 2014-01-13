@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>{% block title %}{{config.package.name|title}} Mocha Runner{% endblock %}</title>
+    <link href="{{static_url('css/mocha.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
+  </head>
+  <body>
+    {%- include "snippet/head.html" %}
+    <script src="{{static_url('js/mocha.js')}}?nowrap"></script>
+    <div id="mocha"></div>
+    <script>
+      (function() {
+        var query = location.search.substring(1).split('&');
+        var contain = function(arr, value) {
+          for (var i in arr) {
+            if (arr[i] === value) {
+              return true;
+            }
+          }
+          return false;
+        };
+        seajs.config({
+          map: [function(url) {
+            if (!contain(query, 'cov')) {
+              return url;
+            }
+            var sources = [''
+            {%- if sourceFiles|length %}
+            {%- for file in sourceFiles %}
+              ,'{{file}}'
+            {%- endfor %}
+            {%- endif %}
+            ];
+            sources = sources.slice(1);
+            for (var i=0; i<sources.length; i++) {
+              if (url.indexOf(sources[i]) > 0) {
+                return url.replace(/\.js$/g, '-cov.js');
+              }
+            }
+            return url;
+          }]
+        });
+
+        mocha.setup('bdd');
+
+        {%- set specs = spec_files %}
+        var tests = {{specs|json_encode}};
+
+        var specs = [];
+        for (var i = 0; i < tests.length; i++) {
+          specs[i] = './' + tests[i];
+        }
+
+        seajs.use(specs, function() {
+          if (window.mochaPhantomJS) {
+            mochaPhantomJS.run()
+          } else {
+            mocha.run()
+          }
+        })
+      })();
+    </script>
+  </body>
+</html>
