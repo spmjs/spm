@@ -10,6 +10,7 @@ var log = require('../lib/utils/log');
 require('colorful').colorful();
 var spm = require('..');
 var parseIdentify = require('../lib/sdk/module').parseIdentify;
+var file = require('../lib/sdk/file');
 
 commander
   .option('-d, --depth <n>', 'set the depth to <n>', Infinity)
@@ -67,12 +68,7 @@ function tree(f, paths, depth) {
   paths = paths || ['sea-modules', path.join(spmrc.get('user.home'), '.spm', 'sea-modules')];
 
   var node = {};
-  var title = '';
-  if (pkg.family) {
-    title = pkg.family + '/' + pkg.name;
-  } else {
-    title = pkg.name;
-  }
+  var title = pkg.name;
   node.label = title + '@' + pkg.version;
 
   if (cache[title] && cache[title] !== pkg.version) {
@@ -84,17 +80,18 @@ function tree(f, paths, depth) {
 
   if (++depth > commander.depth) return node;
 
-  if (pkg.spm && pkg.spm.alias) {
-    var alias = pkg.spm.alias;
-    var devAlias = pkg.spm.devAlias || {};
+  if (pkg.spm && pkg.spm.dependencies) {
+    var deps = pkg.spm.dependencies;
+    var devDeps = pkg.spm.devDependencies || {};
 
-    var deps = Object.keys(alias).map(function(key) {
-      var depfile = alias[key];
-      if (depfile === key) {
-        depfile = devAlias[key] || depfile;
-      }
+    var deps = Object.keys(deps).map(function(key) {
+      var version = deps[key];
+      var depfile = key + '/' + version + '/' + (file.readJSON(
+        path.join('sea-modules', key, version, 'package.json')
+      ).spm.main || 'index');
+
       var parsed = parseIdentify(depfile);
-      if (parsed && parsed.family && parsed.name && parsed.version) {
+      if (parsed && parsed.name && parsed.version) {
         return parsed;
       }
     }).filter(function(key) {
@@ -130,14 +127,14 @@ function color(node) {
 function lookup(paths, pkg) {
   var pkgfile;
   paths.some(function(f) {
-    var fpath = path.join(f, pkg.family, pkg.name, pkg.version, 'package.json');
+    var fpath = path.join(f, pkg.name, pkg.version, 'package.json');
     if (file.exists(fpath)) {
       pkgfile = fpath;
       return true;
     }
   });
   if (!pkgfile) {
-    spm.log.error('package', pkg.family + '/' + pkg.name + '@' + pkg.version + ' not found');
+    spm.log.error('package', pkg.name + '@' + pkg.version + ' not found');
     return null;
   }
   return pkgfile;
