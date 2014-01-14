@@ -8,17 +8,19 @@ var exeq = require('exeq');
 require('colorful').colorful();
 var spm = require('..');
 var mochaBrowser = require('mocha-browser');
+var port = 8015;
 
 console.log();
 console.log('  Starting service for test runner ...'.to.cyan.color);
 
 spm.doc({
   server: true,
-  quiet: true
+  quiet: true,
+  port: port
 }, function() {
 
   mochaBrowser({
-    page: 'http://127.0.0.1:8000/tests/runner.html',
+    page: 'http://127.0.0.1:' + port + '/tests-runner.html',
     reporter: 'spec'
   }, function() {
     require('../lib/sdk/module').getSourceFiles().forEach(function(item) {
@@ -27,7 +29,7 @@ spm.doc({
     exeq([
       path.dirname(__dirname) +
       '/node_modules/mocha-browser/bin/mocha-browser ' +
-      'http://127.0.0.1:8000/tests/runner.html?cov -R html-cov -o ' +
+      'http://127.0.0.1:' + port + '/tests-runner.html?cov -R html-cov -o ' +
       outputJSON +' > ' + output
     ]).on('done', function() {
       try{
