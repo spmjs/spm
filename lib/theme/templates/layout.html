@@ -23,29 +23,28 @@
       {%- block body %}
       <aside id="sidebar-wrapper">
       <h1>
-          <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a><sup class="package-root"><a href="/">{{config.package.root}}{{config.package.family}}</a></sup>
+          <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a>
       </h1>
-        <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#{{config.package.family}}-{{config.package.name}}" title="点击查看此组件发布情况">{{config.package.version}}</a></p>
-        <p class="description">{{config.package.description}}</p>
-        <p class="keywords" style="display: none;">{{config.package.keywords[0]}}</p>
+        <p class="version">Current: <a href="https://spmjs.org/{{config.package.name}}" title="">{{config.package.version}}</a></p>
+        <p class="description" data-keyword="{{config.package.keywords[0]}}">{{config.package.description}}</p>
         {%- if config.package.repository %}
         <a class="source" href="{{config.package.repository.url|gitRepoUrl}}" target="_blank">View the Project</a>
         {%- endif %}
         {%- block sidebar %}
         <ul id="navigation" role="navigation">
-          <li><a href="{{content_url('index.html')}}">文档</a></li>
+          <li><a href="{{content_url('index.html')}}">Doc</a></li>
           {%- set example = resource.pages|find('examples') %}
           {%- if example %}
-          <li><a href="{{permalink_url(example)}}">演示</a></li>
+          <li><a href="{{permalink_url(example)}}">Demo</a></li>
           {%- endif %}
           {%- if theme.hasHistory %}
-          <li><a href="{{content_url('history.html')}}">历史</a></li>
+          <li><a href="{{content_url('history.html')}}">History</a></li>
           {%- endif %}
           {%- if theme.hasTest %}
-          <li><a class="test-link" href="{{content_url('tests-runner.html')}}" target="_blank">用例</a></li>
+          <li><a class="test-link" href="{{content_url('tests-runner.html')}}" target="_blank">Test</a></li>
           {%- endif %}
           {%- if config.package.bugs %}
-          <li><a class="issue-link" href="{{config.package.bugs.url}}" target="_blank">讨论</a></li>
+          <li><a class="issue-link" href="{{config.package.bugs.url}}" target="_blank">Issue</a></li>
           {%- endif %}
         </ul>
         {%- endblock %}

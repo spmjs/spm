@@ -20,17 +20,4 @@
   {%- endfor %}
 </ol>
 {%- endif %}
-
-{%- if config.package.family == 'arale' || config.package.family == 'alice' || config.package.family == 'alipay' %}
-{%- if config.package.maintainers|length > 0 %}
-<div id="maintainers">
-    {%- for value in config.package.maintainers %}
-    <a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid={{value|getNickName}}&siteid=cntaobao&status=2&charset=utf-8">
-        <img border="0" src="http://amos.alicdn.com/online.aw?v=2&uid={{value|getNickName}}&site=cntaobao&s=2&charset=utf-8" alt="点这里给我发消息" />
-        {{value|getNickName}}
-    </a>
-    {%- endfor %}
-</div>
-{%- endif %}
-{%- endif %}
 {%- endblock %}

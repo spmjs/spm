@@ -98,18 +98,6 @@ pre, code, tt {
     top: 2px;
     position: relative;
 }
-#sidebar-wrapper .package-root {
-    position: relative;
-    top: -14px;
-    left: 4px;
-    font-size: 12px;
-}
-#sidebar-wrapper .package-root a {
-    color: rgba(0, 0, 0, 0.2);
-}
-#sidebar-wrapper .package-root a:hover {
-    color: rgba(0, 0, 0, 0.33);
-}
 #navigation {
     list-style-type: none;
     font-size: 14px;
@@ -316,53 +304,6 @@ hr {
     padding-left: 20px;
 }
 
-#module-output {
-    margin: 10px 0 0;
-    padding: 0;
-    overflow: hidden;
-}
-#module-output li {
-    list-style: none;
-    float: left;
-    margin: 0 1px 3px 0;
-    line-height: 1;
-}
-#module-output a {
-    font-size: 24px;
-    font-family: arial;
-    line-height: 10px;
-    color: #ccc!important;
-}
-#module-output a:hover {
-    color: #aaa!important;
-}
-#output-card {
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 6px;
-    color: #888;
-    position: absolute;
-    display: none;
-    width: 200px;
-}
-#output-card h3,
-#output-card p {
-    margin: 0;
-    font-size: 12px;
-}
-#output-card h3 {
-    margin-bottom: 3px;
-}
-#module-output li.module-multiable {
-    font-size: 10px;
-    padding: 2px;
-    background: #81A6EA;
-    text-shadow: none;
-    color: #fff;
-    margin-right: 5px;
-    border-radius: 1px;
-}
-
 /* responsive */
 @media (max-width: 980px) {
     #body-wrapper, #sidebar-wrapper, #content-wrapper {
@@ -429,40 +370,6 @@ hr {
     background-position: -900px 50%;
 }
 
-.popup-install {
-    background: #fefefe;
-    font-size: 12px;
-    font-family: monospace,serif;
-    padding: 6px;
-    border: 1px solid #ddd;
-    color: #777;
-}
-
-.popup-install a {
-    text-decoration:none;
-    color: #08c;
-}
-
-#maintainers {
-    margin-top: 20px;
-    font-size: 12px;
-}
-
-#maintainers a {
-    color: #777;
-    opacity: 0.7;    
-}
-
-#maintainers a:hover {
-    color: #555;    
-    opacity: 1;    
-}
-
-#maintainers img {
-    position: relative;
-    top: 3px;
-}
-
 .other-versions {
     margin: 0;
     padding: 3px 8px;
@@ -515,30 +422,4 @@ hr {
 }
 .alice #sidebar-wrapper .source:active {
     box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), 0 -4px 0 0 rgba(0, 0, 0, 0.2) inset, 0 12px 24px 2px #83C822 inset;
-}
-
-.alice #module-output li.module-multiable {
-    background: #88C438;
-    border-radius: 1px;
-    color: #FFFFFF;
-    font-size: 10px;
-    margin-right: 5px;
-    padding: 2px;
-    text-shadow: none;
-}
-
-.alice #sidebar-wrapper .package-root a {
-    color: rgba(0, 0, 0, 0.2);
-}
-
-.alice #sidebar-wrapper .package-root a:hover {
-    color: rgba(0, 0, 0, 0.35);
-}
-
-.alice #module-output a {
-    color: rgba(0, 0, 0, 0.2);
-}
-
-.alice #module-output a:hover {
-    color: rgba(0, 0, 0, 0.35);
 }
