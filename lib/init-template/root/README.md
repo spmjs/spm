@@ -2,7 +2,7 @@
 
 ---
 
-A awesome CMD module! 
+A awesome CMD module!
 
 [{%= name %}](https://spmjs.org/{%= name %})
 
@@ -12,13 +12,8 @@ A awesome CMD module!
 
 It is very easy to use this module.
 
-````html
-<div class="{%= family %}-{%= name %}">
-</div>
-````
-
 ```javascript
-seajs.use('{%= name %}', function({%= varName %}) {
+seajs.use('src/{%= name %}', function({%= varName %}) {
 
 });
 ```

@@ -1,10 +1,9 @@
 {
-  "family": "{%= family %}",
   "name": "{%= name %}",
   "version": "{%= version %}",
   "description": "{%= description %}",
   "homepage": "{%= homepage %}",
-  "author": "{%= author %}xx",
+  "author": "{%= author %}",
   "maintainers": [
     "{%= author %}"
   ],
@@ -18,12 +17,14 @@
   "keywords": [],
   "licenses": "{%= licenses %}",
   "spm": {
-    "output": [
-      "{%= name %}.js",
-      "{%= name %}.css"
-    ],
-    "alias": {},
-    "devAlias": {},
-    "engines": {}
+    "main": "src/{%= name %}.js",
+    "denpendencies": {
+    },
+    "devDenpendencies": {
+      "expect": "0.2.0"
+    },
+    "engines": {
+      "seajs": "2.1.1"
+    }
   }
 }
