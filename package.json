@@ -39,7 +39,9 @@
     "requires": "~1.0.0",
     "grunt": "~0.4.1",
     "grunt-init": "~0.2.1",
-    "jscoverage": "~0.3.8"
+    "jscoverage": "~0.3.8",
+    "exeq": "~0.4.0",
+    "glob": "~3.2.8"
   },
   "devDependencies": {
     "sinon": "*",
