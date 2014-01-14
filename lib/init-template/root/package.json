@@ -25,6 +25,7 @@
     },
     "engines": {
       "seajs": "2.1.1"
-    }
+    },
+    "tests": "tests/*.js"
   }
 }
