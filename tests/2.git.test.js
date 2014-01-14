@@ -13,7 +13,8 @@ describe('git', function() {
 
   it('get remote', function(done) {
     git.remote(function(err, remote) {
-      remote.should.contain('github.com:spmjs/spm.git');
+      remote.should.contain('github.com');
+      remote.should.contain('spmjs/spm.git');
       done();
     });
   });
