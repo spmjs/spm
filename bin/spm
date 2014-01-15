@@ -9,6 +9,10 @@ var program = require('../lib/utils/program');
 var spawn = require('win-spawn');
 
 process.on('exit', function() {
+  // handle spm -V
+  if (commander.hasOwnProperty('version')) {
+    return;
+  }
   console.log();
 });
 
