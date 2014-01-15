@@ -16,7 +16,7 @@ Thumbs.db
 *.swo
 *.pyc
 *.pyo
-build
+.build
 node_modules
 _site
 sea-modules
