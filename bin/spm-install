@@ -26,9 +26,10 @@ commander.on('--help', function() {
   console.log('  ' + 'Examples:'.to.bold.blue);
   console.log();
   console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery');
-  console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery/jquery arale/class');
-  console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery/jquery' +
+  console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery arale-class');
+  console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery' +
               '@1.8.2'.to.cyan.color);
+  console.log('   $ ' + 'spm install'.to.magenta.color + ' underscore --save');
   console.log();
 });
 

@@ -26,7 +26,7 @@ var file = spm.sdk.file;
 
 var query = commander.args[0];
 
-// handle "spm tree arale/class"
+// handle "spm tree class"
 if (query) {
   // don't show spm install log message
   log.quiet = true;
