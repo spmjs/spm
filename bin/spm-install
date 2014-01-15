@@ -6,7 +6,7 @@ var path = require('path');
 var spm = require('..');
 var spmrc = require('spmrc');
 
-commander.usage('[options] family/name[@version]');
+commander.usage('[options] name[@version]');
 
 commander
   .option('-s, --source [name]', 'the source repo name')

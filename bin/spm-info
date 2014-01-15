@@ -4,7 +4,7 @@ var commander = require('commander');
 require('colorful').colorful();
 var spm = require('..');
 
-commander.usage('[options] family/name[@version]');
+commander.usage('[options] name[@version]');
 
 commander
   .option('-s, --source [name]', 'default value will be the first source')
