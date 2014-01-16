@@ -46,7 +46,7 @@
 
         mocha.setup('bdd');
 
-        {%- set specs = spec_files %}
+        {%- set specs = specFiles %}
         var tests = {{specs|json_encode}};
 
         var specs = [];
