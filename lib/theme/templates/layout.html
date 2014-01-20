@@ -18,20 +18,20 @@
     {%- endblock %}
     {%- block afterstyle %}{% endblock %}
   </head>
-  <body class="{%- if config.isCssModule %}alice{%- endif %}">
-    <div id="body-wrapper">
+  <body class="spmjs {%- if config.isCssModule %}spmcss{%- endif %}">
+    <div class="body-wrapper">
       {%- block body %}
-      <aside id="sidebar-wrapper">
+      <aside class="sidebar-wrapper">
       <h1>
           <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a>
       </h1>
-        <p class="version">Current: <a href="https://spmjs.org/{{config.package.name}}" title="">{{config.package.version}}</a></p>
-        <p class="description" data-keyword="{{config.package.keywords[0]}}">{{config.package.description}}</p>
+        <p class="sidebar-version">Current: <a href="https://spmjs.org/{{config.package.name}}" title="">{{config.package.version}}</a></p>
+        <p class="sidebar-description" data-keyword="{{config.package.keywords[0]}}">{{config.package.description}}</p>
         {%- if config.package.repository %}
-        <a class="source" href="{{config.package.repository.url|gitRepoUrl}}" target="_blank">View the Project</a>
+        <a class="sidebar-source" href="{{config.package.repository.url|gitRepoUrl}}" target="_blank">View the Project</a>
         {%- endif %}
         {%- block sidebar %}
-        <ul id="navigation" role="navigation">
+        <ul class="sidebar-navigation" role="navigation">
           <li><a href="{{content_url('index.html')}}">Doc</a></li>
           {%- set example = resource.pages|find('examples') %}
           {%- if example %}
@@ -52,14 +52,14 @@
         {%- endblock %}
       </aside>
       {%- block afterside %}{% endblock %}
-      <div id="content-wrapper">
-        <div id="content">{% block content %}{% endblock %}</div>
+      <div class="content-wrapper">
+        {% block content %}{% endblock %}
       </div>
       {%- endblock %}
     </div>
-    <div id="footer-wrapper">
+    <div class="footer-wrapper">
       <footer>
-        <p class="powered">
+        <p class="footer-powered">
         {%- block footer %}{% endblock %}
         {%- include "snippet/foot.html" %}
         </p>

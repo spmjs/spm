@@ -15,7 +15,7 @@ seajs.config({
   base: 'https://a.alipayobjects.com/'
 });
 seajs.use('jquery/jquery/1.7.2/jquery', function($) {
-  $('#content code').each(function(index, item) {
+  $('.content-wrapper code').each(function(index, item) {
     item = $(item);
     var matcher = item.html().match(/^(tag:)?(NEW|FIXED|IMPROVED|CHANGED|UNRESOLVED)/i);
     if (matcher) {
@@ -26,14 +26,15 @@ seajs.use('jquery/jquery/1.7.2/jquery', function($) {
 });
 </script>
 <style>
-#content p {
+.spmjs .content-wrapper p {
     border-top: 1px dashed #ccc;
     font-size: 16px;
     margin: 12px 0;
     padding: 12px 0 0 0;
     position: relative;
 }
-#content h2 {
+
+.spmjs .content-wrapper h2 {
     margin-top: 60px;
     font-family: Georgia;
     border-bottom: none;
