@@ -9,7 +9,7 @@ var log = require('../lib/utils/log');
 
 require('colorful').colorful();
 var spm = require('..');
-var parseIdentify = require('../lib/sdk/module').parseIdentify;
+var parseIdentify = require('cmd-util').iduri.resolve;
 var file = require('../lib/sdk/file');
 
 commander
@@ -82,18 +82,12 @@ function tree(f, paths, depth) {
 
   if (pkg.spm && pkg.spm.dependencies) {
     var deps = pkg.spm.dependencies;
-    var devDeps = pkg.spm.devDependencies || {};
 
     var deps = Object.keys(deps).map(function(key) {
-      var version = deps[key];
-      var depfile = key + '/' + version + '/' + (file.readJSON(
-        path.join('sea-modules', key, version, 'package.json')
-      ).spm.main || 'index');
-
-      var parsed = parseIdentify(depfile);
-      if (parsed && parsed.name && parsed.version) {
-        return parsed;
-      }
+      return {
+        name: key,
+        version: deps[key]
+      };
     }).filter(function(key) {
       return key;
     });
