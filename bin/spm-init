@@ -14,9 +14,7 @@ var homeDir = process.env.HOME || process.env.USERPROFILE;
 if (!homeDir) {
   homeDir = process.env.HOMEDRIVE + process.env.HOMEPATH;
 }
-console.log(path.dirname(__dirname));
 var defaultTemplate = path.dirname(__dirname) + '/lib/init-template/';
-console.log(defaultTemplate);
 var template = exports.template = (spmrc.get('init.template') || defaultTemplate).replace(/^~/, homeDir);
 
 /*
