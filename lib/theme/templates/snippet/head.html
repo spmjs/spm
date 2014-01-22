@@ -23,11 +23,3 @@
   });
 })();
 </script>
-
-{%- set cssdeps = cssDependencies %}
-
-{%- if cssdeps|length %}
-{%- for file in cssdeps %}
-<link rel="stylesheet" href="/{{file}}" />
-{%- endfor %}
-{%- endif %}
