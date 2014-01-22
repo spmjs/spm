@@ -33,15 +33,13 @@
     "spmrc": "spmjs/spmrc#spm3.x",
     "archy": "~0.0.2",
     "rimraf": "~2.2.5",
-    "nico": "lepture/nico",
+    "nico": "afc163/nico",
     "mocha-browser": "afc163/mocha-browser",
     "lodash": "~2.4.1",
-    "requires": "~1.0.0",
     "grunt": "~0.4.2",
     "grunt-init": "~0.2.1",
     "jscoverage": "~0.3.8",
     "exeq": "~0.4.0",
-    "glob": "~3.2.8",
     "prompt": "~0.2.12"
   },
   "devDependencies": {
