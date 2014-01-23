@@ -12,8 +12,8 @@ describe('git', function() {
 
   it('get remote', function(done) {
     git.remote(function(err, remote) {
-      remote.should.contain('github.com');
-      remote.should.contain('spmjs/spm.git');
+      remote.should.containEql('github.com');
+      remote.should.containEql('spmjs/spm.git');
       done();
     });
   });
