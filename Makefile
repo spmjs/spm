@@ -4,26 +4,17 @@ all:
 	@chmod -R +x .git/hooks/
 
 
-specs := $(shell find ./tests -name '*.test.js' ! -path "*node_modules/*")
+specs := $(shell find ./tests -name '*.js' ! -path "*node_modules/*")
 reporter = spec
 test: clean
 	@node_modules/.bin/mocha --reporter ${reporter} ${specs}
 
-jsfiles := $(shell find ./ -name '*.js' ! -path "*utils/tar.js" ! -path "*node_modules/*" ! -path "*cases/*" ! -path "*data/*" ! -path "*scripts/*");
+jsfiles := $(shell find ./ -name '*.js' ! -path "*init-template/*.js" ! -path "*theme/*.js" ! -path "*utils/tar.js" ! -path "*node_modules/*" ! -path "*cases/*" ! -path "*data/*" ! -path "*scripts/*");
 binfiles := $(shell find ./bin/* ! -path "*.iml");
 lint:
 	@node_modules/.bin/jshint ${jsfiles}
 	@node_modules/.bin/jshint ${binfiles}
 
-out = _site/coverage.html
-coverage:
-	@rm -rf lib-cov
-	@jscoverage lib lib-cov
-	@SPM_COVERAGE=1 $(MAKE) test reporter=html-cov > ${out}
-	@rm -rd lib-cov
-	@echo
-	@echo "Built Report to ${out}"
-	@echo
 
 clean:
 	@rm -fr .build
@@ -31,4 +22,4 @@ clean:
 	@find tests -name 'dist' -exec rm -fr {} +
 
 
-.PHONY: all test lint coverage clean
+.PHONY: all test lint clean

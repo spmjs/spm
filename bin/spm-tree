@@ -83,7 +83,7 @@ function tree(f, paths, depth) {
   if (pkg.spm && pkg.spm.dependencies) {
     var deps = pkg.spm.dependencies;
 
-    var deps = Object.keys(deps).map(function(key) {
+    deps = Object.keys(deps).map(function(key) {
       return {
         name: key,
         version: deps[key]
