@@ -38,8 +38,7 @@
     "grunt": "~0.4.2",
     "grunt-init": "~0.2.1",
     "jscoverage": "~0.3.8",
-    "exeq": "~0.4.0",
-    "prompt": "~0.2.12"
+    "exeq": "~0.4.0"
   },
   "devDependencies": {
     "sinon": "*",
