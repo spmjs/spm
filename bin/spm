@@ -150,15 +150,6 @@ function executable(subcmd) {
     commands.push(cmd.name);
   }
 
-  // notification for spm build
-  if (subcmd === 'build') {
-    console.log();
-    console.log("  `build` is not a part of spm now. You can install it:");
-    console.log();
-    console.log("      $ npm install spm-build -g");
-    process.exit();
-  }
-
   function printSimilar() {
     // guess commands
     commands = getSimilarCommands(subcmd, commands);
