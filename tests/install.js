@@ -180,6 +180,36 @@ describe('spm install', function() {
     });
   });
 
-  it('--save', function() {});
+  it('--save', function(done) {
+    server = http.createServer(function(req, res) {
+      res.writeHead(200);
+      var data = {
+        name: "example",
+        version: "1.0.0",
+        filename: "example-1.0.0.tar.gz",
+        md5: "999193906e30e8d85208b4eff843570a"
+      };
+      res.end(JSON.stringify(data));
+    }).listen(port, function() {
+      var dest = 'tests/sea-modules';
+      install({
+        destination: dest,
+        cache: cache,
+        query: ['example@1.0.0'],
+        save: true,
+        saveDev: true,
+        server: 'http://127.0.0.1:' + port
+      }, function() {
+        var pkg = file.readJSON('package.json');
+        pkg.spm.dependencies.example.should.eql('1.0.0');
+        pkg.spm.devDependencies.example.should.eql('1.0.0');
+        // 复原
+        delete pkg.spm;
+        file.writeJSON('package.json', pkg);
+        file.rmdir(dest);
+        done();
+      });
+    });
+  });
 
 });
