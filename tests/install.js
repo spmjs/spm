@@ -181,6 +181,7 @@ describe('spm install', function() {
   });
 
   it('--save', function(done) {
+    var oldPkg = fs.readFileSync('package.json');
     server = http.createServer(function(req, res) {
       res.writeHead(200);
       var data = {
@@ -204,8 +205,7 @@ describe('spm install', function() {
         pkg.spm.dependencies.example.should.eql('1.0.0');
         pkg.spm.devDependencies.example.should.eql('1.0.0');
         // 复原
-        delete pkg.spm;
-        file.writeJSON('package.json', pkg);
+        fs.writeFileSync('package.json', oldPkg);
         file.rmdir(dest);
         done();
       });
