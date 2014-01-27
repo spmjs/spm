@@ -8,15 +8,6 @@ var spm = require('..');
 var program = require('../lib/utils/program');
 var spawn = require('win-spawn');
 
-try {
-  var pkg = require(path.resolve('package.json'));
-  pkg.spm.main;
-  spm.pkg = pkg;
-} catch(e) {
-  console.log('  Check if package.json and "spm" key existed.');
-  process.exit();
-}
-
 process.on('exit', function() {
   // handle spm -V
   if (commander.hasOwnProperty('version')) {
@@ -127,12 +118,20 @@ if (subcmd === 'help') {
     spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
   }
 } else {
+  try {
+    var pkg = require(path.resolve('package.json'));
+    pkg.spm.main;
+    spm.pkg = pkg;
+  } catch(e) {
+    console.log('  Check if package.json and "spm" key existed.');
+    process.exit();
+  }
   bin = executable(subcmd);
   if (bin) {
     spm.run.record(subcmd);
     spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
   }
-  }
+}
 
 
 // helpers
