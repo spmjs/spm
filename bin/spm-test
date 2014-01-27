@@ -9,7 +9,14 @@ require('colorful').colorful();
 var spm = require('..');
 var mochaBrowser = require('mocha-browser');
 var mo = require('../lib/sdk/module');
+var file = require('../lib/sdk/file');
 var port = 8015;
+
+var pkg = file.readJSON('package.json');
+if (!pkg) {
+  log.error('miss', 'package.json');
+  process.exit(2);
+}
 
 console.log();
 console.log('  Starting service for test runner ...'.to.cyan.color);

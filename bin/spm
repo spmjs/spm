@@ -118,14 +118,6 @@ if (subcmd === 'help') {
     spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
   }
 } else {
-  try {
-    var pkg = require(path.resolve('package.json'));
-    pkg.spm.main;
-    spm.pkg = pkg;
-  } catch(e) {
-    console.log('  Check if package.json and "spm" key existed.');
-    process.exit();
-  }
   bin = executable(subcmd);
   if (bin) {
     spm.run.record(subcmd);
