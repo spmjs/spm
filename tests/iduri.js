@@ -13,7 +13,8 @@ describe('iduri', function() {
   });
   it('name@xxx', function() {
     var data = iduri.resolve('name@xxx');
-    should.not.exist(data);
+    data.name.should.eql('name');
+    data.version.should.eql('xxx');
   });
   it('name', function() {
     var data = iduri.resolve('name');
