@@ -148,7 +148,36 @@ describe('spm install', function() {
     });
   });
 
-  it('dependencies', function() {
+  it('dependencies', function(done) {
+    server = http.createServer(function(req, res) {
+      var isExample2 = (req.url.indexOf('example2') > 0);
+      res.writeHead(200);
+      var data = {
+        name: isExample2 ? "example2" : "example",
+        version: "1.0.0",
+        filename: (isExample2 ? "example2" : "example") + "-1.0.0.tar.gz",
+        md5: isExample2 ? "c1ce6426a14e9fc22bdef691512d4900" : "999193906e30e8d85208b4eff843570a"
+      };
+      if (isExample2) {
+        data.dependencies = [
+          "example@1.0.0"
+        ];
+      }
+      res.end(JSON.stringify(data));
+    }).listen(port, function() {
+      var dest = 'tests/sea-modules';
+      install({
+        destination: dest,
+        cache: cache,
+        query: ['example2@1.0.0'],
+        server: 'http://127.0.0.1:' + port
+      }, function() {
+        file.exists(dest + '/example/1.0.0').should.eql(true);
+        file.exists(dest + '/example2/1.0.0').should.eql(true);
+        file.rmdir(dest);
+        done();
+      });
+    });
   });
 
   it('--save', function() {});
