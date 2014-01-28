@@ -26,3 +26,5 @@ exports.sdk = {};
 exports.sdk.iduri = require('./lib/sdk/iduri');
 exports.sdk.yuan = require('./lib/sdk/yuan');
 exports.sdk.file = require('./lib/sdk/file');
+exports.sdk.module = require('./lib/sdk/module');
+exports.sdk.git = require('./lib/sdk/git');
