@@ -8,6 +8,12 @@ A awesome CMD module!
 
 ---
 
+## Install
+
+```
+$ spm install {%= name %} --save
+```
+
 ## Usage
 
 It is very easy to use this module.
