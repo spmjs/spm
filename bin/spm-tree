@@ -46,10 +46,10 @@ if (query) {
   return;
 }
 
-// handle "spm tree"
-if (!file.exists('package.json')) {
-  console.log('   package.json missing.');
-  process.exit(1);
+var p = file.readJSON('package.json');
+if (!p || !p.spm) {
+  log.error('miss', 'package.json or "spm" key');
+  process.exit(2);
 }
 
 console.log();
