@@ -25,4 +25,17 @@ describe('file', function() {
     file.contain(process.cwd(), process.cwd() + '/tests/file.js').should.eql(true);
   });
 
+  it('mkdir & rmdir', function() {
+    file.mkdir('tests/files');
+    file.exists('tests/files').should.eql(true);
+    file.rmdir('tests/files');
+    file.exists('tests/files').should.eql(false);
+  });
+
+  it('copy', function() {
+    file.copy('tests/file.js', 'tests/copyed');
+    file.exists('tests/copyed').should.eql(true);
+    require('fs').unlinkSync('tests/copyed');
+  });
+
 });
