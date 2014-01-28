@@ -33,9 +33,9 @@ describe('log', function() {
     log.info('info', 'info');
     console_info.callCount.should.eql(1);
     console_info.calledWith('           info: info').should.eql(true);
-    log.warn('warn', 'warn');
+    log.warn('', '');
     console_warn.callCount.should.eql(1);
-    log.error('error', 'error');
+    log.error('', '');
     console_error.callCount.should.eql(1);
   });
 
