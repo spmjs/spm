@@ -24,6 +24,7 @@ describe('log', function() {
   });
 
   it('default level', function() {
+    console.warn = console.error = function() {};
     var console_log = sinon.spy(console, 'log');
     var console_info = sinon.spy(console, 'info');
     var console_warn = sinon.spy(console, 'warn');
@@ -33,9 +34,9 @@ describe('log', function() {
     log.info('info', 'info');
     console_info.callCount.should.eql(1);
     console_info.calledWith('           info: info').should.eql(true);
-    log.warn();
+    log.warn('warn', 'warn');
     console_warn.callCount.should.eql(1);
-    log.error();
+    log.error('error', 'error');
     console_error.callCount.should.eql(1);
   });
 
