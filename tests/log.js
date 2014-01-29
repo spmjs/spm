@@ -24,7 +24,14 @@ describe('log', function() {
   });
 
   it('default level', function() {
-    console.warn = console.error = function() {};
+    var old_console_warn = console.warn;
+    var old_console_error = console.error;
+    console.warn = function() {
+      console.warn = old_console_warn;
+    };
+    console.error = function() {
+      console.error = old_console_error;
+    };
     var console_log = sinon.spy(console, 'log');
     var console_info = sinon.spy(console, 'info');
     var console_warn = sinon.spy(console, 'warn');
