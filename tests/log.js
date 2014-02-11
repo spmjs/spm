@@ -45,6 +45,7 @@ describe('log', function() {
     console_warn.callCount.should.eql(1);
     log.error('error', 'error');
     console_error.callCount.should.eql(1);
+    log.config({ color: true });
   });
 
 });
