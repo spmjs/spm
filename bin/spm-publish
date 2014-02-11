@@ -3,6 +3,7 @@
 var commander = require('commander');
 require('colorful').colorful();
 var spm = require('..');
+var file = require('../lib/sdk/file');
 
 commander.usage('[options] name');
 
@@ -46,9 +47,15 @@ commander.parse(process.argv);
 // verbose vs quiet
 spm.log.config(commander);
 
+var pkg = file.readJSON('package.json');
+if (!pkg) {
+  log.error('miss', 'package.json');
+  process.exit(2);
+}
+
 console.log();
 if (commander.doc) {
-  spm.upload(commander);
+  spm.upload(commander, pkg);
 } else {
-  spm.publish(commander);
+  spm.publish(commander, pkg);
 }
