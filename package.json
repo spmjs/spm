@@ -15,6 +15,7 @@
     "spmjs",
     "package",
     "tool",
+    "command line",
     "browser"
   ],
   "dependencies": {
