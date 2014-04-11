@@ -2,7 +2,7 @@
 
 ---
 
-A awesome CMD module!
+An awesome CMD module!
 
 [{%= name %}](https://spmjs.org/{%= name %})
 
