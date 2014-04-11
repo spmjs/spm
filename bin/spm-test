@@ -4,7 +4,6 @@ var exeq = require('exeq');
 var path = require('path');
 var output = '_site/coverage.html';
 var outputJSON = '_site/coverage.json';
-var exeq = require('exeq');
 require('colorful').colorful();
 var spm = require('..');
 var mochaBrowser = require('mocha-browser');
