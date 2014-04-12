@@ -9,12 +9,18 @@ commander.usage('[section.key] [value]');
 commander
   .command('remove <section>')
   .description('remove a section')
-  .action(config.remove);
+  .action(function(k, v) {
+    config.remove(k, v);
+    process.exit(0);
+  });
 
 commander
   .command('show')
   .description('show your spm configuration')
-  .action(config.show);
+  .action(function() {
+    config.show();
+    process.exit(0);
+  });
 
 
 commander.on('--help', function() {
