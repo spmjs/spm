@@ -5,7 +5,7 @@ var fs = require('fs');
 var file = require('../lib/sdk/file');
 var log = require('../lib/utils/log');
 var server;
-var port = 17175;
+var port = 12345;
 var dest = 'tests/sea-modules';
 var cache = 'tests/cache';
 
@@ -37,7 +37,6 @@ describe('spm install', function() {
       };
       res.end(JSON.stringify(data));
     }).listen(port, function() {
-      var dest = 'tests/sea-modules';
       install({
         destination: dest,
         cache: cache,
@@ -54,6 +53,7 @@ describe('spm install', function() {
     var log_info = log.info;
     log.info = function(type) {
       log.info = log_info;
+      log.info.apply(log, arguments);
       type.should.eql('found');
     };
     server = http.createServer(function(req, res) {
@@ -68,7 +68,6 @@ describe('spm install', function() {
       };
       res.end(JSON.stringify(data));
     }).listen(port, function() {
-      var dest = 'tests/sea-modules';
       install({
         destination: dest,
         cache: cache,
@@ -84,6 +83,7 @@ describe('spm install', function() {
     var log_info = log.info;
     log.info = function(type) {
       log.info = log_info;
+      log.info.apply(log, arguments);
       type.should.eql('install');
     };
     server = http.createServer(function(req, res) {
@@ -98,7 +98,6 @@ describe('spm install', function() {
       };
       res.end(JSON.stringify(data));
     }).listen(port, function() {
-      var dest = 'tests/sea-modules';
       install({
         destination: dest,
         cache: cache,
