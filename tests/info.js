@@ -3,7 +3,7 @@ var info = require('../lib/info');
 var yuan = require('../lib/sdk/yuan');
 var http = require('http');
 var server;
-var port = 17173;
+var port = 12345;
 
 describe('spm info', function() {
 

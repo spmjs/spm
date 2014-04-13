@@ -2,7 +2,7 @@ var should = require('should');
 var publish = require('../lib/publish');
 var http = require('http');
 var server;
-var port = 17176;
+var port = 12345;
 
 describe('spm publish', function() {
 
