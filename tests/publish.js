@@ -8,6 +8,12 @@ describe('spm publish', function() {
 
   beforeEach(function() {
     server && server.close();
+    server = null;
+  });
+
+  afterEach(function() {
+    server && server.close();
+    server = null;
   });
 
   it('publish success', function(done) {

@@ -9,6 +9,12 @@ describe('spm info', function() {
 
   beforeEach(function() {
     server && server.close();
+    server = null;
+  });
+
+  afterEach(function() {
+    server && server.close();
+    server = null;
   });
 
   it('module with version', function(done) {

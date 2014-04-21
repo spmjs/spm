@@ -17,6 +17,11 @@ describe('spm install', function() {
     server = null;
   });
 
+  afterEach(function() {
+    server && server.close();
+    server = null;
+  });
+
   it('config', function() {
     install.config.dest.should.eql('sea-modules');
     install.config.cache.should.containEql('.spm/cache');
