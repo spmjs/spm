@@ -7,7 +7,7 @@ install:
   - npm install mocha-browser nico
 
 before_script:
-  - git clone git://github.com/aralejs/nico-arale.git _theme
+  - git clone git://github.com/spmjs/nico-cmd.git _theme
   - node_modules/.bin/nico build --theme _theme -C _theme/nico.js
 
 script:
