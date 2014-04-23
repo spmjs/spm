@@ -2,6 +2,8 @@
 
 var commander = require('commander');
 var spm = require('..');
+var file = require('../lib/sdk/file');
+var log = require('../lib/utils/log');
 require('colorful').colorful();
 
 commander.usage('[options]');
@@ -37,6 +39,13 @@ commander.parse(process.argv);
 
 if (!process.argv[2]) {
   commander.help();
+}
+
+var pkg = file.readJSON('package.json');
+if (!pkg || !pkg.spm) {
+  console.log();
+  log.error('miss', 'package.json or "spm" key');
+  process.exit(2);
 }
 
 console.log();

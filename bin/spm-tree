@@ -48,6 +48,7 @@ if (query) {
 
 var p = file.readJSON('package.json');
 if (!p || !p.spm) {
+  console.log();
   log.error('miss', 'package.json or "spm" key');
   process.exit(2);
 }
