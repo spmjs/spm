@@ -11,14 +11,3 @@ if (process.env.SUDO_USER) {
   // don't install spm now
   process.exit(1);
 }
-
-try {
-  require('spm').plugin.uninstall('zip');
-  require('spm').plugin.uninstall('doctor');
-  require('spm').plugin.uninstall('test');
-  require('spm').plugin.uninstall('totoro');
-  require('spm').plugin.uninstall('watch');
-  require('spm').plugin.uninstall('cdn');
-  require('spm').plugin.uninstall('doc');
-  require('spm').plugin.uninstall('init');
-} catch(e) {}
