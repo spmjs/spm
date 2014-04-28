@@ -26,11 +26,11 @@ commander
 commander.on('--help', function() {
   console.log('  ' + 'How to use:'.to.bold.blue.color);
   console.log();
-  console.log('    Config file is located at ' + '~/.spm/spmrc'.to.bold.color + ' with ini format');
+  console.log('    Config file is located at ' + '~/.spm/spmrc-3x'.to.bold.color + ' with ini format');
   console.log('    You can edit with your favorite editor, or through the commands:');
   console.log();
   console.log('    $ ' + 'spm config '.to.magenta.color + 'user.username'.to.cyan.color + ' yourname');
-  console.log('    $ ' + 'spm config '.to.magenta.color + 'source:spm.url '.to.cyan.color + 'https://spmjs.org'.to.underline.color);
+  console.log('    $ ' + 'spm config '.to.magenta.color + 'source:spm.url '.to.cyan.color + 'http://spmjs.io'.to.underline.color);
   console.log();
 });
 
