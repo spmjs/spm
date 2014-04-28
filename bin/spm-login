@@ -7,7 +7,7 @@ commander.usage('[options]');
 
 commander
   .option('-u, --username <username>', 'username of your account')
-  .option('-p, --password <password>', 'password of your account')
+  .option('-p, --token <token>', 'token of your account')
   .option('-s, --source [source]', 'default value will be the first source');
 
 commander.parse(process.argv);
