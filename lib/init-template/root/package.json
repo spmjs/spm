@@ -2,6 +2,7 @@
   "name": "{%= name %}",
   "version": "{%= version %}",
   "description": "{%= description %}",
+  "keywords": [],
   "homepage": "{%= homepage %}",
   "author": "{%= author %}",
   "maintainers": [
@@ -12,9 +13,8 @@
     "url": "{%= repository %}"
   },
   "bugs": {
-    "url": ""
+    "url": "{%= repository %}/issues"
   },
-  "keywords": [],
   "licenses": "{%= licenses %}",
   "spm": {
     "main": "index.js",
