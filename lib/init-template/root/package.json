@@ -21,7 +21,7 @@
     "denpendencies": {
     },
     "devDependencies": {
-      "expect": "0.2.0"
+      "expect": "0.3.1"
     },
     "engines": {
       "seajs": "2.2.1"
