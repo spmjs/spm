@@ -18,7 +18,7 @@
   "licenses": "{%= licenses %}",
   "spm": {
     "main": "index.js",
-    "denpendencies": {
+    "dependencies": {
     },
     "devDependencies": {
       "expect": "0.3.1"
