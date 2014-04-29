@@ -17,14 +17,14 @@
   "keywords": [],
   "licenses": "{%= licenses %}",
   "spm": {
-    "main": "src/{%= name %}.js",
+    "main": "index.js",
     "denpendencies": {
     },
     "devDenpendencies": {
       "expect": "0.2.0"
     },
     "engines": {
-      "seajs": "2.1.1"
+      "seajs": "2.2.0"
     },
     "tests": "tests/*.js"
   }

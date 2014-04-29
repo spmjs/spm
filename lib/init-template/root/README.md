@@ -2,9 +2,9 @@
 
 ---
 
-An awesome CMD module!
+An awesome spmjs module!
 
-[{%= name %}](https://spmjs.org/{%= name %})
+![{%= name %}](http://spmjs.io/badge/{%= name %})
 
 ---
 
@@ -18,12 +18,12 @@ $ spm install {%= name %} --save
 
 It is very easy to use this module.
 
-```javascript
-seajs.use('src/{%= name %}', function({%= varName %}) {
-
-});
+```js
+var {%= name %} = require('{%= name %}');
+// use {%= name %}
 ```
 
 ## Api
 
 Here is some details.
+
