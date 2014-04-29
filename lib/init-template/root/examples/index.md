@@ -5,7 +5,7 @@
 ## Normal usage
 
 ````javascript
-seajs.use('{%= name %}', function({%= varName %}) {
+seajs.use('index', function({%= varName %}) {
 
 });
 ````
