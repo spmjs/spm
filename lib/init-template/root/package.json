@@ -20,7 +20,7 @@
     "main": "index.js",
     "denpendencies": {
     },
-    "devDenpendencies": {
+    "devDependencies": {
       "expect": "0.2.0"
     },
     "engines": {
