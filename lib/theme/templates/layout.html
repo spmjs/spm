@@ -25,7 +25,7 @@
       <h1>
           <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a>
       </h1>
-        <p class="sidebar-version">Current: <a href="https://spmjs.org/{{config.package.name}}" title="">{{config.package.version}}</a></p>
+        <p class="sidebar-version">Version: <a href="http://spmjs.io/package/{{config.package.name}}" title="">{{config.package.version}}</a></p>
         <p class="sidebar-description" data-keyword="{{config.package.keywords[0]}}">{{config.package.description}}</p>
         {%- if config.package.repository %}
         <a class="sidebar-source" href="{{config.package.repository.url|gitRepoUrl}}" target="_blank">View the Project</a>
@@ -43,8 +43,8 @@
           {%- if theme.hasTest %}
           <li><a class="test-link" href="{{content_url('tests-runner.html')}}" target="_blank">Test</a></li>
           {%- endif %}
-          {%- if config.package.bugs %}
-          <li><a class="issue-link" href="{{config.package.bugs.url}}" target="_blank">Issue</a></li>
+          {%- if config.package.bugs and config.package.bugs.url %}
+          <li><a class="issue-link" href="{{config.package.bugs.url}}" target="_blank">Issues</a></li>
           {%- endif %}
         </ul>
         {%- endblock %}
