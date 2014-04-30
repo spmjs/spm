@@ -30,7 +30,7 @@
         {%- endif %}
         {%- block sidebar %}
         <ul class="sidebar-navigation" role="navigation">
-          <li><a href="{{content_url('index.html')}}">Index</a></li>
+          <li><a href="{{content_url('index.html')}}">Doc</a></li>
           {%- set example = resource.pages|find('examples') %}
           {%- if example %}
           <li><a href="{{permalink_url(example)}}">Demo</a></li>
