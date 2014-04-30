@@ -2,9 +2,9 @@
 
 ---
 
-An awesome spmjs module!
+[![spm version](http://spmjs.io/badge/{%= name %})](http://spmjs.io/package/{%= name %})
 
-![{%= name %}](http://spmjs.io/badge/{%= name %})
+An awesome spmjs module!
 
 ---
 
