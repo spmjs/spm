@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="{{system.name}} {{system.version}}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {%- block assets %}
     <link type="image/x-icon" href="{{static_url('css/favicon.ico')}}" rel="icon">
     <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
@@ -15,7 +14,6 @@
     <!--[if lt IE 9]>
     <script src="{{static_url('js/html5shiv.js')}}"></script>
     <![endif]-->
-    {%- endblock %}
     {%- block afterstyle %}{% endblock %}
   </head>
   <body class="spmjs {%- if config.isCssModule %}spmcss{%- endif %}">
