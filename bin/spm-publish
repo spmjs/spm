@@ -49,9 +49,9 @@ commander.parse(process.argv);
 spm.log.config(commander);
 
 var pkg = file.readJSON('package.json');
-if (!pkg) {
+if (!pkg || !pkg.spm) {
   console.log();
-  log.error('miss', 'package.json');
+  log.error('miss', 'package.json or "spm" key');
   process.exit(2);
 }
 
