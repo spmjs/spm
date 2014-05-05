@@ -6,8 +6,10 @@ all:
 
 specs := $(shell find ./tests -name '*.js' ! -path "*node_modules/*" ! -path "*sea-modules/*")
 reporter = spec
-test: clean
-	@node_modules/.bin/mocha --reporter ${reporter} ${specs}
+test:
+	./node_modules/.bin/istanbul cover \
+		./node_modules/.bin/_mocha -- -R ${reporter} ${specs}
+
 
 jsfiles := $(shell find ./ -name '*.js' ! -path "*init-template/*.js" ! -path "*theme/*.js" ! -path "*utils/tar.js" ! -path "*node_modules/*" ! -path "*cases/*" ! -path "*data/*" ! -path "*scripts/*");
 binfiles := $(shell find ./bin/* ! -path "*.iml");
