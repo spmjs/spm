@@ -4,7 +4,7 @@
 
 [![spm version](http://spmjs.io/badge/{%= name %})](http://spmjs.io/package/{%= name %})
 
-An awesome spmjs module!
+An awesome spm package!
 
 ---
 
@@ -16,8 +16,6 @@ $ spm install {%= name %} --save
 
 ## Usage
 
-It is very easy to use this module.
-
 ```js
 var {%= name %} = require('{%= name %}');
 // use {%= name %}
@@ -25,5 +23,5 @@ var {%= name %} = require('{%= name %}');
 
 ## Api
 
-Here is some details.
+Here is more details.
 
