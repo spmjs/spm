@@ -46,7 +46,8 @@
     "sinon": "*",
     "jshint": "*",
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "istanbul": "*"
   },
   "bin": {
     "spm": "bin/spm"

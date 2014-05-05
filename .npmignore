@@ -32,3 +32,4 @@ _site/
 tests/
 docs/
 _theme/
+coverage
