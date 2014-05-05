@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+
+require('colorful').colorful();
+var commander = require('commander');
+var umi = require('umi');
+var buildArgs = umi.buildArgs;
+
+
+commander.usage('[options]');
+commander.version(require('../package').version);
+
+commander
+  .option('-I, --input-directory [dir]', 'source for publishing')
+  .option('-O, --output-directory [dir]', 'local server port')
+  .option('--include [include]', 'build documentation')
+  .option('--ignore [ignore]', 'start a server for documentation')
+  .option('--idleading [idleading]', 'start a server of watching source')
+  .parse(process.argv);
+
+
+var commandArgs = {
+  dest: commander.outputDirectory,
+  cwd: commander.inputDirectory,
+  include: commander.relative,
+  ignore: commander.ignore,
+  idleading: commander.idleading,
+  output: true
+};
+
+var args = buildArgs(commandArgs);
