@@ -3,3 +3,6 @@ _site
 sea-modules
 node_modules
 .git
+tests
+examples
+test
