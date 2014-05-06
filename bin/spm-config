@@ -28,7 +28,7 @@ commander
   .command('edit')
   .description('edit spmrc with your default editor')
   .action(function() {
-    var editor = process.env.EDITOR || 'vi';
+    var editor = process.env.EDITOR || 'vim';
     spawn(editor, [spmrc.spmrcfile], {stdio: 'inherit'});
   });
 
