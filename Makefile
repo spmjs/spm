@@ -11,7 +11,7 @@ test:
 		./node_modules/.bin/_mocha -- -R ${reporter} ${specs}
 
 
-jsfiles := $(shell find ./ -name '*.js' ! -path "*init-template/*.js" ! -path "*theme/*.js" ! -path "*utils/tar.js" ! -path "*node_modules/*" ! -path "*cases/*" ! -path "*data/*" ! -path "*scripts/*");
+jsfiles := $(shell find ./ -name '*.js' ! -path "*init-template/*.js" ! -path "*theme/*.js" ! -path "*utils/tar.js" ! -path "*node_modules/*" ! -path "*cases/*" ! -path "*data/*" ! -path "*scripts/*" ! -path "*coverage/*");
 binfiles := $(shell find ./bin/* ! -path "*.iml");
 lint:
 	@node_modules/.bin/jshint ${jsfiles}
