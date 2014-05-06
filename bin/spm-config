@@ -3,6 +3,8 @@
 var commander = require('commander');
 require('colorful').colorful();
 var config = require('../lib/config');
+var spmrc = require('spmrc');
+var spawn = require('win-spawn');
 
 commander.usage('[section.key] [value]');
 
@@ -22,6 +24,13 @@ commander
     process.exit(0);
   });
 
+commander
+  .command('edit')
+  .description('edit spmrc with your default editor')
+  .action(function() {
+    var editor = process.env.EDITOR || 'vi';
+    spawn(editor, [spmrc.spmrcfile], {stdio: 'inherit'});
+  });
 
 commander.on('--help', function() {
   console.log('  ' + 'How to use:'.to.bold.blue.color);
