@@ -22,12 +22,12 @@ commander.usage('[options]');
 commander.version(require('../package').version);
 
 commander
-  .option('-I, --input-directory [dir]', 'source for publishing')
-  .option('-O, --output-directory [dir]', 'local server port')
+  .option('-I, --input-directory <dir>', 'source for publishing')
+  .option('-O, --output-directory <dir>', 'local server port')
   .option('-v --verbose', 'show more logging')
-  .option('--include [include]', 'build documentation')
-  .option('--ignore [ignore]', 'start a server for documentation')
-  .option('--idleading [idleading]', 'start a server of watching source')
+  .option('--include <include>', 'build documentation')
+  .option('--ignore <ignore>', 'start a server for documentation')
+  .option('--idleading <idleading>', 'start a server of watching source')
   .parse(process.argv);
 
 if (commander.verbose) {
@@ -40,7 +40,7 @@ var begin = Date.now();
 var commandArgs = {
   dest: commander.outputDirectory,
   cwd: commander.inputDirectory,
-  include: commander.relative,
+  include: commander.include,
   ignore: commander.ignore,
   idleading: commander.idleading
 };
