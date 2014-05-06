@@ -41,7 +41,7 @@ var begin = Date.now();
 var commandArgs = {
   dest: commander.outputDirectory,
   cwd: commander.inputDirectory,
-  include: commander.relative,
+  include: commander.include,
   ignore: commander.ignore,
   idleading: commander.idleading
 };
