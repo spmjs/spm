@@ -3,6 +3,7 @@
 require('colorful').colorful();
 var path = require('path');
 var extname = path.extname;
+var file = require('../lib/sdk/file');
 var commander = require('commander');
 var EventProxy = require('eventproxy');
 var log = require('../lib/utils/log');
@@ -17,22 +18,32 @@ var gulp = require('gulp');
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
 var cssmin = require('gulp-cssmin');
+var beautify = require('gulp-beautify');
 
 commander.usage('[options]');
 commander.version(require('../package').version);
 
 commander
-  .option('-I, --input-directory [dir]', 'source for publishing')
-  .option('-O, --output-directory [dir]', 'local server port')
-  .option('-v --verbose', 'show more logging')
-  .option('--include [include]', 'build documentation')
-  .option('--ignore [ignore]', 'start a server for documentation')
-  .option('--idleading [idleading]', 'start a server of watching source')
+  .option('-v, --verbose', 'show more logging')
+  .option('-I, --input-directory [dir]', 'input directory, default: process.cwd()')
+  .option('-O, --output-directory [dir]', 'output directory, default: dist')
+  .option('--include [include]', 'determine which files will be included, optional: self, relative, all, standalone')
+  .option('--ignore [ignore]', 'determine which id will not be transported')
+  .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
   .parse(process.argv);
 
 if (commander.verbose) {
   log.level = 'debug';
 }
+
+var p = file.readJSON('package.json');
+if (!p || !p.spm) {
+  console.log();
+  log.error('miss', 'package.json or "spm" key');
+  process.exit(2);
+}
+console.log();
+log.info('begin', ('build ' + p.name + '@' + p.version).to.magenta.color);
 
 var begin = Date.now();
 
@@ -40,7 +51,7 @@ var begin = Date.now();
 var commandArgs = {
   dest: commander.outputDirectory,
   cwd: commander.inputDirectory,
-  include: commander.relative,
+  include: commander.include,
   ignore: commander.ignore,
   idleading: commander.idleading
 };
@@ -61,7 +72,7 @@ var files = getFiles(pkg);
 
 // build
 build(files, function() {
-  log.info('finished', 'build all ' + showDiff(begin));
+  log.info('finished', 'build all' + showDiff(begin));
 });
 
 function getFiles(pkg) {
@@ -93,7 +104,7 @@ function build(files, cb) {
     }
 
     function done() {
-      log.info('end', 'build ' + file + showDiff(begin));
+      log.info('end', ('build ' + file + showDiff(begin)).to.green.color);
       ep.emit('build');
     }
   });
@@ -172,6 +183,8 @@ function buildJs(file, options, cb) {
     .pipe(gulpif(/\.js$/, transport(optDebug)))
     .once('error', cb)
     .pipe(concat())
+    .once('error', cb)
+    .pipe(beautify({indentSize: 2}))
     .once('error', cb)
     .pipe(gulp.dest(optDebug.dest))
     .on('end', function() {
