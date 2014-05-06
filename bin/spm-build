@@ -3,6 +3,7 @@
 require('colorful').colorful();
 var path = require('path');
 var extname = path.extname;
+var file = require('../lib/sdk/file');
 var commander = require('commander');
 var EventProxy = require('eventproxy');
 var log = require('../lib/utils/log');
@@ -35,6 +36,15 @@ if (commander.verbose) {
   log.level = 'debug';
 }
 
+var p = file.readJSON('package.json');
+if (!p || !p.spm) {
+  console.log();
+  log.error('miss', 'package.json or "spm" key');
+  process.exit(2);
+}
+console.log();
+log.info('begin', ('build ' + p.name + '@' + p.version).to.magenta.color);
+
 var begin = Date.now();
 
 // parse arguments
@@ -62,7 +72,7 @@ var files = getFiles(pkg);
 
 // build
 build(files, function() {
-  log.info('finished', 'build all ' + showDiff(begin));
+  log.info('finished', 'build all' + showDiff(begin));
 });
 
 function getFiles(pkg) {
@@ -94,7 +104,7 @@ function build(files, cb) {
     }
 
     function done() {
-      log.info('end', 'build ' + file + showDiff(begin));
+      log.info('end', ('build ' + file + showDiff(begin)).to.green.color);
       ep.emit('build');
     }
   });
