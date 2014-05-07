@@ -19,10 +19,8 @@ if (!pkg) {
   process.exit(2);
 }
 
-if (!coveralls) {
-  console.log();
-  console.log('  Starting service for test runner ...'.to.cyan.color);
-}
+console.log();
+console.log('  Starting service for test runner ...'.to.cyan.color);
 
 require('nico/lib/sdk/log').quiet = true;
 
