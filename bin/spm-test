@@ -11,6 +11,8 @@ var mo = require('../lib/sdk/module');
 var file = require('../lib/sdk/file');
 var port = 8015;
 
+var coveralls = (process.argv[2] === '--coveralls');
+
 var pkg = file.readJSON('package.json');
 if (!pkg) {
   log.error('miss', 'package.json or "spm" key');
@@ -34,6 +36,17 @@ spm.doc({
     mo.getSourceFiles().forEach(function(item) {
       processCovFile(item);
     });
+
+    if (coveralls) {
+      exeq([
+        path.dirname(__dirname) +
+        '/node_modules/mocha-browser/bin/mocha-browser ' +
+        'http://127.0.0.1:' + port + '/tests-runner.html?cov -S -R lcov'
+      ]).on('done', function() {
+        process.exit(0);
+      }).run();
+    }
+
     exeq([
       path.dirname(__dirname) +
       '/node_modules/mocha-browser/bin/mocha-browser ' +
