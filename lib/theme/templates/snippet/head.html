@@ -15,6 +15,8 @@
 {%- for file in engines %}
 <script src="{{content_url('')}}{{file}}?nowrap"></script>
 {%- endfor %}
+{%- else %}
+<script src="http://static.alipayobjects.com/??seajs/seajs/2.2.0/sea.js,seajs/seajs-text/1.0.2/seajs-text.js"></script>
 {%- endif %}
 
 {%- set deps = dependencies %}
