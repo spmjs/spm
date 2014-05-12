@@ -4,8 +4,7 @@ node_js:
   - "0.10"
 
 install:
-  - npm install https://github.com/spmjs/spm/tarball/master
-  - npm install coveralls
+  - npm install spm@ninja coveralls
 
 before_script:
   - node_modules/spm/bin/spm-install
