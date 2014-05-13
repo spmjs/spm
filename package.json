@@ -54,7 +54,9 @@
     "jshint": "*",
     "mocha": "*",
     "should": "*",
-    "istanbul": "*"
+    "istanbul": "*",
+    "glob": "*",
+    "gulp-clean": "*"
   },
   "bin": {
     "spm": "bin/spm"
