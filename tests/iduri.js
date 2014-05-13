@@ -21,9 +21,15 @@ describe('iduri', function() {
     data.name.should.eql('name');
     data.version.should.eql('');
   });
-  it('prefix.name@1.0.0', function() {
-    var data = iduri.resolve('prefix.name@1.0.0');
-    should.not.exist(data);
+  it('name.suffix', function() {
+    var data = iduri.resolve('name.suffix');
+    data.name.should.eql('name.suffix');
+    data.version.should.eql('');
+  });
+  it('name.suffix@1.0.0', function() {
+    var data = iduri.resolve('name.suffix@1.0.0');
+    data.name.should.eql('name.suffix');
+    data.version.should.eql('1.0.0');
   });
   it('prefix/name@1.0.0', function() {
     var data = iduri.resolve('prefix/name@1.0.0');
