@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var search = require('../lib/search');
 var http = require('http');
 var server;
@@ -22,7 +22,7 @@ describe('spm search', function() {
       req.method.should.be.eql('GET');
       res.writeHead(200);
       var data = {
-        "data": {
+        'data': {
           total: 0,
           results: []
         }
@@ -30,7 +30,7 @@ describe('spm search', function() {
       res.end(JSON.stringify(data));
     }).listen(port, function() {
       search({
-        server: "http://127.0.0.1:" + port,
+        server: 'http://127.0.0.1:' + port,
         query: 'arale'
       }, function() {
         done();

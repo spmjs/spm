@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
 var commander = require('commander');
-var util = require('util');
-var path = require('path');
 require('colorful').colorful();
 var plugin = require('../lib/plugin');
 

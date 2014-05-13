@@ -4,7 +4,6 @@ var path = require('path');
 var grunt = require('grunt');
 var commander = require('commander');
 var color = require('colorful').color;
-var exists = require('fs').existsSync;
 var spmrc = require('spmrc');
 
 /*

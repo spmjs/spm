@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var file = require('../lib/sdk/file');
 
 describe('file', function() {

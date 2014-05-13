@@ -154,18 +154,18 @@ function executable(subcmd) {
     // guess commands
     commands = getSimilarCommands(subcmd, commands);
     console.log();
-    console.log("  Can't find command (or target): " + subcmd.to.cyan.color);
+    console.log('  Can\'t find command (or target): ' + subcmd.to.cyan.color);
     console.log();
     if (commands.length) {
-      console.log("  It may be a mistake of the similar commands:");
+      console.log('  It may be a mistake of the similar commands:');
       console.log();
       commands.forEach(function(cmd) {
         console.log('    $', 'spm'.to.magenta.color, cmd.to.cyan.color);
       });
     }
     console.log();
-    console.log("  It is not a built-in command, maybe it's a plugin.");
-    console.log("  Try install this plugin: ");
+    console.log('  It is not a built-in command, maybe it\'s a plugin.');
+    console.log('  Try install this plugin: ');
     console.log();
     console.log('    $', 'spm plugin'.to.magenta.color, 'install', subcmd.to.cyan.color);
   }
