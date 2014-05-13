@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var log = require('../lib/utils/log');
 var colorful = require('colorful');
 var sinon = require('sinon');

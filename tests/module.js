@@ -1,10 +1,10 @@
-var should = require('should');
-var module = require('../lib/sdk/module');
+require('should');
+var parseDependencies = require('../lib/sdk/module').parseDependencies;
 
 
 describe('module', function() {
   it('parseDependencies', function() {
-    var result = module.parseDependencies({
+    var result = parseDependencies({
       a: '1-1',
       b: 'abc',
       c: undefined,

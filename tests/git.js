@@ -1,5 +1,4 @@
-var fs = require('fs');
-var should = require('should');
+require('should');
 var git = require('../lib/sdk/git');
 
 describe('git', function() {

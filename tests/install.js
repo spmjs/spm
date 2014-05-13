@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var install = require('../lib/install');
 var http = require('http');
 var fs = require('fs');
@@ -35,10 +35,10 @@ describe('spm install', function() {
       req.method.should.be.eql('GET');
       res.writeHead(200);
       var data = {
-        name: "example",
-        version: "1.0.0",
-        filename: "example-1.0.0.tar.gz",
-        md5: "999193906e30e8d85208b4eff843570a"
+        name: 'example',
+        version: '1.0.0',
+        filename: 'example-1.0.0.tar.gz',
+        md5: '999193906e30e8d85208b4eff843570a'
       };
       res.end(JSON.stringify(data));
     }).listen(port, function() {
@@ -66,10 +66,10 @@ describe('spm install', function() {
       req.method.should.be.eql('GET');
       res.writeHead(200);
       var data = {
-        name: "example",
-        version: "1.0.0",
-        filename: "example-1.0.0.tar.gz",
-        md5: "999193906e30e8d85208b4eff843570a"
+        name: 'example',
+        version: '1.0.0',
+        filename: 'example-1.0.0.tar.gz',
+        md5: '999193906e30e8d85208b4eff843570a'
       };
       res.end(JSON.stringify(data));
     }).listen(port, function() {
@@ -96,10 +96,10 @@ describe('spm install', function() {
       req.method.should.be.eql('GET');
       res.writeHead(200);
       var data = {
-        name: "example",
-        version: "1.0.0",
-        filename: "example-1.0.0.tar.gz",
-        md5: "999193906e30e8d85208b4eff843570a"
+        name: 'example',
+        version: '1.0.0',
+        filename: 'example-1.0.0.tar.gz',
+        md5: '999193906e30e8d85208b4eff843570a'
       };
       res.end(JSON.stringify(data));
     }).listen(port, function() {
@@ -123,10 +123,10 @@ describe('spm install', function() {
         req.url.should.be.eql('/repository/example-no-cache/1.0.0/');
         res.writeHead(200);
         var data = {
-          name: "example-no-cache",
-          version: "1.0.0",
-          filename: "example-no-cache-1.0.0.tar.gz",
-          md5: "999193906e30e8d85208b4eff843570a"
+          name: 'example-no-cache',
+          version: '1.0.0',
+          filename: 'example-no-cache-1.0.0.tar.gz',
+          md5: '999193906e30e8d85208b4eff843570a'
         };
         res.end(JSON.stringify(data));
       } else {
@@ -157,14 +157,14 @@ describe('spm install', function() {
       var isExample2 = (req.url.indexOf('example2') > 0);
       res.writeHead(200);
       var data = {
-        name: isExample2 ? "example2" : "example",
-        version: "1.0.0",
-        filename: (isExample2 ? "example2" : "example") + "-1.0.0.tar.gz",
-        md5: isExample2 ? "c1ce6426a14e9fc22bdef691512d4900" : "999193906e30e8d85208b4eff843570a"
+        name: isExample2 ? 'example2' : 'example',
+        version: '1.0.0',
+        filename: (isExample2 ? 'example2' : 'example') + '-1.0.0.tar.gz',
+        md5: isExample2 ? 'c1ce6426a14e9fc22bdef691512d4900' : '999193906e30e8d85208b4eff843570a'
       };
       if (isExample2) {
         data.dependencies = [
-          "example@1.0.0"
+          'example@1.0.0'
         ];
       }
       res.end(JSON.stringify(data));
@@ -189,10 +189,10 @@ describe('spm install', function() {
     server = http.createServer(function(req, res) {
       res.writeHead(200);
       var data = {
-        name: "example",
-        version: "1.0.0",
-        filename: "example-1.0.0.tar.gz",
-        md5: "999193906e30e8d85208b4eff843570a"
+        name: 'example',
+        version: '1.0.0',
+        filename: 'example-1.0.0.tar.gz',
+        md5: '999193906e30e8d85208b4eff843570a'
       };
       res.end(JSON.stringify(data));
     }).listen(port, function() {

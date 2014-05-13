@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var sinon = require('sinon');
 var yuan = require('../lib/sdk/yuan');
 

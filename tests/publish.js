@@ -1,4 +1,4 @@
-var should = require('should');
+require('should');
 var publish = require('../lib/publish');
 var http = require('http');
 var server;
@@ -24,13 +24,13 @@ describe('spm publish', function() {
       req.method.should.be.eql('POST');
       res.writeHead(200);
       var data = {
-        "urlpath": "xxx",
-        "status": 200
+        'urlpath': 'xxx',
+        'status': 200
       };
       res.end(JSON.stringify(data));
     }).listen(port, function() {
       publish.publish({
-        server: "http://127.0.0.1:" + port
+        server: 'http://127.0.0.1:' + port
       }, {
         name: 'arale-base',
         version: '1.0.0'

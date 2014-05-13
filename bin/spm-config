@@ -62,6 +62,6 @@ if (typeof subcmd === 'string' && subcmd.indexOf('.') !== -1 && commander.args.l
   console.log();
 } else if (typeof subcmd === 'string' && typeof lastcmd === 'string') {
   console.log();
-  console.log(("  Can't find command: " + subcmd).to.red.color);
+  console.log(('  Can\'t find command: ' + subcmd).to.red.color);
   console.log();
 }

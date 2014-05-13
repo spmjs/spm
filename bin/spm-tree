@@ -9,7 +9,6 @@ var log = require('../lib/utils/log');
 
 require('colorful').colorful();
 var spm = require('..');
-var parseIdentify = require('../lib/sdk/iduri').resolve;
 var file = require('../lib/sdk/file');
 
 commander
