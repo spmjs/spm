@@ -46,7 +46,8 @@ describe('iduri', function() {
   });
   it('prefixName@0.0.1', function() {
     var data = iduri.resolve('prefixName@0.0.1');
-    should.not.exist(data);
+    data.name.should.eql('prefixname');
+    data.version.should.eql('0.0.1');
   });
 });
 
