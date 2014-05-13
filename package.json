@@ -44,7 +44,7 @@
     "gulp-uglify": "~0.2.1",
     "gulp-cssmin": "~0.1.4",
     "gulp-beautify": "~1.0.3",
-    "umi": "~0.0.2",
+    "umi": "~0.1.0",
     "gulp": "~3.6.2",
     "eventproxy": "~0.3.1",
     "gulp-if": "~1.1.0"
