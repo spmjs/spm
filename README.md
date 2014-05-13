@@ -1,14 +1,33 @@
 # Static Package Manager
 
-**spm 3.0.0 还在开发中，请先使用 spm2**
+The brand new static package manager for browser.
 
-- 源码 https://github.com/spmjs/spm/tree/2.x
-- 站点 https://spmjs.org/
+**spm 3.0.0 还在开发中，请先使用 [spm2](https://github.com/spmjs/spm/tree/2.x)**
 
-## 讨论和报告 Bug
+![](https://i.alipayobjects.com/i/localhost/png/201404/2YQxOTYoFp.png)
 
-* [查看所有 issue](https://github.com/spmjs/spm/issues)
-* [新建 issue](https://github.com/spmjs/spm/issues/new)
+---
+
+## Install
+
+```bash
+$ npm install spm@ninja -g
+```
+
+## Usage
+
+- Getting Started: http://spmjs.io/documentation
+- Develop a package: http://spmjs.io/documentation/develop-a-package
+
+## Packaging Server
+
+- Website: http://spmjs.io/
+- Source: https://github.com/spmjs/spmjs.io/
+
+## Report a issue
+
+* [All issues](https://github.com/spmjs/spm/issues)
+* [New issue](https://github.com/spmjs/spm/issues/new)
 
 ## License
 
