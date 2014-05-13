@@ -4,12 +4,14 @@ all:
 	@chmod -R +x .git/hooks/
 
 
-specs := $(shell find ./tests -name '*.js' ! -path "*node_modules/*" ! -path "*sea-modules/*")
+specs := $(shell find ./tests -name '*.js' ! -path "*node_modules/*" ! -path "*sea-modules/*" ! -path "*build/*")
 reporter = spec
 test:
 	./node_modules/.bin/istanbul cover \
 		./node_modules/.bin/_mocha -- -R ${reporter} ${specs}
 
+debug:
+	./node_modules/.bin/_mocha -R ${reporter} ${specs}
 
 jsfiles := $(shell find ./ -name '*.js' ! -path "*init-template/*.js" ! -path "*theme/*.js" ! -path "*utils/tar.js" ! -path "*node_modules/*" ! -path "*cases/*" ! -path "*data/*" ! -path "*scripts/*" ! -path "*coverage/*");
 binfiles := $(shell find ./bin/* ! -path "*.iml");

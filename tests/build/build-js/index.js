@@ -1,0 +1,2 @@
+require('./relative');
+require('d');
