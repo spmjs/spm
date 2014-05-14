@@ -80,7 +80,7 @@ describe('build', function() {
 
   function assets(prefix) {
     var expect = join(base, 'expect', prefix);
-    glob.sync('**/*', {cwd: dest})
+    glob.sync('**/*.{css,js}', {cwd: dest})
       .forEach(function(file) {
         fs.readFileSync(join(expect, file)).toString()
           .should.include(fs.readFileSync(join(dest, file)).toString());
