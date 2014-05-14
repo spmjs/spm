@@ -1,5 +1,8 @@
 # Static Package Manager
 
+[![Build Status](https://travis-ci.org/spmjs/spm.png)](https://travis-ci.org/spmjs/spm)
+[![David Status](https://david-dm.org/spmjs/spm.png)](https://david-dm.org/spmjs/spm)
+
 The brand new static package manager for browser.
 
 **spm 3.0.0 还在开发中，请先使用 [spm2](https://github.com/spmjs/spm/tree/2.x)**
