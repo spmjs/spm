@@ -58,7 +58,8 @@
     "should": "*",
     "istanbul": "*",
     "glob": "*",
-    "gulp-clean": "*"
+    "gulp-clean": "*",
+    "gulp-unzip": "*"
   },
   "bin": {
     "spm": "bin/spm"
