@@ -1,7 +1,6 @@
 # Static Package Manager
 
 [![Build Status](https://travis-ci.org/spmjs/spm.png)](https://travis-ci.org/spmjs/spm)
-[![David Status](https://david-dm.org/spmjs/spm.png)](https://david-dm.org/spmjs/spm)
 
 The brand new static package manager for browser.
 
