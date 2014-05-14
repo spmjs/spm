@@ -1,24 +1,11 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
-var path = require('path');
-var extname = path.extname;
-var file = require('../lib/sdk/file');
 var commander = require('commander');
-var EventProxy = require('eventproxy');
-var log = require('../lib/utils/log');
-var umi = require('umi');
-var buildArgs = umi.buildArgs;
-var transport = umi.transport;
-var extend = transport.util.extendOption;
-var Package = umi.Package;
-var concat = umi.concat;
-var src = umi.src;
-var gulp = require('gulp');
-var gulpif = require('gulp-if');
-var uglify = require('gulp-uglify');
-var cssmin = require('gulp-cssmin');
-var beautify = require('gulp-beautify');
+var spm = require('..');
+var build = spm.build;
+var file = spm.sdk.file;
+var log = spm.log;
 
 commander.usage('[options]');
 commander.version(require('../package').version);
@@ -36,168 +23,32 @@ if (commander.verbose) {
   log.level = 'debug';
 }
 
+console.log();
 var p = file.readJSON('package.json');
 if (!p || !p.spm) {
-  console.log();
   log.error('miss', 'package.json or "spm" key');
   process.exit(2);
 }
-console.log();
-log.info('begin', ('build ' + p.name + '@' + p.version).to.magenta.color);
 
+var info = ('build ' + p.name + '@' + p.version).to.magenta.color;
 var begin = Date.now();
+log.info('start', info);
 
-// parse arguments
-var commandArgs = {
+var args = {
   dest: commander.outputDirectory,
   cwd: commander.inputDirectory,
   include: commander.include,
   ignore: commander.ignore,
   idleading: commander.idleading
 };
-var args = buildArgs(commandArgs);
-showArgs(args);
 
-// add package info
-var pkg = new Package(args.cwd, {
-  extraDeps: {handlebars: 'handlebars'}
-});
-args.pkg = pkg;
-log.info('analyse', 'package infomation ' + showDiff(begin));
-log.info('package', 'dependencies: ' + Object.keys(pkg.dependencies));
-log.info('package', 'files: ' + Object.keys(pkg.files));
-
-// get build files
-var files = getFiles(pkg);
-
-// build
-build(files, function() {
-  log.info('finished', 'build all' + showDiff(begin));
-});
-
-function getFiles(pkg) {
-  var output = [];
-
-  if (pkg.spm && Array.isArray(pkg.spm.output)) {
-    output = output.concat(pkg.spm.output);
+build(args, function(err) {
+  if (err) {
+    log.error('error', err.message);
+    process.exit(1);
   }
-
-  output.push(pkg.main || 'index.js');
-
-  return output
-    .filter(function(item, index, arr) {
-      return index === arr.indexOf(item);
-    });
-}
-
-function build(files, cb) {
-  var ep = new EventProxy();
-  ep.after('build', files.length, cb);
-  files.forEach(function(file) {
-    var begin = Date.now();
-    log.info('start', 'build ' + file);
-    var ext = extname(file).substring(1);
-    if (~['css', 'less', 'sass', 'styl'].indexOf(ext)) {
-      buildCss(file, args, done);
-    } else {
-      buildJs(file, args, done);
-    }
-
-    function done() {
-      log.info('end', ('build ' + file + showDiff(begin)).to.green.color);
-      ep.emit('build');
-    }
-  });
-}
-
-function buildCss(file, options, cb) {
-  var ep = new EventProxy();
-  ep.all(['file', 'debugFile'], cb);
-
-  var opt = extend(options);
-  gulp.src(file, opt)
-    .once('error', cb)
-    .pipe(gulpif(/\.css$/, transport.cssParser(opt)))
-    .once('error', cb)
-    .pipe(cssmin())
-    .once('error', cb)
-    .pipe(gulp.dest(opt.dest))
-    .on('end', function() {
-      ep.emit('file');
-    });
-
-  //debug file
-  var optDebug = extend(options);
-  optDebug.rename = {suffix: '-debug'};
-  gulp.src(file, optDebug)
-    .once('error', cb)
-    .pipe(gulpif(/\.css$/, transport.cssParser(optDebug)))
-    .once('error', cb)
-    .pipe(gulp.dest(optDebug.dest))
-    .on('end', function() {
-      ep.emit('debugFile');
-    });
-}
-
-function buildJs(file, options, cb) {
-  var ep = new EventProxy();
-  ep.all(['file', 'debugFile'], cb);
-
-  var opt = extend(options);
-  src(file, opt)
-    .pipe(gulpif(/\.css$/, transport.cssParser(opt)))
-    .once('error', cb)
-    .pipe(gulpif(/\.css$/, transport.css2jsParser(opt)))
-    .once('error', cb)
-    .pipe(gulpif(/\.tpl$/, transport.tplParser(opt)))
-    .once('error', cb)
-    .pipe(gulpif(/\.json$/, transport.jsonParser(opt)))
-    .once('error', cb)
-    .pipe(gulpif(/\.handlebars$/, transport.handlebarsParser(opt)))
-    .once('error', cb)
-    .pipe(gulpif(/\.js$/, transport(opt)))
-    .once('error', cb)
-    .pipe(concat())
-    .once('error', cb)
-    .pipe(uglify())
-    .once('error', cb)
-    .pipe(gulp.dest(opt.dest))
-    .on('end', function() {
-      ep.emit('file');
-    });
-
-  //debug file
-  var optDebug = extend(options);
-  optDebug.rename = {suffix: '-debug'};
-  src(file, optDebug)
-    .pipe(gulpif(/\.css$/, transport.cssParser(opt))) // 这里不替换 debug
-    .once('error', cb)
-    .pipe(gulpif(/\.css$/, transport.css2jsParser(optDebug)))
-    .once('error', cb)
-    .pipe(gulpif(/\.tpl$/, transport.tplParser(optDebug)))
-    .once('error', cb)
-    .pipe(gulpif(/\.json$/, transport.jsonParser(optDebug)))
-    .once('error', cb)
-    .pipe(gulpif(/\.handlebars$/, transport.handlebarsParser(optDebug)))
-    .once('error', cb)
-    .pipe(gulpif(/\.js$/, transport(optDebug)))
-    .once('error', cb)
-    .pipe(concat())
-    .once('error', cb)
-    .pipe(beautify({indentSize: 2}))
-    .once('error', cb)
-    .pipe(gulp.dest(optDebug.dest))
-    .on('end', function() {
-      ep.emit('debugFile');
-    });
-}
-
-function showArgs(args) {
-  Object.keys(args)
-    .forEach(function(key) {
-      log.info('arguments', key + ' = ' + args[key]);
-    });
-}
+  log.info('finish', info + showDiff(begin));
+});
 
 function showDiff(time) {
   var diff = Date.now() - time;

@@ -1,0 +1,9 @@
+{
+  "name": "c",
+  "version": "1.1.1",
+  "spm": {
+    "dependencies": {
+      "d": "0.1.0"
+    }
+  }
+}

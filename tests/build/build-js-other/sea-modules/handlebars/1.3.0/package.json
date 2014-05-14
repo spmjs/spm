@@ -1,0 +1,7 @@
+{
+  "name": "handlebars",
+  "version": "1.3.0",
+  "spm": {
+    "main": "handlebars.js"
+  }
+}

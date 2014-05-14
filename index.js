@@ -9,6 +9,7 @@ exports.plugin = require('./lib/plugin');
 exports.config = require('./lib/config');
 
 exports.install = require('./lib/install');
+exports.build = require('./lib/build');
 exports.info = require('./lib/info');
 exports.login = require('./lib/login');
 exports.publish = require('./lib/publish').publish;
