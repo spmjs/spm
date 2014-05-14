@@ -17,6 +17,7 @@ commander
   .option('--include [include]', 'determine which files will be included, optional: self, relative, all, standalone')
   .option('--ignore [ignore]', 'determine which id will not be transported')
   .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
+  .option('--zip', 'archive by zip')
   .parse(process.argv);
 
 if (commander.verbose) {
@@ -39,14 +40,17 @@ var args = {
   cwd: commander.inputDirectory,
   include: commander.include,
   ignore: commander.ignore,
-  idleading: commander.idleading
+  idleading: commander.idleading,
+  zip: commander.zip
 };
 
 build(args, function(err) {
   if (err) {
     log.error('error', err.message);
+    log.debug('error', err.stack);
     process.exit(1);
   }
+
   log.info('finish', info + showDiff(begin));
 });
 

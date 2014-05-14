@@ -4,6 +4,7 @@ var join = require('path').join;
 var glob = require('glob');
 var gulp = require('gulp');
 var clean = require('gulp-clean');
+var unzip = require('gulp-unzip');
 var build = require('..').build;
 
 describe('build', function() {
@@ -23,7 +24,7 @@ describe('build', function() {
     };
     build(opt, function(err) {
       should.not.exist(err);
-      assets('build-js');
+      assets('build-js', dest);
       done();
     });
   });
@@ -36,7 +37,7 @@ describe('build', function() {
     };
     build(opt, function(err) {
       should.not.exist(err);
-      assets('build-js-all');
+      assets('build-js-all', dest);
       done();
     });
   });
@@ -48,7 +49,7 @@ describe('build', function() {
     };
     build(opt, function(err) {
       should.not.exist(err);
-      assets('build-css');
+      assets('build-css', dest);
       done();
     });
   });
@@ -61,7 +62,7 @@ describe('build', function() {
     };
     build(opt, function(err) {
       should.not.exist(err);
-      assets('build-css');
+      assets('build-css', dest);
       done();
     });
   });
@@ -73,14 +74,32 @@ describe('build', function() {
     };
     build(opt, function(err) {
       should.not.exist(err);
-      assets('build-js-other');
+      assets('build-js-other', dest);
       done();
     });
   });
 
-  function assets(prefix) {
+  it('zip', function(done) {
+    var opt = {
+      cwd: join(base, 'build-js'),
+      dest: dest,
+      zip: true,
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      gulp.src(join(dest, 'archive.zip'))
+        .pipe(unzip())
+        .pipe(gulp.dest(join(dest, 'build-js')))
+        .on('end', function() {
+          assets('build-js', join(dest, 'build-js'));
+          done();
+        });
+    });
+  });
+
+  function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
-    glob.sync('**/*', {cwd: dest})
+    glob.sync('**/*.{css,js}', {cwd: dest})
       .forEach(function(file) {
         fs.readFileSync(join(expect, file)).toString()
           .should.include(fs.readFileSync(join(dest, file)).toString());
