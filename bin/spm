@@ -55,16 +55,17 @@ process.on('exit', function(code) {
 
 
 var packageCommands = {
-  tree: 'show dependencies tree',
-  info: 'information of a module',
+  init: 'initialize a package',
   login: 'login your account',
-  search: 'search modules',
-  install: 'install a module',
-  publish: 'publish a module',
-  unpublish: 'unpublish a module',
-  init: 'initialize a module',
-  test: 'test a module',
-  doc: 'documentation manager'
+  install: 'install a package',
+  publish: 'publish a package',
+  unpublish: 'unpublish a package',
+  tree: 'show dependencies tree',
+  info: 'information of a package',
+  search: 'search packages',
+  test: 'test a package',
+  doc: 'documentation manager',
+  build: 'build package'
 };
 
 // sub command help
