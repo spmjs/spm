@@ -31,18 +31,19 @@ spm.doc({
 }, function() {
 
   mochaBrowser({
-    page: 'http://127.0.0.1:' + port + '/tests-runner.html',
+    page: 'http://127.0.0.1:' + port + '/tests/runner.html',
     reporter: 'spec'
   }, function() {
     mo.getSourceFiles().forEach(function(item) {
-      processCovFile(item);
+      if (!path.extname(item)) item = item + '.js';
+      processCovFile(path.join(process.cwd(), item));
     });
 
     if (coveralls) {
       exeq([
         path.dirname(__dirname) +
         '/node_modules/mocha-browser/bin/mocha-browser ' +
-        'http://127.0.0.1:' + port + '/tests-runner.html?cov -S -R lcov'
+        'http://127.0.0.1:' + port + '/tests/runner.html?cov -S -R lcov'
       ]).on('done', function() {
         process.exit(0);
       }).run();
@@ -51,7 +52,7 @@ spm.doc({
     exeq([
       path.dirname(__dirname) +
       '/node_modules/mocha-browser/bin/mocha-browser ' +
-      'http://127.0.0.1:' + port + '/tests-runner.html?cov -R html-cov -o ' +
+      'http://127.0.0.1:' + port + '/tests/runner.html?cov -R html-cov -o ' +
       outputJSON +' > ' + output
     ]).on('done', function() {
       try{
