@@ -1,4 +1,4 @@
-define("a/1.0.0/index-debug", ["a/1.0.0/a-debug.json", "a/1.0.0/a-debug.tpl", "a/1.0.0/a-debug.handlebars", "handlebars/1.3.0/handlebars-debug", "a/1.0.0/a-debug"], function (require, exports, module) {
+define("a/1.0.0/index-debug", ["a/1.0.0/a-debug.json", "a/1.0.0/a-debug.tpl", "a/1.0.0/a-debug.handlebars", "handlebars-runtime/1.3.0/handlebars-debug", "a/1.0.0/a-debug"], function (require, exports, module) {
   require("a/1.0.0/a-debug.json");
   require("a/1.0.0/a-debug.tpl");
   require("a/1.0.0/a-debug.handlebars");
@@ -14,8 +14,8 @@ define("a/1.0.0/a-debug.json", [], function (require, exports, module) {
 define("a/1.0.0/a-debug.tpl", [], function (require, exports, module) {
   module.exports = "<div></div>";
 });
-define("a/1.0.0/a-debug.handlebars", ["handlebars/1.3.0/handlebars-debug"], function (require, exports, module) {
-  var Handlebars = require("handlebars/1.3.0/handlebars-debug");
+define("a/1.0.0/a-debug.handlebars", ["handlebars-runtime/1.3.0/handlebars-debug"], function (require, exports, module) {
+  var Handlebars = require("handlebars-runtime/1.3.0/handlebars-debug")["default"];
   module.exports = Handlebars.template(function (Handlebars, depth0, helpers, partials, data) {
     this.compilerInfo = [4, '>= 1.0.0'];
     helpers = this.merge(helpers, Handlebars.helpers);
