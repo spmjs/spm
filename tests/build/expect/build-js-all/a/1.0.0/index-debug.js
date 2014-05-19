@@ -24,7 +24,7 @@ define("d/0.1.0/index-debug", [], function (require, exports, module) {
 
 });
 define("b/1.1.0/src/b-debug.tpl", [], function (require, exports, module) {
-  module.exports = "<div></div>";
+  module.exports = '<div></div>';
 });
 define("d/0.1.1/index-debug", [], function (require, exports, module) {
   exports.d = function () {
