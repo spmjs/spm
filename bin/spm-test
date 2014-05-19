@@ -42,7 +42,7 @@ spm.doc({
     if (coveralls) {
       exeq([
         path.dirname(__dirname) +
-        '/node_modules/mocha-browser/bin/mocha-browser ' +
+        '/node_modules/mocha-browser-for-spm/bin/mocha-browser ' +
         'http://127.0.0.1:' + port + '/tests/runner.html?cov -S -R lcov'
       ]).on('done', function() {
         process.exit(0);
@@ -51,7 +51,7 @@ spm.doc({
 
     exeq([
       path.dirname(__dirname) +
-      '/node_modules/mocha-browser/bin/mocha-browser ' +
+      '/node_modules/mocha-browser-for-spm/bin/mocha-browser ' +
       'http://127.0.0.1:' + port + '/tests/runner.html?cov -R html-cov -o ' +
       outputJSON +' > ' + output
     ]).on('done', function() {
