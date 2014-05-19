@@ -144,6 +144,7 @@ describe('spm install', function() {
         server: 'http://127.0.0.1:' + port
       }, function() {
         file.exists(dest + '/example-no-cache/1.0.0').should.eql(true);
+        file.exists(dest + '/example-no-cache/1.0.0/src/base.js').should.eql(true);
         file.exists(cache + '/example-no-cache-1.0.0.tar.gz').should.eql(true);
         file.rmdir(dest);
         file.rmdir(cache + '/example-no-cache-1.0.0.tar.gz');
