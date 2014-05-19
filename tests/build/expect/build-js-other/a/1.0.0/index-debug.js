@@ -12,7 +12,7 @@ define("a/1.0.0/a-debug.json", [], function (require, exports, module) {
 
 });
 define("a/1.0.0/a-debug.tpl", [], function (require, exports, module) {
-  module.exports = "<div></div>";
+  module.exports = '<div></div>';
 });
 define("a/1.0.0/a-debug.handlebars", ["handlebars-runtime/1.3.0/handlebars-debug"], function (require, exports, module) {
   var Handlebars = require("handlebars-runtime/1.3.0/handlebars-debug")["default"];
