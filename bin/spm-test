@@ -6,7 +6,7 @@ var output = '_site/coverage.html';
 var outputJSON = '_site/coverage.json';
 require('colorful').colorful();
 var spm = require('..');
-var mochaBrowser = require('mocha-browser');
+var mochaBrowser = require('mocha-browser-for-spm');
 var mo = require('../lib/sdk/module');
 var file = require('../lib/sdk/file');
 var log = require('../lib/utils/log');
