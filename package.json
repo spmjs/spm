@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "3.0.0-rc8",
+  "version": "3.0.0-rc11",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -34,7 +34,7 @@
     "rimraf": "~2.2.5",
     "spmrc": "~1.0.0",
     "nico": "afc163/nico",
-    "mocha-browser": "afc163/mocha-browser",
+    "mocha-browser-for-spm": "~0.2.1",
     "lodash": "~2.4.1",
     "grunt": "~0.4.2",
     "grunt-init": "~0.2.1",

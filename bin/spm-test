@@ -6,7 +6,7 @@ var output = '_site/coverage.html';
 var outputJSON = '_site/coverage.json';
 require('colorful').colorful();
 var spm = require('..');
-var mochaBrowser = require('mocha-browser');
+var mochaBrowser = require('mocha-browser-for-spm');
 var mo = require('../lib/sdk/module');
 var file = require('../lib/sdk/file');
 var log = require('../lib/utils/log');
@@ -36,13 +36,13 @@ spm.doc({
   }, function() {
     mo.getSourceFiles().forEach(function(item) {
       if (!path.extname(item)) item = item + '.js';
-      processCovFile(path.join(process.cwd(), item));
+      processCovFile(item);
     });
 
     if (coveralls) {
       exeq([
         path.dirname(__dirname) +
-        '/node_modules/mocha-browser/bin/mocha-browser ' +
+        '/node_modules/mocha-browser-for-spm/bin/mocha-browser ' +
         'http://127.0.0.1:' + port + '/tests/runner.html?cov -S -R lcov'
       ]).on('done', function() {
         process.exit(0);
@@ -51,7 +51,7 @@ spm.doc({
 
     exeq([
       path.dirname(__dirname) +
-      '/node_modules/mocha-browser/bin/mocha-browser ' +
+      '/node_modules/mocha-browser-for-spm/bin/mocha-browser ' +
       'http://127.0.0.1:' + port + '/tests/runner.html?cov -R html-cov -o ' +
       outputJSON +' > ' + output
     ]).on('done', function() {
@@ -86,5 +86,9 @@ function processCovFile(source) {
   } else {
     dest = source + '-cov';
   }
-  require('jscoverage').processFile(source, '_site/' + dest);
+
+  require('jscoverage').processFile(
+    path.join(process.cwd(), source),
+    path.join(process.cwd(), '_site/' + dest)
+  );
 }
