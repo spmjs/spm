@@ -36,7 +36,7 @@ spm.doc({
   }, function() {
     mo.getSourceFiles().forEach(function(item) {
       if (!path.extname(item)) item = item + '.js';
-      processCovFile(path.join(process.cwd(), item));
+      processCovFile(item);
     });
 
     if (coveralls) {
@@ -86,5 +86,9 @@ function processCovFile(source) {
   } else {
     dest = source + '-cov';
   }
-  require('jscoverage').processFile(source, '_site/' + dest);
+
+  require('jscoverage').processFile(
+    path.join(process.cwd(), source),
+    path.join(process.cwd(), '_site/' + dest)
+  );
 }
