@@ -16,12 +16,6 @@ The brand new static package manager for browser.
 $ npm install spm@ninja -g
 ```
 
-If you're in China, use the mirror cdn to download phantomjs:
-
-```bash
-$ PHANTOMJS_CDNURL=http://phantomjs.qiniudn.com npm install spm@ninja -g
-```
-
 ## Usage
 
 - Getting Started: http://spmjs.io/documentation
