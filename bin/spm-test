@@ -66,7 +66,8 @@ spm.doc({
             var fileName = covJSON.files[i].filename;
             var filePercentage = Math.round(covJSON.files[i].coverage) + '%';
             var fileSloc = covJSON.files[i].sloc.toString();
-            console.log('  ' + (fileName + ': ').to.grey + filePercentage.to.green + ' coverage, '.to.grey + fileSloc.to.green + ' sloc'.to.grey);
+            console.log('    ' + (path.relative(process.cwd(), fileName) + ': ').to.grey +
+              filePercentage.to.green + ' coverage, '.to.grey + fileSloc.to.green + ' sloc'.to.grey);
           }
 
           console.log('  You can see more detail in ' + output.to.cyan.color);
