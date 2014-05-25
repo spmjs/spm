@@ -24,7 +24,7 @@ $ npm install spm@ninja -g
 ## Packaging Server
 
 - Website: http://spmjs.io/
-- Source: https://github.com/spmjs/spmjs.io/
+- Repository: https://github.com/spmjs/spmjs.io/
 
 ## Report a issue
 
