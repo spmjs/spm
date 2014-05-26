@@ -57,9 +57,9 @@
     "mocha": "*",
     "should": "*",
     "istanbul": "*",
-    "glob": "*",
-    "gulp-clean": "*",
-    "gulp-unzip": "*"
+    "glob": "~4.0.0",
+    "gulp-clean": "~0.2.4",
+    "gulp-unzip": "~0.1.1"
   },
   "bin": {
     "spm": "bin/spm"
