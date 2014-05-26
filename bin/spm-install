@@ -46,7 +46,7 @@ if (commander.global) {
 // run install
 spm.install({
   source: commander.source,
-  base: commander.base || process.cwd(),
+  base: commander.base,
   destination: commander.destination,
   force: commander.force,
   parallel: commander.parallel,
