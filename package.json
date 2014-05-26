@@ -58,7 +58,7 @@
     "should": "*",
     "istanbul": "*",
     "glob": "~4.0.0",
-    "gulp-clean": "~0.2.4",
+    "gulp-clean": "~0.3.0",
     "gulp-unzip": "~0.1.1"
   },
   "bin": {

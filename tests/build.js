@@ -14,7 +14,8 @@ describe('build', function() {
   afterEach(function(done) {
     gulp.src(dest)
       .pipe(clean({force: true}))
-      .on('end', done);
+      .on('end', done)
+      .resume();
   });
 
   it('js package', function(done) {
