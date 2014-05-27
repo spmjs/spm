@@ -130,7 +130,6 @@ describe('build', function() {
         return fs.statSync(join(expect, file)).isFile();
       })
       .forEach(function(file) {
-        console.log(file);
         fs.readFileSync(join(expect, file)).toString()
           .should.include(fs.readFileSync(join(dest, file)).toString());
       });
