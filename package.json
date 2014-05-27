@@ -37,7 +37,7 @@
     "mocha-browser-for-spm": "~0.2.3",
     "lodash": "~2.4.1",
     "grunt": "~0.4.2",
-    "grunt-init": "~0.2.1",
+    "grunt-init": "~0.3.2",
     "jscoverage": "~0.3.8",
     "exeq": "~0.4.0",
     "requires": "~1.0.1",
