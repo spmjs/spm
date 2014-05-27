@@ -3,6 +3,7 @@
 var commander = require('commander');
 var spm = require('..');
 require('colorful').colorful();
+require('nico/lib/sdk/log').quiet = true;
 
 commander.usage('[options]');
 
