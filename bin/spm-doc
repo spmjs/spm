@@ -7,7 +7,6 @@ var log = require('../lib/utils/log');
 require('colorful').colorful();
 
 commander.usage('[options]');
-commander.version(require('../package').version);
 
 commander
   .option('-s, --source <spmjs>', 'source for publishing')
