@@ -3,13 +3,11 @@ define("a/1.0.0/index-debug", ["a/1.0.0/a-debug.json", "a/1.0.0/a-debug.tpl", "a
   require("a/1.0.0/a-debug.tpl");
   require("a/1.0.0/a-debug.handlebars");
   require("a/1.0.0/a-debug");
-
 });
 define("a/1.0.0/a-debug.json", [], function (require, exports, module) {
   module.exports = {
     "a": 1
   }
-
 });
 define("a/1.0.0/a-debug.tpl", [], function (require, exports, module) {
   module.exports = '<div></div>';
@@ -45,5 +43,4 @@ define("a/1.0.0/a-debug.handlebars", ["handlebars-runtime/1.3.0/handlebars-debug
 });
 define("a/1.0.0/a-debug", [], function (require, exports, module) {
   console.log('a');
-
 });
