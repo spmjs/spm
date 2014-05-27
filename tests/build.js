@@ -43,6 +43,19 @@ describe('build', function() {
     });
   });
 
+  it('js package include standalone', function(done) {
+    var opt = {
+      cwd: join(base, 'build-js'),
+      dest: dest,
+      include: 'standalone'
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-js-standalone', dest);
+      done();
+    });
+  });
+
   it('js require css', function(done) {
     var opt = {
       cwd: join(base, 'build-css'),
