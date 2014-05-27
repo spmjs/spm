@@ -23,9 +23,9 @@ describe('spm install', function() {
   });
 
   it('config', function() {
-    install.config.dest.should.eql('sea-modules');
-    install.config.cache.should.containEql('.spm/cache');
-    install.config.parallel.should.eql(1);
+    install.defaults.dest.should.eql('sea-modules');
+    install.defaults.cache.should.containEql('.spm/cache');
+    install.defaults.parallel.should.eql(1);
   });
 
   it('from cache', function(done) {

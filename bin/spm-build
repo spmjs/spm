@@ -41,7 +41,8 @@ var args = {
   include: commander.include,
   ignore: commander.ignore,
   idleading: commander.idleading,
-  zip: commander.zip
+  zip: commander.zip,
+  install: true
 };
 
 build(args, function(err) {
