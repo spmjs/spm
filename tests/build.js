@@ -30,6 +30,18 @@ describe('build', function() {
     });
   });
 
+  it('css package', function(done) {
+    var opt = {
+      cwd: join(base, 'build-css-package'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-css-package', dest);
+      done();
+    });
+  });
+
   it('js package include all', function(done) {
     var opt = {
       cwd: join(base, 'build-js'),
@@ -113,10 +125,15 @@ describe('build', function() {
 
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
-    glob.sync('**/*.{css,js}', {cwd: dest})
+    glob.sync('**/*', {cwd: expect})
+      .filter(function(file) {
+        return fs.statSync(join(expect, file)).isFile();
+      })
       .forEach(function(file) {
-        fs.readFileSync(join(expect, file)).toString()
-          .should.include(fs.readFileSync(join(dest, file)).toString());
+        var expected = fs.readFileSync(join(expect, file))
+          .toString().replace(/\n$/, '');
+        var actual = fs.readFileSync(join(dest, file)).toString();
+        actual.should.eql(expected);
       });
   }
 

@@ -21,8 +21,6 @@ define("a/1.0.0/a-debug.handlebars", ["handlebars-runtime/1.3.0/handlebars-debug
     var buffer = "",
         stack1, helper, functionType = "function",
         escapeExpression = this.escapeExpression;
-
-
     buffer += "<div>";
     if (helper = helpers.content) {
       stack1 = helper.call(depth0, {
