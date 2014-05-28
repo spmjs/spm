@@ -130,8 +130,10 @@ describe('build', function() {
         return fs.statSync(join(expect, file)).isFile();
       })
       .forEach(function(file) {
-        fs.readFileSync(join(expect, file)).toString()
-          .should.include(fs.readFileSync(join(dest, file)).toString());
+        var expected = fs.readFileSync(join(expect, file))
+          .toString().replace(/\n$/, '');
+        var actual = fs.readFileSync(join(dest, file)).toString();
+        actual.should.eql(expected);
       });
   }
 
