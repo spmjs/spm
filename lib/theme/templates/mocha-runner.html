@@ -34,9 +34,16 @@
             {%- endfor %}
             {%- endif %}
             ];
+            var matcher = url.match('http:\/\/(.*?)\/(.*)');
+            var file;
+            if (matcher) {
+              file = matcher[2].replace(/\.js$/, '');
+            } else {
+              return url;
+            }
             sources = sources.slice(1);
             for (var i=0; i<sources.length; i++) {
-              if (url.indexOf(sources[i]) > 0) {
+              if (file === sources[i]) {
                 return url.replace(/\.js$/g, '-cov.js');
               }
             }
