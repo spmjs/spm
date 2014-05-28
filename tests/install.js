@@ -92,16 +92,23 @@ describe('spm install', function() {
       type.should.eql('install');
     };
     server = http.createServer(function(req, res) {
-      req.url.should.be.eql('/repository/example/1.0.0/');
       req.method.should.be.eql('GET');
       res.writeHead(200);
-      var data = {
-        name: 'example',
-        version: '1.0.0',
-        filename: 'example-1.0.0.tar.gz',
-        md5: '999193906e30e8d85208b4eff843570a'
-      };
-      res.end(JSON.stringify(data));
+      if (req.url.indexOf('tar.gz') > 0) {
+        req.url.should.be.eql('/repository/example/1.0.0/example-1.0.0.tar.gz');
+        fs.readFile('tests/cache/example-1.0.0.tar.gz', function(err, data) {
+          res.end(data);
+        });
+      } else {
+        req.url.should.be.eql('/repository/example/1.0.0/');
+        var data = {
+          name: 'example',
+          version: '1.0.0',
+          filename: 'example-1.0.0.tar.gz',
+          md5: '999193906e30e8d85208b4eff843570a'
+        };
+        res.end(JSON.stringify(data));
+      }
     }).listen(port, function() {
       install({
         destination: dest,
