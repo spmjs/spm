@@ -1,0 +1,7 @@
+{
+  "name": "ignore-array",
+  "version": "1.0.0",
+  "spm": {
+    "ignore": ["a"]
+  }
+}
