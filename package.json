@@ -59,6 +59,7 @@
     "jshint": "*",
     "mocha": "*",
     "should": "*",
+    "ls-archive": "~1.0.0",
     "istanbul": "*",
     "glob": "~4.0.0",
     "gulp-clean": "~0.3.0",
