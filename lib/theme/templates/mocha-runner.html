@@ -22,6 +22,11 @@
           }
           return false;
         };
+        if (contain(query, 'cov')) {
+          if (console && console.log) {
+            console.log = function() {};
+          }
+        }
         seajs.config({
           map: [function(url) {
             if (!contain(query, 'cov')) {
