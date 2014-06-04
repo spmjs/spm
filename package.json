@@ -16,6 +16,10 @@
     "package",
     "tool",
     "command line",
+    "commonjs",
+    "component",
+    "bower",
+    "npm",
     "browser"
   ],
   "dependencies": {
@@ -26,7 +30,7 @@
     "async": "~0.2.9",
     "tar": "~0.1.19",
     "form-data": "~0.1.2",
-    "request": "~2.34.0",
+    "request": "~2.36.0",
     "colorful": "~2.1.0",
     "commander": "~1.3.2",
     "archy": "~0.0.2",
