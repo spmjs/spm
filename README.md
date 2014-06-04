@@ -33,7 +33,7 @@ $ spm install jquery/jquery
 $ spm install gallery/moment
 ```
 
-You can find plenty of modules in [spmjs.org](https://spmjs.org/).
+You can find plenty of modules in [spmjs.org](https://spmjs.org/), and documentation is [here](http://docs.spmjs.org/).
 
 ## Plugins
 
