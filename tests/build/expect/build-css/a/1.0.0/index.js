@@ -1,1 +1,1 @@
-define("a/1.0.0/index",["a/1.0.0/a.css"],function(a){a("a/1.0.0/a.css")}),define("a/1.0.0/a.css",[],function(){seajs.importStyle("ul{margin:0}li{color:red}body{background:0 0}")});
+define("a/1.0.0/index",["a/1.0.0/a.css.js"],function(s){s("a/1.0.0/a.css.js")}),define("a/1.0.0/a.css.js",[],function(){seajs.importStyle("ul{margin:0}li{color:red}body{background:0 0}")});
