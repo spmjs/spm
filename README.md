@@ -18,7 +18,7 @@ Useful links for building seajs project(seajs.org - http://seajs.org, and it's g
 Get the latest stable spm with:
 
 ```
-$ npm install spm -g
+$ npm install spm@2.x -g
 ```
 
 ## Usage
