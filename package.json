@@ -44,12 +44,12 @@
     "gulp-uglify": "~0.2.1",
     "gulp-cssmin": "~0.1.4",
     "gulp-beautify": "~1.0.3",
-    "gulp-clean": "~0.2.4",
+    "gulp-clean": "~0.3.0",
     "gulp-zip": "~0.3.4",
     "umi": "~0.3.0",
     "gulp": "~3.6.2",
     "gulp-if": "~1.1.0",
-    "multipipe": "~0.1.0",
+    "multipipe": "~0.1.1",
     "gulp-gunzip": "0.0.2",
     "gulp-untar2": "0.0.3",
     "vinyl-source-stream": "~0.1.0"
@@ -62,7 +62,6 @@
     "ls-archive": "~1.0.0",
     "istanbul": "*",
     "glob": "~4.0.0",
-    "gulp-clean": "~0.3.0",
     "gulp-unzip": "~0.1.1"
   },
   "bin": {
