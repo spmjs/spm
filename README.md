@@ -1,8 +1,8 @@
 **简单、放心的包管理工具 。**
 
-## spm 已不维护，请移步：
+## spm@1.x 已不维护，请移步：
 
-https://github.com/spmjs/spm2
+https://github.com/spmjs/spm/tree/master
 
 
 ## 讨论和报告 Bug
