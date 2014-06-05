@@ -46,7 +46,7 @@
     "requires": "~1.0.1",
     "gulp-uglify": "~0.2.1",
     "gulp-cssmin": "~0.1.4",
-    "gulp-beautify": "~1.0.3",
+    "gulp-jsbeautify": "~0.1.1",
     "gulp-clean": "~0.3.0",
     "gulp-zip": "~0.3.4",
     "umi": "~0.3.0",
