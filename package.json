@@ -36,7 +36,7 @@
     "archy": "~0.0.2",
     "rimraf": "~2.2.5",
     "spmrc": "~1.0.0",
-    "nico": "afc163/nico",
+    "nico": "~0.5.1",
     "mocha-browser-for-spm": "~0.2.3",
     "lodash": "~2.4.1",
     "grunt": "~0.4.2",
