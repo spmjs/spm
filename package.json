@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "win-spawn": "~2.0.0",
+    "inherits": "~1.0.0",
     "fstream": "~0.1.25",
     "fstream-ignore": "~0.0.7",
     "semver": "~2.2.1",
