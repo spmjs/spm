@@ -17,8 +17,8 @@ $ spm install {%= name %} --save
 ## Usage
 
 ```js
-var {%= name %} = require('{%= name %}');
-// use {%= name %}
+var {%= varName %} = require('{%= name %}');
+// use {%= varName %}
 ```
 
 ## Api

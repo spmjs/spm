@@ -55,6 +55,20 @@ describe('build', function() {
     });
   });
 
+  it('js package include all with ignore', function(done) {
+    var opt = {
+      cwd: join(base, 'build-js'),
+      dest: dest,
+      include: 'all',
+      ignore: ['b']
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-js-all-ignore', dest);
+      done();
+    });
+  });
+
   it('js package include standalone', function(done) {
     var opt = {
       cwd: join(base, 'build-js'),
