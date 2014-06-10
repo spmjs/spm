@@ -13,7 +13,7 @@ The brand new static package manager for browser.
 ## Install
 
 ```bash
-$ npm install spm@ninja -g
+$ npm install spm -g
 ```
 
 ## Usage
