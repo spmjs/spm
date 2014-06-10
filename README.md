@@ -4,7 +4,7 @@
 
 The brand new static package manager for browser.
 
-**spm 3.0.0 还在开发中，请先使用 [spm2](https://github.com/spmjs/spm/tree/2.x)**
+**这里是 spm3，spm2 请访问 https://github.com/spmjs/spm/tree/2.x**
 
 ![](https://i.alipayobjects.com/i/localhost/png/201404/2YQxOTYoFp.png)
 
