@@ -137,6 +137,39 @@ describe('build', function() {
     });
   });
 
+  it('should not clean directory', function(done) {
+    var fakeFile = join(dest, 'a.js');
+    fs.mkdirSync(dest);
+    fs.writeFileSync(fakeFile);
+
+    var opt = {
+      cwd: join(base, 'build-js'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      fs.existsSync(fakeFile).should.be.true;
+      done();
+    });
+  });
+
+  it('should clean directory', function(done) {
+    var fakeFile = join(dest, 'a.js');
+    fs.mkdirSync(dest);
+    fs.writeFileSync(fakeFile);
+
+    var opt = {
+      cwd: join(base, 'build-js'),
+      dest: dest,
+      force: true
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      fs.existsSync(fakeFile).should.be.false;
+      done();
+    });
+  });
+
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
     glob.sync('**/*', {cwd: expect})
