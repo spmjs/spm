@@ -5,17 +5,14 @@
   "keywords": [],
   "homepage": "{%= homepage %}",
   "author": "{%= author %}",
-  "maintainers": [
-    "{%= author %}"
-  ],
   "repository": {
     "type": "git",
     "url": "{%= repository %}"
   },
   "bugs": {
-    "url": "{%= bugs %}"
+    "url": ""
   },
-  "licenses": "{%= licenses %}",
+  "licenses": "MIT",
   "spm": {
     "main": "index.js",
     "dependencies": {

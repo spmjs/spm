@@ -14,6 +14,7 @@ commander
   .option('-v, --verbose', 'show more logging')
   .option('-I, --input-directory [dir]', 'input directory, default: process.cwd()')
   .option('-O, --output-directory [dir]', 'output directory, default: dist')
+  .option('-f, --force', 'force option')
   .option('--include [include]', 'determine which files will be included, optional: self, relative, all, standalone')
   .option('--ignore [ignore]', 'determine which id will not be transported')
   .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
@@ -42,6 +43,7 @@ var args = {
   ignore: commander.ignore,
   idleading: commander.idleading,
   zip: commander.zip,
+  force: commander.force,
   install: true
 };
 
