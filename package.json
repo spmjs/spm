@@ -55,7 +55,7 @@
     "gulp-if": "~1.1.0",
     "multipipe": "~0.1.1",
     "gulp-gunzip": "0.0.2",
-    "gulp-untar2": "0.0.3",
+    "gulp-untar2": "0.0.5",
     "vinyl-source-stream": "~0.1.0"
   },
   "devDependencies": {
