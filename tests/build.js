@@ -170,6 +170,18 @@ describe('build', function() {
     });
   });
 
+  it('should output png files', function(done) {
+    var opt = {
+      cwd: join(base, 'build-output-png'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-output-png', dest);
+      done();
+    });
+  });
+
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
     glob.sync('**/*', {cwd: expect})
