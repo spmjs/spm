@@ -4,7 +4,7 @@ node_js:
   - "0.10"
 
 install:
-  - npm install spm@ninja coveralls
+  - npm install spm coveralls
 
 before_script:
   - node_modules/spm/bin/spm-install
