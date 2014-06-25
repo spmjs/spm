@@ -8,7 +8,7 @@ specs := $(shell find ./tests -name '*.js' ! -path "*node_modules/*" ! -path "*s
 reporter = spec
 test:
 	./node_modules/.bin/istanbul cover \
-		./node_modules/.bin/_mocha -- -R ${reporter} ${specs}
+		./node_modules/.bin/_mocha -- -R ${reporter} -t 20000 ${specs}
 
 debug:
 	./node_modules/.bin/_mocha -R ${reporter} ${specs}

@@ -12,6 +12,8 @@ describe('build', function() {
   var dest = join(base, 'dist');
 
   afterEach(function(done) {
+    gulp.reset();
+    gulp.removeAllListeners();
     gulp.src(dest)
       .pipe(clean({force: true}))
       .on('end', done)
