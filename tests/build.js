@@ -184,6 +184,19 @@ describe('build', function() {
     });
   });
 
+  it('can ignore when parse', function(done) {
+    var opt = {
+      cwd: join(base, 'ignore'),
+      dest: dest,
+      skip: ['crypto']
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('ignore', dest);
+      done();
+    });
+  });
+
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
     glob.sync('**/*', {cwd: expect})
