@@ -17,6 +17,7 @@ commander
   .option('-f, --force', 'force option')
   .option('--include [include]', 'determine which files will be included, optional: self, relative, all, standalone')
   .option('--ignore [ignore]', 'determine which id will not be transported')
+  .option('--skip [skip]', 'determine which id will not be parsed when analyse')
   .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
   .option('--zip', 'archive by zip')
   .parse(process.argv);
@@ -41,6 +42,7 @@ var args = {
   cwd: commander.inputDirectory,
   include: commander.include,
   ignore: commander.ignore,
+  skip: commander.skip,
   idleading: commander.idleading,
   zip: commander.zip,
   force: commander.force,
