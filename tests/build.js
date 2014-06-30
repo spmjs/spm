@@ -12,6 +12,8 @@ describe('build', function() {
   var dest = join(base, 'dist');
 
   afterEach(function(done) {
+    gulp.reset();
+    gulp.removeAllListeners();
     gulp.src(dest)
       .pipe(clean({force: true}))
       .on('end', done)
@@ -178,6 +180,19 @@ describe('build', function() {
     build(opt, function(err) {
       should.not.exist(err);
       assets('build-output-png', dest);
+      done();
+    });
+  });
+
+  it('can ignore when parse', function(done) {
+    var opt = {
+      cwd: join(base, 'ignore'),
+      dest: dest,
+      skip: ['crypto']
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('ignore', dest);
       done();
     });
   });

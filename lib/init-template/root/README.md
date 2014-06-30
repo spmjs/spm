@@ -1,8 +1,6 @@
-# {%= name %}
+# {%= name %} [![spm version](http://spmjs.io/badge/{%= name %})](http://spmjs.io/package/{%= name %})
 
 ---
-
-[![spm version](http://spmjs.io/badge/{%= name %})](http://spmjs.io/package/{%= name %})
 
 An awesome spm package!
 
@@ -20,8 +18,3 @@ $ spm install {%= name %} --save
 var {%= varName %} = require('{%= name %}');
 // use {%= varName %}
 ```
-
-## Api
-
-Here is more details.
-
