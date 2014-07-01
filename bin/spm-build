@@ -49,6 +49,10 @@ var args = {
   install: true
 };
 
+if (args.ignore) {
+  args.ignore = args.ignore.split(',');
+}
+
 build(args, function(err) {
   if (err) {
     log.error('error', err.message);
