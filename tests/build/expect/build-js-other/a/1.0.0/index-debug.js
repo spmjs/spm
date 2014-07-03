@@ -7,7 +7,7 @@ define("a/1.0.0/index-debug", ["a/1.0.0/a-debug.json", "a/1.0.0/a-debug.tpl", "a
 define("a/1.0.0/a-debug.json", [], function(require, exports, module) {
   module.exports = {
     "a": 1
-  }
+  };
 });
 define("a/1.0.0/a-debug.tpl", [], function(require, exports, module) {
   module.exports = '<div></div>';

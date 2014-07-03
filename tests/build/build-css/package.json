@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "spm": {
     "dependencies": {
-      "b": "1.1.0"
+      "b": "1.1.0",
+      "import-style": "1.0.0"
     },
     "output": ["a.css"]
   }
