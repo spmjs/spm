@@ -12,8 +12,8 @@ commander.version(require('../package').version);
 
 commander
   .option('-v, --verbose', 'show more logging')
-  .option('-I, --input-directory [dir]', 'input directory, default: process.cwd()')
-  .option('-O, --output-directory [dir]', 'output directory, default: dist')
+  .option('-s, --src [source dir]', 'input directory, default: current working directory')
+  .option('-d, --dest [destination dir]', 'output directory, default: dist')
   .option('-f, --force', 'force option')
   .option('--include [include]', 'determine which files will be included, optional: self, relative, all, standalone')
   .option('--ignore [ignore]', 'determine which id will not be transported')
@@ -38,8 +38,8 @@ var begin = Date.now();
 log.info('start', info);
 
 var args = {
-  dest: commander.outputDirectory,
-  cwd: commander.inputDirectory,
+  dest: commander.dest,
+  cwd: commander.src,
   include: commander.include,
   ignore: commander.ignore,
   skip: commander.skip,
