@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "3.0.2",
+  "version": "3.1.0rc1",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
