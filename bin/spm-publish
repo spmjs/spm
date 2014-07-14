@@ -18,17 +18,6 @@ commander
   .option('--no-tarball', 'do not upload a tarball')
   .option('--no-color', 'disable colorful print');
 
-
-commander
-  .command('help')
-  .description('show this help menu')
-  .action(function() {
-    process.stdout.write(commander.helpInformation());
-    commander.emit('--help');
-    process.exit();
-  });
-
-
 commander.on('--help', function() {
   console.log();
   console.log('  ' + 'Examples:'.to.bold.blue.color);
