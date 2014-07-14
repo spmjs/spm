@@ -26,6 +26,8 @@ commander.on('--help', function() {
 
 commander.parse(process.argv);
 
+spm.log.config(commander);
+
 if (!commander.args[0]) {
   process.stdout.write(commander.helpInformation());
   commander.emit('--help');

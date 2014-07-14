@@ -19,11 +19,14 @@ commander
   .option('--idleading <idleading>', 'prefix of module name, default: {{name}}/{{version}}')
   .option('--zip', 'archive by zip')
   .option('--verbose', 'show more logging')
+  .option('--no-color', 'disable colorful print')
   .parse(process.argv);
 
 if (commander.verbose) {
   log.level = 'debug';
 }
+
+spm.log.config(commander);
 
 console.log();
 var p = file.readJSON('package.json');
