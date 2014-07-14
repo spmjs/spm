@@ -11,9 +11,9 @@ commander.usage('[options]');
 commander
   .option('-s, --source <name>', 'source name in spmrc')
   .option('-p, --port <port>', 'local server port, default: 8000')
-  .option('-f --force', 'force build without cache')
-  .option('-v --verbose', 'show more logging')
-  .option('-q --quiet', 'show less logging')
+  .option('-f, --force', 'force build without cache')
+  .option('-v, --verbose', 'show more logging')
+  .option('-q, --quiet', 'show less logging')
   .option('clean', 'clean _site folder')
   .option('build', 'build documentation')
   .option('server', 'start a server for documentation')
