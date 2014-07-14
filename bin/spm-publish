@@ -13,8 +13,8 @@ commander
   .option('--doc [dir]', 'upload docs instead of package')
   .option('-s, --source [name]', 'source name in spmrc')
   .option('-f, --force', 'force to publish an exists module')
-  .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
+  .option('--verbose', 'show more logs')
   .option('--no-tarball', 'do not upload a tarball')
   .option('--no-color', 'disable colorful print');
 

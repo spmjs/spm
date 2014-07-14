@@ -8,10 +8,8 @@ var file = spm.sdk.file;
 var log = spm.log;
 
 commander.usage('[options]');
-commander.version(require('../package').version);
 
 commander
-  .option('-v, --verbose', 'show more logging')
   .option('-s, --src [source dir]', 'input directory, default: current working directory')
   .option('-d, --dest [destination dir]', 'output directory, default: dist')
   .option('-f, --force', 'force option')
@@ -20,6 +18,7 @@ commander
   .option('--skip [skip]', 'determine which id will not be parsed when analyse')
   .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
   .option('--zip', 'archive by zip')
+  .option('--verbose', 'show more logging')
   .parse(process.argv);
 
 if (commander.verbose) {

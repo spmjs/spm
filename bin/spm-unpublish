@@ -8,7 +8,7 @@ commander.usage('[options] name[@version]');
 
 commander
   .option('-s, --source [name]', 'default value will be the first source')
-  .option('-v --verbose', 'show more log')
+  .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
 
 
