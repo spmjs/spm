@@ -10,8 +10,8 @@ var log = spm.log;
 commander.usage('[options]');
 
 commander
-  .option('-s, --src <source dir>', 'input directory, default: current working directory')
-  .option('-d, --dest <destination dir>', 'output directory, default: dist')
+  .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
+  .option('-O, --output-directory <dir>', 'output directory, default: dist')
   .option('-f, --force', 'force option')
   .option('--include <include>', 'determine which files will be included, optional: self, relative, all, standalone')
   .option('--ignore <ignore>', 'determine which id will not be transported')
