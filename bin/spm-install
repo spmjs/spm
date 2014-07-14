@@ -12,7 +12,6 @@ commander
   .option('-s, --source <name>', 'source name in spmrc')
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('-d, --destination <dir>', 'output directory, default: sea-modules')
-  .option('-g, --global', 'install the package to ~/.spm/sea-modules')
   .option('-f, --force', 'force to download a unstable module')
   .option('-q, --quiet', 'show less logs')
   .option('--save', 'save alias to package.json')
