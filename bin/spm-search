@@ -7,7 +7,7 @@ var spm = require('..');
 commander.usage('[options] <query>');
 
 commander
-  .option('-s, --source [name]', 'default value will be the first source')
+  .option('-s, --source <name>', 'source name in spmrc')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
 

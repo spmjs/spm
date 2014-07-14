@@ -10,13 +10,13 @@ var log = spm.log;
 commander.usage('[options]');
 
 commander
-  .option('-s, --src [source dir]', 'input directory, default: current working directory')
-  .option('-d, --dest [destination dir]', 'output directory, default: dist')
+  .option('-s, --src <source dir>', 'input directory, default: current working directory')
+  .option('-d, --dest <destination dir>', 'output directory, default: dist')
   .option('-f, --force', 'force option')
-  .option('--include [include]', 'determine which files will be included, optional: self, relative, all, standalone')
-  .option('--ignore [ignore]', 'determine which id will not be transported')
-  .option('--skip [skip]', 'determine which id will not be parsed when analyse')
-  .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
+  .option('--include <include>', 'determine which files will be included, optional: self, relative, all, standalone')
+  .option('--ignore <ignore>', 'determine which id will not be transported')
+  .option('--skip <skip>', 'determine which id will not be parsed when analyse')
+  .option('--idleading <idleading>', 'prefix of module name, default: {{name}}/{{version}}')
   .option('--zip', 'archive by zip')
   .option('--verbose', 'show more logging')
   .parse(process.argv);

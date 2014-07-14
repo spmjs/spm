@@ -9,9 +9,9 @@ require('colorful').colorful();
 commander.usage('[options] name');
 
 commander
-  .option('--tag [tag]', 'publish module with a tag: [stable]')
-  .option('--doc [dir]', 'upload docs instead of package')
-  .option('-s, --source [name]', 'source name in spmrc')
+  .option('--tag <tag>', 'publish module with a tag, default: stable')
+  .option('--doc <dir>', 'upload docs instead of package')
+  .option('-s, --source <name>', 'source name in spmrc')
   .option('-f, --force', 'force to publish an exists module')
   .option('-q, --quiet', 'show less logs')
   .option('--verbose', 'show more logs')
