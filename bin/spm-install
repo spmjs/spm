@@ -14,8 +14,8 @@ commander
   .option('-d, --destination <dir>', 'output directory, default: sea-modules')
   .option('-f, --force', 'force to download a unstable module')
   .option('-q, --quiet', 'show less logs')
-  .option('--save', 'save alias to package.json')
-  .option('--save-dev', 'save devAlias to package.json')
+  .option('-S, --save', 'save alias to package.json')
+  .option('-SD, --save-dev', 'save devAlias to package.json')
   .option('--parallel [number]', 'parallel installation')
   .option('--verbose', 'show more logs')
   .option('--no-color', 'disable colorful print');
