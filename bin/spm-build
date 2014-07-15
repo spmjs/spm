@@ -8,23 +8,25 @@ var file = spm.sdk.file;
 var log = spm.log;
 
 commander.usage('[options]');
-commander.version(require('../package').version);
 
 commander
-  .option('-v, --verbose', 'show more logging')
-  .option('-s, --src [source dir]', 'input directory, default: current working directory')
-  .option('-d, --dest [destination dir]', 'output directory, default: dist')
+  .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
+  .option('-O, --output-directory <dir>', 'output directory, default: dist')
   .option('-f, --force', 'force option')
-  .option('--include [include]', 'determine which files will be included, optional: self, relative, all, standalone')
-  .option('--ignore [ignore]', 'determine which id will not be transported')
-  .option('--skip [skip]', 'determine which id will not be parsed when analyse')
-  .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
+  .option('--include <include>', 'determine which files will be included, optional: self, relative, all, standalone')
+  .option('--ignore <ignore>', 'determine which id will not be transported')
+  .option('--skip <skip>', 'determine which id will not be parsed when analyse')
+  .option('--idleading <idleading>', 'prefix of module name, default: {{name}}/{{version}}')
   .option('--zip', 'archive by zip')
+  .option('--verbose', 'show more logging')
+  .option('--no-color', 'disable colorful print')
   .parse(process.argv);
 
 if (commander.verbose) {
   log.level = 'debug';
 }
+
+spm.log.config(commander);
 
 console.log();
 var p = file.readJSON('package.json');

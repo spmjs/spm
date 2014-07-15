@@ -21,9 +21,9 @@ var template = exports.template = (spmrc.get('init.template') || defaultTemplate
 */
 
 commander
-  .version(require('../package.json').version)
-  .option('-v, --verbose', 'Show more infomation.')
-  .option('-f, --force', 'Force to process the task.');
+  .option('-f, --force', 'force to process the task.')
+  .option('--verbose', 'show more infomation')
+  .option('--no-color', 'disable colorful print');
 
 commander.on('--help', function() {
   console.log();

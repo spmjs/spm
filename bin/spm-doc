@@ -9,11 +9,12 @@ require('colorful').colorful();
 commander.usage('[options]');
 
 commander
-  .option('-s, --source <spmjs>', 'source for publishing')
-  .option('-p, --port <8000>', 'local server port')
-  .option('-f --force', 'force build without cache')
-  .option('-v --verbose', 'show more logging')
-  .option('-q --quiet', 'show less logging')
+  .option('-s, --source <name>', 'source name in spmrc')
+  .option('-p, --port <port>', 'local server port, default: 8000')
+  .option('-f, --force', 'force build without cache')
+  .option('-v, --verbose', 'show more logging')
+  .option('-q, --quiet', 'show less logging')
+  .option('--no-color', 'disable colorful print')
   .option('clean', 'clean _site folder')
   .option('build', 'build documentation')
   .option('server', 'start a server for documentation')
@@ -35,6 +36,8 @@ commander.on('--help', function() {
 });
 
 commander.parse(process.argv);
+
+spm.log.config(commander);
 
 if (!process.argv[2]) {
   commander.help();

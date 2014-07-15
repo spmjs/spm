@@ -9,16 +9,15 @@ var spmrc = require('spmrc');
 commander.usage('[options] name[@version]');
 
 commander
-  .option('-s, --source [name]', 'the source repo name')
-  .option('-b, --base [name]', 'base directory of repo')
-  .option('-d, --destination [dir]', 'the destination, default: sea-modules')
-  .option('-g, --global', 'install the package to ~/.spm/sea-modules')
+  .option('-s, --source <name>', 'source name in spmrc')
+  .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
+  .option('-d, --destination <dir>', 'output directory, default: sea-modules')
   .option('-f, --force', 'force to download a unstable module')
-  .option('-v, --verbose', 'show more logs')
   .option('-q, --quiet', 'show less logs')
-  .option('--save', 'save alias to package.json')
-  .option('--save-dev', 'save devAlias to package.json')
+  .option('-S, --save', 'save alias to package.json')
+  .option('-SD, --save-dev', 'save devAlias to package.json')
   .option('--parallel [number]', 'parallel installation')
+  .option('--verbose', 'show more logs')
   .option('--no-color', 'disable colorful print');
 
 

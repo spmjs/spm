@@ -35,7 +35,7 @@ commander.helpInformation = function() {
 };
 
 commander
-  .version(spm.version)
+  .version(spm.version, '-v, --version')
   .usage('<command> [options]');
 
 
