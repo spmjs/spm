@@ -1,4 +1,4 @@
-define("a/1.0.0/index-debug", ["a/1.0.0/a-debug.json", "a/1.0.0/a-debug.tpl", "a/1.0.0/a-debug.handlebars", "a/1.0.0/a-debug", "handlebars-runtime/1.3.0/handlebars-debug"], function(require, exports, module) {
+define("a/1.0.0/index-debug", ["handlebars-runtime/1.3.0/handlebars-debug"], function(require, exports, module) {
   require("a/1.0.0/a-debug.json");
   require("a/1.0.0/a-debug.tpl");
   require("a/1.0.0/a-debug.handlebars");

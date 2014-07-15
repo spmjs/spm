@@ -1,4 +1,4 @@
-define("a/1.0.0/index-debug", ["a/1.0.0/relative-debug", "d/0.1.1/index-debug", "b"], function(require, exports, module) {
+define("a/1.0.0/index-debug", ["b", "c", "d", "d/0.1.1/index-debug"], function(require, exports, module) {
   require("a/1.0.0/relative-debug");
   require("d/0.1.1/index-debug");
 });

@@ -104,7 +104,7 @@ describe('build', function() {
     };
     build(opt, function(err) {
       should.not.exist(err);
-      assets('build-css', dest);
+      assets('build-css-all', dest);
       done();
     });
   });
