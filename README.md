@@ -34,3 +34,7 @@ $ npm install spm -g
 ## License
 
 SPM is available under the terms of the MIT License.
+
+## Memo
+
+* 发布日志：https://github.com/spmjs/spm/issues/819
