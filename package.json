@@ -60,7 +60,7 @@
     "spmrc": "~1.0.0",
     "tar": "~0.1.19",
     "through2": "~0.5.1",
-    "umi": "~0.4.0",
+    "umi": "~0.5.0",
     "vinyl-source-stream": "~0.1.0",
     "win-spawn": "~2.0.0"
   },
