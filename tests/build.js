@@ -1,4 +1,5 @@
 var should = require('should');
+var sinon = require('sinon');
 var fs = require('fs');
 var join = require('path').join;
 var glob = require('glob');
@@ -6,6 +7,7 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var unzip = require('gulp-unzip');
 var build = require('..').build;
+var log = require('..').log;
 
 describe('build', function() {
   var base = join(__dirname, 'build');
@@ -205,6 +207,20 @@ describe('build', function() {
     build(opt, function(err) {
       should.not.exist(err);
       assets('build-windows-path', dest);
+      done();
+    });
+  });
+
+  it('should warn if package have multiple versions', function(done) {
+    var opt = {
+      cwd: join(base, 'build-multiple-versions'),
+      dest: dest
+    };
+    var logWarn = sinon.spy(log, 'warn');
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-multiple-versions', dest);
+      logWarn.callCount.should.be.equal(2);
       done();
     });
   });
