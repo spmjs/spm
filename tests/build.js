@@ -197,6 +197,18 @@ describe('build', function() {
     });
   });
 
+  it('should handle path in windows', function(done) {
+    var opt = {
+      cwd: join(base, 'build-windows-path'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-windows-path', dest);
+      done();
+    });
+  });
+
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
     glob.sync('**/*', {cwd: expect})
