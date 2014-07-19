@@ -1,6 +1,7 @@
 # Static Package Manager
 
-[![Build Status](https://travis-ci.org/spmjs/spm.png)](https://travis-ci.org/spmjs/spm)
+[![NPM version](https://img.shields.io/npm/v/spm.svg?style=flat)](https://npmjs.org/package/spm)
+[![Build Status](https://img.shields.io/travis/spmjs/spm.svg?style=flat)](https://travis-ci.org/spmjs/spm)
 
 The brand new static package manager for browser.
 
