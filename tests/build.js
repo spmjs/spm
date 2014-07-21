@@ -225,6 +225,24 @@ describe('build', function() {
     });
   });
 
+  it('should install import-style if required', function(done) {
+    var opt = {
+      cwd: join(base, 'build-js-extdeps'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-js-extdeps', dest);
+      // resume package.json for next test
+      fs.writeFileSync(
+        join(opt.cwd, 'package.json'),
+        '{"name":"a","version":"0.1.0"}\n',
+        'utf-8'
+      );
+      done();
+    });
+  });
+
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
     glob.sync('**/*', {cwd: expect})
