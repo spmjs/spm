@@ -19,6 +19,7 @@ commander
   .option('--ignore [ignore]', 'determine which id will not be transported')
   .option('--skip [skip]', 'determine which id will not be parsed when analyse')
   .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
+  .option('--with-deps', 'build package in dependencies')
   .option('--zip', 'archive by zip')
   .parse(process.argv);
 
@@ -46,6 +47,7 @@ var args = {
   idleading: commander.idleading,
   zip: commander.zip,
   force: commander.force,
+  withDeps: commander.withDeps,
   install: true
 };
 
