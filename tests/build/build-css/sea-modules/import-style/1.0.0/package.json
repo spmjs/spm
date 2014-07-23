@@ -1,0 +1,17 @@
+{
+  "name": "import-style",
+  "version": "1.0.0",
+  "description": "embedding style text in JavaScript code",
+  "keywords": ["import","style"],
+  "author": "Frank Wang <lifesinger@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/popomore/import-style.git"
+  },
+  "spm": {
+    "main": "index.js",
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    }
+  }
+}
