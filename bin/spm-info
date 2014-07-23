@@ -7,9 +7,9 @@ var spm = require('..');
 commander.usage('[options] name[@version]');
 
 commander
-  .option('-s, --source [name]', 'default value will be the first source')
-  .option('-v, --verbose', 'show more log')
+  .option('-s, --source <name>', 'source name in spmrc')
   .option('-q, --quiet', 'show less log')
+  .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
 
 
@@ -25,6 +25,8 @@ commander.on('--help', function() {
 });
 
 commander.parse(process.argv);
+
+spm.log.config(commander);
 
 if (!commander.args[0]) {
   process.stdout.write(commander.helpInformation());

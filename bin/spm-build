@@ -8,24 +8,26 @@ var file = spm.sdk.file;
 var log = spm.log;
 
 commander.usage('[options]');
-commander.version(require('../package').version);
 
 commander
-  .option('-v, --verbose', 'show more logging')
-  .option('-I, --input-directory [dir]', 'input directory, default: process.cwd()')
-  .option('-O, --output-directory [dir]', 'output directory, default: dist')
+  .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
+  .option('-O, --output-directory <dir>', 'output directory, default: dist')
   .option('-f, --force', 'force option')
-  .option('--include [include]', 'determine which files will be included, optional: self, relative, all, standalone')
-  .option('--ignore [ignore]', 'determine which id will not be transported')
-  .option('--skip [skip]', 'determine which id will not be parsed when analyse')
-  .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
+  .option('--include <include>', 'determine which files will be included, optional: self, relative, all, standalone')
+  .option('--ignore <ignore>', 'determine which id will not be transported')
+  .option('--skip <skip>', 'determine which id will not be parsed when analyse')
+  .option('--idleading <idleading>', 'prefix of module name, default: {{name}}/{{version}}')
   .option('--with-deps', 'build package in dependencies')
   .option('--zip', 'archive by zip')
+  .option('--verbose', 'show more logging')
+  .option('--no-color', 'disable colorful print')
   .parse(process.argv);
 
 if (commander.verbose) {
   log.level = 'debug';
 }
+
+spm.log.config(commander);
 
 console.log();
 var p = file.readJSON('package.json');
@@ -39,8 +41,8 @@ var begin = Date.now();
 log.info('start', info);
 
 var args = {
-  dest: commander.outputDirectory,
-  cwd: commander.inputDirectory,
+  dest: commander.dest,
+  cwd: commander.src,
   include: commander.include,
   ignore: commander.ignore,
   skip: commander.skip,

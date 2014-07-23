@@ -64,4 +64,9 @@
       </footer>
     </div>
   </body>
+  <script src="{{static_url('js/nprogress.js')}}?nowrap"></script>
+  <script>
+  NProgress.start();
+  window.onload = NProgress.done;
+  </script>
 </html>

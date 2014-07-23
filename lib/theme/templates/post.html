@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{%- block title -%}{{config.package.name}} - {{post.title}}{%- endblock -%}
+{%- block title -%}{{config.package.name}} - {{post.title|cleanTitle}}{%- endblock -%}
 
 {% block content %}
 <article class="hentry">
@@ -16,7 +16,7 @@
 {%- if items|length > 1 %}
 <ol class="sidenav">
   {%- for item in items %}
-  <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
+  <li><a href="{{permalink_url(item)}}">{{item.title|cleanTitle}}</a></li>
   {%- endfor %}
 </ol>
 {%- endif %}
