@@ -40,6 +40,9 @@
     "gulp-gunzip": "0.0.2",
     "gulp-if": "~1.1.0",
     "gulp-jsbeautify": "~0.1.1",
+    "gulp-load-plugins": "~0.5.3",
+    "gulp-mirror": "~0.2.0",
+    "gulp-transport": "~0.6.0",
     "gulp-uglify": "~0.2.1",
     "gulp-untar2": "0.0.5",
     "gulp-zip": "~0.3.4",
@@ -56,7 +59,7 @@
     "serve-spm": "~0.3.1",
     "spmrc": "~1.0.0",
     "tar": "~0.1.19",
-    "umi": "~0.4.0",
+    "umi": "~0.5.0",
     "vinyl-source-stream": "~0.1.0",
     "win-spawn": "~2.0.0"
   },

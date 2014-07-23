@@ -1,0 +1,9 @@
+{
+  "name": "b",
+  "version": "0.1.0",
+  "spm": {
+    "dependencies": {
+      "c": "0.1.1"
+    }
+  }
+}

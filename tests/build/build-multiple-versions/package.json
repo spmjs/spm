@@ -1,0 +1,13 @@
+{
+  "name": "a",
+  "version": "0.1.0",
+  "spm": {
+    "output": [
+      "./output.js"
+    ],
+    "dependencies": {
+      "b": "0.1.0",
+      "c": "0.1.0"
+    }
+  }
+}

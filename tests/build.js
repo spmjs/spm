@@ -1,4 +1,5 @@
 var should = require('should');
+var sinon = require('sinon');
 var fs = require('fs');
 var join = require('path').join;
 var glob = require('glob');
@@ -6,6 +7,7 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var unzip = require('gulp-unzip');
 var build = require('..').build;
+var log = require('..').log;
 
 describe('build', function() {
   var base = join(__dirname, 'build');
@@ -104,7 +106,7 @@ describe('build', function() {
     };
     build(opt, function(err) {
       should.not.exist(err);
-      assets('build-css', dest);
+      assets('build-css-all', dest);
       done();
     });
   });
@@ -193,6 +195,63 @@ describe('build', function() {
     build(opt, function(err) {
       should.not.exist(err);
       assets('ignore', dest);
+      done();
+    });
+  });
+
+  it('should handle path in windows', function(done) {
+    var opt = {
+      cwd: join(base, 'build-windows-path'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-windows-path', dest);
+      done();
+    });
+  });
+
+  it('should warn if package have multiple versions', function(done) {
+    var opt = {
+      cwd: join(base, 'build-multiple-versions'),
+      dest: dest
+    };
+    var logWarn = sinon.spy(log, 'warn');
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-multiple-versions', dest);
+      logWarn.callCount.should.be.equal(2);
+      done();
+    });
+  });
+
+  it('should install import-style if required', function(done) {
+    var opt = {
+      cwd: join(base, 'build-js-extdeps'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-js-extdeps', dest);
+      // resume package.json for next test
+      fs.writeFileSync(
+        join(opt.cwd, 'package.json'),
+        '{"name":"a","version":"0.1.0"}\n',
+        'utf-8'
+      );
+      done();
+    });
+  });
+
+  it('js package with deps', function(done) {
+    var opt = {
+      cwd: join(base, 'build-js'),
+      dest: dest,
+      withDeps: true
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-js-with-deps', dest);
       done();
     });
   });

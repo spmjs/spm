@@ -1,0 +1,1 @@
+define("a/0.1.0/src/a",[],function(c){c("a/0.1.0/src/b.c.d")}),define("a/0.1.0/src/b.c.d",[],function(){console.log("b.c.d")});

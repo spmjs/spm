@@ -1,0 +1,1 @@
+define("a/0.1.0/index",["import-style/1.0.0/index"],function(e){e("a/0.1.0/a.css.js"),alert(1)}),define("a/0.1.0/a.css.js",["import-style/1.0.0/index"],function(e){e("import-style/1.0.0/index")("a{color:red;}")});
