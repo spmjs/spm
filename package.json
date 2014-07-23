@@ -71,7 +71,6 @@
     "should": "*",
     "ls-archive": "~1.0.0",
     "istanbul": "*",
-    "glob": "~4.0.0",
     "gulp-unzip": "~0.1.1"
   },
   "bin": {
