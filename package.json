@@ -26,7 +26,7 @@
     "async": "~0.1.22",
     "tar": "~0.1.16",
     "form-data": "~0.1.0",
-    "request": "~2.25.0",
+    "request": "~2.39.0",
     "colorful": "~2.1.0",
     "commander": "~1.1.1",
     "cmd-util": "~0.3.10",
