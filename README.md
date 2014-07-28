@@ -50,6 +50,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**Nov 27th, 2013** `2.2.9`
+
+- Fix family error in node 0.11.*
+
 **Nov 27th, 2013** `2.2.8`
 
 - Add server config for spm install
