@@ -49,7 +49,9 @@
             sources = sources.slice(1);
             for (var i=0; i<sources.length; i++) {
               if (file === sources[i]) {
-                return url.replace(/\.js$/g, '-cov.js');
+                if (url.indexOf('handlebars.js') < 0) {
+                  return url.replace(/\.js$/g, '-cov.js');
+                }
               }
             }
             return url;
