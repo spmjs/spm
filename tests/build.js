@@ -256,6 +256,20 @@ describe('build', function() {
     });
   });
 
+  it('should ignore with no deps when include all', function(done) {
+    var opt = {
+      cwd: join(base, 'build-nodeps-ignore'),
+      dest: dest,
+      ignore: ['jquery'],
+      include: 'all'
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-nodeps-ignore-include-all', dest);
+      done();
+    });
+  });
+
   it('js package with deps', function(done) {
     var opt = {
       cwd: join(base, 'build-js'),
