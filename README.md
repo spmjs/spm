@@ -1,9 +1,10 @@
 # Static Package Manager
 
-[![NPM version](https://img.shields.io/npm/v/spm.svg?style=flat)](https://npmjs.org/package/spm)
-[![Build Status](https://img.shields.io/travis/spmjs/spm.svg?style=flat)](https://travis-ci.org/spmjs/spm)
+[![NPM version][npm-version-image]][npm-url]
+[![NPM downloads][npm-downloads-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
 
-The brand new static package manager for browser.
+Brand new static package manager for browser.
 
 **这里是 spm3，spm2 请访问 https://github.com/spmjs/spm/tree/2.x**
 
