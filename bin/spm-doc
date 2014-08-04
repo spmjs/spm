@@ -9,7 +9,7 @@ require('colorful').colorful();
 commander.usage('[options]');
 
 commander
-  .option('-r, --registry <url>', 'registry url of yuan server')
+  .option('--registry <url>', 'registry url of yuan server')
   .option('-p, --port <port>', 'local server port, default: 8000')
   .option('-f, --force', 'force build without cache')
   .option('-v, --verbose', 'show more logging')

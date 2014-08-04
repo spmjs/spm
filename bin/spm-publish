@@ -9,7 +9,7 @@ require('colorful').colorful();
 commander.usage('[options] name');
 
 commander
-  .option('-r, --registry <url>', 'registry url of yuan server')
+  .option('--registry <url>', 'registry url of yuan server')
   .option('-f, --force', 'force to publish an exists module')
   .option('-q, --quiet', 'show less logs')
   .option('--tag <tag>', 'publish module with a tag, default: stable')

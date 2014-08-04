@@ -6,7 +6,7 @@ var spm = require('..');
 commander.usage('[options]');
 
 commander
-  .option('-r, --registry <url>', 'registry url of yuan server')
+  .option('--registry <url>', 'registry url of yuan server')
   .option('-u, --username <username>', 'username of your account')
   .option('-a, --authkey <authkey>', 'authkey of your account');
 

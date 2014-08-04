@@ -7,7 +7,7 @@ var spm = require('..');
 commander.usage('[options] name[@version]');
 
 commander
-  .option('-r, --registry <url>', 'registry url of yuan server')
+  .option('--registry <url>', 'registry url of yuan server')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
 
