@@ -46,7 +46,7 @@ describe('spm install', function() {
         destination: dest,
         cache: cache,
         query: ['example@1.0.0'],
-        server: 'http://127.0.0.1:' + port
+        registry: 'http://127.0.0.1:' + port
       }, function() {
         file.exists(dest + '/example/1.0.0').should.eql(true);
         done();
@@ -77,7 +77,7 @@ describe('spm install', function() {
         destination: dest,
         cache: cache,
         query: ['example@1.0.0'],
-        server: 'http://127.0.0.1:' + port
+        registry: 'http://127.0.0.1:' + port
       }, function() {
         done();
       });
@@ -115,7 +115,7 @@ describe('spm install', function() {
         cache: cache,
         query: ['example@1.0.0'],
         force: true,
-        server: 'http://127.0.0.1:' + port
+        registry: 'http://127.0.0.1:' + port
       }, function() {
         file.rmdir(dest);
         done();
@@ -148,7 +148,7 @@ describe('spm install', function() {
         destination: dest,
         cache: cache,
         query: ['example-no-cache@1.0.0'],
-        server: 'http://127.0.0.1:' + port
+        registry: 'http://127.0.0.1:' + port
       }, function() {
         file.exists(dest + '/example-no-cache/1.0.0').should.eql(true);
         file.exists(dest + '/example-no-cache/1.0.0/src/base.js').should.eql(true);
@@ -182,7 +182,7 @@ describe('spm install', function() {
         destination: dest,
         cache: cache,
         query: ['example2@1.0.0'],
-        server: 'http://127.0.0.1:' + port
+        registry: 'http://127.0.0.1:' + port
       }, function() {
         file.exists(dest + '/example/1.0.0').should.eql(true);
         file.exists(dest + '/example2/1.0.0').should.eql(true);
@@ -211,7 +211,7 @@ describe('spm install', function() {
         query: ['example@1.0.0'],
         save: true,
         saveDev: true,
-        server: 'http://127.0.0.1:' + port
+        registry: 'http://127.0.0.1:' + port
       }, function() {
         var pkg = file.readJSON('package.json');
         pkg.spm.dependencies.example.should.eql('1.0.0');

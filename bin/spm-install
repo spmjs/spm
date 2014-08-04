@@ -9,7 +9,7 @@ var spmrc = require('spmrc');
 commander.usage('[options] name[@version]');
 
 commander
-  .option('-s, --source <name>', 'source name in spmrc')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('-d, --destination <dir>', 'output directory, default: sea-modules')
   .option('-f, --force', 'force to download a unstable module')
@@ -45,7 +45,7 @@ if (commander.global) {
 // run install
 console.log();
 spm.install({
-  source: commander.source,
+  registry: commander.registry,
   base: commander.base,
   destination: commander.destination,
   force: commander.force,

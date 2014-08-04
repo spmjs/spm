@@ -6,9 +6,9 @@ var spm = require('..');
 commander.usage('[options]');
 
 commander
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-u, --username <username>', 'username of your account')
-  .option('-a, --authkey <authkey>', 'authkey of your account')
-  .option('-s, --source <name>', 'source name in spmrc');
+  .option('-a, --authkey <authkey>', 'authkey of your account');
 
 commander.parse(process.argv);
 

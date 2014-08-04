@@ -30,7 +30,7 @@ describe('spm search', function() {
       res.end(JSON.stringify(data));
     }).listen(port, function() {
       search({
-        server: 'http://127.0.0.1:' + port,
+        registry: 'http://127.0.0.1:' + port,
         query: 'arale'
       }, function() {
         done();

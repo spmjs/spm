@@ -25,7 +25,7 @@ describe('spm info', function() {
     }).listen(port, function() {
       info({
         query: 'arale-base@1.0.0',
-        server: 'http://127.0.0.1:' + port
+        registry: 'http://127.0.0.1:' + port
       });
       done();
     });
@@ -38,7 +38,7 @@ describe('spm info', function() {
     }).listen(port, function() {
       info({
         query: 'arale-base',
-        server: 'http://127.0.0.1:' + port
+        registry: 'http://127.0.0.1:' + port
       });
       done();
     });
