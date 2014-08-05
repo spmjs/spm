@@ -9,7 +9,7 @@ require('colorful').colorful();
 commander.usage('[options]');
 
 commander
-  .option('-s, --source <name>', 'source name in spmrc')
+  .option('--registry <url>', 'registry url of yuan server')
   .option('-p, --port <port>', 'local server port, default: 8000')
   .option('-f, --force', 'force build without cache')
   .option('-v, --verbose', 'show more logging')
@@ -32,7 +32,7 @@ commander.on('--help', function() {
   console.log('    $ spm doc watch');
   console.log('    $ spm doc watch --port 8080');
   console.log('    $ spm doc publish');
-  console.log('    $ spm doc publish -s alipay');
+  console.log('    $ spm doc publish -r http://spm.alipay.im');
 });
 
 commander.parse(process.argv);

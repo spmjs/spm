@@ -7,7 +7,7 @@ var spm = require('..');
 commander.usage('[options] <query>');
 
 commander
-  .option('-s, --source <name>', 'source name in spmrc')
+  .option('--registry <url>', 'registry url of yuan server')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
 
@@ -33,4 +33,4 @@ if (!commander.args[0]) {
 
 // run install
 console.log();
-spm.search({source: commander.source, query: commander.args[0]});
+spm.search({registry: commander.registry, query: commander.args[0]});

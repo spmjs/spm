@@ -9,11 +9,11 @@ require('colorful').colorful();
 commander.usage('[options] name');
 
 commander
-  .option('--tag <tag>', 'publish module with a tag, default: stable')
-  .option('--doc <dir>', 'upload docs instead of package')
-  .option('-s, --source <name>', 'source name in spmrc')
+  .option('--registry <url>', 'registry url of yuan server')
   .option('-f, --force', 'force to publish an exists module')
   .option('-q, --quiet', 'show less logs')
+  .option('--tag <tag>', 'publish module with a tag, default: stable')
+  .option('--doc <dir>', 'upload docs instead of package')
   .option('--verbose', 'show more logs')
   .option('--no-tarball', 'do not upload a tarball')
   .option('--no-color', 'disable colorful print');
@@ -26,9 +26,9 @@ commander.on('--help', function() {
   console.log();
   console.log('   $ ' + 'spm publish'.to.magenta.color);
   console.log();
-  console.log('   publish to a specified source');
+  console.log('   publish to a specified registry');
   console.log();
-  console.log('   $ ' + 'spm publish'.to.magenta.color + ' -s'.to.cyan.color + ' arale');
+  console.log('   $ ' + 'spm publish'.to.magenta.color + ' -r'.to.cyan.color + ' http://spm.alipay.im');
   console.log();
 });
 

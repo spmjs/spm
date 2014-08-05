@@ -30,7 +30,7 @@ describe('spm publish', function() {
       res.end(JSON.stringify(data));
     }).listen(port, function() {
       publish.publish({
-        server: 'http://127.0.0.1:' + port
+        registry: 'http://127.0.0.1:' + port
       }, {
         name: 'arale-base',
         version: '1.0.0'
