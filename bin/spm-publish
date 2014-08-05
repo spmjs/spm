@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 var commander = require('commander');
+var spmrc = require('spmrc');
+var client = require('spm-client');
 var spm = require('..');
 var file = require('../lib/sdk/file');
 var log = require('../lib/utils/log');
@@ -48,5 +50,25 @@ console.log();
 if (commander.doc) {
   spm.upload(commander, pkg);
 } else {
-  spm.publish(commander, pkg);
+  client.config({
+    registry: commander.registry || spmrc.get('registry') || 'http://spmjs.io',
+    auth: spmrc.get('auth')
+  });
+  client.publish({
+    cwd: process.cwd(),
+    force: commander.force
+  }, function(err, res) {
+    if (err) {
+      if (err.statusCode === 401) {
+        return log.error('exit', 'authorization is required. try `spm login`');
+      }
+      return log.error('exit', err.message);
+    }
+    var body = res.body;
+    if (body.message && body.status) {
+      log[body.status](body.status, body.message);
+    }
+    var pkg = res.args.pkg;
+    log.info('published', (pkg.name + '@' + pkg.version).to.magenta.color);
+  });
 }
