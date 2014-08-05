@@ -50,11 +50,15 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
-**Nov 27th, 2013** `2.2.9`
+**Aug 5th, 2014** `2.2.10`
+
+- Fix upload doc error.
+
+**Jul 28th, 2013** `2.2.9`
 
 - Fix family error in node 0.11.*
 
-**Nov 27th, 2013** `2.2.8`
+**Jul 3rd, 2013** `2.2.8`
 
 - Add server config for spm install
 

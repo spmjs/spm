@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "2.2.9",
+  "version": "2.2.10",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -25,7 +25,6 @@
     "semver": "~1.1.4",
     "async": "~0.1.22",
     "tar": "~0.1.16",
-    "form-data": "~0.1.0",
     "request": "~2.39.0",
     "colorful": "~2.1.0",
     "commander": "~1.1.1",
