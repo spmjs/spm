@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
 var commander = require('commander');
-var spm = require('..');
+var spmrc = require('spmrc');
+var inquirer = require('inquirer');
+var client = require('spm-client');
+require('colorful').colorful();
+var log = require('../lib/utils/log');
 
 commander.usage('[options]');
 
@@ -12,6 +16,39 @@ commander
 
 commander.parse(process.argv);
 
+var registry = commander.registry || spmrc.get('registry') || 'http://spmjs.io';
+client.config({
+  registry: registry,
+  auth: spmrc.get('auth')
+});
 
 // run install
-spm.login(commander);
+var info = {};
+if (commander.authkey && commander.username) {
+  info.username = commander.username;
+  info.authkey = commander.authkey;
+  client.login(info, done);
+  return;
+}
+
+inquirer.prompt([{
+    message: 'username (your github account username): ',
+    name: 'username'
+  }, {
+    type: 'password',
+    message: 'authkey (copy from spmjs account page): ',
+    name: 'authkey'
+}], function(answers) {
+  info.username = answers.username;
+  info.authkey = answers.authkey;
+  client.login(info, done);
+});
+
+function done(err, res) {
+  if (err) {
+    return log.error('exit', err.message);
+  }
+  spmrc.set('auth', res.body.data);
+  console.log();
+  console.log('  login success.'.to.green.color);
+}
