@@ -8,14 +8,8 @@ exports.version = require('./package').version;
 exports.plugin = require('./lib/plugin');
 exports.config = require('./lib/config');
 
-exports.install = require('./lib/install');
+exports.upload = require('./lib/upload');
 exports.build = require('./lib/build');
-exports.info = require('./lib/info');
-exports.login = require('./lib/login');
-exports.publish = require('./lib/publish').publish;
-exports.upload = require('./lib/publish').upload;
-exports.unpublish = require('./lib/unpublish');
-exports.search = require('./lib/search');
 exports.doc = require('./lib/doc');
 exports.test = require('./lib/test');
 
