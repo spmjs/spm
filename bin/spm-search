@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
 var commander = require('commander');
+var spmrc = require('spmrc');
+var client = require('spm-client');
 require('colorful').colorful();
 var spm = require('..');
+var log = require('../lib/utils/log');
+var print = require('../lib/utils/print');
 
 commander.usage('[options] <query>');
 
@@ -31,6 +35,25 @@ if (!commander.args[0]) {
   process.exit();
 }
 
+var registry = commander.registry || spmrc.get('registry') || 'http://spmjs.io';
+client.config({
+  registry: registry,
+  auth: spmrc.get('auth')
+});
+
 // run install
 console.log();
-spm.search({registry: commander.registry, query: commander.args[0]});
+client.search({name: commander.args[0]}, function(err, res) {
+  if (err) {
+    return log.error('exit', err.message);
+  }
+
+  console.log(' ', (res.body.data.total + ' results').to.bold.color);
+  console.log('');
+
+  var arr = res.body.data.results;
+  arr.forEach(function(pkg) {
+    print(pkg, commander);
+    console.log('');
+  });
+});
