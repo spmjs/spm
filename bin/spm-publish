@@ -50,10 +50,13 @@ console.log();
 if (commander.doc) {
   spm.upload(commander, pkg);
 } else {
+  var registry = commander.registry || spmrc.get('registry') || 'http://spmjs.io';
   client.config({
-    registry: commander.registry || spmrc.get('registry') || 'http://spmjs.io',
+    registry: registry,
     auth: spmrc.get('auth')
   });
+  log.info('publish', process.cwd());
+  log.info('target', registry);
   client.publish({
     cwd: process.cwd(),
     force: commander.force
@@ -69,6 +72,6 @@ if (commander.doc) {
       log[body.status](body.status, body.message);
     }
     var pkg = res.args.pkg;
-    log.info('published', (pkg.name + '@' + pkg.version).to.magenta.color);
+    log.info('published', (pkg.name + '@' + pkg.version).to.green.color);
   });
 }
