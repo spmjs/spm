@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 
 var commander = require('commander');
+var spmrc = require('spmrc');
+var client = require('spm-client');
+var inquirer = require('inquirer');
 require('colorful').colorful();
 var spm = require('..');
+var iduri = require('../lib/sdk/iduri');
+var log = require('../lib/utils/log');
 
 commander.usage('[options] name[@version]');
 
@@ -35,4 +40,41 @@ if (!commander.args[0]) {
 
 // run install
 console.log();
-spm.unpublish({registry: commander.registry, query: commander.args[0]});
+var registry = commander.registry || spmrc.get('registry') || 'http://spmjs.io';
+client.config({
+  registry: registry,
+  auth: spmrc.get('auth')
+});
+
+var pkg = iduri.resolve(commander.args[0]);
+if (!pkg) {
+  log.error('error', 'invalid module name');
+  process.exit(2);
+}
+if (!pkg.version) {
+  inquirer.prompt({
+    type: 'confirm',
+    name: 'sure',
+    message: 'are you sure to delete all versions?',
+    default: false
+  }, function(answers) {
+    console.log();
+    if (answers.sure) {
+      unpublish(pkg);
+    } else {
+      process.exit();
+    }
+  });
+} else {
+  unpublish(pkg);
+}
+
+function unpublish(pkg) {
+  client.unpublish(pkg, function(err) {
+    if (err) {
+      return log.error('exit', err.message);
+    }
+    log.info('unpublished', (pkg.name + '@' + pkg.version).to.green.color);
+  });
+}
+
