@@ -62,7 +62,8 @@
     "tar": "~0.1.19",
     "umi": "~0.5.0",
     "vinyl-source-stream": "~0.1.0",
-    "win-spawn": "~2.0.0"
+    "win-spawn": "~2.0.0",
+    "spm-client": "~0.1.0"
   },
   "devDependencies": {
     "sinon": "*",
