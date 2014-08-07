@@ -3,6 +3,7 @@
 var commander = require('commander');
 var spmrc = require('spmrc');
 var client = require('spm-client');
+var co = require('co');
 var spm = require('..');
 var file = require('../lib/sdk/file');
 var log = require('../lib/utils/log');
@@ -57,21 +58,24 @@ if (commander.doc) {
   });
   log.info('publish', process.cwd());
   log.info('target', registry);
-  client.publish({
+
+  var publish = co(client.publish);
+
+  publish({
     cwd: process.cwd(),
     force: commander.force
-  }, function(err, res) {
+  }, function(err, pkg) {
     if (err) {
       if (err.statusCode === 401) {
         return log.error('exit', 'authorization is required. try `spm login`');
       }
+      console.log(err.stack);
       return log.error('exit', err.message);
     }
-    var body = res.body;
-    if (body.message && body.status) {
-      log[body.status](body.status, body.message);
+    console.log(JSON.stringify(pkg, null, 2))
+    if (pkg.message && pkg.status) {
+      log[pkg.status](pkg.status, pkg.message);
     }
-    var pkg = res.args.pkg;
     log.info('published', (pkg.name + '@' + pkg.version).to.green.color);
   });
 }

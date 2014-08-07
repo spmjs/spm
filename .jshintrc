@@ -16,6 +16,7 @@
   "smarttabs": true,
   "sub": true,
   "node": true,
+  "esnext": true,
   "globals": {
     "describe": false,
     "xdescribe": false,
