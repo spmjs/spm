@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
+var path = require('path');
 var commander = require('commander');
 var spm = require('..');
 var build = spm.build;
@@ -30,7 +31,8 @@ if (commander.verbose) {
 spm.log.config(commander);
 
 console.log();
-var p = file.readJSON('package.json');
+var cwd = path.join(process.cwd(), commander.inputDirectory || '');
+var p = file.readJSON(path.join(cwd, 'package.json'));
 if (!p || !p.spm) {
   log.error('miss', 'package.json or "spm" key');
   process.exit(2);
@@ -41,8 +43,8 @@ var begin = Date.now();
 log.info('start', info);
 
 var args = {
-  dest: commander.dest,
-  cwd: commander.src,
+  dest: commander.outputDirectory,
+  cwd: cwd,
   include: commander.include,
   ignore: commander.ignore,
   skip: commander.skip,
