@@ -41,8 +41,8 @@ var begin = Date.now();
 log.info('start', info);
 
 var args = {
-  dest: commander.dest,
-  cwd: commander.src,
+  dest: commander.outputDirectory,
+  cwd: commander.inputDirectory,
   include: commander.include,
   ignore: commander.ignore,
   skip: commander.skip,
