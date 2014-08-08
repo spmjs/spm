@@ -1,54 +1,52 @@
 #!/usr/bin/env node
 
-var commander = require('commander');
-var spmrc = require('spmrc');
-var inquirer = require('inquirer');
-var client = require('spm-client');
 require('colorful').colorful();
-var log = require('../lib/utils/log');
-
-commander.usage('[options]');
+var commander = require('commander');
+var inquirer = require('inquirer');
+var spmrc = require('spmrc');
+var spm = require('..');
+var log = spm.log;
+var login = spm.client.login;
 
 commander
+  .usage('[options]')
   .option('--registry <url>', 'registry url of yuan server')
   .option('-u, --username <username>', 'username of your account')
   .option('-a, --authkey <authkey>', 'authkey of your account');
 
 commander.parse(process.argv);
 
-var registry = commander.registry || spmrc.get('registry') || 'http://spmjs.io';
-client.config({
-  registry: registry,
-  auth: spmrc.get('auth')
-});
+console.log();
+log.config(commander);
 
 // run install
 var info = {};
 if (commander.authkey && commander.username) {
   info.username = commander.username;
   info.authkey = commander.authkey;
-  client.login(info, done);
+  login(info, done);
   return;
 }
 
 inquirer.prompt([{
-    message: 'username (your github account username): ',
-    name: 'username'
-  }, {
-    type: 'password',
-    message: 'authkey (copy from spmjs account page): ',
-    name: 'authkey'
+  message: 'username (your github account username): ',
+  name: 'username'
+}, {
+  type: 'password',
+  message: 'authkey (copy from spmjs account page): ',
+  name: 'authkey'
 }], function(answers) {
   info.username = answers.username;
   info.authkey = answers.authkey;
-  client.login(info, done);
+  login(info, done);
 });
 
-function done(err, res) {
+function done(err, body) {
   if (err) {
-    return log.error('exit', err.message);
+    log.error('exit', err.message);
+    process.exit(2);
   }
-  spmrc.set('auth', res.body.data);
+  spmrc.set('auth', body.data);
   console.log();
   console.log('  login success.'.to.green.color);
 }
