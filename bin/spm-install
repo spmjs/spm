@@ -1,14 +1,13 @@
-var commander = require('commander');
-var spmrc = require('spmrc');
-var co = require('co');
-var client = require('spm-client');
+#!/usr/bin/env node
+
 require('colorful').colorful();
+var commander = require('commander');
 var path = require('path');
 var spm = require('..');
-
-commander.usage('[options] name[@version]');
+var install = spm.client.install;
 
 commander
+  .usage('[options] name[@version]')
   .option('--registry <url>', 'registry url of yuan server')
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('-d, --destination <dir>', 'output directory, default: sea-modules')
@@ -16,10 +15,8 @@ commander
   .option('-q, --quiet', 'show less logs')
   .option('-S, --save', 'save alias to package.json')
   .option('-SD, --save-dev', 'save devAlias to package.json')
-  .option('--parallel [number]', 'parallel installation')
   .option('--verbose', 'show more logs')
   .option('--no-color', 'disable colorful print');
-
 
 commander.on('--help', function() {
   console.log();
@@ -35,34 +32,15 @@ commander.on('--help', function() {
 
 commander.parse(process.argv);
 
-// verbose vs quiet
+console.log();
 spm.log.config(commander);
 
-if (commander.global) {
-  commander.destination = path.join(spmrc.get('user.home'), '.spm', 'sea-modules');
-}
-
-var registry = commander.registry || spmrc.get('registry') || 'http://spmjs.io';
-client.config({
-  registry: registry,
-  auth: spmrc.get('auth')
-});
-
-// run install
-console.log();
-var install = co(client.install);
 install({
   registry: commander.registry,
-  base: commander.base,
+  base: path.resolve(commander.inputDirectory),
   destination: commander.destination,
   force: commander.force,
-  parallel: commander.parallel,
   save: commander.save,
   saveDev: commander.saveDev,
   name: commander.args[0]
-}, function(err) {
-  if (err) {
-    console.log(err)
-    console.log(err.stack)
-  }
 });
