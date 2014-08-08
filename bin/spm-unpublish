@@ -1,21 +1,18 @@
 #!/usr/bin/env node
 
-var commander = require('commander');
-var spmrc = require('spmrc');
-var client = require('spm-client');
-var inquirer = require('inquirer');
 require('colorful').colorful();
+var commander = require('commander');
+var inquirer = require('inquirer');
 var spm = require('..');
-var iduri = require('../lib/sdk/iduri');
-var log = require('../lib/utils/log');
-
-commander.usage('[options] name[@version]');
+var client = spm.client;
+var iduri = spm.sdk.iduri;
+var log = spm.log;
 
 commander
+  .usage('[options] name[@version]')
   .option('--registry <url>', 'registry url of yuan server')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
-
 
 commander.on('--help', function() {
   console.log();
@@ -29,41 +26,24 @@ commander.on('--help', function() {
 
 commander.parse(process.argv);
 
-// verbose vs quiet
-spm.log.config(commander);
-
 if (!commander.args[0]) {
   process.stdout.write(commander.helpInformation());
   commander.emit('--help');
   process.exit();
 }
 
-// run install
 console.log();
-var registry = commander.registry || spmrc.get('registry') || 'http://spmjs.io';
-client.config({
-  registry: registry,
-  auth: spmrc.get('auth')
-});
+spm.log.config(commander);
 
 var pkg = iduri.resolve(commander.args[0]);
 if (!pkg) {
   log.error('error', 'invalid module name');
   process.exit(2);
 }
+
 if (!pkg.version) {
-  inquirer.prompt({
-    type: 'confirm',
-    name: 'sure',
-    message: 'are you sure to delete all versions?',
-    default: false
-  }, function(answers) {
-    console.log();
-    if (answers.sure) {
-      unpublish(pkg);
-    } else {
-      process.exit();
-    }
+  confirm(function() {
+    unpublish(pkg);
   });
 } else {
   unpublish(pkg);
@@ -72,9 +52,26 @@ if (!pkg.version) {
 function unpublish(pkg) {
   client.unpublish(pkg, function(err) {
     if (err) {
-      return log.error('exit', err.message);
+      log.error('exit', err.message);
+      process.exit(2);
     }
-    log.info('unpublished', (pkg.name + '@' + pkg.version).to.green.color);
+    var version = pkg.version ? '@' + pkg.version : '';
+    console.log();
+    log.info('unpublished', (pkg.name + version).to.green.color);
   });
 }
 
+function confirm(callback) {
+  inquirer.prompt({
+    type: 'confirm',
+    name: 'sure',
+    message: 'are you sure to delete all versions?',
+    default: false
+  }, function(answers) {
+    if (answers.sure) {
+      callback();
+    } else {
+      process.exit();
+    }
+  });
+}
