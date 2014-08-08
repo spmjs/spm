@@ -1,4 +1,4 @@
-# {%= name %} [![spm version](http://spmjs.io/badge/{%= name %})](http://spmjs.io/package/{%= name %})
+# {%= name %} [![spm version]({%= yuanUrl %}/badge/{%= name %})]({%= yuanUrl %}/package/{%= name %})
 
 ---
 

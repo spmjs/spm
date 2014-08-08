@@ -23,7 +23,7 @@
       <h1>
           <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a>
       </h1>
-        <p class="sidebar-version">Version: <a href="http://spmjs.io/package/{{config.package.name}}" title="">{{config.package.version}}</a></p>
+      <p class="sidebar-version">Version: <a href="{{config.yuanUrl}}/package/{{config.package.name}}" title="">{{config.package.version}}</a></p>
         <p class="sidebar-description" data-keyword="{{config.package.keywords[0]}}">{{config.package.description}}</p>
         {%- if config.package.repository %}
         <a class="sidebar-source" href="{{config.package.repository.url|gitRepoUrl}}" target="_blank">View the Project</a>
