@@ -59,9 +59,11 @@ publish({
 }, function(err, pkg) {
   if (err) {
     if (err.statusCode === 401) {
-      return log.error('exit', 'authorization is required. try `spm login`');
+      log.error('exit', 'authorization is required. try `spm login`');
+    } else {
+      log.error('exit', err.message);
     }
-    return log.error('exit', err.message);
+    process.exit(2);
   }
   if (pkg.message && pkg.status) {
     log[pkg.status](pkg.status, pkg.message);

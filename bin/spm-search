@@ -1,20 +1,17 @@
 #!/usr/bin/env node
 
-var commander = require('commander');
-var spmrc = require('spmrc');
-var client = require('spm-client');
 require('colorful').colorful();
+var commander = require('commander');
 var spm = require('..');
-var log = require('../lib/utils/log');
-var print = require('../lib/utils/print');
-
-commander.usage('[options] <query>');
+var log = spm.log;
+var print = spm.print;
+var search = spm.client.search;
 
 commander
+  .usage('[options] <query>')
   .option('--registry <url>', 'registry url of yuan server')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
-
 
 commander.on('--help', function() {
   console.log();
@@ -26,32 +23,27 @@ commander.on('--help', function() {
 
 commander.parse(process.argv);
 
-// color
-spm.log.config(commander);
-
 if (!commander.args[0]) {
   process.stdout.write(commander.helpInformation());
   commander.emit('--help');
   process.exit();
 }
 
-var registry = commander.registry || spmrc.get('registry') || 'http://spmjs.io';
-client.config({
-  registry: registry,
-  auth: spmrc.get('auth')
-});
-
-// run install
 console.log();
-client.search({name: commander.args[0]}, function(err, res) {
+spm.log.config(commander);
+
+search({
+  name: commander.args[0]
+}, function(err, body) {
   if (err) {
-    return log.error('exit', err.message);
+    log.error('exit', err.message);
+    process.exit(2);
   }
 
-  console.log(' ', (res.body.data.total + ' results').to.bold.color);
+  console.log(' ', (body.data.total + ' results').to.bold.color);
   console.log('');
 
-  var arr = res.body.data.results;
+  var arr = body.data.results;
   arr.forEach(function(pkg) {
     print(pkg, commander);
     console.log('');
