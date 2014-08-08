@@ -4,7 +4,9 @@ var path = require('path');
 var fs = require('fs');
 var commander = require('commander');
 require('colorful').colorful();
-var spm = require('..');
+var run = require('../lib/utils/run');
+var log = require('../lib/utils/log');
+var plugin = require('../lib/plugin');
 var program = require('../lib/utils/program');
 var spawn = require('win-spawn');
 
@@ -35,7 +37,7 @@ commander.helpInformation = function() {
 };
 
 commander
-  .version(spm.version, '-v, --version')
+  .version(require('../package').version, '-v, --version')
   .usage('<command> [options]');
 
 
@@ -84,7 +86,7 @@ commander.on('--help', function() {
   });
   console.log();
 
-  var extensions = spm.plugin.plugins();
+  var extensions = plugin.plugins();
   if (extensions.length) {
     console.log('  ' + 'Plugin Commands:'.to.bold.blue.color);
     console.log();
@@ -121,7 +123,7 @@ if (subcmd === 'help') {
 } else {
   bin = executable(subcmd);
   if (bin) {
-    spm.run.record(subcmd);
+    run.record(subcmd);
     spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
   }
 }
@@ -140,7 +142,7 @@ function executable(subcmd) {
 
   var commands = Object.keys(packageCommands);
 
-  var extensions = spm.plugin.plugins();
+  var extensions = plugin.plugins();
   for (var i = 0; i < extensions.length; i++) {
     var cmd = extensions[i];
 
@@ -174,7 +176,7 @@ function executable(subcmd) {
   try {
     printSimilar();
   } catch (e) {
-    spm.log.error('error', e);
+    log.error('error', e);
   }
   return null;
 }
