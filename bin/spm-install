@@ -2,9 +2,9 @@
 
 require('colorful').colorful();
 var commander = require('commander');
-var path = require('path');
 var spm = require('..');
 var install = spm.client.install;
+var log = spm.log;
 
 commander
   .usage('[options] name[@version]')
@@ -37,10 +37,15 @@ spm.log.config(commander);
 
 install({
   registry: commander.registry,
-  base: path.resolve(commander.inputDirectory),
+  cwd: commander.inputDirectory,
   destination: commander.destination,
   force: commander.force,
   save: commander.save,
   saveDev: commander.saveDev,
-  name: commander.args[0]
+  name: commander.args.length ? commander.args : null
+}, function(err) {
+  if (err) {
+    log.error('exit', err.message);
+    process.exit(2);
+  }
 });

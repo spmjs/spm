@@ -2,7 +2,6 @@
 
 require('colorful').colorful();
 var commander = require('commander');
-var path = require('path');
 var spm = require('..');
 var log = spm.log;
 var publish = spm.client.publish;
@@ -53,7 +52,7 @@ if (commander.doc) {
 log.info('publish', process.cwd());
 log.info('target', spm.client.config().registry);
 publish({
-  cwd: path.resolve(commander.inputDirectory),
+  cwd: commander.inputDirectory,
   tag: commander.tag,
   force: commander.force
 }, function(err, pkg) {

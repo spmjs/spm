@@ -27,3 +27,4 @@ tmp/
 _site
 coverage
 tests/sea-modules/
+spm_modules
