@@ -1,16 +1,17 @@
 #!/usr/bin/env node
 
-var commander = require('commander');
 require('colorful').colorful();
+var commander = require('commander');
 var spm = require('..');
-
-commander.usage('[options] <query>');
+var log = spm.log;
+var print = spm.print;
+var search = spm.client.search;
 
 commander
+  .usage('[options] <query>')
   .option('--registry <url>', 'registry url of yuan server')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
-
 
 commander.on('--help', function() {
   console.log();
@@ -22,15 +23,29 @@ commander.on('--help', function() {
 
 commander.parse(process.argv);
 
-// color
-spm.log.config(commander);
-
 if (!commander.args[0]) {
   process.stdout.write(commander.helpInformation());
   commander.emit('--help');
   process.exit();
 }
 
-// run install
 console.log();
-spm.search({registry: commander.registry, query: commander.args[0]});
+spm.log.config(commander);
+
+search({
+  name: commander.args[0]
+}, function(err, body) {
+  if (err) {
+    log.error('exit', err.message);
+    process.exit(2);
+  }
+
+  console.log(' ', (body.data.total + ' results').to.bold.color);
+  console.log('');
+
+  var arr = body.data.results;
+  arr.forEach(function(pkg) {
+    print(pkg, commander);
+    console.log('');
+  });
+});

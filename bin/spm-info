@@ -1,17 +1,19 @@
 #!/usr/bin/env node
 
-var commander = require('commander');
 require('colorful').colorful();
+var commander = require('commander');
 var spm = require('..');
-
-commander.usage('[options] name[@version]');
+var log = spm.log;
+var info = spm.client.info;
+var iduri = spm.sdk.iduri;
+var print = spm.print;
 
 commander
+  .usage('[options] name[@version]')
   .option('--registry <url>', 'registry url of yuan server')
   .option('-q, --quiet', 'show less log')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
-
 
 commander.on('--help', function() {
   console.log();
@@ -26,19 +28,25 @@ commander.on('--help', function() {
 
 commander.parse(process.argv);
 
-spm.log.config(commander);
-
 if (!commander.args[0]) {
   process.stdout.write(commander.helpInformation());
   commander.emit('--help');
   process.exit();
 }
 
-// run install
 console.log();
-spm.info({
-  registry: commander.registry,
-  query: commander.args[0],
-  quiet: commander.quiet,
-  verbose: commander.verbose
+log.config(commander);
+
+var pkg = iduri.resolve(commander.args[0]);
+if (!pkg) {
+  log.error('error', 'invalid module name');
+  process.exit(2);
+}
+
+info(pkg, function(err, body) {
+  if (err) {
+    log.error('exit', err.message);
+    process.exit(2);
+  }
+  print(body, commander);
 });

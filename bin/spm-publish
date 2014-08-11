@@ -1,21 +1,22 @@
 #!/usr/bin/env node
 
+require('colorful').colorful();
 var commander = require('commander');
 var spm = require('..');
-var file = require('../lib/sdk/file');
-var log = require('../lib/utils/log');
-require('colorful').colorful();
+var log = spm.log;
+var publish = spm.client.publish;
 
-commander.usage('[options] name');
+var file = require('../lib/sdk/file');
 
 commander
+  .usage('[options] name')
   .option('--registry <url>', 'registry url of yuan server')
-  .option('-f, --force', 'force to publish an exists module')
-  .option('-q, --quiet', 'show less logs')
+  .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('--tag <tag>', 'publish module with a tag, default: stable')
   .option('--doc <dir>', 'upload docs instead of package')
+  .option('-f, --force', 'force to publish an exists module')
+  .option('-q, --quiet', 'show less logs')
   .option('--verbose', 'show more logs')
-  .option('--no-tarball', 'do not upload a tarball')
   .option('--no-color', 'disable colorful print');
 
 commander.on('--help', function() {
@@ -34,19 +35,37 @@ commander.on('--help', function() {
 
 commander.parse(process.argv);
 
-// verbose vs quiet
-spm.log.config(commander);
-
-var pkg = file.readJSON('package.json');
-if (!pkg || !pkg.spm) {
-  console.log();
-  log.error('miss', 'package.json or "spm" key');
-  process.exit(2);
-}
-
 console.log();
+log.config(commander);
+
 if (commander.doc) {
+  var pkg = file.readJSON('package.json');
+    if (!pkg || !pkg.spm) {
+    console.log();
+    log.error('miss', 'package.json or "spm" key');
+    process.exit(2);
+  }
   spm.upload(commander, pkg);
-} else {
-  spm.publish(commander, pkg);
+  return;
 }
+
+log.info('publish', process.cwd());
+log.info('target', spm.client.config().registry);
+publish({
+  cwd: commander.inputDirectory,
+  tag: commander.tag,
+  force: commander.force
+}, function(err, pkg) {
+  if (err) {
+    if (err.statusCode === 401) {
+      log.error('exit', 'authorization is required. try `spm login`');
+    } else {
+      log.error('exit', err.message);
+    }
+    process.exit(2);
+  }
+  if (pkg.message && pkg.status) {
+    log[pkg.status](pkg.status, pkg.message);
+  }
+  log.info('published', (pkg.name + '@' + pkg.version + '~' + pkg.tag).to.green.color);
+});

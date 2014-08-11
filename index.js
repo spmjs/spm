@@ -5,23 +5,18 @@ util.inherits(module.exports, EventEmitter);
 exports = module.exports;
 exports.version = require('./package').version;
 
+exports.client = require('./lib/client');
 exports.plugin = require('./lib/plugin');
 exports.config = require('./lib/config');
-
-exports.install = require('./lib/install');
+exports.upload = require('./lib/upload');
 exports.build = require('./lib/build');
-exports.info = require('./lib/info');
-exports.login = require('./lib/login');
-exports.publish = require('./lib/publish').publish;
-exports.upload = require('./lib/publish').upload;
-exports.unpublish = require('./lib/unpublish');
-exports.search = require('./lib/search');
 exports.doc = require('./lib/doc');
 exports.test = require('./lib/test');
 
 // plugins should use spm.log
 exports.log = require('./lib/utils/log');
 exports.run = require('./lib/utils/run');
+exports.print = require('./lib/utils/print');
 
 // register sdk
 exports.sdk = {};

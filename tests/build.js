@@ -137,7 +137,8 @@ describe('build', function() {
         .on('end', function() {
           assets('build-js', join(dest, 'build-js'));
           done();
-        });
+        })
+        .resume();
     });
   });
 
