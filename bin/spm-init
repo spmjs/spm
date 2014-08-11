@@ -55,7 +55,7 @@ runTask();
 
 function runTask() {
   if (file.list(process.cwd()).length > 0) {
-    console.warn(color.yellow('Existing files in folder, please run init command in a empty folder!'));
+    console.warn(color.yellow('Existing files here, please run init command in an empty folder!'));
     return;
   }
   console.log('Will create a spm package: ');
