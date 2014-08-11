@@ -4,7 +4,7 @@ all:
 	@chmod -R +x .git/hooks/
 
 
-specs := $(shell find ./tests -name '*.js' ! -path "*node_modules/*" ! -path "*sea-modules/*" ! -path "*build/*")
+specs := $(shell find ./tests -name '*.js' ! -path "*node_modules/*" ! -path "*spm-modules/*" ! -path "*build/*")
 reporter = spec
 test:
 	./node_modules/.bin/istanbul cover \

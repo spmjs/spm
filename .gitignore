@@ -26,5 +26,4 @@ tmp/
 .yml
 _site
 coverage
-tests/sea-modules/
 tests/spm_modules

@@ -32,7 +32,7 @@ if (query) {
   spm.install.fetch(query, function(err, dest) {
     spm.install({
       source: commander.source,
-      destination: dest + '/sea-modules/',
+      destination: dest + '/spm_modules/',
       force: commander.force,
       parallel: commander.parallel,
       query: commander.args
@@ -65,7 +65,7 @@ function tree(f, paths, depth) {
   }
   var pkg = require(f);
 
-  paths = paths || ['sea-modules', path.join(spmrc.get('user.home'), '.spm', 'sea-modules')];
+  paths = paths || ['spm_modules', path.join(spmrc.get('user.home'), '.spm', 'spm_modules')];
 
   var node = {};
   var title = pkg.name;
