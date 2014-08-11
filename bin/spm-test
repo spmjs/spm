@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var commander = require('commander');
-var spm = require('..');
+var test = require('../lib/test');
 require('colorful').colorful();
 require('nico/lib/sdk/log').quiet = true;
 
@@ -24,4 +24,4 @@ if (!process.argv[1]) {
   commander.help();
 }
 
-spm.test(commander);
+test(commander);

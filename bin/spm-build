@@ -3,10 +3,9 @@
 require('colorful').colorful();
 var path = require('path');
 var commander = require('commander');
-var spm = require('..');
-var build = spm.build;
-var file = spm.sdk.file;
-var log = spm.log;
+var build = require('../lib/build');
+var file = require('../lib/sdk/file');
+var log = require('../lib/utils/log');
 
 commander.usage('[options]');
 
@@ -28,7 +27,7 @@ if (commander.verbose) {
   log.level = 'debug';
 }
 
-spm.log.config(commander);
+log.config(commander);
 
 console.log();
 var cwd = path.join(process.cwd(), commander.inputDirectory || '');

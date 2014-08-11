@@ -4,9 +4,8 @@ require('colorful').colorful();
 var commander = require('commander');
 var inquirer = require('inquirer');
 var spmrc = require('spmrc');
-var spm = require('..');
-var log = spm.log;
-var login = spm.client.login;
+var log = require('../lib/utils/log');
+var login = require('../lib/client').login;
 
 commander
   .usage('[options]')

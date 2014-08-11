@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 
+require('colorful').colorful();
 var path = require('path');
 var resolve = path.resolve;
 var commander = require('commander');
 var archy = require('archy');
 var spmrc = require('spmrc');
 var log = require('../lib/utils/log');
-
-require('colorful').colorful();
-var spm = require('..');
 var file = require('../lib/sdk/file');
+var install = require('../lib/client').install;
 
 commander
   .option('-d, --depth <n>', 'set the depth to <n>', Infinity)
@@ -18,19 +17,17 @@ commander
 commander.parse(process.argv);
 
 // color
-spm.log.config(commander);
+log.config(commander);
 
 var cache = {};
-var file = spm.sdk.file;
-
 var query = commander.args[0];
 
 // handle "spm tree class"
 if (query) {
   // don't show spm install log message
   log.quiet = true;
-  spm.install.fetch(query, function(err, dest) {
-    spm.install({
+  install.fetch(query, function(err, dest) {
+    install({
       source: commander.source,
       destination: dest + '/sea-modules/',
       force: commander.force,
@@ -128,7 +125,7 @@ function lookup(paths, pkg) {
     }
   });
   if (!pkgfile) {
-    spm.log.error('package', pkg.name + '@' + pkg.version + ' not found');
+    log.error('package', pkg.name + '@' + pkg.version + ' not found');
     return null;
   }
   return pkgfile;

@@ -2,11 +2,10 @@
 
 require('colorful').colorful();
 var commander = require('commander');
-var spm = require('..');
-var log = spm.log;
-var info = spm.client.info;
-var iduri = spm.sdk.iduri;
-var print = spm.print;
+var log = require('../lib/utils/log');
+var info = require('../lib/client').info;
+var iduri = require('../lib/sdk/iduri');
+var print = require('../lib/utils/print');
 
 commander
   .usage('[options] name[@version]')

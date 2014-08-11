@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var commander = require('commander');
-var spm = require('..');
+var doc = require('../lib/doc');
 var file = require('../lib/sdk/file');
 var log = require('../lib/utils/log');
 require('colorful').colorful();
@@ -37,7 +37,7 @@ commander.on('--help', function() {
 
 commander.parse(process.argv);
 
-spm.log.config(commander);
+log.config(commander);
 
 if (!process.argv[2]) {
   commander.help();
@@ -52,4 +52,4 @@ if (!pkg || !pkg.spm) {
 
 console.log();
 
-spm.doc(commander);
+doc(commander);

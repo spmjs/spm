@@ -3,10 +3,9 @@
 require('colorful').colorful();
 var commander = require('commander');
 var inquirer = require('inquirer');
-var spm = require('..');
-var client = spm.client;
-var iduri = spm.sdk.iduri;
-var log = spm.log;
+var client = require('../lib/client');
+var iduri = require('../lib/sdk/iduri');
+var log = require('../lib/utils/log');
 
 commander
   .usage('[options] name[@version]')
@@ -33,7 +32,7 @@ if (!commander.args[0]) {
 }
 
 console.log();
-spm.log.config(commander);
+log.config(commander);
 
 var pkg = iduri.resolve(commander.args[0]);
 if (!pkg) {
