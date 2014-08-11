@@ -32,7 +32,7 @@ if (query) {
   spm.install.fetch(query, function(err, dest) {
     spm.install({
       source: commander.source,
-      destination: dest + '/spm_modules/',
+      destination: dest + '/' + spmrc.get('install.path') + '/',
       force: commander.force,
       parallel: commander.parallel,
       query: commander.args
@@ -64,8 +64,9 @@ function tree(f, paths, depth) {
     return {};
   }
   var pkg = require(f);
+  var installPath = spmrc.get('install.path');
 
-  paths = paths || ['spm_modules', path.join(spmrc.get('user.home'), '.spm', 'spm_modules')];
+  paths = paths || [installPath, path.join(spmrc.get('user.home'), '.spm', installPath)];
 
   var node = {};
   var title = pkg.name;
