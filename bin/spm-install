@@ -2,9 +2,8 @@
 
 require('colorful').colorful();
 var commander = require('commander');
-var spm = require('..');
-var install = spm.client.install;
-var log = spm.log;
+var install = require('../lib/client').install;
+var log = require('../lib/utils/log');
 
 commander
   .usage('[options] name[@version]')
@@ -33,7 +32,7 @@ commander.on('--help', function() {
 commander.parse(process.argv);
 
 console.log();
-spm.log.config(commander);
+log.config(commander);
 
 install({
   registry: commander.registry,

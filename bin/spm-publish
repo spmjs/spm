@@ -2,10 +2,10 @@
 
 require('colorful').colorful();
 var commander = require('commander');
-var spm = require('..');
-var log = spm.log;
-var publish = spm.client.publish;
-
+var log = require('../lib/utils/log');
+var client = require('../lib/client');
+var publish = require('../lib/client').publish;
+var upload = require('../lib/upload');
 var file = require('../lib/sdk/file');
 
 commander
@@ -45,12 +45,12 @@ if (commander.doc) {
     log.error('miss', 'package.json or "spm" key');
     process.exit(2);
   }
-  spm.upload(commander, pkg);
+  upload(commander, pkg);
   return;
 }
 
 log.info('publish', process.cwd());
-log.info('target', spm.client.config().registry);
+log.info('target', client.config().registry);
 publish({
   cwd: commander.inputDirectory,
   tag: commander.tag,

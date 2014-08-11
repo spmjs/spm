@@ -1,7 +1,6 @@
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 util.inherits(module.exports, EventEmitter);
-
 exports = module.exports;
 exports.version = require('./package').version;
 
