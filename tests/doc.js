@@ -29,7 +29,7 @@ describe('doc', function() {
     });
     server.called.should.be.eql(true);
   });
-  it('publish', function() {
+  xit('publish', function() {
     nico.build = function() {};
     spm.upload = function() {};
     var build = sinon.spy(nico, 'build');
