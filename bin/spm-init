@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 
+var file = require('../lib/sdk/file');
 var path = require('path');
-var grunt = require('grunt');
 var commander = require('commander');
 var color = require('colorful').color;
 var spmrc = require('spmrc');
+var gulp = require('gulp');
+var gulpTemplate = require('gulp-template');
+var inquirer = require('inquirer');
+var semver = require('semver');
+var spawn = require('child_process').spawn;
+var NAME_REGEX = require('../lib/sdk/iduri').NAME_REGEX;
 
 /*
   template directory
@@ -13,7 +19,7 @@ var homeDir = process.env.HOME || process.env.USERPROFILE;
 if (!homeDir) {
   homeDir = process.env.HOMEDRIVE + process.env.HOMEPATH;
 }
-var defaultTemplate = path.dirname(__dirname) + '/lib/init-template/';
+var defaultTemplate = path.dirname(__dirname) + '/lib/template/';
 var template = exports.template = (spmrc.get('init.template') || defaultTemplate).replace(/^~/, homeDir);
 
 /*
@@ -44,14 +50,59 @@ commander.parse(process.argv);
 runTask();
 
 /*
-  run grunt init task
+  run init task
 */
 
 function runTask() {
-  grunt.task.loadTasks(path.join(__dirname, '../node_modules/grunt-init/tasks'));
-  // fix windows directory by replace C:\ to C\:\
-  var taskName = 'init:' + template.replace(/^([a-zA-Z]):\\/, '$1\\:\\');
-  grunt.cli.tasks = [taskName];
-  grunt.cli({});
+  if (file.list(process.cwd()).length > 0) {
+    console.warn(color.yellow('Existing files in folder, please run init command in a empty folder!'));
+    return;
+  }
+  console.log('Will create a spm package: ');
+  inquirer.prompt([{
+    message: 'Package name',
+    name: 'name',
+    default: path.basename(process.cwd()),
+    validate: function(input) {
+      var done = this.async();
+      if (!NAME_REGEX.test(input)) {
+        console.warn(color.red("Must be only lowercase letters, numbers, dashes or dots, and start with lowercase letter."));
+        return;
+      }
+      done(true);
+    }
+  }, {
+    message: 'Version',
+    name: 'version',
+    default: '0.0.0',
+    validate: function(input) {
+      var done = this.async();
+      if (!semver.valid(input)) {
+        console.warn(color.red("Must be a valid semantic version (semver.org)."));
+        return;
+      }
+      done(true);
+    }
+  }, {
+    message: 'Description',
+    name: 'description'
+  }, {
+    message: 'Author',
+    name: 'author',
+    default: require('whoami')
+  }], function( answers ) {
+    answers.varName = answers.name.replace(/\-(\w)/g, function(all, letter){
+      return letter.toUpperCase();
+    });
+    answers.yuanUrl = spmrc.get('registry');
+
+    gulp.src(path.join(template, '**'))
+      .pipe(gulpTemplate(answers))
+      .pipe(gulp.dest('./'));
+
+    spawn('cp', ['-f', path.join(template, '.gitignore'), './.gitignore']);
+    spawn('cp', ['-f', path.join(template, '.spmignore'), './.spmignore']);
+    console.log(color.green('Initialize a spm package Succeccfully!'));
+  });
 }
 

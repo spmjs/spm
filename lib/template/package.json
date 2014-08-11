@@ -1,13 +1,13 @@
 {
-  "name": "{%= name %}",
-  "version": "{%= version %}",
-  "description": "{%= description %}",
+  "name": "<%= name %>",
+  "version": "<%= version %>",
+  "description": "<%= description %>",
   "keywords": [],
-  "homepage": "{%= homepage %}",
-  "author": "{%= author %}",
+  "homepage": "",
+  "author": "<%= author %>",
   "repository": {
     "type": "git",
-    "url": "{%= repository %}"
+    "url": ""
   },
   "bugs": {
     "url": ""
