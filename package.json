@@ -24,8 +24,8 @@
   ],
   "dependencies": {
     "archy": "~0.0.2",
-    "colorful": "~2.1.0",
     "co": "3.1.0",
+    "colorful": "~2.1.0",
     "commander": "~2.3.0",
     "exeq": "~1.0.0",
     "form-data": "~0.1.2",
@@ -56,11 +56,11 @@
     "rimraf": "~2.2.5",
     "semver": "~2.2.1",
     "serve-spm": "~0.3.1",
-    "spmrc": "~1.1.0",
+    "spm-client": "~0.2.0",
+    "spmrc": "^1.2.0",
     "tar": "~0.1.19",
     "umi": "~0.5.0",
-    "win-spawn": "~2.0.0",
-    "spm-client": "~0.2.0"
+    "win-spawn": "~2.0.0"
   },
   "devDependencies": {
     "sinon": "*",
