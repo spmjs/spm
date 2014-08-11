@@ -284,6 +284,20 @@ describe('build', function() {
     });
   });
 
+  it('js package with deps and ignore', function(done) {
+    var opt = {
+      cwd: join(base, 'build-js'),
+      dest: dest,
+      withDeps: true,
+      ignore: 'c'
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-js-with-deps-ignore', dest);
+      done();
+    });
+  });
+
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
     glob.sync('**/*', {cwd: expect})
