@@ -2,7 +2,7 @@ require('should');
 var sinon = require('sinon');
 var doc = require('../lib/doc');
 var nico = require('nico');
-var spm = require('..');
+var muk = require('muk');
 
 describe('doc', function() {
   it('build', function() {
@@ -29,11 +29,14 @@ describe('doc', function() {
     });
     server.called.should.be.eql(true);
   });
-  xit('publish', function() {
+  it('publish', function() {
     nico.build = function() {};
-    spm.upload = function() {};
+    var mockUpload = {
+      './upload': function() {}
+    };
     var build = sinon.spy(nico, 'build');
-    var upload = sinon.spy(spm, 'upload');
+    var upload = sinon.spy(mockUpload, './upload');
+    var doc = muk('../lib/doc', mockUpload);
     doc({
       publish: true
     });
