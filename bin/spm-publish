@@ -38,18 +38,19 @@ commander.parse(process.argv);
 console.log();
 log.config(commander);
 
+var pkg = file.readJSON('package.json');
+if (!pkg || !pkg.spm) {
+  console.log();
+  log.error('miss', 'package.json or "spm" key');
+  process.exit(2);
+}
+
 if (commander.doc) {
-  var pkg = file.readJSON('package.json');
-    if (!pkg || !pkg.spm) {
-    console.log();
-    log.error('miss', 'package.json or "spm" key');
-    process.exit(2);
-  }
   upload(commander, pkg);
   return;
 }
 
-log.info('publish', process.cwd());
+log.info('publish', (pkg.name + '@' + pkg.version).to.magenta.color);
 log.info('target', client.config().registry);
 publish({
   cwd: commander.inputDirectory,
@@ -67,5 +68,5 @@ publish({
   if (pkg.message && pkg.status) {
     log[pkg.status](pkg.status, pkg.message);
   }
-  log.info('published', (pkg.name + '@' + pkg.version + '~' + pkg.tag).to.green.color);
+  log.info('published', (pkg.name + '@' + pkg.version + ' ~ ' + pkg.tag).to.green.color);
 });
