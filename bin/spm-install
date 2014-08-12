@@ -9,7 +9,7 @@ commander
   .usage('[options] name[@version]')
   .option('--registry <url>', 'registry url of yuan server')
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
-  .option('-d, --destination <dir>', 'output directory, default: sea-modules')
+  .option('-d, --destination <dir>', 'output directory, default: spm_modules')
   .option('-f, --force', 'force to download a unstable module')
   .option('-q, --quiet', 'show less logs')
   .option('-S, --save', 'save alias to package.json')
