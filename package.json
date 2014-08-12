@@ -1,12 +1,12 @@
 {
   "name": "spm",
-  "version": "2.2.10",
+  "version": "2.2.11",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/spmjs/spm2.git"
+    "url": "https://github.com/spmjs/spm/tree/2.x"
   },
   "keywords": [
     "seajs",
