@@ -4,9 +4,11 @@ var path = require('path');
 var fs = require('fs');
 var commander = require('commander');
 require('colorful').colorful();
-var spm = require('..');
 var program = require('../lib/utils/program');
 var spawn = require('win-spawn');
+var plugin = require('../lib/plugin');
+var log = require('../lib/utils/log');
+var run = require('../lib/utils/run');
 
 process.on('exit', function() {
   console.log();
@@ -31,7 +33,7 @@ commander.helpInformation = function() {
 };
 
 commander
-  .version(spm.version)
+  .version(require('../package').version)
   .usage('<command> [options]');
 
 
@@ -76,7 +78,7 @@ commander.on('--help', function() {
   });
   console.log();
 
-  var extensions = spm.plugin.plugins();
+  var extensions = plugin.plugins();
   if (extensions.length) {
     console.log('  ' + 'Plugin Commands:'.to.bold.blue.color);
     console.log();
@@ -113,10 +115,10 @@ if (subcmd === 'help') {
 } else {
   bin = executable(subcmd);
   if (bin) {
-    spm.run.record(subcmd);
+    run.record(subcmd);
     spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
   }
-  }
+}
 
 
 // helpers
@@ -132,7 +134,7 @@ function executable(subcmd) {
 
   var commands = Object.keys(packageCommands);
 
-  var extensions = spm.plugin.plugins();
+  var extensions = plugin.plugins();
   for (var i = 0; i < extensions.length; i++) {
     var cmd = extensions[i];
 
@@ -182,7 +184,7 @@ function executable(subcmd) {
     if (e.code === 'MODULE_NOT_FOUND') {
       printSimilar();
     } else {
-      spm.log.error('error', e);
+      log.error('error', e);
     }
   }
   return null;
