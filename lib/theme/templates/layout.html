@@ -42,7 +42,7 @@
           <li><a class="test-link" href="{{content_url('tests/runner.html')}}" target="_blank">Test</a></li>
           {%- endif %}
           {%- if config.package.bugs and config.package.bugs.url %}
-          <li><a class="issue-link" href="{{config.package.bugs.url}}" target="_blank">Issues</a></li>
+          <li><a class="issue-link" href="{{config.package.repository.url|gitRepoUrl}}/issues" target="_blank">Issues</a></li>
           {%- endif %}
         </ul>
         {%- endblock %}
