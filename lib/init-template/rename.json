@@ -1,4 +1,0 @@
-{
-  ".npmignore": ".gitignore",
-  "tests/name-spec.js": "tests/{%= name %}-spec.js"
-}
