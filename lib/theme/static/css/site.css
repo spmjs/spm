@@ -62,7 +62,7 @@ body.spmjs {
 }
 .spmjs .sidebar-wrapper h1 {
   margin: 0;
-  font-family:"Open Sans", sans-serif;
+  font-family:"Open Sans", "Lucida Grande", 'Hiragino Sans GB', Georgia, sans-serif;
 }
 .spmjs .sidebar-wrapper .sidebar-version {
   font-size: 14px;
@@ -159,7 +159,7 @@ body.spmjs {
 }
 .spmjs .content-wrapper .entry-title {
   margin-bottom: 12px;
-  font-family:"Open Sans", sans-serif;
+  font-family:"Open Sans", "Lucida Grande", 'Hiragino Sans GB', Georgia, sans-serif;
 }
 .spmjs .content-wrapper .meta {
   color: #BCBCBD;
@@ -170,7 +170,7 @@ body.spmjs {
   margin-top: 40px;
   padding-bottom: 4px;
   border-bottom: 1px solid #ccc;
-  font-family:"Open Sans", sans-serif;
+  font-family:"Open Sans", "Lucida Grande", 'Hiragino Sans GB', Georgia, sans-serif;
 }
 .spmjs hr {
   display: block;
