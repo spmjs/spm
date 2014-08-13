@@ -42,14 +42,16 @@ if (!pkg) {
 
 if (!pkg.version) {
   confirm(function() {
-    unpublish(pkg);
+    unpublish();
   });
 } else {
-  unpublish(pkg);
+  unpublish();
 }
 
-function unpublish(pkg) {
-  client.unpublish(pkg, function(err) {
+function unpublish() {
+  client.unpublish(pkg, {
+    registry: commander.registry
+  }, function(err) {
     if (err) {
       log.error('exit', err.message);
       process.exit(2);

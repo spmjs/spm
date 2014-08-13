@@ -37,7 +37,7 @@ inquirer.prompt([{
 }], function(answers) {
   info.username = answers.username;
   info.authkey = answers.authkey;
-  login(info, done);
+  login(info, {registry: commander.registry}, done);
 });
 
 function done(err, body) {
