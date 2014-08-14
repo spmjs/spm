@@ -5,7 +5,6 @@ exports = module.exports;
 exports.version = require('./package').version;
 
 exports.client = require('./lib/client');
-exports.plugin = require('./lib/plugin');
 exports.config = require('./lib/config');
 exports.upload = require('./lib/upload');
 exports.build = require('./lib/build');

@@ -6,7 +6,6 @@ var commander = require('commander');
 require('colorful').colorful();
 var run = require('../lib/utils/run');
 var log = require('../lib/utils/log');
-var plugin = require('../lib/plugin');
 var program = require('../lib/utils/program');
 var spawn = require('win-spawn');
 
@@ -74,7 +73,6 @@ var packageCommands = {
 commander.on('--help', function() {
   console.log('  ' + 'System Commands:'.to.bold.magenta.color);
   console.log();
-  program.printHelp(new program('plugin', 'plugin system for spm'));
   program.printHelp(new program('config', 'configuration for spm'));
   program.printHelp(new program('help', 'show help information'));
   console.log();
@@ -85,16 +83,6 @@ commander.on('--help', function() {
     program.printHelp(new program(key, packageCommands[key]));
   });
   console.log();
-
-  var extensions = plugin.plugins();
-  if (extensions.length) {
-    console.log('  ' + 'Plugin Commands:'.to.bold.blue.color);
-    console.log();
-    extensions.forEach(function(cmd) {
-      program.printHelp(cmd);
-    });
-    console.log();
-  }
 });
 
 commander.parse(process.argv);
@@ -142,17 +130,6 @@ function executable(subcmd) {
 
   var commands = Object.keys(packageCommands);
 
-  var extensions = plugin.plugins();
-  for (var i = 0; i < extensions.length; i++) {
-    var cmd = extensions[i];
-
-    if (subcmd === cmd.name) {
-      return cmd.binary;
-    }
-
-    commands.push(cmd.name);
-  }
-
   function printSimilar() {
     // guess commands
     commands = getSimilarCommands(subcmd, commands);
@@ -166,11 +143,6 @@ function executable(subcmd) {
         console.log('    $', 'spm'.to.magenta.color, cmd.to.cyan.color);
       });
     }
-    console.log();
-    console.log('  It is not a built-in command, maybe it\'s a plugin.');
-    console.log('  Try install this plugin: ');
-    console.log();
-    console.log('    $', 'spm plugin'.to.magenta.color, 'install', subcmd.to.cyan.color);
   }
 
   try {
