@@ -104,7 +104,7 @@ function runTask() {
 
     spawn('cp', ['-f', path.join(template, '.gitignore'), './.gitignore']);
     spawn('cp', ['-f', path.join(template, '.spmignore'), './.spmignore']);
+    spawn('cp', ['-f', path.join(template, '.spmignore'), './.travis.yml']);
     console.log(color.green('Initialize a spm package Succeccfully!'));
   });
 }
-
