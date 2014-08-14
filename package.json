@@ -54,7 +54,7 @@
     "request": "~2.36.0",
     "rimraf": "~2.2.5",
     "semver": "~2.2.1",
-    "serve-spm": "~0.4.0",
+    "serve-spm": "~0.5.0",
     "spm-client": "~0.2.0",
     "spmrc": "^1.2.0",
     "tar": "~0.1.19",
