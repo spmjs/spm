@@ -2,7 +2,7 @@
 
 ---
 
-It is a spm package.
+<%= description %>
 
 ## Install
 
