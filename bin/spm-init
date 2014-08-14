@@ -98,13 +98,12 @@ function runTask() {
     });
     answers.yuanUrl = spmrc.get('registry');
 
-    gulp.src(path.join(template, '**'))
+    gulp.src(path.join(template, '**'), {
+         dot: true
+       })
       .pipe(gulpTemplate(answers))
       .pipe(gulp.dest('./'));
 
-    spawn('cp', ['-f', path.join(template, '.gitignore'), './.gitignore']);
-    spawn('cp', ['-f', path.join(template, '.spmignore'), './.spmignore']);
     console.log(color.green('Initialize a spm package Succeccfully!'));
   });
 }
-
