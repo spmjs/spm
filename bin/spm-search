@@ -32,7 +32,8 @@ console.log();
 log.config(commander);
 
 search({
-  name: commander.args[0]
+  name: commander.args[0],
+  registry: commander.registry
 }, function(err, body) {
   if (err) {
     log.error('exit', err.message);

@@ -42,7 +42,9 @@ if (!pkg) {
   process.exit(2);
 }
 
-info(pkg, function(err, body) {
+info(pkg, {
+  registry: commander.registry
+}, function(err, body) {
   if (err) {
     log.error('exit', err.message);
     process.exit(2);

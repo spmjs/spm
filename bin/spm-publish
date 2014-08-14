@@ -51,11 +51,11 @@ if (commander.doc) {
 }
 
 log.info('publish', (pkg.name + '@' + pkg.version).to.magenta.color);
-log.info('target', client.config().registry);
 publish({
   cwd: commander.inputDirectory,
   tag: commander.tag,
-  force: commander.force
+  force: commander.force,
+  registry: commander.registry
 }, function(err, pkg) {
   if (err) {
     if (err.statusCode === 401) {
