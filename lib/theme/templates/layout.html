@@ -66,12 +66,20 @@
   </body>
   <script src="{{static_url('js/nprogress.js')}}?nowrap"></script>
   <script>
-  NProgress.start();
-  window.onload = NProgress.done;
-  seajs.use('jquery/jquery/1.7.2/jquery', function($) {
-    $.ready(function() {
-      NProgress.set(0.7);
-    });
-  });
+  (function() {
+    NProgress.start();
+    window.onload = NProgress.done;
+    var ready = function(fn) {
+      var doc = document;
+      if(doc.addEventListener) {
+        doc.addEventListener('DOMContentLoaded', fn, false);
+      } else {
+        doc.attachEvent('onreadystatechange', fn);
+      }
+    };
+    ready(function() {
+      NProgress.inc(0.6);
+    }, false);
+  })();
   </script>
 </html>
