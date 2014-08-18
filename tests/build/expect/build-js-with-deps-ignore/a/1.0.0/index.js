@@ -1,1 +1,1 @@
-define("a/1.0.0/index",["b/1.1.0/src/b","c","d","d/0.1.1/index"],function(e){e("a/1.0.0/relative"),e("d/0.1.1/index")}),define("a/1.0.0/relative",["b/1.1.0/src/b","c","d"],function(e){console.log("relative"),e("b/1.1.0/src/b")});
+define("a/1.0.0/index",["b/1.1.0/src/b","c","d","b/1.1.0/src/extra","d/0.1.1/index"],function(e){e("a/1.0.0/relative"),e("d/0.1.1/index")}),define("a/1.0.0/relative",["b/1.1.0/src/b","c","d","b/1.1.0/src/extra"],function(e){console.log("relative"),e("b/1.1.0/src/b"),e("b/1.1.0/src/extra")});

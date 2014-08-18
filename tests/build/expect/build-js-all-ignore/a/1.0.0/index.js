@@ -1,1 +1,1 @@
-define("a/1.0.0/index",["b","c","d"],function(e){e("a/1.0.0/relative"),e("d/0.1.1/index")}),define("a/1.0.0/relative",["b","c","d"],function(e){console.log("relative"),e("b")}),define("d/0.1.1/index",[],function(e,n){n.d=function(){console.log("0.1.1")}});
+define("a/1.0.0/index",["b","c","d"],function(e){e("a/1.0.0/relative"),e("d/0.1.1/index")}),define("a/1.0.0/relative",["b","c","d"],function(e){console.log("relative"),e("b"),e("b/src/extra.js")}),define("d/0.1.1/index",[],function(e,n){n.d=function(){console.log("0.1.1")}});

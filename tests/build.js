@@ -127,7 +127,7 @@ describe('build', function() {
     var opt = {
       cwd: join(base, 'build-js'),
       dest: dest,
-      zip: true,
+      zip: true
     };
     build(opt, function(err) {
       should.not.exist(err);
