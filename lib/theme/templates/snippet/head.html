@@ -20,6 +20,9 @@ if (!location.port) {
 <script>
   seajs.config({
     base: "{{content_url('')}}",
+    paths: {
+      'jquery': 'http://static.alipayobjects.com/jquery'
+    },
     alias: {{deps|clean_alias|json_encode}}
   });
 </script>

@@ -68,5 +68,10 @@
   <script>
   NProgress.start();
   window.onload = NProgress.done;
+  seajs.use('jquery/jquery/1.7.2/jquery', function($) {
+    $.ready(function() {
+      NProgress.set(0.7);
+    });
+  });
   </script>
 </html>
