@@ -58,7 +58,8 @@
           }]
         });
 
-        mocha.setup('bdd');
+        mocha.ui('bdd');
+        mocha.reporter('html');
 
         {%- set specs = specFiles %}
         var tests = {{specs|json_encode}};
