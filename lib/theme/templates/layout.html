@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="{{system.name}} {{system.version}}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link type="image/x-icon" href="{{static_url('css/favicon.ico')}}" rel="icon">
+    <link type="image/x-icon" href="/favicon.ico" rel="icon">
     <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
@@ -66,7 +66,20 @@
   </body>
   <script src="{{static_url('js/nprogress.js')}}?nowrap"></script>
   <script>
-  NProgress.start();
-  window.onload = NProgress.done;
+  (function() {
+    NProgress.start();
+    window.onload = NProgress.done;
+    var ready = function(fn) {
+      var doc = document;
+      if(doc.addEventListener) {
+        doc.addEventListener('DOMContentLoaded', fn, false);
+      } else {
+        doc.attachEvent('onreadystatechange', fn);
+      }
+    };
+    ready(function() {
+      NProgress.inc(0.6);
+    }, false);
+  })();
   </script>
 </html>

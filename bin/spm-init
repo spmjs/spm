@@ -98,9 +98,12 @@ function runTask() {
     });
     answers.yuanUrl = spmrc.get('registry');
 
-    gulp.src(path.join(template, '**'), {dot: true} )
+    gulp.src(path.join(template, '**'), { dot: true })
       .pipe(gulpTemplate(answers))
       .pipe(gulp.dest('./'));
+
+    // https://github.com/npm/npm/issues/1862
+    spawn('cp', ['-f', path.join(template, '.npmignore'), './.gitignore']);
 
     console.log(color.green('Initialize a spm package Succeccfully!'));
   });

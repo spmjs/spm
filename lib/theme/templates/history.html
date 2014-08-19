@@ -11,9 +11,6 @@
   </div>
 </article>
 <script>
-seajs.config({
-  base: 'https://a.alipayobjects.com/'
-});
 seajs.use('jquery/jquery/1.7.2/jquery', function($) {
   $('.content-wrapper code').each(function(index, item) {
     item = $(item);
@@ -36,8 +33,8 @@ seajs.use('jquery/jquery/1.7.2/jquery', function($) {
 
 .spmjs .content-wrapper h2 {
     margin-top: 60px;
-    font-family: Georgia;
     border-bottom: none;
+    margin-bottom: 10px;
 }
 </style>
 {% endblock %}
