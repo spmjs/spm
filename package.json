@@ -48,7 +48,7 @@
     "inquirer": "^0.6.0",
     "jscoverage": "~0.3.8",
     "lodash": "~2.4.1",
-    "mocha-browser-for-spm": "~0.2.3",
+    "mocha-browser2": "~0.3.0",
     "multipipe": "~0.1.1",
     "nico": "~0.5.1",
     "request": "~2.36.0",
