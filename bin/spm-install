@@ -37,7 +37,7 @@ log.config(commander);
 install({
   registry: commander.registry,
   cwd: commander.inputDirectory,
-  destination: commander.destination,
+  destination: commander.outputDirectory,
   force: commander.force,
   save: commander.save,
   saveDev: commander.saveDev,
