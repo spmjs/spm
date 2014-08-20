@@ -21,6 +21,8 @@ commander
   .option('--zip', 'archive by zip')
   .option('--verbose', 'show more logging')
   .option('--no-color', 'disable colorful print')
+  .option('--no-install', 'disable install')
+  .option('--registry <url>', 'registry url of yuan server')
   .parse(process.argv);
 
 if (commander.verbose) {
@@ -51,7 +53,8 @@ var args = {
   zip: commander.zip,
   force: commander.force,
   withDeps: commander.withDeps,
-  install: true
+  install: true,
+  registry: commander.registry
 };
 
 if (args.ignore) {
