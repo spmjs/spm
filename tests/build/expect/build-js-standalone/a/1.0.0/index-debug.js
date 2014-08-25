@@ -1,110 +1,39 @@
+;
 (function() {
-  /**
-   * Sea.js mini 2.3.0 | seajs.org/LICENSE.md
-   */
-  var define;
-  var require;
-  (function(global, undefined) {
-    /**
-     * util-lang.js - The minimal language enhancement
-     */
-    function isType(type) {
-      return function(obj) {
-        return {}.toString.call(obj) == "[object " + type + "]"
-      }
-    }
-    var isFunction = isType("Function")
-      /**
-       * module.js - The core of module loader
-       */
-    var cachedMods = {}
-
-    function Module() {}
-    // Execute a module
-    Module.prototype.exec = function() {
-      var mod = this
-        // When module is executed, DO NOT execute it again. When module
-        // is being executed, just return `module.exports` too, for avoiding
-        // circularly calling
-      if (this.execed) {
-        return mod.exports
-      }
-      this.execed = true;
-
-      function require(id) {
-        return Module.get(id).exec()
-      }
-      // Exec factory
-      var factory = mod.factory
-      var exports = isFunction(factory) ? factory(require, mod.exports = {}, mod) : factory
-      if (exports === undefined) {
-        exports = mod.exports
-      }
-      // Reduce memory leak
-      delete mod.factory
-      mod.exports = exports
-      return exports
-    }
-    // Define a module
-    define = function(id, deps, factory) {
-      var meta = {
-        id: id,
-        deps: deps,
-        factory: factory
-      }
-      Module.save(meta)
-    }
-    // Save meta data to cachedMods
-    Module.save = function(meta) {
-      var mod = Module.get(meta.id)
-      mod.id = meta.id
-      mod.dependencies = meta.deps
-      mod.factory = meta.factory
-    }
-    // Get an existed module or create a new one
-    Module.get = function(id) {
-      return cachedMods[id] || (cachedMods[id] = new Module())
-    }
-    // Public API
-    require = function(id) {
-      var mod = Module.get(id)
-      if (!mod.execed) {
-        mod.exec()
-      }
-      return mod.exports
-    }
-  })(this);
-  define("a/1.0.0/index-debug", [], function(require, exports, module) {
-    require("a/1.0.0/relative-debug");
-    require("d/0.1.1/index-debug");
-  });
-  define("a/1.0.0/relative-debug", [], function(require, exports, module) {
-    console.log('relative');
-    require("b/1.1.0/src/b-debug");
-    require("b/1.1.0/src/extra-debug");
-  });
-  define("b/1.1.0/src/b-debug", [], function(require, exports, module) {
-    require("c/1.1.1/index-debug");
-    require("b/1.1.0/src/b-debug.tpl");
-  });
-  define("c/1.1.1/index-debug", [], function(require, exports, module) {
-    require("d/0.1.0/index-debug");
-  });
-  define("d/0.1.0/index-debug", [], function(require, exports, module) {
+  var d_010_index_debug, b_110_src_b_debugtpl, b_110_src_extra_debug, d_011_index_debug, c_111_index_debug, b_110_src_b_debug, a_100_relative_debug, a_100_index_debug;
+  d_010_index_debug = function(exports) {
     exports.d = function() {
       console.log('0.1.0');
     };
-  });
-  define("b/1.1.0/src/b-debug.tpl", [], function(require, exports, module) {
-    module.exports = '<div></div>';
-  });
-  define("b/1.1.0/src/extra-debug", [], function(require, exports, module) {
+    return exports;
+  }({});
+  b_110_src_b_debugtpl = function(exports) {
+    exports = '<div></div>';
+    return exports;
+  }();
+  b_110_src_extra_debug = function() {
     console.log('b-extra');
-  });
-  define("d/0.1.1/index-debug", [], function(require, exports, module) {
+  }();
+  d_011_index_debug = function(exports) {
     exports.d = function() {
       console.log('0.1.1');
     };
-  });
-  require("a/1.0.0/index-debug");
-})();
+    return exports;
+  }({});
+  c_111_index_debug = function() {
+    d_010_index_debug;
+  }();
+  b_110_src_b_debug = function() {
+    c_111_index_debug;
+    b_110_src_b_debugtpl;
+  }();
+  a_100_relative_debug = function() {
+    console.log('relative');
+    b_110_src_b_debug;
+    b_110_src_extra_debug;
+  }();
+  a_100_index_debug = function() {
+    a_100_relative_debug;
+    d_011_index_debug;
+  }();
+}());

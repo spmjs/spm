@@ -18,6 +18,7 @@ commander
   .option('--skip <skip>', 'determine which id will not be parsed when analyse')
   .option('--idleading <idleading>', 'prefix of module name, default: {{name}}/{{version}}')
   .option('--with-deps', 'build package in dependencies')
+  .option('--umd', 'wrap UMD with package name')
   .option('--zip', 'archive by zip')
   .option('--verbose', 'show more logging')
   .option('--no-color', 'disable colorful print')
@@ -53,12 +54,18 @@ var args = {
   zip: commander.zip,
   force: commander.force,
   withDeps: commander.withDeps,
-  install: true,
-  registry: commander.registry
+  install: commander.install,
+  registry: commander.registry,
+  umd: commander.umd
 };
 
 if (args.ignore) {
   args.ignore = args.ignore.split(',');
+}
+
+if (args.umd) {
+  // use package name as global name for umd
+  args.umd = p.name;
 }
 
 build(args, function(err) {
