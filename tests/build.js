@@ -300,8 +300,11 @@ describe('build', function() {
 
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
-    glob.sync('**/*', {cwd: expect})
-      .filter(function(file) {
+    var expectFiles = glob.sync('**/*', {cwd: expect});
+    var distFiles = glob.sync('**/*', {cwd: dest});
+    expectFiles.length.should.eql(distFiles.length);
+
+    expectFiles.filter(function(file) {
         return fs.statSync(join(expect, file)).isFile();
       })
       .forEach(function(file) {
