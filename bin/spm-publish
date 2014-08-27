@@ -3,7 +3,6 @@
 require('colorful').colorful();
 var commander = require('commander');
 var log = require('../lib/utils/log');
-var client = require('../lib/client');
 var publish = require('../lib/client').publish;
 var upload = require('../lib/upload');
 var file = require('../lib/sdk/file');
