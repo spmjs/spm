@@ -68,7 +68,7 @@ function runTask() {
     validate: function(input) {
       var done = this.async();
       if (!NAME_REGEX.test(input)) {
-        console.warn(color.red("Must be only lowercase letters, numbers, dashes or dots, and start with lowercase letter."));
+        console.warn(color.red('Must be only lowercase letters, numbers, dashes or dots, and start with lowercase letter.'));
         return;
       }
       done(true);
@@ -80,7 +80,7 @@ function runTask() {
     validate: function(input) {
       var done = this.async();
       if (!semver.valid(input)) {
-        console.warn(color.red("Must be a valid semantic version (semver.org)."));
+        console.warn(color.red('Must be a valid semantic version (semver.org).'));
         return;
       }
       done(true);
