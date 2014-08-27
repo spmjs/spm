@@ -36,4 +36,13 @@
     a_100_relative_debug;
     d_011_index_debug;
   }();
+  if (typeof exports == "object") {
+    module.exports = a_100_index_debug;
+  } else if (typeof define == "function" && define.amd) {
+    define([], function() {
+      return a_100_index_debug
+    });
+  } else {
+    this["a"] = a_100_index_debug;
+  }
 }());

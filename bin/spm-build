@@ -53,8 +53,9 @@ var args = {
   zip: commander.zip,
   force: commander.force,
   withDeps: commander.withDeps,
-  install: true,
-  registry: commander.registry
+  install: commander.install,
+  registry: commander.registry,
+  umd: commander.umd
 };
 
 if (args.ignore) {

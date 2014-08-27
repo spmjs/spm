@@ -86,6 +86,19 @@ describe('build', function() {
     });
   });
 
+  it('js package include umd', function(done) {
+    var opt = {
+      cwd: join(base, 'build-js'),
+      dest: dest,
+      include: 'umd'
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('build-js-umd', dest);
+      done();
+    });
+  });
+
   it('js require css', function(done) {
     var opt = {
       cwd: join(base, 'build-css'),
