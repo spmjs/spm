@@ -12,8 +12,8 @@ commander
   .option('-O, --output-directory <dir>', 'output directory, default: spm_modules')
   .option('-f, --force', 'force to download a unstable module')
   .option('-q, --quiet', 'show less logs')
-  .option('-S, --save', 'save alias to package.json')
-  .option('-SD, --save-dev', 'save devAlias to package.json')
+  .option('-S, --save', 'save dependencies to package.json')
+  .option('-SD, --save-dev', 'save devDependencies to package.json')
   .option('--verbose', 'show more logs')
   .option('--no-color', 'disable colorful print');
 
