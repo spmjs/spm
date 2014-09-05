@@ -38,8 +38,8 @@
   }();
   if (typeof exports == "object") {
     module.exports = a_100_index_debug;
-  } else if (typeof define == "function" && define.amd) {
-    define([], function() {
+  } else if (typeof define == "function" && (define.cmd || define.amd)) {
+    define(function() {
       return a_100_index_debug
     });
   } else {
