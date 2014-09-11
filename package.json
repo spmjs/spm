@@ -4,6 +4,7 @@
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
+  "homepage": "http://spmjs.io",
   "repository": {
     "type": "git",
     "url": "https://github.com/spmjs/spm.git"
