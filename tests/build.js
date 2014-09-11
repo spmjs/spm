@@ -311,6 +311,18 @@ describe('build', function() {
     });
   });
 
+  it('uglifyjs with ascii-only', function(done) {
+    var opt = {
+      cwd: join(base, 'uglifyjs-ascii-only'),
+      dest: dest
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('uglifyjs-ascii-only', dest);
+      done();
+    });
+  });
+
   function assets(prefix, dest) {
     var expect = join(base, 'expect', prefix);
     var expectFiles = glob.sync('**/*', {cwd: expect});
