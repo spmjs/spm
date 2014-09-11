@@ -5,9 +5,8 @@ describe('file', function() {
   it('isroot', function() {
     file.isroot('/').should.eql(true);
     var oldPlatform = process.platform;
-    process.platform = 'win32';
-    file.isroot('C:\\').should.eql(true);
-    file.isroot('D:\\').should.eql(true);
+    file.isroot('C:\\', 'win32').should.eql(true);
+    file.isroot('D:\\', 'win32').should.eql(true);
     process.platform = oldPlatform;
   });
 
