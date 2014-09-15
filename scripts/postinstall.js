@@ -41,12 +41,16 @@ if (process.platform !== 'win32') {
 }
 
 function writeProfile (file, text) {
-  if (fs.existsSync(file)) {
-    var result = fs.readFileSync(file).toString();
-    if (!/spm_completion/.test(result)) {
-      fs.writeFileSync(file, result + text);
+  try () {
+    if (fs.existsSync(file)) {
+      var result = fs.readFileSync(file).toString();
+      if (!/spm_completion/.test(result)) {
+        fs.writeFileSync(file, result + text);
+      }
+    } else {
+      fs.writeFileSync(file, text);
     }
-  } else {
-    fs.writeFileSync(file, text);
+  } catch (e) {
+    console.log('Please check the permission of "' + file + '".');
   }
 }
