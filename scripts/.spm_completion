@@ -1,5 +1,5 @@
-CMD="config help info tree login search unpublish publish install build init test doc"
-CMDARRAY=(config help info tree login search unpublish publish install build init test doc)
+CMD="config help info tree login search unpublish publish install build init test doc completion"
+CMDARRAY=(config help info tree login search unpublish publish install build init test doc completion)
 
 # zsh
 type compctl > /dev/null 2>&1 && compctl -k CMDARRAY spm 
@@ -10,5 +10,3 @@ _spm_completion() {
   COMPREPLY=($(compgen -W "$CMD" -- "${word}"))
 }
 type complete > /dev/null 2>&1 && complete -F _spm_completion spm
-
-
