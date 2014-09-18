@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var file = require('../lib/sdk/file');
+var fs = require('fs');
 var path = require('path');
 var commander = require('commander');
 var color = require('colorful').color;
@@ -100,11 +101,14 @@ function runTask() {
 
     gulp.src(path.join(template, '**'), { dot: true })
       .pipe(gulpTemplate(answers))
-      .pipe(gulp.dest('./'));
+      .pipe(gulp.dest('./'))
+      .on('end', function() {
+        // https://github.com/npm/npm/issues/1862
+        fs.renameSync('./gitignore', './.gitignore');
+        fs.renameSync('./spmignore', './.spmignore');
+        fs.renameSync('./travis.yml', './.travis.yml');
 
-    // https://github.com/npm/npm/issues/1862
-    spawn('cp', ['-f', path.join(template, '.npmignore'), './.gitignore']);
-
-    console.log(color.green('Initialize a spm package Succeccfully!'));
+        console.log(color.green('Initialize a spm package Succeccfully!'));
+      });
   });
 }
