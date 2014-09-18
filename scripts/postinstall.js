@@ -41,7 +41,7 @@ if (process.platform !== 'win32') {
 }
 
 function writeProfile (file, text) {
-  try () {
+  try {
     if (fs.existsSync(file)) {
       var result = fs.readFileSync(file).toString();
       if (!/spm_completion/.test(result)) {
