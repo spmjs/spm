@@ -66,7 +66,8 @@ var packageCommands = {
   search: 'search packages',
   test: 'test a package',
   doc: 'documentation manager',
-  build: 'build package'
+  build: 'build package',
+  completion: 'output completion bash script'
 };
 
 // sub command help
