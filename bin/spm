@@ -9,17 +9,6 @@ var log = require('../lib/utils/log');
 var program = require('../lib/utils/program');
 var spawn = require('win-spawn');
 
-process.on('exit', function() {
-  // handle spm -V
-  if (commander.hasOwnProperty('version')) {
-    return;
-  }
-  console.log();
-});
-
-var nodepath = __dirname.replace(/(\/|\\)spm(\/|\\)bin$/, '');
-program.findNodePath(nodepath);
-
 commander.helpInformation = function() {
   return [
     '',
