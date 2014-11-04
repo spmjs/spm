@@ -54,7 +54,7 @@ publish({
   cwd: commander.inputDirectory,
   tag: commander.tag,
   force: commander.force,
-  registry: commander.registry
+  registry: commander.registry || pkg.spm.registry
 }, function(err, pkg) {
   if (err) {
     if (err.statusCode === 401) {
