@@ -45,6 +45,7 @@
           <li><a class="issue-link" href="{{config.package.repository.url|gitRepoUrl}}/issues" target="_blank">Issues</a></li>
           {%- endif %}
         </ul>
+        <div id="qrcode" style="margin-top: 15px;"></div>
         {%- endblock %}
         {%- block subsidebar %}
         {%- endblock %}
@@ -79,6 +80,16 @@
     };
     ready(function() {
       NProgress.inc(0.6);
+
+      seajs.use("{{static_url('js/arale-qrcode.js')}}?nowrap", function(QRCode) {
+        var el = new QRCode({
+          text: location.href,
+          render: 'canvas',
+          width: 120,
+          height: 120
+        });
+        document.getElementById('qrcode').appendChild(el);
+      });
     }, false);
   })();
   </script>
