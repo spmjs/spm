@@ -29,6 +29,8 @@
     "colorful": "~2.1.0",
     "commander": "~2.3.0",
     "exeq": "~1.0.0",
+    "extend": "~2.0.0",
+    "father": "~0.9.7",
     "fstream": "~0.1.25",
     "fstream-ignore": "~0.0.7",
     "glob": "~4.0.3",
@@ -60,7 +62,6 @@
     "spm-standalonify": "^0.1.0",
     "spmrc": "~1.2.0",
     "tar": "~0.1.19",
-    "umi": "~0.6.0",
     "whoami": "~0.0.3",
     "win-spawn": "~2.0.0"
   },
