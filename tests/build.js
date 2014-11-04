@@ -64,7 +64,7 @@ describe('build', function() {
       cwd: join(base, 'build-js'),
       dest: dest,
       include: 'all',
-      ignore: ['b']
+      ignore: 'b'
     };
     build(opt, function(err) {
       should.not.exist(err);
@@ -204,7 +204,7 @@ describe('build', function() {
     var opt = {
       cwd: join(base, 'ignore'),
       dest: dest,
-      skip: ['crypto']
+      skip: 'crypto'
     };
     build(opt, function(err) {
       should.not.exist(err);
@@ -261,7 +261,7 @@ describe('build', function() {
     var opt = {
       cwd: join(base, 'build-nodeps-ignore'),
       dest: dest,
-      ignore: ['jquery']
+      ignore: 'jquery'
     };
     build(opt, function(err) {
       should.not.exist(err);
@@ -274,7 +274,7 @@ describe('build', function() {
     var opt = {
       cwd: join(base, 'build-nodeps-ignore'),
       dest: dest,
-      ignore: ['jquery'],
+      ignore: 'jquery',
       include: 'all'
     };
     build(opt, function(err) {
