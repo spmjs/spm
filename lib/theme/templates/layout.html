@@ -45,10 +45,15 @@
           <li><a class="issue-link" href="{{config.package.repository.url|gitRepoUrl}}/issues" target="_blank">Issues</a></li>
           {%- endif %}
         </ul>
-        <div id="qrcode" style="margin-top: 15px;"></div>
         {%- endblock %}
         {%- block subsidebar %}
         {%- endblock %}
+        <div class="qrcode-wrapper">
+          <i class="icon iconfont">
+            &#x3433;
+            <div class="qrcode" id="qrcode"></div>
+          </i>
+        </div>
       </aside>
       {%- block afterside %}{% endblock %}
       <div class="content-wrapper">
