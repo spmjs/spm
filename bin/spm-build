@@ -12,8 +12,8 @@ commander.usage('[options]');
 commander
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('-O, --output-directory <dir>', 'output directory, default: dist')
-  .option('-f, --force', 'force option')
-  .option('--include <include>', 'determine which files will be included, optional: self, relative, all, standalone')
+  .option('-f, --force', 'force to clean dest directory first')
+  .option('--include <include>', 'determine which files will be included, optional: self, relative, all, standalone, umd')
   .option('--ignore <ignore>', 'determine which id will not be transported')
   .option('--skip <skip>', 'determine which id will not be parsed when analyse')
   .option('--idleading [idleading]', 'prefix of module name, default: {{name}}/{{version}}')
