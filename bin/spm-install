@@ -34,6 +34,11 @@ commander.parse(process.argv);
 console.log();
 log.config(commander);
 
+if (process.argv.indexOf('-SD') > -1) {
+  commander.save = false;
+  commander.saveDev = true;
+}
+
 install({
   registry: commander.registry,
   cwd: commander.inputDirectory,

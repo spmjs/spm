@@ -58,10 +58,6 @@ var args = {
   umd: commander.umd
 };
 
-if (args.ignore) {
-  args.ignore = args.ignore.split(',');
-}
-
 build(args, function(err) {
   if (err) {
     log.error('error', err.message);
