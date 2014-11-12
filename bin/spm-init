@@ -10,7 +10,6 @@ var gulp = require('gulp');
 var gulpTemplate = require('gulp-template');
 var inquirer = require('inquirer');
 var semver = require('semver');
-var spawn = require('child_process').spawn;
 var NAME_REGEX = require('../lib/sdk/iduri').NAME_REGEX;
 
 /*
@@ -27,11 +26,6 @@ var template = exports.template = (spmrc.get('init.template') || defaultTemplate
   commander init
 */
 
-commander
-  .option('-f, --force', 'force to process the task.')
-  .option('--verbose', 'show more infomation')
-  .option('--no-color', 'disable colorful print');
-
 commander.on('--help', function() {
   console.log();
   console.log('  Change init default template in ~/.spm/spmrc-3x');
@@ -44,71 +38,58 @@ commander.on('--help', function() {
 commander.parse(process.argv);
 
 
-/*
-  fetch template if not exist
-*/
-
-runTask();
-
-/*
-  run init task
-*/
-
-function runTask() {
-
-  if (!file.isEmptyDir(process.cwd())) {
-    console.warn(color.yellow('Existing files here, please run init command in an empty folder!'));
-    return;
-  }
-
-  console.log('Creating a spm package: ');
-  inquirer.prompt([{
-    message: 'Package name',
-    name: 'name',
-    default: path.basename(process.cwd()),
-    validate: function(input) {
-      var done = this.async();
-      if (!NAME_REGEX.test(input)) {
-        console.warn(color.red('Must be only lowercase letters, numbers, dashes or dots, and start with lowercase letter.'));
-        return;
-      }
-      done(true);
-    }
-  }, {
-    message: 'Version',
-    name: 'version',
-    default: '0.0.0',
-    validate: function(input) {
-      var done = this.async();
-      if (!semver.valid(input)) {
-        console.warn(color.red('Must be a valid semantic version (semver.org).'));
-        return;
-      }
-      done(true);
-    }
-  }, {
-    message: 'Description',
-    name: 'description'
-  }, {
-    message: 'Author',
-    name: 'author',
-    default: require('whoami')
-  }], function( answers ) {
-    answers.varName = answers.name.replace(/\-(\w)/g, function(all, letter){
-      return letter.toUpperCase();
-    });
-    answers.yuanUrl = spmrc.get('registry');
-
-    gulp.src(path.join(template, '**'), { dot: true })
-      .pipe(gulpTemplate(answers))
-      .pipe(gulp.dest('./'))
-      .on('end', function() {
-        // https://github.com/npm/npm/issues/1862
-        fs.renameSync('./gitignore', './.gitignore');
-        fs.renameSync('./spmignore', './.spmignore');
-        fs.renameSync('./travis.yml', './.travis.yml');
-
-        console.log(color.green('Initialize a spm package Succeccfully!'));
-      });
-  });
+if (!file.isEmptyDir(process.cwd())) {
+  console.warn(color.yellow('Existing files here, please run init command in an empty folder!'));
+  return;
 }
+
+console.log('Creating a spm package: ');
+inquirer.prompt([{
+  message: 'Package name',
+  name: 'name',
+  default: path.basename(process.cwd()),
+  validate: function(input) {
+    var done = this.async();
+    if (!NAME_REGEX.test(input)) {
+      console.warn(color.red('Must be only lowercase letters, numbers, dashes or dots, and start with lowercase letter.'));
+      return;
+    }
+    done(true);
+  }
+}, {
+  message: 'Version',
+  name: 'version',
+  default: '0.0.0',
+  validate: function(input) {
+    var done = this.async();
+    if (!semver.valid(input)) {
+      console.warn(color.red('Must be a valid semantic version (semver.org).'));
+      return;
+    }
+    done(true);
+  }
+}, {
+  message: 'Description',
+  name: 'description'
+}, {
+  message: 'Author',
+  name: 'author',
+  default: require('whoami')
+}], function( answers ) {
+  answers.varName = answers.name.replace(/\-(\w)/g, function(all, letter){
+    return letter.toUpperCase();
+  });
+  answers.yuanUrl = spmrc.get('registry');
+
+  gulp.src(path.join(template, '**'), { dot: true })
+    .pipe(gulpTemplate(answers))
+    .pipe(gulp.dest('./'))
+    .on('end', function() {
+      // https://github.com/npm/npm/issues/1862
+      fs.renameSync('./gitignore', './.gitignore');
+      fs.renameSync('./spmignore', './.spmignore');
+      fs.renameSync('./travis.yml', './.travis.yml');
+
+      console.log(color.green('Initialize a spm package Succeccfully!'));
+    });
+});
