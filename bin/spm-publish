@@ -13,7 +13,6 @@ commander
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('--tag <tag>', 'publish module with a tag, default: stable')
   .option('--doc <dir>', 'upload docs instead of package')
-  .option('-f, --force', 'force to publish an exists module')
   .option('-q, --quiet', 'show less logs')
   .option('--verbose', 'show more logs')
   .option('--no-color', 'disable colorful print');
@@ -53,7 +52,6 @@ log.info('publish', (pkg.name + '@' + pkg.version).to.magenta.color);
 publish({
   cwd: commander.inputDirectory,
   tag: commander.tag,
-  force: commander.force,
   registry: commander.registry || pkg.spm.registry
 }, function(err, pkg) {
   if (err) {
