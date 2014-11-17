@@ -8,7 +8,7 @@ var rmrf = require('rimraf').sync;
 
 describe('cli', function() {
 
-  describe.only('install', function() {
+  describe('install', function() {
 
     afterEach(function() {
       rm('install/spm_modules');
