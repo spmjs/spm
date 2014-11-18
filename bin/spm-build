@@ -22,7 +22,7 @@ commander
   .option('--verbose', 'show more logging')
   .option('--no-color', 'disable colorful print')
   .option('--no-install', 'disable install')
-  .option('--registry <url>', 'registry url of yuan server')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .parse(process.argv);
 
 if (commander.verbose) {

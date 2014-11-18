@@ -9,7 +9,7 @@ var print = require('../lib/utils/print');
 
 commander
   .usage('[options] name[@version]')
-  .option('--registry <url>', 'registry url of yuan server')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-q, --quiet', 'show less log')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');

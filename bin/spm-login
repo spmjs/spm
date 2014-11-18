@@ -9,7 +9,7 @@ var login = require('../lib/client').login;
 
 commander
   .usage('[options]')
-  .option('--registry <url>', 'registry url of yuan server')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-u, --username <username>', 'username of your account')
   .option('-a, --authkey <authkey>', 'authkey of your account');
 

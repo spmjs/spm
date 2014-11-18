@@ -9,7 +9,7 @@ var file = require('../lib/sdk/file');
 
 commander
   .usage('[options] name')
-  .option('--registry <url>', 'registry url of yuan server')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('--tag <tag>', 'publish module with a tag, default: stable')
   .option('--doc <dir>', 'upload docs instead of package')

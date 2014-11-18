@@ -7,7 +7,7 @@ var log = require('../lib/utils/log');
 
 commander
   .usage('[options] name[@version]')
-  .option('--registry <url>', 'registry url of yuan server')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('-O, --output-directory <dir>', 'output directory, default: spm_modules')
   .option('-f, --force', 'force to download a unstable module')

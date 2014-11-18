@@ -8,7 +8,7 @@ var search = require('../lib/client').search;
 
 commander
   .usage('[options] <query>')
-  .option('--registry <url>', 'registry url of yuan server')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
 
