@@ -1,9 +1,9 @@
 # Static Package Manager
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/spmjs/spm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![NPM version](https://img.shields.io/npm/v/spm.svg?style=flat)](https://npmjs.org/package/spm)
 [![Build Status](https://img.shields.io/travis/spmjs/spm.svg?style=flat)](https://travis-ci.org/spmjs/spm)
 [![NPM downloads](http://img.shields.io/npm/dm/spm.svg?style=flat)](https://npmjs.org/package/spm)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/spmjs/spm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Brand new static package manager for browser.
 
