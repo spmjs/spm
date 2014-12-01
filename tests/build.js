@@ -86,6 +86,20 @@ describe('build', function() {
     });
   });
 
+  it.only('js package include standalone with rename', function(done) {
+    var opt = {
+      cwd: join(base, 'standalonify-with-rename'),
+      dest: dest,
+      include: 'standalone',
+      ignore: 'b:c'
+    };
+    build(opt, function(err) {
+      should.not.exist(err);
+      assets('standalonify-with-rename', dest);
+      done();
+    });
+  });
+
   it('js package include umd', function(done) {
     var opt = {
       cwd: join(base, 'build-js'),

@@ -1,0 +1,10 @@
+{
+  "name": "a",
+  "version": "0.1.0",
+  "spm": {
+    "dependencies": {
+      "b": "0.1.0"
+    },
+    "buildArgs": "--include standalone --ignore b:c"
+  }
+}
