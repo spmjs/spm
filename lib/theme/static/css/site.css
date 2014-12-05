@@ -490,3 +490,6 @@ body.spmjs {
 .qrcode-wrapper .iconfont:hover .qrcode {
   display: block;
 }
+.qrcode-wrapper .qrcode canvas {
+  cursor: none;
+}
