@@ -1,1 +1,0 @@
-!function(){var n,o;n=function(){console.log(o+1)}()}();

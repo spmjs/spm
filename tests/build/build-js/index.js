@@ -1,2 +1,0 @@
-require('./relative');
-require('d');
