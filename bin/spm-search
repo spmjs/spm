@@ -2,7 +2,7 @@
 
 require('colorful').colorful();
 var commander = require('commander');
-var log = require('../lib/utils/log');
+var log = require('spm-log');
 var print = require('../lib/utils/print');
 var search = require('../lib/client').search;
 

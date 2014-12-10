@@ -1,27 +1,35 @@
 #!/usr/bin/env node
 
-var commander = require('commander');
-var test = require('../lib/test');
 require('colorful').colorful();
+var program = require('commander');
+var test = require('../lib/test');
+var file = require('../lib/sdk/file');
 require('nico/lib/sdk/log').quiet = true;
 
-commander.usage('[options]');
+program.usage('[options]');
 
-commander
+program
   .option('--nocoverage', 'not run coverage culculation')
   .option('--coveralls', 'coveralls output for travis-ci');
 
-commander.on('--help', function() {
+program.on('--help', function() {
   console.log('  Examples:'.to.bold.blue.color);
   console.log();
   console.log('    $ spm test');
   console.log('    $ spm test --nocoverage');
+  console.log();
 });
 
-commander.parse(process.argv);
+program.parse(process.argv);
 
-if (!process.argv[1]) {
-  commander.help();
+var pkg = file.readJSON('package.json');
+if (!pkg) {
+  log.error('miss', 'package.json or "spm" key');
+  process.exit(2);
 }
 
-test(commander);
+if (!process.argv[1]) {
+  program.help();
+}
+
+test(program);

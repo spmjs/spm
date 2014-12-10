@@ -3,24 +3,23 @@
 require('colorful').colorful();
 var path = require('path');
 var resolve = path.resolve;
-var commander = require('commander');
+var program = require('commander');
 var archy = require('archy');
 var spmrc = require('spmrc');
-var log = require('../lib/utils/log');
+var log = require('spm-log');
 var file = require('../lib/sdk/file');
 var install = require('../lib/client').install;
 
-commander
+program
   .option('-d, --depth <n>', 'set the depth to <n>', Infinity)
-  .option('--no-color', 'disable colorful print');
-
-commander.parse(process.argv);
+  .option('--no-color', 'disable colorful print')
+  .parse(process.argv);
 
 // color
-log.config(commander);
+log.config(program);
 
 var cache = {};
-var query = commander.args[0];
+var query = program.args[0];
 
 // handle "spm tree class"
 if (query) {
@@ -28,11 +27,11 @@ if (query) {
   log.quiet = true;
   install.fetch(query, function(err, dest) {
     install({
-      source: commander.source,
+      source: program.source,
       destination: dest + '/' + spmrc.get('install.path') + '/',
-      force: commander.force,
-      parallel: commander.parallel,
-      query: commander.args
+      force: program.force,
+      parallel: program.parallel,
+      query: program.args
     }, function() {
       process.chdir(dest);
       log.quiet = false;
@@ -76,7 +75,7 @@ function tree(f, paths, depth) {
     cache[title] = pkg.version;
   }
 
-  if (++depth > commander.depth) return node;
+  if (++depth > program.depth) return node;
 
   if (pkg.spm && pkg.spm.dependencies) {
     var deps = pkg.spm.dependencies;
@@ -106,7 +105,7 @@ function color(node) {
     var version = bits[1];
     if (cache[title] === 'conflict') {
       node.label = title.to.yellow + ('@' + version).to.red;
-      if (commander.color === false) {
+      if (program.color === false) {
         node.label = '{' + title + '@' + version + '}';
       }
     } else {

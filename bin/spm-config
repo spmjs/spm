@@ -1,62 +1,50 @@
 #!/usr/bin/env node
 
-var commander = require('commander');
 require('colorful').colorful();
-var config = require('../lib/config');
+
+var program = require('commander');
 var spmrc = require('spmrc');
 var spawn = require('win-spawn');
+var readFile = require('fs').readFileSync;
 
-commander.usage('[section.key] [value]');
+program
+  .usage('<command> [key] [value]');
 
-commander
-  .command('remove <section>')
-  .description('remove a section')
-  .action(function(k, v) {
-    config.remove(k, v);
-    process.exit(0);
-  });
+program
+  .option('set <key> <value>', 'set a key')
+  .option('get <key>', 'get a key')
+  .option('delete <key>', 'delete a key')
+  .option('list', 'show your configuration')
+  .option('edit', 'edit ~/.spm/spmrc-3x with your favorite editor');
 
-commander
-  .command('show')
-  .description('show your spm configuration')
-  .action(function() {
-    config.show();
-    process.exit(0);
-  });
-
-commander
-  .command('edit')
-  .description('edit spmrc with your default editor')
-  .action(function() {
-    var editor = process.env.EDITOR || 'vim';
-    spawn(editor, [spmrc.spmrcfile], {stdio: 'inherit'});
-  });
-
-commander.on('--help', function() {
-  console.log('  ' + 'How to use:'.to.bold.blue.color);
+program.on('--help', function() {
+  console.log('  Examples:'.to.bold.blue.color);
   console.log();
-  console.log('    Config file is located at ' + '~/.spm/spmrc-3x'.to.bold.color + ' with ini format');
-  console.log('    You can edit with your favorite editor, or through the commands:');
-  console.log();
-  console.log('    $ ' + 'spm config '.to.magenta.color + 'registry '.to.cyan.color + 'http://spmjs.io'.to.underline.color);
+  console.log('    $', 'spm config'.to.magenta.color, 'set registry http://spm.alipay.im');
+  console.log('    $', 'spm config'.to.magenta.color, 'get registry');
+  console.log('    $', 'spm config'.to.magenta.color, 'delete auth');
+  console.log('    $', 'spm config'.to.magenta.color, 'list');
+  console.log('    $', 'spm config'.to.magenta.color, 'edit');
   console.log();
 });
 
+program.parse(process.argv);
 
-commander.parse(process.argv);
+var val = program.args[0];
 
-var subcmd = commander.args[0];
-var lastcmd = commander.args[commander.args.length - 1];
-
-if (!subcmd) {
-  process.stdout.write(commander.helpInformation());
-  commander.emit('--help');
-  process.exit();
-}
-
-if (typeof subcmd === 'string' && commander.args.length > 1) {
-  var value = commander.args.slice(1).join(' ');
-  console.log();
-  config.config(subcmd, value);
-  console.log();
+if (program.set && val) {
+  spmrc.set(program.set, val);
+} else if (program.get) {
+  console.log(spmrc.get(program.get));
+} else if (program.delete) {
+  var data = spmrc.parse();
+  delete data[program.delete];
+  spmrc.write(data);
+} else if (program.list) {
+  console.log(readFile(spmrc.spmrcfile, 'utf-8'));
+} else if (program.edit) {
+  var editor = process.env.EDITOR || 'vim';
+  spawn(editor, [spmrc.spmrcfile], {stdio: 'inherit'});
+} else {
+  program.help();
 }

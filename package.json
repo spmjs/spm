@@ -60,9 +60,11 @@
     "semver": "~2.2.1",
     "serve-spm": "~0.7.1",
     "spm-client": "~0.2.0",
+    "spm-log": "~0.1.1",
     "spm-standalonify": "~0.1.0",
     "spmrc": "~1.2.0",
     "tar": "~0.1.19",
+    "vinyl-fs": "~0.3.13",
     "whoami": "~0.0.3",
     "win-spawn": "~2.0.0"
   },

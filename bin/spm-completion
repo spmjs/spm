@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 
-
-// Installation: spm completion >> ~/.bashrc  (or ~/.zshrc)
-
-var fs = require('fs');
+var readFile = require('fs').readFileSync;
 var join = require('path').join;
 
-var content = fs.readFileSync(join(__dirname, '../scripts/.spm_completion'), 'utf-8');
-console.log(content);
+var file = join(__dirname, '../scripts/.spm_completion');
+console.log(readFile(file, 'utf-8'));

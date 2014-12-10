@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
-var commander = require('commander');
+var program = require('commander');
 var inquirer = require('inquirer');
+var log = require('spm-log');
 var client = require('../lib/client');
 var iduri = require('../lib/sdk/iduri');
-var log = require('../lib/utils/log');
 
-commander
+program
   .usage('[options] name[@version]')
   .option('-r, --registry <url>', 'registry url of yuan server')
   .option('--verbose', 'show more log')
   .option('--no-color', 'disable colorful print');
 
-commander.on('--help', function() {
+program.on('--help', function() {
   console.log();
   console.log('  ' + 'Examples:'.to.bold.blue);
   console.log();
@@ -23,18 +23,18 @@ commander.on('--help', function() {
   console.log();
 });
 
-commander.parse(process.argv);
+program.parse(process.argv);
 
-if (!commander.args[0]) {
-  process.stdout.write(commander.helpInformation());
-  commander.emit('--help');
+if (!program.args[0]) {
+  process.stdout.write(program.helpInformation());
+  program.emit('--help');
   process.exit();
 }
 
 console.log();
-log.config(commander);
+log.config(program);
 
-var pkg = iduri.resolve(commander.args[0]);
+var pkg = iduri.resolve(program.args[0]);
 if (!pkg) {
   log.error('error', 'invalid module name');
   process.exit(2);
@@ -50,7 +50,7 @@ if (!pkg.version) {
 
 function unpublish() {
   client.unpublish(pkg, {
-    registry: commander.registry
+    registry: program.registry
   }, function(err) {
     if (err) {
       log.error('exit', err.message);
