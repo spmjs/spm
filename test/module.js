@@ -1,15 +1,9 @@
-require('should');
-var parseDependencies = require('../lib/sdk/module').parseDependencies;
-
+var mo = require('../lib/sdk/module');
+var join = require('path').join;
 
 describe('module', function() {
-  it('parseDependencies', function() {
-    var result = parseDependencies({
-      a: '1-1',
-      b: 'abc',
-      c: undefined,
-      e: null
-    });
-    result.should.eql(['a@1-1', 'b@abc', 'c@undefined', 'e@null']);
+  it('getSourceFiles', function() {
+    var list = mo.getSourceFiles(join(__dirname, './fixtures/normal'));
+    list.should.be.eql(['index', 'relative']);
   });
 });
