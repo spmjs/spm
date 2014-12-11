@@ -4,7 +4,7 @@ require('colorful').colorful();
 var program = require('commander');
 var log = require('spm-log');
 var publish = require('../lib/client').publish;
-var file = require('../lib/sdk/file');
+var readJSON = require('fs-extra').readJSONSync;
 
 program
   .usage('[options] name')
@@ -28,7 +28,7 @@ program.parse(process.argv);
 console.log();
 log.config(program);
 
-var pkg = file.readJSON('package.json');
+var pkg = readJSON('package.json');
 if (!pkg || !pkg.spm) {
   console.log();
   log.error('miss', 'package.json or "spm" key');

@@ -7,7 +7,8 @@ var program = require('commander');
 var archy = require('archy');
 var spmrc = require('spmrc');
 var log = require('spm-log');
-var file = require('../lib/sdk/file');
+var exists = require('fs').existsSync;
+var readJSON = require('fs-extra').readJSONSync;
 var install = require('../lib/client').install;
 
 program
@@ -41,7 +42,7 @@ if (query) {
   return;
 }
 
-var p = file.readJSON('package.json');
+var p = readJSON('package.json');
 if (!p || !p.spm) {
   console.log();
   log.error('miss', 'package.json or "spm" key');
@@ -55,7 +56,7 @@ function tree(f, paths, depth) {
   depth = depth || 0;
   if (!f) return {};
   f = resolve(f);
-  if (!file.exists(f)) {
+  if (!exists(f)) {
     console.log('  can not find ' + path.relative(process.cwd(), f));
     return {};
   }
@@ -119,7 +120,7 @@ function lookup(paths, pkg) {
   var pkgfile;
   paths.some(function(f) {
     var fpath = path.join(f, pkg.name, pkg.version, 'package.json');
-    if (file.exists(fpath)) {
+    if (exists(fpath)) {
       pkgfile = fpath;
       return true;
     }

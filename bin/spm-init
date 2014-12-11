@@ -9,9 +9,8 @@ var vfs = require('vinyl-fs');
 var gulpTemplate = require('gulp-template');
 var inquirer = require('inquirer');
 var semver = require('semver');
-var log = require('spm-log');
+var emptyDir = require('empty-dir').sync;
 
-var file = require('../lib/sdk/file');
 var NAME_REGEX = require('../lib/sdk/iduri').NAME_REGEX;
 
 /*
@@ -39,7 +38,7 @@ program.on('--help', function() {
 
 program.parse(process.argv);
 
-if (!file.isEmptyDir(process.cwd())) {
+if (!emptyDir(process.cwd())) {
   console.warn(color.yellow('Existing files here, please run init command in an empty folder!'));
   return;
 }

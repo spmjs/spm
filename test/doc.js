@@ -1,10 +1,10 @@
-require('should');
 var sinon = require('sinon');
 var doc = require('../lib/doc');
 var nico = require('nico');
 var muk = require('muk');
 
 describe('doc', function() {
+
   it('build', function() {
     nico.build = function() {};
     var nicoBuild = sinon.spy(nico, 'build');
@@ -13,6 +13,7 @@ describe('doc', function() {
     });
     nicoBuild.called.should.be.eql(true);
   });
+
   it('server', function() {
     nico.server = function() {};
     var server = sinon.spy(nico, 'server');
@@ -21,6 +22,7 @@ describe('doc', function() {
     });
     server.called.should.be.eql(true);
   });
+
   it('watch', function() {
     nico.server = function() {};
     var server = sinon.spy(nico, 'server');
@@ -29,6 +31,7 @@ describe('doc', function() {
     });
     server.called.should.be.eql(true);
   });
+
   it('publish', function() {
     nico.build = function() {};
     var mockUpload = {
@@ -43,6 +46,7 @@ describe('doc', function() {
     build.called.should.be.eql(true);
     upload.called.should.be.eql(true);
   });
+
   it('callback', function() {
     var callback = sinon.spy();
     doc({
@@ -50,4 +54,5 @@ describe('doc', function() {
     }, callback);
     callback.called.should.be.eql(true);
   });
+
 });

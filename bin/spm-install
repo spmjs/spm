@@ -45,7 +45,7 @@ install({
   force: program.force,
   save: program.save,
   saveDev: program.saveDev,
-  name: program.args.length ? commander.args : null
+  name: program.args.length ? program.args : null
 }, function(err) {
   if (err) {
     log.error('exit', err.message);

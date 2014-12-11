@@ -6,15 +6,15 @@ var archive = require('ls-archive');
 
 describe('ignore', function() {
   it('ignore field in package.spm', function(done) {
-    tar.create(path.join(process.cwd(), 'tests', 'ignoreArray'),
-               path.join(process.cwd(), 'tests', 'ignore-array.tar.gz'),
+    tar.create(path.join(process.cwd(), 'test', 'ignoreArray'),
+               path.join(process.cwd(), 'test', 'ignore-array.tar.gz'),
                function(error, target) {
       archive.list(target, function(err, files) {
         files = files.map(function(f) {
           return f.path;
         });
         files.indexOf('a/a.js').should.be.eql(-1);
-        fs.unlinkSync(path.join(process.cwd(), 'tests', 'ignore-array.tar.gz'));
+        fs.unlinkSync(path.join(process.cwd(), 'test', 'ignore-array.tar.gz'));
         done();
       });
     });

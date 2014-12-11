@@ -5,7 +5,6 @@ require('colorful').colorful();
 var join = require('path').join;
 var exists = require('fs').existsSync;
 var program = require('commander');
-var log = require('spm-log');
 var spawn = require('win-spawn');
 
 var run = require('../lib/utils/run');

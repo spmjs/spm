@@ -3,7 +3,8 @@
 require('colorful').colorful();
 var program = require('commander');
 var test = require('../lib/test');
-var file = require('../lib/sdk/file');
+var readJSON = require('fs-extra').readJSONSync;
+var log = require('spm-log');
 require('nico/lib/sdk/log').quiet = true;
 
 program.usage('[options]');
@@ -22,7 +23,7 @@ program.on('--help', function() {
 
 program.parse(process.argv);
 
-var pkg = file.readJSON('package.json');
+var pkg = readJSON('package.json');
 if (!pkg) {
   log.error('miss', 'package.json or "spm" key');
   process.exit(2);

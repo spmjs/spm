@@ -4,7 +4,7 @@ require('colorful').colorful();
 var program = require('commander');
 var log = require('spm-log');
 var doc = require('../lib/doc');
-var file = require('../lib/sdk/file');
+var readJSON = require('fs-extra').readJSONSync;
 
 program.usage('[options]');
 
@@ -44,7 +44,7 @@ if (!process.argv[2]) {
   return program.help();
 }
 
-var pkg = file.readJSON('package.json');
+var pkg = readJSON('package.json');
 if (!pkg || !pkg.spm) {
   console.log();
   log.error('miss', 'package.json or "spm" key');
