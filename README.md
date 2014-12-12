@@ -7,7 +7,7 @@
 
 Brand new static package manager for browser.
 
-**这里是 spm3，spm2 请访问 https://github.com/spmjs/spm/tree/2.x**
+**spm2: https://github.com/spmjs/spm/tree/2.x**
 
 ![](https://i.alipayobjects.com/i/localhost/png/201404/2YQxOTYoFp.png)
 
@@ -40,4 +40,4 @@ SPM is available under the terms of the MIT License.
 
 ## Memo
 
-* 发布日志：https://github.com/spmjs/spm/releases
+* Release History：https://github.com/spmjs/spm/releases
