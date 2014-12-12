@@ -7,7 +7,7 @@ test:
 	./node_modules/.bin/_mocha -- -R spec -t 20000 --require should --inline-diffs
 
 debug:
-	./node_modules/.bin/_mocha -R spec -t 20000  --require should
+	./node_modules/.bin/_mocha -R spec -t 20000  --require should --inline-diffs
 
 jsfiles := $(shell find ./ -name '*.js' ! -path "*template/*.js" ! -path "*theme/*.js" ! -path "*utils/tar.js" ! -path "*node_modules/*" ! -path "*cases/*" ! -path "*data/*" ! -path "*scripts/*" ! -path "*coverage/*" ! -path "*tests/build/*");
 binfiles := $(shell find ./bin/* ! -path "*.iml");
