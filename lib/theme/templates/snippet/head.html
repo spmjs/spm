@@ -12,14 +12,13 @@ if (!location.port) {
 {%- endif %}
 
 {%- set pkg = config.package %}
+{%- set deps = dependencies %}
 
 <script src="{{static_url('js/sea.js?nowrap')}}"></script>
-
-{%- set deps = dependencies %}
 
 <script>
   seajs.config({
     base: "{{content_url('')}}",
-    alias: {{deps|clean_alias|json_encode}}
+    alias: {{deps|json_encode}}
   });
 </script>
