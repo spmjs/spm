@@ -14,7 +14,11 @@ if (!location.port) {
 {%- set pkg = config.package %}
 {%- set deps = dependencies %}
 
+{%- if deps.seajs %}
+<script src="{{content_url('')}}spm_modules/{{deps.seajs}}?nowrap"></script>
+{%- else %}
 <script src="{{static_url('js/sea.js?nowrap')}}"></script>
+{%- endif %}
 
 <script>
   seajs.config({
