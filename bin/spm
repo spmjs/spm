@@ -1,213 +1,61 @@
 #!/usr/bin/env node
 
-var path = require('path');
-var fs = require('fs');
-var commander = require('commander');
 require('colorful').colorful();
-var run = require('../lib/utils/run');
-var log = require('../lib/utils/log');
-var program = require('../lib/utils/program');
+
+var join = require('path').join;
+var exists = require('fs').existsSync;
+var program = require('commander');
 var spawn = require('win-spawn');
 
-process.on('exit', function() {
-  // handle spm -V
-  if (commander.hasOwnProperty('version')) {
-    return;
-  }
-  console.log();
-});
+var run = require('../lib/utils/run');
+var pkg = require('../package');
 
-var nodepath = __dirname.replace(/(\/|\\)spm(\/|\\)bin$/, '');
-program.findNodePath(nodepath);
+program
+  .version(pkg.version, '-v, --version')
+  .usage('<command> [options]')
+  .on('--help', printHelp)
+  .parse(process.argv);
 
-commander.helpInformation = function() {
-  return [
-    '',
-    '  Static Package Manager'.to.bold.color,
-    '',
-    '  Usage: ' + this._name + ' ' + this.usage(),
-    '' + this.commandHelp(),
-    '  Options:',
-    '',
-    '' + this.optionHelp().replace(/^/gm, '    '),
-    '',
-    ''
-  ].join('\n');
-};
-
-commander
-  .version(require('../package').version, '-v, --version')
-  .usage('<command> [options]');
-
-
-process.on('exit', function(code) {
-  if (code === 1) {
-    process.stdout.write([
-      '  Options:',
-      '',
-      '' + commander.optionHelp().replace(/^/gm, '    '),
-      '',
-      ''
-    ].join('\n'));
-
-    commander.emit('--help');
-  }
-});
-
-
-var packageCommands = {
-  init: 'initialize a package',
-  login: 'login your account',
-  install: 'install a package',
-  publish: 'publish a package',
-  unpublish: 'unpublish a package',
-  tree: 'show dependencies tree',
-  info: 'information of a package',
-  search: 'search packages',
-  test: 'test a package',
-  doc: 'documentation manager',
-  build: 'build package',
-  completion: 'output completion bash script'
-};
-
-// sub command help
-commander.on('--help', function() {
-  console.log('  ' + 'System Commands:'.to.bold.magenta.color);
-  console.log();
-  program.printHelp(new program('config', 'configuration for spm'));
-  program.printHelp(new program('help', 'show help information'));
-  console.log();
-
-  console.log('  ' + 'Package Commands:'.to.bold.green.color);
-  console.log();
-  Object.keys(packageCommands).forEach(function(key) {
-    program.printHelp(new program(key, packageCommands[key]));
-  });
-  console.log();
-});
-
-commander.parse(process.argv);
-
+var subcmd = program.args[0];
 var args = process.argv.slice(3);
-var subcmd = commander.args[0];
 
 if (!subcmd) {
-  process.stdout.write(commander.helpInformation());
-  commander.emit('--help');
-  process.exit();
-}
-
-if (subcmd === 'help') {
-  var helpcmd = commander.args[1];
-  if (!helpcmd) {
-    process.stdout.write(commander.helpInformation());
-    commander.emit('--help');
-    process.exit();
-  }
-
-  var bin = executable(helpcmd);
-  if (bin) {
-    spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
-  }
+  program.help();
 } else {
-  bin = executable(subcmd);
+  var bin = executable(subcmd);
   if (bin) {
     run.record(subcmd);
     spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
+  } else {
+    program.help();
   }
 }
 
+function printHelp() {
+  console.log('  System Commands:'.to.bold.magenta.color);
+  console.log();
+  console.log('    config         configuration for spm');
+  console.log('    login          login your account');
+  console.log('    completion     output completion bash script');
+  console.log();
+  console.log('  Package Commands:'.to.bold.green.color);
+  console.log();
+  console.log('    init           initialize a package');
+  console.log('    install        install a package');
+  console.log('    publish        publish a package');
+  console.log('    unpublish      unpublish a package');
+  console.log('    ls             show dependencies tree');
+  console.log('    info           information of a package');
+  console.log('    search         search packages');
+  console.log('    test           test a package');
+  console.log('    doc            documentation manager');
+  console.log('    build          build a package');
+  console.log();
+}
 
-// helpers
-// ----------
 function executable(subcmd) {
-  // find executable
-  var bin = 'spm-' + subcmd;
-
-  var local = path.join(__dirname, bin);
-  if (fs.existsSync(local)) {
-    return local;
+  var file = join(__dirname, 'spm-' + subcmd);
+  if (exists(file)) {
+    return file;
   }
-
-  var commands = Object.keys(packageCommands);
-
-  function printSimilar() {
-    // guess commands
-    commands = getSimilarCommands(subcmd, commands);
-    console.log();
-    console.log('  Can\'t find command (or target): ' + subcmd.to.cyan.color);
-    console.log();
-    if (commands.length) {
-      console.log('  It may be a mistake of the similar commands:');
-      console.log();
-      commands.forEach(function(cmd) {
-        console.log('    $', 'spm'.to.magenta.color, cmd.to.cyan.color);
-      });
-    }
-  }
-
-  try {
-    printSimilar();
-  } catch (e) {
-    log.error('error', e);
-  }
-  return null;
-}
-
-function getLevenshteinSteps(s, t) {
-  // ref: http://www.cxybl.com/html/bcyy/java/201107291632.html
-
-  var n = s.length;
-  var m = t.length;
-
-  if (n === 0) return m;
-  if (m === 0) return n;
-
-  var d = [], i, j;
-
-  for (i = 0; i <= n; i++) {
-    d[i] = [];
-    d[i][0] = i;
-  }
-
-  for (j = 0; j <= m; j++) {
-    d[0][j] = j;
-  }
-
-  for (i = 1; i <= n; i++) {
-    for (j = 1; j <= m; j++) {
-      var cost = s[i] === t[j] ? 0 : 1;
-
-      d[i][j] = Math.min(
-        d[i - 1][j] + 1, // a deletion
-        d[i][j - 1] + 1, // an insertion
-        d[i - 1][j - 1] + cost  // a substitution
-      );
-    }
-  }
-
-  return d[n][m];
-}
-
-function getSimilarCommands(cmd, commands) {
-  var _cache = {};
-  var getPoint = function(s, t) {
-    if (_cache[s + t]) {
-      return _cache[s + t];
-    }
-    var min = Math.min(s.length, t.length);
-    var max = Math.max(s.length, t.length);
-    if (max >= 3 * min) return 0;
-    var similar = 1 - getLevenshteinSteps(s, t) / max;
-    _cache[s + t] = similar;
-    return similar;
-  };
-
-  commands = commands.filter(function(key) {
-    return getPoint(cmd, key) > 0.3;
-  });
-
-  return commands.sort(function(a, b) {
-    return getPoint(cmd, b) - getPoint(cmd, a);
-  });
 }

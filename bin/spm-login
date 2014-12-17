@@ -1,28 +1,27 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
-var commander = require('commander');
+var program = require('commander');
 var inquirer = require('inquirer');
 var spmrc = require('spmrc');
-var log = require('../lib/utils/log');
+var log = require('spm-log');
 var login = require('../lib/client').login;
 
-commander
+program
   .usage('[options]')
-  .option('--registry <url>', 'registry url of yuan server')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-u, --username <username>', 'username of your account')
-  .option('-a, --authkey <authkey>', 'authkey of your account');
-
-commander.parse(process.argv);
+  .option('-a, --authkey <authkey>', 'authkey of your account')
+  .parse(process.argv);
 
 console.log();
-log.config(commander);
+log.config(program);
 
 // run install
 var info = {};
-if (commander.authkey && commander.username) {
-  info.username = commander.username;
-  info.authkey = commander.authkey;
+if (program.authkey && program.username) {
+  info.username = program.username;
+  info.authkey = program.authkey;
   login(info, done);
   return;
 }
@@ -37,7 +36,7 @@ inquirer.prompt([{
 }], function(answers) {
   info.username = answers.username;
   info.authkey = answers.authkey;
-  login(info, {registry: commander.registry}, done);
+  login(info, {registry: program.registry}, done);
 });
 
 function done(err, body) {
@@ -48,4 +47,5 @@ function done(err, body) {
   spmrc.set('auth', body.data);
   console.log();
   console.log('  login success.'.to.green.color);
+  console.log();
 }

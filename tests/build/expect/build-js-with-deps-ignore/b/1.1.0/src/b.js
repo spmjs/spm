@@ -1,1 +1,0 @@
-define("b/1.1.0/src/b",["c","d"],function(c){c("c"),c("b/1.1.0/src/b.tpl")}),define("b/1.1.0/src/b.tpl",[],function(c,b,i){i.exports="<div></div>"});

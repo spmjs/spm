@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
-var commander = require('commander');
+var program = require('commander');
 var install = require('../lib/client').install;
-var log = require('../lib/utils/log');
+var log = require('spm-log');
 
-commander
+program
   .usage('[options] name[@version]')
-  .option('--registry <url>', 'registry url of yuan server')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('-O, --output-directory <dir>', 'output directory, default: spm_modules')
   .option('-f, --force', 'force to download a unstable module')
@@ -17,8 +17,7 @@ commander
   .option('--verbose', 'show more logs')
   .option('--no-color', 'disable colorful print');
 
-commander.on('--help', function() {
-  console.log();
+program.on('--help', function() {
   console.log('  ' + 'Examples:'.to.bold.blue);
   console.log();
   console.log('   $ ' + 'spm install'.to.magenta.color + ' jquery');
@@ -29,19 +28,24 @@ commander.on('--help', function() {
   console.log();
 });
 
-commander.parse(process.argv);
+program.parse(process.argv);
 
 console.log();
-log.config(commander);
+log.config(program);
+
+if (process.argv.indexOf('-SD') > -1) {
+  program.save = false;
+  program.saveDev = true;
+}
 
 install({
-  registry: commander.registry,
-  cwd: commander.inputDirectory,
-  destination: commander.outputDirectory,
-  force: commander.force,
-  save: commander.save,
-  saveDev: commander.saveDev,
-  name: commander.args.length ? commander.args : null
+  registry: program.registry,
+  cwd: program.inputDirectory,
+  destination: program.outputDirectory,
+  force: program.force,
+  save: program.save,
+  saveDev: program.saveDev,
+  name: program.args.length ? program.args : null
 }, function(err) {
   if (err) {
     log.error('exit', err.message);

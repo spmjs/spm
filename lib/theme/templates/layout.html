@@ -48,6 +48,12 @@
         {%- endblock %}
         {%- block subsidebar %}
         {%- endblock %}
+        <div class="qrcode-wrapper">
+          <i class="icon iconfont">
+            &#x3433;
+            <div class="qrcode" id="qrcode"></div>
+          </i>
+        </div>
       </aside>
       {%- block afterside %}{% endblock %}
       <div class="content-wrapper">
@@ -79,6 +85,20 @@
     };
     ready(function() {
       NProgress.inc(0.6);
+
+      seajs.use("{{static_url('js/arale-qrcode.js')}}?nowrap", function(QRCode) {
+        var url = location.href;
+        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+          url = url.replace(location.hostname, '{{config.internalIp}}');
+        }
+        var el = new QRCode({
+          text: url,
+          render: 'canvas',
+          width: 120,
+          height: 120
+        });
+        document.getElementById('qrcode').appendChild(el);
+      });
     }, false);
   })();
   </script>

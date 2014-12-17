@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-var commander = require('commander');
-var doc = require('../lib/doc');
-var file = require('../lib/sdk/file');
-var log = require('../lib/utils/log');
 require('colorful').colorful();
+var program = require('commander');
+var log = require('spm-log');
+var doc = require('../lib/doc');
+var readJSON = require('fs-extra').readJSONSync;
 
-commander.usage('[options]');
+program.usage('[options]');
 
-commander
-  .option('--registry <url>', 'registry url of yuan server')
+program
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-p, --port <port>', 'local server port, default: 8000')
   .option('-f, --force', 'force build without cache')
   .option('-v, --verbose', 'show more logging')
@@ -17,33 +17,33 @@ commander
   .option('--no-color', 'disable colorful print')
   .option('clean', 'clean _site folder')
   .option('build', 'build documentation')
-  .option('server', 'start a server for documentation')
   .option('watch', 'start a server of watching source')
   .option('publish', 'publish documentation for public');
 
-commander.on('--help', function() {
+program.on('--help', function() {
   console.log('  Examples:'.to.bold.blue.color);
   console.log();
-  console.log('    $ spm doc');
-  console.log('    $ spm doc clean');
-  console.log('    $ spm doc build');
-  console.log('    $ spm doc build -f');
-  console.log('    $ spm doc server');
-  console.log('    $ spm doc watch');
-  console.log('    $ spm doc watch --port 8080');
-  console.log('    $ spm doc publish');
-  console.log('    $ spm doc publish -r http://spm.alipay.im');
+  console.log('    $', 'spm doc'.to.magenta.color);
+  console.log('    $', 'spm doc'.to.magenta.color, 'clean');
+  console.log('    $', 'spm doc'.to.magenta.color, 'build');
+  console.log('    $', 'spm doc'.to.magenta.color, 'build -f');
+  console.log('    $', 'spm doc'.to.magenta.color, 'server');
+  console.log('    $', 'spm doc'.to.magenta.color, 'watch');
+  console.log('    $', 'spm doc'.to.magenta.color, 'watch --port 8080');
+  console.log('    $', 'spm doc'.to.magenta.color, 'publish');
+  console.log('    $', 'spm doc'.to.magenta.color, 'publish -r http://spm.alipay.im');
+  console.log();
 });
 
-commander.parse(process.argv);
+program.parse(process.argv);
 
-log.config(commander);
+log.config(program);
 
 if (!process.argv[2]) {
-  commander.help();
+  program.watch = true;
 }
 
-var pkg = file.readJSON('package.json');
+var pkg = readJSON('package.json');
 if (!pkg || !pkg.spm) {
   console.log();
   log.error('miss', 'package.json or "spm" key');
@@ -51,5 +51,4 @@ if (!pkg || !pkg.spm) {
 }
 
 console.log();
-
-doc(commander);
+doc(program);

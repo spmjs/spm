@@ -1,60 +1,47 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
-var commander = require('commander');
-var log = require('../lib/utils/log');
+var program = require('commander');
+var log = require('spm-log');
 var publish = require('../lib/client').publish;
-var upload = require('../lib/upload');
-var file = require('../lib/sdk/file');
+var readJSON = require('fs-extra').readJSONSync;
 
-commander
+program
   .usage('[options] name')
-  .option('--registry <url>', 'registry url of yuan server')
+  .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('--tag <tag>', 'publish module with a tag, default: stable')
-  .option('--doc <dir>', 'upload docs instead of package')
   .option('-f, --force', 'force to publish an exists module')
   .option('-q, --quiet', 'show less logs')
   .option('--verbose', 'show more logs')
   .option('--no-color', 'disable colorful print');
 
-commander.on('--help', function() {
-  console.log();
+program.on('--help', function() {
   console.log('  ' + 'Examples:'.to.bold.blue.color);
   console.log();
-  console.log('   publish a standard cmd module is simple');
-  console.log();
   console.log('   $ ' + 'spm publish'.to.magenta.color);
-  console.log();
-  console.log('   publish to a specified registry');
-  console.log();
   console.log('   $ ' + 'spm publish'.to.magenta.color + ' -r'.to.cyan.color + ' http://spm.alipay.im');
   console.log();
 });
 
-commander.parse(process.argv);
+program.parse(process.argv);
 
 console.log();
-log.config(commander);
+log.config(program);
 
-var pkg = file.readJSON('package.json');
+var pkg = readJSON('package.json');
 if (!pkg || !pkg.spm) {
   console.log();
   log.error('miss', 'package.json or "spm" key');
   process.exit(2);
 }
 
-if (commander.doc) {
-  upload(commander, pkg);
-  return;
-}
-
 log.info('publish', (pkg.name + '@' + pkg.version).to.magenta.color);
 publish({
-  cwd: commander.inputDirectory,
-  tag: commander.tag,
-  force: commander.force,
-  registry: commander.registry
+  cwd: program.inputDirectory,
+  tag: program.tag,
+  registry: program.registry || pkg.spm.registry,
+  force: program.force
 }, function(err, pkg) {
   if (err) {
     if (err.statusCode === 401) {

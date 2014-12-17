@@ -1,1 +1,0 @@
-require('./b.c.d');

@@ -1,3 +1,9 @@
+#
+# spm command completion script
+#
+# Installation: spm completion >> ~/.bashrc  (or ~/.zshrc)
+#
+
 CMD="config help info tree login search unpublish publish install build init test doc completion"
 CMDARRAY=(config help info tree login search unpublish publish install build init test doc completion)
 
