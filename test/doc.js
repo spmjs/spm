@@ -14,15 +14,6 @@ describe('doc', function() {
     nicoBuild.called.should.be.eql(true);
   });
 
-  it('server', function() {
-    nico.server = function() {};
-    var server = sinon.spy(nico, 'server');
-    doc({
-      server: true
-    });
-    server.called.should.be.eql(true);
-  });
-
   it('watch', function() {
     nico.server = function() {};
     var server = sinon.spy(nico, 'server');

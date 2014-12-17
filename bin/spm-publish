@@ -11,6 +11,7 @@ program
   .option('-r, --registry <url>', 'registry url of yuan server')
   .option('-I, --input-directory <dir>', 'input directory, default: current working directory')
   .option('--tag <tag>', 'publish module with a tag, default: stable')
+  .option('-f, --force', 'force to publish an exists module')
   .option('-q, --quiet', 'show less logs')
   .option('--verbose', 'show more logs')
   .option('--no-color', 'disable colorful print');
@@ -39,7 +40,8 @@ log.info('publish', (pkg.name + '@' + pkg.version).to.magenta.color);
 publish({
   cwd: program.inputDirectory,
   tag: program.tag,
-  registry: program.registry || pkg.spm.registry
+  registry: program.registry || pkg.spm.registry,
+  force: program.force
 }, function(err, pkg) {
   if (err) {
     if (err.statusCode === 401) {

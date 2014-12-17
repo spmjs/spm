@@ -17,7 +17,6 @@ program
   .option('--no-color', 'disable colorful print')
   .option('clean', 'clean _site folder')
   .option('build', 'build documentation')
-  .option('server', 'start a server for documentation')
   .option('watch', 'start a server of watching source')
   .option('publish', 'publish documentation for public');
 
@@ -41,7 +40,7 @@ program.parse(process.argv);
 log.config(program);
 
 if (!process.argv[2]) {
-  return program.help();
+  program.watch = true;
 }
 
 var pkg = readJSON('package.json');
