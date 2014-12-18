@@ -1,0 +1,50 @@
+#!/usr/bin/env node
+
+require('colorful').colorful();
+var program = require('commander');
+var log = require('spm-log');
+var spmrc = require('spmrc');
+var resolve = require('path').resolve;
+var join = require('path').join;
+var exists = require('fs').existsSync;
+var readJSON = require('fs-extra').readJSONSync;
+var symlink = require('fs-symlink');
+var rimraf = require('rimraf').sync;
+
+program.usage('<pkg>');
+
+program.on('--help', function() {
+  console.log('  Examples:'.to.bold.blue.color);
+  console.log();
+  console.log('    $', 'spm link'.to.magenta.color, '/path/to/other/pkg');
+  console.log();
+});
+
+program.parse(process.argv);
+
+var cwd = process.cwd();
+var dir = program.args[0];
+var pkg;
+
+if (!dir) {
+  return program.help();
+}
+
+dir = resolve(cwd, dir);
+if (exists(join(dir, 'package.json'))) {
+  pkg = readJSON(join(dir, 'package.json'));
+}
+
+if (!pkg || !pkg.spm) {
+  console.log();
+  log.error('miss', 'package.json or "spm" key');
+  process.exit(1);
+}
+
+var to = join(cwd, spmrc.get('install.path'), pkg.name, pkg.version);
+var from = join(dir);
+
+rimraf(to);
+symlink(from, to, 'junction').then(function() {
+  console.log('%s > %s', to, from);
+});
