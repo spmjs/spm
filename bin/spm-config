@@ -5,6 +5,7 @@ require('colorful').colorful();
 var program = require('commander');
 var spmrc = require('spmrc');
 var spawn = require('win-spawn');
+var exists = require('fs').existsSync;
 var readFile = require('fs').readFileSync;
 
 program
@@ -41,7 +42,7 @@ if (program.set && val) {
   delete data[program.delete];
   spmrc.write(data);
 } else if (program.list) {
-  console.log(readFile(spmrc.spmrcfile, 'utf-8'));
+  console.log(exists(spmrc.spmrcfile) ? readFile(spmrc.spmrcfile, 'utf-8') : '');
 } else if (program.edit) {
   var editor = process.env.EDITOR || 'vim';
   spawn(editor, [spmrc.spmrcfile], {stdio: 'inherit'});

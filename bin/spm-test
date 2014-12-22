@@ -4,6 +4,7 @@ require('colorful').colorful();
 var program = require('commander');
 var test = require('../lib/test');
 var readJSON = require('fs-extra').readJSONSync;
+var exists = require('fs').existsSync;
 var log = require('spm-log');
 require('nico/lib/sdk/log').quiet = true;
 
@@ -23,7 +24,7 @@ program.on('--help', function() {
 
 program.parse(process.argv);
 
-var pkg = readJSON('package.json');
+var pkg = exists('package.json') && readJSON('package.json');
 if (!pkg) {
   log.error('miss', 'package.json or "spm" key');
   process.exit(2);
