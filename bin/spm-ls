@@ -42,7 +42,7 @@ if (query) {
   return;
 }
 
-var p = readJSON('package.json');
+var p = exists('package.json') && readJSON('package.json');
 if (!p || !p.spm) {
   console.log();
   log.error('miss', 'package.json or "spm" key');

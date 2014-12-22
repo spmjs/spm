@@ -5,6 +5,7 @@ var program = require('commander');
 var log = require('spm-log');
 var publish = require('../lib/client').publish;
 var readJSON = require('fs-extra').readJSONSync;
+var exists = require('fs').existsSync;
 
 program
   .usage('[options] name')
@@ -29,7 +30,7 @@ program.parse(process.argv);
 console.log();
 log.config(program);
 
-var pkg = readJSON('package.json');
+var pkg = exists('package.json') && readJSON('package.json');
 if (!pkg || !pkg.spm) {
   console.log();
   log.error('miss', 'package.json or "spm" key');
