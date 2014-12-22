@@ -297,6 +297,7 @@ body.spmjs {
   font-size: 14px;
   line-height: 22px;
   padding-left: 20px;
+  margin-bottom: 0;
 }
 /* responsive */
 @media (max-width: 980px) {
@@ -476,6 +477,7 @@ body.spmjs {
 
 .qrcode-wrapper {
   position:relative;
+  margin-top: 8px;
 }
 .qrcode-wrapper .iconfont {
   font-size:30px;
