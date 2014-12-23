@@ -49,6 +49,8 @@ install({
 }, function(err) {
   if (err) {
     log.error('exit', err.message);
+    console.log();
     process.exit(2);
   }
+  console.log();
 });

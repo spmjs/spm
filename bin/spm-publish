@@ -50,10 +50,12 @@ publish({
     } else {
       log.error('exit', err.message);
     }
+    console.log();
     process.exit(2);
   }
   if (pkg.message && pkg.status) {
     log[pkg.status](pkg.status, pkg.message);
   }
   log.info('published', (pkg.name + '@' + pkg.version + ' ~ ' + pkg.tag).to.green.color);
+  console.log();
 });
