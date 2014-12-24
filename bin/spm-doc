@@ -53,3 +53,4 @@ if (!pkg || !pkg.spm) {
 
 console.log();
 doc(program);
+console.log();
