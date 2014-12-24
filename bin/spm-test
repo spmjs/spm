@@ -11,7 +11,7 @@ require('nico/lib/sdk/log').quiet = true;
 program.usage('[options]');
 
 program
-  .option('--nocoverage', 'not run coverage culculation')
+  .option('--nocoverage', 'not run coverage calculation')
   .option('--coveralls', 'coveralls output for travis-ci');
 
 program.on('--help', function() {
