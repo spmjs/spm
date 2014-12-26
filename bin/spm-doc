@@ -24,11 +24,10 @@ program
 program.on('--help', function() {
   console.log('  Examples:'.to.bold.blue.color);
   console.log();
-  console.log('    $', 'spm doc'.to.magenta.color);
+  console.log('    $', 'spm doc'.to.magenta.color + ' // alias of spm doc watch');
   console.log('    $', 'spm doc'.to.magenta.color, 'clean');
   console.log('    $', 'spm doc'.to.magenta.color, 'build');
   console.log('    $', 'spm doc'.to.magenta.color, 'build -f');
-  console.log('    $', 'spm doc'.to.magenta.color, 'server');
   console.log('    $', 'spm doc'.to.magenta.color, 'watch');
   console.log('    $', 'spm doc'.to.magenta.color, 'watch --port 8080');
   console.log('    $', 'spm doc'.to.magenta.color, 'publish');
