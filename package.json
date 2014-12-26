@@ -28,6 +28,7 @@
     "co": "3.1.0",
     "colorful": "~2.1.0",
     "commander": "~2.5.0",
+    "crequire": "~1.5.3",
     "empty-dir": "~0.1.0",
     "exeq": "~1.0.2",
     "extend": "~2.0.0",
