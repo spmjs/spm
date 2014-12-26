@@ -1,10 +1,10 @@
-# Static Package Manager
+# spm
 
 [![NPM version](https://img.shields.io/npm/v/spm.svg?style=flat)](https://npmjs.org/package/spm)
 [![Build Status](https://img.shields.io/travis/spmjs/spm.svg?style=flat)](https://travis-ci.org/spmjs/spm)
 [![NPM downloads](http://img.shields.io/npm/dm/spm.svg?style=flat)](https://npmjs.org/package/spm)
 
-Brand new static package manager for browser.
+Brand new **static package manager** for browser.
 
 ![](https://i.alipayobjects.com/i/localhost/png/201404/2YQxOTYoFp.png)
 

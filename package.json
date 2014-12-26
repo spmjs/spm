@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "3.3.0",
+  "version": "3.3.2",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -28,6 +28,7 @@
     "co": "3.1.0",
     "colorful": "~2.1.0",
     "commander": "~2.5.0",
+    "crequire": "~1.5.3",
     "empty-dir": "~0.1.0",
     "exeq": "~1.0.2",
     "extend": "~2.0.0",
@@ -43,6 +44,7 @@
     "jscoverage": "~0.5.9",
     "mocha-browser2": "~0.3.1",
     "nico": "~0.5.1",
+    "react-tools": "~0.12.2",
     "request": "~2.51.0",
     "rimraf": "~2.2.8",
     "semver": "~4.1.0",
