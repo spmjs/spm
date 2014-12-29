@@ -231,6 +231,24 @@ body.spmjs {
   position: relative;
   top: 3px;
 }
+
+/* table */
+.spmjs .entry-content > table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+  text-align: left;
+}
+
+.spmjs .entry-content > table th {
+  background: #fafafa;
+}
+
+.spmjs .entry-content > table th,
+.spmjs .entry-content > table td {
+  padding: 6px 10px;
+  border: 1px solid #eaeaea;
+}
+
 /* other */
 .spmjs .content-wrapper .doc-api {
   color: #784942;
