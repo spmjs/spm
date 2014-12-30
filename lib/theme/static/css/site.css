@@ -270,9 +270,10 @@ body.spmjs {
 }
 .spmjs .content-wrapper .nico-iframe .new-window {
   position: absolute;
-  top: 30px;
-  right: -40px;
+  top: 20px;
+  right: -28px;
   font-size: 12px;
+  font-weight: bold;
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
@@ -290,15 +291,18 @@ body.spmjs {
 }
 .spmjs .content-wrapper .highlight .code-toggle {
   position: absolute;
-  top: -10px;
+  top: -9px;
   right: 2px;
-  font-size: 12px;
-  padding: 3px 5px;
+  font-size: 14px;
+  padding: 1px 5px;
+  text-align: center;
+  width: 18px;
   background: rgba(0, 0, 0, 0.16);
   border-radius: 4px 4px 0 0;
   text-decoration: none;
   color: #fff;
   line-height: 1;
+  font-weight: bold;
 }
 .spmjs .entry-content h1 a.anchor, .spmjs .entry-content h2 a.anchor, .spmjs .entry-content h3 a.anchor, .spmjs .entry-content h4 a.anchor, .spmjs .entry-content h5 a.anchor, .spmjs .entry-content h6 a.anchor {
   margin-left: 10px;
