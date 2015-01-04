@@ -38,5 +38,6 @@ SPM is available under the terms of the MIT License.
 
 ## Memo
 
-* Release History：https://github.com/spmjs/spm/releases
+* Why spm3: https://github.com/spmjs/spm/issues/819
+* Release History: https://github.com/spmjs/spm/releases
 * spm2: https://github.com/spmjs/spm/tree/2.x
