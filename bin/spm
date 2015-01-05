@@ -19,8 +19,18 @@ program
 var subcmd = program.args[0];
 var args = process.argv.slice(3);
 
+
 if (!subcmd) {
   program.help();
+} else if (subcmd === 'help') {
+  var helpcmd = program.args[1];
+  var bin = executable(helpcmd);
+  if (!helpcmd || !bin) {
+    process.stdout.write(program.helpInformation());
+    program.emit('--help');
+    process.exit();
+  }
+  spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
 } else {
   var bin = executable(subcmd);
   if (bin) {
