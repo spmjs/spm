@@ -41,7 +41,7 @@
     "inherits": "~1.0.0",
     "inquirer": "~0.8.0",
     "internal-ip": "~1.0.0",
-    "jscoverage": "~0.5.9",
+    "jscoverage": "~0.3.8",
     "mocha-browser2": "~0.3.1",
     "nico": "~0.5.1",
     "react-tools": "~0.12.2",
