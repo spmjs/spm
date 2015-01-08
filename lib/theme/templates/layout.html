@@ -54,20 +54,15 @@
             <div class="qrcode" id="qrcode"></div>
           </i>
         </div>
+        <div class="footer-wrapper">
+          {%- include "snippet/foot.html" %}
+        </div>
       </aside>
       {%- block afterside %}{% endblock %}
       <div class="content-wrapper">
         {% block content %}{% endblock %}
       </div>
       {%- endblock %}
-    </div>
-    <div class="footer-wrapper">
-      <footer>
-        <p class="footer-powered">
-        {%- block footer %}{% endblock %}
-        {%- include "snippet/foot.html" %}
-        </p>
-      </footer>
     </div>
   </body>
   <script src="{{static_url('js/nprogress.js')}}?nowrap"></script>
