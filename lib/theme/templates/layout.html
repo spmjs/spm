@@ -11,11 +11,16 @@
     <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
+    <link rel="stylesheet" href="{{static_url('codemirror/codemirror.css')}}" />
     {%- include "snippet/head.html" %}
     <!--[if lt IE 9]>
     <script src="{{static_url('js/html5shiv.js')}}"></script>
     <![endif]-->
     {%- block afterstyle %}{% endblock %}
+    <script src="{{static_url('codemirror/codemirror.js?nowrap')}}"></script>
+    <script src="{{static_url('codemirror/modes/css/css.js?nowrap')}}"></script>
+    <script src="{{static_url('codemirror/modes/htmlmixed/htmlmixed.js?nowrap')}}"></script>
+    <script src="{{static_url('codemirror/modes/javascript/javascript.js?nowrap')}}"></script>
   </head>
   <body class="spmjs {%- if config.isCssModule %}spmcss{%- endif %}">
     <div class="body-wrapper">
@@ -140,6 +145,45 @@
         $item.append('<a class="code-toggle" href="#">+</a>')
         $item.addClass('collapse')
       }
+    });
+
+    // 代码实时编辑功能
+    $('textarea.spm-doc-textarea').each(function(i, item) {
+      item = $(item);
+      var cm = CodeMirror.fromTextArea(item[0], {
+        lineNumbers: true,
+        mode: item.attr('mode')
+      });
+      var timeout;
+      cm.on('change', function(instance, changeObj) {
+        // 延迟触发新代码
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+        var seaTempId = (new Date()).getTime();
+        var code = instance.getDoc().getValue();
+        code = 'define("./' + seaTempId +'", function(require) {' + code +
+               '});seajs.use("./' + seaTempId + '")';
+        var prevInsertCodeElement = item.prev('.nico-insert-code');
+        prevInsertCodeElement.html(code);
+
+        timeout = setTimeout(function() {
+          $('.entry-content')
+          .find('>:not(.CodeMirror):not(.spm-doc-textarea)').each(function(i, item) {
+            item = $(item);
+            var cloneNode = item.clone();
+            if (item[0].tagName === 'SCRIPT' || item[0].tagName === 'STYPE') {
+              cloneNode.insertAfter(item);
+            } else {
+              item.replaceWith(cloneNode);
+            }
+            // 提高下效率，重新渲染当前修改代码前面的 DOM 元素
+            if (item[0] === prevInsertCodeElement[0]) {
+              return false;
+            }
+          });
+        }, 600);
+      })
     });
   });
   </script>

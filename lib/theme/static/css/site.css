@@ -311,6 +311,9 @@ body.spmjs {
   padding-left: 20px;
   margin-bottom: 0;
 }
+.spmjs .spm-doc-textarea {
+  display: none;
+}
 /* responsive */
 @media (max-width: 980px) {
   .spmjs .body-wrapper, .spmjs .sidebar-wrapper, .spmjs .content-wrapper {
