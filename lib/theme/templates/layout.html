@@ -185,6 +185,10 @@
               return false;
             }
           });
+          $(instance.getWrapperElement()).removeClass('saved');
+          setTimeout(function() {
+            $(instance.getWrapperElement()).addClass('saved');
+          }, 0);
         }, 500);
       })
       return cm;

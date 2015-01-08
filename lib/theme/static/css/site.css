@@ -481,3 +481,26 @@ body.spmjs {
   background: #3796D7;
   color: #fff;
 }
+
+.CodeMirror.saved .CodeMirror-lines {
+  -webkit-animation: saved 0.8s ease-out 1;
+  animation: saved 0.8s ease-out 1;
+}
+
+@-webkit-keyframes saved {
+  0% {
+    background: #D6FFC2;
+  }
+  100% {
+    background: #fff;
+  }
+}
+
+@keyframes saved {
+  0% {
+    background: #D6FFC2;
+  }
+  100% {
+    background: #fff;
+  }
+}
