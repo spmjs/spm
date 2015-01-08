@@ -133,20 +133,9 @@
     });
     $('.entry-content').on('click', '.editor-toggle', function(e) {
       if (!this.editable) {
-        $(this).parent().hide();
-        if (!this.cm) {
-          this.cm = CodeMirrorify($(this).parent().prev('.spm-doc-textarea'));
-        }
-        $(this).appendTo(this.cm.getWrapperElement());
-        $(this.cm.getWrapperElement()).show();
-        $(this).html('Quit edit');
-        this.editable = true;
+        enterEditor(this);
       } else {
-        $(this).parent().hide();
-        var highlightElem = $(this.cm.getWrapperElement()).next('.highlight');
-        highlightElem.append(this).show();
-        $(this).html('Live edit');
-        this.editable = false;
+        quitEditor(this);
       }
     });
 
@@ -190,9 +179,29 @@
             $(instance.getWrapperElement()).addClass('saved');
           }, 0);
         }, 500);
-      })
+      });
       return cm;
     }
+
+    function enterEditor(toggleButton) {
+      $(toggleButton).parent().hide();
+      if (!toggleButton.cm) {
+        toggleButton.cm = CodeMirrorify($(toggleButton).parent().prev('.spm-doc-textarea'));
+      }
+      $(toggleButton).appendTo(toggleButton.cm.getWrapperElement());
+      $(toggleButton.cm.getWrapperElement()).show();
+      $(toggleButton).html('Quit edit');
+      toggleButton.editable = true; 
+    }
+
+    function quitEditor(toggleButton) {
+      $(toggleButton).parent().hide();
+      var highlightElem = $(toggleButton.cm.getWrapperElement()).next('.highlight');
+      highlightElem.append(toggleButton).show();
+      $(toggleButton).html('Live edit');
+      toggleButton.editable = false; 
+    }
+
   });
   </script>
 </html>
