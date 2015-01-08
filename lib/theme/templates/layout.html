@@ -126,9 +126,12 @@
     });
 
     $('.highlight').each(function(i, item) {
-      var editorButton = $('<div class="editor-toggle">Live Edit</div>');
-      $(item).append(editorButton);
+      if ($(item).prev().hasClass('spm-doc-textarea')) {
+        $(item).append('<div class="editor-toggle">Live Edit</div>');
+      }
     });
+
+    // toggle editable status
     $('.entry-content').on('click', '.editor-toggle', function(e) {
       if (!this.editable) {
         enterEditor(this);
