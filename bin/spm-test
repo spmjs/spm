@@ -8,7 +8,7 @@ var test = require('../lib/test');
 var readJSON = require('fs-extra').readJSONSync;
 var exists = require('fs').existsSync;
 var log = require('spm-log');
-require('nico/lib/sdk/log').quiet = true;
+require('nico-spm/lib/sdk/log').quiet = true;
 
 program.usage('[options]');
 
