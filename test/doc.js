@@ -1,6 +1,6 @@
 var sinon = require('sinon');
 var doc = require('../lib/doc');
-var nico = require('nico');
+var nico = require('nico-spm');
 var muk = require('muk');
 
 describe('doc', function() {
