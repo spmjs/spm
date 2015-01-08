@@ -275,25 +275,6 @@ body.spmjs {
   padding-top: 1px;
   position: relative;
 }
-.spmjs .content-wrapper .collapse pre {
-  overflow: hidden;
-  height: 60px;
-}
-.spmjs .content-wrapper .highlight .code-toggle {
-  position: absolute;
-  top: -9px;
-  right: 2px;
-  font-size: 14px;
-  padding: 1px 5px;
-  text-align: center;
-  width: 18px;
-  background: rgba(0, 0, 0, 0.16);
-  border-radius: 4px 4px 0 0;
-  text-decoration: none;
-  color: #fff;
-  line-height: 1;
-  font-weight: bold;
-}
 .spmjs .entry-content h1 a.anchor, .spmjs .entry-content h2 a.anchor, .spmjs .entry-content h3 a.anchor, .spmjs .entry-content h4 a.anchor, .spmjs .entry-content h5 a.anchor, .spmjs .entry-content h6 a.anchor {
   margin-left: 10px;
   cursor: pointer;
