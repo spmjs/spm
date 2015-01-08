@@ -154,8 +154,10 @@
         }
         var seaTempId = (new Date()).getTime();
         var code = instance.getDoc().getValue();
-        code = 'define("./' + seaTempId +'", function(require) {' + code +
-               '});seajs.use("./' + seaTempId + '")';
+        if (instance.getDoc().getMode().name === 'javascript') {
+          code = 'define("./' + seaTempId +'", function(require) {' + code +
+                 '});seajs.use("./' + seaTempId + '")';
+        }
         var prevInsertCodeElement = item.prev('.nico-insert-code');
         prevInsertCodeElement.html(code);
 
