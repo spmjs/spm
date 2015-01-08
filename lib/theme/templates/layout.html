@@ -49,8 +49,16 @@
         {%- block subsidebar %}
         {%- endblock %}
         <div class="qrcode-wrapper">
-          <i class="icon iconfont">
-            &#x3433;
+          <i class="icon">
+            <div class="icon-qrcode">
+              <svg width="1024" height="1024" viewBox="0 0 1024 1024">
+                <g class="transform-group">
+                  <g transform="translate(0, 18) scale(1, -1) scale(0.024, 0.024)">
+                    <path d="M116.8 792.062v0 0zM334.523 138.877v-72.569h-72.569v72.569h72.569zM334.523 574.339v-72.569h-72.569v72.569h72.569zM769.984 574.339v-72.569h-72.569v72.569h72.569zM189.369-5.705h217.723v217.167h-217.723v-217.167zM189.369 429.185h217.723v217.723h-217.723v-217.723zM624.831 429.185h217.723v217.723h-217.723v-217.723zM479.677 284.031v-362.877h-362.877v362.877h362.877zM769.984-6.277v-72.569h-72.569v72.569h72.569zM915.138-6.277v-72.569h-72.569v72.569h72.569zM915.138 284.031v-217.723h-217.723v72.569h-72.569v-217.723h-72.569v362.877h217.723v-72.569h72.569v72.569h72.569zM479.677 719.493v-362.877h-362.877v362.877h362.877zM915.138 719.493v-362.877h-362.877v362.877h362.877z" fill="#555"></path>
+                  </g>
+                </g>
+              </svg>
+            </div>
             <div class="qrcode" id="qrcode"></div>
           </i>
         </div>
@@ -80,7 +88,6 @@
     };
     ready(function() {
       NProgress.inc(0.6);
-
       seajs.use("{{static_url('js/arale-qrcode.js')}}?nowrap", function(QRCode) {
         var url = location.href;
         if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
