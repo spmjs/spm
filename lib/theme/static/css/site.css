@@ -272,7 +272,6 @@ body.spmjs {
 }
 .spmjs .content-wrapper .highlight {
   background-color: transparent;
-  padding-top: 1px;
   position: relative;
 }
 .spmjs .entry-content h1 a.anchor, .spmjs .entry-content h2 a.anchor, .spmjs .entry-content h3 a.anchor, .spmjs .entry-content h4 a.anchor, .spmjs .entry-content h5 a.anchor, .spmjs .entry-content h6 a.anchor {
@@ -457,4 +456,27 @@ body.spmjs {
 }
 .qrcode-wrapper .qrcode canvas {
   cursor: none;
+}
+
+/* code live editor */
+.editor-toggle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 11px;
+  font-family: Consolas;
+  padding: 0 3px;
+  background: #aaa;
+  color:#fff;
+  border-radius: 2px;
+  cursor: pointer;
+  z-index: 100;
+  opacity: 0.33;
+  transition: opacity 0.2s;
+}
+
+.editor-toggle:hover {
+  opacity: 1;
 }
