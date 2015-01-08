@@ -1,1 +1,7 @@
-lib/utils/tar.js
+node_modules
+coverage
+scripts
+tests
+test/fixtures
+lib/theme/static
+lib/template
