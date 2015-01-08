@@ -372,22 +372,6 @@ body.spmjs {
   background-color: #E7E7E7;
   background-position: -900px 50%;
 }
-/* css module */
-.spmcss #sidebar-wrapper a {
-  color: #659324;
-}
-.spmcss .sidebar-wrapper .sidebar-source {
-  background-color: #5BBD72;
-  color: #fff;
-}
-.spmcss .sidebar-wrapper .sidebar-source:hover {
-  color: #fff;
-  background-color: #58CB73;
-}
-.spmcss .sidebar-wrapper .sidebar-source:active {
-  background-color: #4cb164;
-}
-
 
 /* Make clicks pass-through */
 #nprogress {
