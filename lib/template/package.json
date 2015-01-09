@@ -20,5 +20,12 @@
     "devDependencies": {
       "expect.js": "0.3.1"
     }
+  },
+  "devDependencies": {
+    "spm": "3"
+  },
+  "scripts": {
+    "test": "spm test",
+    "build": "spm build"
   }
 }

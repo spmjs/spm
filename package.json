@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "3.3.2",
+  "version": "3.3.4",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -34,7 +34,7 @@
     "extend": "~2.0.0",
     "father": "~0.10.0",
     "fs-extra": "~0.13.0",
-    "fs-symlink": "~1.1.2",
+    "fs-symlink": "1.1.0",
     "fstream": "~1.0.3",
     "fstream-ignore": "~1.0.2",
     "gulp-template": "~1.1.1",
