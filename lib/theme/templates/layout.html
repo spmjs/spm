@@ -171,6 +171,9 @@
               cloneNode.insertAfter(item);
             } else {
               item.replaceWith(cloneNode);
+              if (item[0] && item[0].cm) {
+                item[0].cm = null;
+              }
             }
             // 提高下效率，重新渲染当前修改代码前面的 DOM 元素
             if (item[0] === prevInsertCodeElement[0]) {
