@@ -56,11 +56,11 @@
     "tar": "~1.0.3",
     "vinyl-fs": "~0.3.13",
     "whoami": "~0.0.3",
-    "win-spawn": "~2.0.0"
+    "win-spawn": "~2.0.0",
+    "istanbul": "~0.3.5"
   },
   "devDependencies": {
     "gulp-unzip": "~0.1.1",
-    "istanbul": "*",
     "jshint": "*",
     "ls-archive": "~1.0.2",
     "mocha": "*",
