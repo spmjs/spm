@@ -106,11 +106,11 @@
   })();
 
   seajs.config({
-    paths: {
-      jquery: 'http://static.alipayobjects.com/jquery/'
+    alias: {
+      'jqueryForDoc': 'http://static.alipayobjects.com/jquery/1.7.2/jquery'
     }
   });
-  seajs.use(['jquery/1.7.2/jquery'], function($) {
+  seajs.use(['jqueryForDoc'], function($) {
     $('.highlight').on('click', '.code-toggle', function() {
       var pre = $(this).parents('.highlight')
       if (pre.hasClass('collapse')) {
