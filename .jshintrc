@@ -26,6 +26,7 @@
     "beforeEach": false,
     "after": false,
     "afterEach": false,
-    "define": false
+    "define": false,
+    "window": false
   }
 }
