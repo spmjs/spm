@@ -30,7 +30,7 @@
     "commander": "~2.5.0",
     "crequire": "~1.5.3",
     "empty-dir": "~0.1.0",
-    "exeq": "~1.0.2",
+    "exeq": "~2.0.0",
     "extend": "~2.0.0",
     "father": "~0.10.0",
     "fs-extra": "~0.13.0",
