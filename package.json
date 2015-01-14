@@ -74,7 +74,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "preinstall": "node scripts/preinstall.js",
+    "postinstall": "node scripts/postinstall.js",
     "test": "make test"
   }
 }
