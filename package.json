@@ -29,6 +29,7 @@
     "colorful": "~2.1.0",
     "commander": "~2.5.0",
     "crequire": "~1.5.3",
+    "debug": "^2.1.1",
     "empty-dir": "~0.1.0",
     "exeq": "~2.0.0",
     "extend": "~2.0.0",

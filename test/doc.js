@@ -5,18 +5,24 @@ var muk = require('muk');
 
 describe('doc', function() {
 
+  var build, server;
+  beforeEach(function() {
+    build = sinon.stub(nico, 'build', function() {});
+    server = sinon.stub(nico, 'server', function() {});
+  });
+  afterEach(function() {
+    build.restore();
+    server.restore();
+  });
+
   it('build', function() {
-    nico.build = function() {};
-    var nicoBuild = sinon.spy(nico, 'build');
     doc({
       build: true
     });
-    nicoBuild.called.should.be.eql(true);
+    build.called.should.be.eql(true);
   });
 
   it('watch', function() {
-    nico.server = function() {};
-    var server = sinon.spy(nico, 'server');
     doc({
       watch: true
     });
@@ -24,11 +30,9 @@ describe('doc', function() {
   });
 
   it('publish', function() {
-    nico.build = function() {};
     var mockUpload = {
       './upload': function() {}
     };
-    var build = sinon.spy(nico, 'build');
     var upload = sinon.spy(mockUpload, './upload');
     var doc = muk('../lib/doc', mockUpload);
     doc({
