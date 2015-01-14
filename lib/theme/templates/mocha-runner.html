@@ -72,7 +72,9 @@
           if (window.mochaPhantomJS) {
             mochaPhantomJS.run()
           } else {
-            mocha.run()
+            mocha.run(function() {
+              window.mocha_done = true;
+            })
           }
         })
       })();
