@@ -17,7 +17,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 body.spmjs {
-  background-color: #F9F9F8;
+  background-color: #fff;
   text-rendering: optimizelegibility;
   font-family:"Open Sans", "Lucida Grande", 'Hiragino Sans GB', Georgia, sans-serif;
 }
@@ -45,9 +45,12 @@ body.spmjs {
   color: #787878;
   font-size: 14px;
   width: 20%;
-  margin: 0 3%;
+  padding: 0 3%;
   padding-top: 40px;
+  min-height: 100%;
   z-index: 1;
+  background: #F9F9F8;
+  border-right: 1px solid #eee;
 }
 .spmjs .sidebar-wrapper h1 {
   margin: 0;
@@ -88,7 +91,7 @@ body.spmjs {
   text-transform: uppercase;
   transition: opacity 0.25s ease 0s, background-color 0.25s ease 0s, color 0.25s ease 0s, background 0.25s ease 0s, box-shadow 0.25s ease 0s;
   vertical-align: middle;
-  width: 90%;
+  width: 100%;
   text-align: center;
   font-size: 16px;
 }
@@ -141,10 +144,9 @@ body.spmjs {
 }
 .spmjs .content-wrapper {
   float: right;
-  width: 69%;
+  width: 68%;
   padding: 20px 3% 50px;
   font-size: 16px;
-  border-left: 1px solid #eee;
   background-color: #fff;
   position: relative;
   line-height: 1.5;
@@ -372,22 +374,6 @@ body.spmjs {
   background-color: #E7E7E7;
   background-position: -900px 50%;
 }
-/* css module */
-.spmcss #sidebar-wrapper a {
-  color: #659324;
-}
-.spmcss .sidebar-wrapper .sidebar-source {
-  background-color: #5BBD72;
-  color: #fff;
-}
-.spmcss .sidebar-wrapper .sidebar-source:hover {
-  color: #fff;
-  background-color: #58CB73;
-}
-.spmcss .sidebar-wrapper .sidebar-source:active {
-  background-color: #4cb164;
-}
-
 
 /* Make clicks pass-through */
 #nprogress {
@@ -463,7 +449,7 @@ body.spmjs {
 
 .qrcode-wrapper {
   position:relative;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .qrcode-wrapper .icon {
