@@ -29,8 +29,9 @@
     "colorful": "~2.1.0",
     "commander": "~2.5.0",
     "crequire": "~1.5.3",
+    "debug": "^2.1.1",
     "empty-dir": "~0.1.0",
-    "exeq": "~1.0.2",
+    "exeq": "~2.0.0",
     "extend": "~2.0.0",
     "father": "~0.10.0",
     "fs-extra": "~0.13.0",
@@ -43,8 +44,7 @@
     "inquirer": "~0.8.0",
     "internal-ip": "~1.0.0",
     "istanbul": "~0.3.5",
-    "jscoverage": "~0.3.8",
-    "mocha-browser2": "~0.3.1",
+    "mocha-phantomjs": "~3.5.2",
     "nico": "~0.5.1",
     "react-tools": "~0.12.2",
     "request": "~2.51.0",
@@ -76,6 +76,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "postinstall": "node scripts/postinstall.js",
     "test": "make test"
   }
 }

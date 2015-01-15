@@ -1,3 +1,5 @@
 require('b');
-require('./relative');
-console.log('a');
+
+if (require('./relative')) {
+  console.log('a');
+}
