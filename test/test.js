@@ -21,8 +21,9 @@ describe('test', function() {
         var output = inspect.output.join('');
         output.should.match(/should pass/);
         output.should.match(/ % Stmts |% Branches/);
-        output.should.match(/ index.js    |       100 /);
-        output.should.match(/ relative.js |       100 /);
+        output.should.match(/ a.noext.js  |       100 |       100 /);
+        output.should.match(/ index.js    |       100 |        50 /);
+        output.should.match(/ relative.js |       100 |       100 /);
       } catch(e) {
         err = e;
       }

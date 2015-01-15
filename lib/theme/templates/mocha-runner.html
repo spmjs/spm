@@ -45,7 +45,7 @@
             sources = sources.slice(1);
             for (var i=0; i<sources.length; i++) {
               if (file === sources[i]) {
-                if (url.indexOf('handlebars.js') < 0) {
+                if (!/\.(handlebars|tpl|css|html)\.js$/.test(url)) {
                   return url.replace(/\.js$/g, '-cov.js');
                 }
               }
