@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
+require('gnode');
+
 var program = require('commander');
 var inquirer = require('inquirer');
 var spmrc = require('spmrc');

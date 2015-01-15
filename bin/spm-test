@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
+require('gnode');
+
 var program = require('commander');
 var test = require('../lib/test');
 var readJSON = require('fs-extra').readJSONSync;

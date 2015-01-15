@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
+require('gnode');
+
 var program = require('commander');
 var log = require('spm-log');
 var doc = require('../lib/doc');
