@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
+require('gnode');
+
 var path = require('path');
 var resolve = path.resolve;
 var program = require('commander');
