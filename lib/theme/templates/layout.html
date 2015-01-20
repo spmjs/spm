@@ -107,11 +107,11 @@
 
   seajs.config({
     alias: {
-      'jquery/1.7.2/jquery': 'http://static.alipayobjects.com/jquery/1.7.2/jquery'
+      'jquery-for-spm-doc': 'http://tfs.alipayobjects.com/images/T1dQdeXjBhXXXXXXXX.js'
     }
   });
-  seajs.use(['jquery/1.7.2/jquery'], function($) {
-    return;
+
+  seajs.use(['jquery-for-spm-doc'], function($) {
     $('.highlight').on('click', '.code-toggle', function() {
       var pre = $(this).parents('.highlight')
       if (pre.hasClass('collapse')) {
