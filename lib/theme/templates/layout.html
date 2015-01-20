@@ -107,10 +107,11 @@
 
   seajs.config({
     alias: {
-      'jqueryForDoc': 'http://static.alipayobjects.com/jquery/1.7.2/jquery'
+      'jquery/1.7.2/jquery': 'http://static.alipayobjects.com/jquery/1.7.2/jquery'
     }
   });
-  seajs.use(['jqueryForDoc'], function($) {
+  seajs.use(['jquery/1.7.2/jquery'], function($) {
+    return;
     $('.highlight').on('click', '.code-toggle', function() {
       var pre = $(this).parents('.highlight')
       if (pre.hasClass('collapse')) {
