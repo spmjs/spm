@@ -56,6 +56,7 @@
     "spm-log": "~0.1.1",
     "spmrc": "~1.2.0",
     "tar": "~1.0.3",
+    "test-console": "~0.7.1",
     "vinyl-fs": "~0.3.13",
     "whoami": "~0.0.3",
     "win-spawn": "~2.0.0"
