@@ -112,7 +112,7 @@
     }
   });
 
-  seajs.use(['jquery/1.7.2/jquery'], function($) {
+  seajs.use(['jquery-for-spm-doc'], function($) {
 
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api');
 
@@ -151,37 +151,43 @@
         if (timeout) {
           clearTimeout(timeout);
         }
-        var seaTempId = (new Date()).getTime();
-        var code = instance.getDoc().getValue();
-        if (instance.getDoc().getMode().name === 'javascript') {
-          code = 'define("./' + seaTempId +'", function(require) {' + code +
-                 '});seajs.use("./' + seaTempId + '")';
-        }
-        var prevInsertCodeElement = item.prev('.nico-insert-code');
-        prevInsertCodeElement.html(code);
 
         timeout = setTimeout(function() {
+          var seaTempId = (new Date()).getTime();
+          var code = instance.getDoc().getValue();
+          if (instance.getDoc().getMode().name === 'javascript') {
+            code = 'define("./' + seaTempId +'", function(require) {' + code +
+                   '});seajs.use("./' + seaTempId + '")';
+          }
+          var prevInsertCodeElement = item.prev('.nico-insert-code');
+          prevInsertCodeElement.html(code);
+
           $('.entry-content')
           .find('>:not(.CodeMirror):not(.spm-doc-textarea)').each(function(i, item) {
             item = $(item);
             var cloneNode = item.clone();
-            if (item[0].tagName === 'SCRIPT' || item[0].tagName === 'STYPE') {
-              cloneNode.insertAfter(item);
+
+            // jquery@1.11 的 replaceWith 不会重新执行代码
+            // 需要手动执行
+            if (item[0].tagName === 'SCRIPT') {
+              eval(cloneNode.html());
             } else {
               item.replaceWith(cloneNode);
               if (item[0] && item[0].cm) {
                 item[0].cm = null;
               }
             }
-            // 提高下效率，重新渲染当前修改代码前面的 DOM 元素
+
+            // 提高下效率，只重新渲染当前修改代码前面的 DOM 元素
             if (item[0] === prevInsertCodeElement[0]) {
               return false;
             }
           });
+
           $(instance.getWrapperElement()).removeClass('saved');
           setTimeout(function() {
             $(instance.getWrapperElement()).addClass('saved');
-          }, 0);
+          }, 10);
         }, 400);
       });
       return cm;
