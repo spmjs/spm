@@ -6,19 +6,19 @@ var join = require('path').join;
 var exists = require('fs').existsSync;
 var program = require('commander');
 var spawn = require('win-spawn');
-var exeq = require('exeq');
-var log = require('spm-log');
-var readJSON = require('fs-extra').readJSONSync;
+
 var run = require('../lib/utils/run');
+var pkg = require('../package');
 
 program
-  .version(require('../package').version, '-v, --version')
+  .version(pkg.version, '-v, --version')
   .usage('<command> [options]')
   .on('--help', printHelp)
   .parse(process.argv);
 
 var subcmd = program.args[0];
 var args = process.argv.slice(3);
+
 
 if (!subcmd) {
   program.help();
@@ -35,32 +35,7 @@ if (!subcmd) {
   var bin = executable(subcmd);
   if (bin) {
     run.record(subcmd);
-
-    // Scriptable cmds
-    if (['build', 'publish', 'install'].indexOf(subcmd) > -1) {
-      var pkg = exists('package.json') && readJSON('package.json');
-      if (!pkg || !pkg.spm) {
-        console.log();
-        log.error('miss', 'package.json or "spm" key');
-        process.exit(2);
-      }
-      pkg.spm.scripts = pkg.spm.scripts || {};
-
-      var cmds = [];
-      ['pre'+subcmd, subcmd, 'post'+subcmd].forEach(function(c) {
-        var script = pkg.spm.scripts[c];
-        if (c === subcmd) {
-          if (!script) script = [bin, args.join(' ')].join(' ');
-        }
-        if (script) cmds.push(script);
-      });
-      exeq(cmds);
-    }
-
-    // Other cmds
-    else {
-      spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
-    }
+    spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
   } else {
     program.help();
   }
