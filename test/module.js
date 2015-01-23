@@ -4,9 +4,8 @@ var join = require('path').join;
 describe('module', function() {
   it('getSourceFiles', function() {
     var list = mo.getSourceFiles(join(__dirname, './fixtures/normal'));
-    list.should.be.eql(['index', 'relative']);
+    list.should.be.eql(['index', 'relative', 'a.tpl', 'a.noext']);
   });
-
   it('getDependencies', function() {
     var deps = mo.getDependencies(join(__dirname, './fixtures/normal'));
     deps.should.be.eql({
