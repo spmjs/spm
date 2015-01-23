@@ -11,13 +11,14 @@
     <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
+    <link rel="stylesheet" href="{{static_url('css/codemirror.css')}}" />
     {%- include "snippet/head.html" %}
     <!--[if lt IE 9]>
     <script src="{{static_url('js/html5shiv.js')}}"></script>
     <![endif]-->
     {%- block afterstyle %}{% endblock %}
   </head>
-  <body class="spmjs {%- if config.isCssModule %}spmcss{%- endif %}">
+  <body class="spmjs">
     <div class="body-wrapper">
       {%- block body %}
       <aside class="sidebar-wrapper">
@@ -112,17 +113,6 @@
   });
 
   seajs.use(['jquery-for-spm-doc'], function($) {
-    $('.highlight').on('click', '.code-toggle', function() {
-      var pre = $(this).parents('.highlight')
-      if (pre.hasClass('collapse')) {
-        pre.removeClass('collapse')
-        $(this).text('−')
-      } else {
-        pre.addClass('collapse')
-        $(this).text('+')
-      }
-      return false
-    });
 
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api');
 
@@ -133,14 +123,100 @@
       $(item).append(html)
     });
 
-    // 给 code 加收起和展开
     $('.highlight').each(function(i, item) {
-      var $item = $(item)
-      if ($item.height() > 400) {
-        $item.append('<a class="code-toggle" href="#">+</a>')
-        $item.addClass('collapse')
+      if ($(item).prev().hasClass('spm-doc-textarea')) {
+        $(item).append('<div class="editor-toggle">Live Edit</div>');
       }
     });
+
+    // toggle editable status
+    $('.entry-content').on('click', '.editor-toggle', function(e) {
+      if (!this.editable) {
+        enterEditor(this);
+      } else {
+        quitEditor(this);
+      }
+    });
+
+    // 代码实时编辑功能
+    function CodeMirrorify(item) {
+      item = $(item);
+      var cm = CodeMirror.fromTextArea(item[0], {
+        lineNumbers: true,
+        mode: item.attr('mode')
+      });
+      var timeout;
+      cm.on('change', function(instance, changeObj) {
+        // 延迟触发新代码
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(function() {
+          var seaTempId = (new Date()).getTime();
+          var code = instance.getDoc().getValue();
+          if (instance.getDoc().getMode().name === 'javascript') {
+            code = 'define("./' + seaTempId +'", function(require) {' + code +
+                   '});seajs.use("./' + seaTempId + '")';
+          }
+          var prevInsertCodeElement = item.prev('.nico-insert-code');
+          prevInsertCodeElement.html(code);
+
+          $('.entry-content')
+          .find('>:not(.CodeMirror):not(.spm-doc-textarea)').each(function(i, item) {
+            item = $(item);
+            var cloneNode = item.clone();
+
+            // jquery@1.11 的 replaceWith 不会重新执行代码
+            // 需要手动执行
+            if (item[0].tagName === 'SCRIPT') {
+              eval(cloneNode.html());
+            } else {
+              item.replaceWith(cloneNode);
+              if (item[0] && item[0].cm) {
+                item[0].cm = null;
+              }
+            }
+
+            // 提高下效率，只重新渲染当前修改代码前面的 DOM 元素
+            if (item[0] === prevInsertCodeElement[0]) {
+              return false;
+            }
+          });
+
+          $(instance.getWrapperElement()).removeClass('saved');
+          setTimeout(function() {
+            $(instance.getWrapperElement()).addClass('saved');
+          }, 10);
+        }, 400);
+      });
+      return cm;
+    }
+
+    function enterEditor(toggleButton) {
+      if (!CodeMirror) {
+        return;
+      }
+      $(toggleButton).parent().hide();
+      if (!toggleButton.cm) {
+        toggleButton.cm = CodeMirrorify($(toggleButton).parent().prev('.spm-doc-textarea'));
+      }
+      $(toggleButton).appendTo(toggleButton.cm.getWrapperElement());
+      $(toggleButton.cm.getWrapperElement()).show();
+      $(toggleButton).html('Quit edit');
+      toggleButton.editable = true; 
+    }
+
+    function quitEditor(toggleButton) {
+      $(toggleButton).parent().hide();
+      var highlightElem = $(toggleButton.cm.getWrapperElement()).next('.highlight');
+      highlightElem.append(toggleButton).show();
+      $(toggleButton).html('Live edit');
+      toggleButton.editable = false; 
+    }
+
   });
   </script>
+  <!-- codemirror.js + javascript.js + css.js + htmlmixed.js -->
+  <script src="http://tfs.alipayobjects.com/images/T1cyxeXjthXXXXXXXX.js"></script>
 </html>

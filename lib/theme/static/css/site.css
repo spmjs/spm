@@ -272,27 +272,7 @@ body.spmjs {
 }
 .spmjs .content-wrapper .highlight {
   background-color: transparent;
-  padding-top: 1px;
   position: relative;
-}
-.spmjs .content-wrapper .collapse pre {
-  overflow: hidden;
-  height: 60px;
-}
-.spmjs .content-wrapper .highlight .code-toggle {
-  position: absolute;
-  top: -9px;
-  right: 2px;
-  font-size: 14px;
-  padding: 1px 5px;
-  text-align: center;
-  width: 18px;
-  background: rgba(0, 0, 0, 0.16);
-  border-radius: 4px 4px 0 0;
-  text-decoration: none;
-  color: #fff;
-  line-height: 1;
-  font-weight: bold;
 }
 .spmjs .entry-content h1 a.anchor, .spmjs .entry-content h2 a.anchor, .spmjs .entry-content h3 a.anchor, .spmjs .entry-content h4 a.anchor, .spmjs .entry-content h5 a.anchor, .spmjs .entry-content h6 a.anchor {
   margin-left: 10px;
@@ -310,6 +290,9 @@ body.spmjs {
   line-height: 22px;
   padding-left: 20px;
   margin-bottom: 0;
+}
+.spmjs .spm-doc-textarea {
+  display: none;
 }
 /* responsive */
 @media (max-width: 980px) {
@@ -473,4 +456,57 @@ body.spmjs {
 }
 .qrcode-wrapper .qrcode canvas {
   cursor: none;
+}
+
+/* code live editor */
+.editor-toggle {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 11px;
+  font-family: Consolas;
+  padding: 0 3px;
+  color: #000;
+  border-radius: 2px;
+  cursor: pointer;
+  z-index: 100;
+  opacity: 0.25;
+  transition: opacity 0.2s;
+}
+
+.editor-toggle:hover {
+  opacity: 0.7;
+  background: #66AFE9;
+  color: #fff;
+}
+
+.CodeMirror.saved .CodeMirror-lines {
+  -webkit-animation: saved 0.9s ease-out 1;
+  animation: saved 0.9s ease-out 1;
+}
+
+@-webkit-keyframes saved {
+  0% {
+    background: #fff;
+  }
+  20% {
+    background: #D6FFC2;
+  }
+  100% {
+    background: #fff;
+  }
+}
+
+@keyframes saved {
+  0% {
+    background: #fff;
+  }
+  20% {
+    background: #D6FFC2;
+  }
+  100% {
+    background: #fff;
+  }
 }
