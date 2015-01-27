@@ -3,15 +3,12 @@
 require('colorful').colorful();
 require('gnode');
 
-var path = require('path');
-var resolve = path.resolve;
 var program = require('commander');
 var archy = require('archy');
 var spmrc = require('spmrc');
 var log = require('spm-log');
 var exists = require('fs').existsSync;
 var readJSON = require('fs-extra').readJSONSync;
-var install = require('../lib/client').install;
 
 program
   .option('-d, --depth <n>', 'set the depth to <n>', Infinity)
@@ -22,80 +19,46 @@ program
 log.config(program);
 
 var cache = {};
-var query = program.args[0];
-
-// handle "spm tree class"
-if (query) {
-  // don't show spm install log message
-  log.quiet = true;
-  install.fetch(query, function(err, dest) {
-    install({
-      source: program.source,
-      destination: dest + '/' + spmrc.get('install.path') + '/',
-      force: program.force,
-      parallel: program.parallel,
-      query: program.args
-    }, function() {
-      process.chdir(dest);
-      log.quiet = false;
-      console.log(indent(archy(color(tree('package.json')))));
-    });
-  });
-  return;
-}
 
 var p = exists('package.json') && readJSON('package.json');
 if (!p || !p.spm) {
   console.log();
   log.error('miss', 'package.json or "spm" key');
-  process.exit(2);
+  process.exit(1);
 }
 
+var Package = require('father').SpmPackage;
+var pkg = new Package(process.cwd(), {
+  moduleDir: spmrc.get('install.path')
+});
+
 console.log();
-console.log(indent(archy(color(tree('package.json')))));
+var data = tree(pkg);
+if (program.color) data = color(data);
+console.log(indent(archy(data)));
 
-function tree(f, paths, depth) {
-  depth = depth || 0;
-  if (!f) return {};
-  f = resolve(f);
-  if (!exists(f)) {
-    console.log('  can not find ' + path.relative(process.cwd(), f));
-    return {};
-  }
-  var pkg = require(f);
-  var installPath = spmrc.get('install.path');
 
-  paths = paths || [installPath, path.join(spmrc.get('user.home'), '.spm', installPath)];
-
-  var node = {};
-  var title = pkg.name;
-  node.label = title + '@' + pkg.version;
-
-  if (cache[title] && cache[title] !== pkg.version) {
-    cache[title] = 'conflict';
-  }
-  if (!cache[title]) {
-    cache[title] = pkg.version;
+function tree(pkg) {
+  var deps = pkg.dependencies;
+  var id = pkg.name + '@' + pkg.version;
+  if (!deps) {
+    return id;
   }
 
-  if (++depth > program.depth) return node;
-
-  if (pkg.spm && pkg.spm.dependencies) {
-    var deps = pkg.spm.dependencies;
-
-    deps = Object.keys(deps).map(function(key) {
-      return {
-        name: key,
-        version: deps[key]
-      };
-    }).filter(function(key) {
-      return key;
-    });
-    node.nodes = deps.map(function(parsed) {
-      return tree(lookup(paths, parsed));
-    });
+  var name = pkg.name;
+  if (!cache[name]) {
+    cache[name] = pkg.version;
+  } else if (cache[name] !== pkg.version) {
+    cache[name] = 'conflict';
   }
-  return node;
+
+  var ret = {label:id, nodes:[]};
+  for (var k in deps) {
+    if (deps.hasOwnProperty(k)) {
+      ret.nodes.push(tree(deps[k]));
+    }
+  }
+  return ret;
 }
 
 function color(node) {
@@ -116,22 +79,6 @@ function color(node) {
     }
   }
   return node;
-}
-
-function lookup(paths, pkg) {
-  var pkgfile;
-  paths.some(function(f) {
-    var fpath = path.join(f, pkg.name, pkg.version, 'package.json');
-    if (exists(fpath)) {
-      pkgfile = fpath;
-      return true;
-    }
-  });
-  if (!pkgfile) {
-    log.error('package', pkg.name + '@' + pkg.version + ' not found');
-    return null;
-  }
-  return pkgfile;
 }
 
 function indent(str) {
