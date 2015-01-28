@@ -39,16 +39,14 @@ if (!subcmd) {
     // Scriptable cmds
     if (['build', 'publish', 'install'].indexOf(subcmd) > -1) {
       var pkg = exists('package.json') && readJSON('package.json');
-      if (!pkg || !pkg.spm) {
-        console.log();
-        log.error('miss', 'package.json or "spm" key');
-        process.exit(2);
+      var scripts = {};
+      if (pkg && pkg.spm && pkg.spm.scripts) {
+        scripts = pkg.spm.scripts;
       }
-      pkg.spm.scripts = pkg.spm.scripts || {};
 
       var cmds = [];
       ['pre'+subcmd, subcmd, 'post'+subcmd].forEach(function(c) {
-        var script = pkg.spm.scripts[c];
+        var script = scripts[c];
         if (c === subcmd) {
           if (!script) script = [bin, args.join(' ')].join(' ');
         }
