@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "2.2.11",
+  "version": "2.2.12",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -48,5 +48,8 @@
   "scripts": {
     "preinstall": "node scripts/preinstall.js",
     "test": "make test"
+  },
+  "publishConfig": {
+    "tag": "2.x"
   }
 }

@@ -50,6 +50,10 @@ Yes, please do contribute. But before this, you should read our [Contributing Gu
 
 ## Changelog
 
+**Jan 28th, 2015** `2.2.11`
+
+- Don't exit when use sudo
+
 **Aug 5th, 2014** `2.2.10`
 
 - Fix upload doc error.
