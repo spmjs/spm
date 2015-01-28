@@ -60,11 +60,11 @@ body.spmjs {
   font-size: 14px;
 }
 .spmjs .sidebar-wrapper .sidebar-description {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: rgba(0, 0, 0, 0.025);
   border-radius: 3px;
   font-size: 12px;
   line-height: 1.5;
-  padding: 4px;
+  padding: 4px 6px;
   color: #888;
   margin-bottom: 18px;
 }
@@ -105,8 +105,8 @@ body.spmjs {
 .spmjs .sidebar-navigation {
   list-style-type: none;
   font-size: 14px;
-  border-top: 1px dashed #bbb;
-  border-bottom: 1px dashed #bbb;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
   margin: 20px 0 0 0;
   padding: 10px 0;
   zoom: 1;
@@ -503,9 +503,6 @@ body.spmjs {
     float: none;
     position: static;
     width: auto;
-  }
-  .spmjs .sidebar-navigation {
-    border: none;
   }
   .spmjs .qrcode-wrapper {
     position: absolute;
