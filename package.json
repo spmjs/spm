@@ -51,7 +51,7 @@
     "rimraf": "~2.2.8",
     "semver": "~4.1.0",
     "serve-spm": "~0.10.0",
-    "spm-build": "~1.1.0",
+    "spm-build": "~1.2.0",
     "spm-client": "~0.3.0",
     "spm-log": "~0.1.1",
     "spmrc": "~1.2.0",
