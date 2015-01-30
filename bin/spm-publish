@@ -5,6 +5,7 @@ require('gnode');
 
 var program = require('commander');
 var log = require('spm-log');
+var hook = require('scripts-hook');
 var publish = require('../lib/client').publish;
 var readJSON = require('fs-extra').readJSONSync;
 var exists = require('fs').existsSync;
@@ -39,23 +40,26 @@ if (!pkg || !pkg.spm) {
 }
 
 log.info('publish', (pkg.name + '@' + pkg.version).to.magenta.color);
-publish({
-  cwd: program.inputDirectory,
-  tag: program.tag,
-  registry: program.registry
-}, function(err, pkg) {
-  if (err) {
-    if (err.statusCode === 401) {
-      log.error('exit', 'authorization is required. try `spm login`');
-    } else {
-      log.error('exit', err.message);
+hook(pkg.spm.scripts || {}, 'publish', function(done) {
+  publish({
+    cwd: program.inputDirectory,
+    tag: program.tag,
+    registry: program.registry
+  }, function(err, pkg) {
+    if (err) {
+      if (err.statusCode === 401) {
+        log.error('exit', 'authorization is required. try `spm login`');
+      } else {
+        log.error('exit', err.message);
+      }
+      console.log();
+      process.exit(2);
     }
+    if (pkg.message && pkg.status) {
+      log[pkg.status](pkg.status, pkg.message);
+    }
+    log.info('published', (pkg.name + '@' + pkg.version + ' ~ ' + pkg.tag).to.green.color);
     console.log();
-    process.exit(2);
-  }
-  if (pkg.message && pkg.status) {
-    log[pkg.status](pkg.status, pkg.message);
-  }
-  log.info('published', (pkg.name + '@' + pkg.version + ' ~ ' + pkg.tag).to.green.color);
-  console.log();
+    done();
+  });
 });
