@@ -20,6 +20,18 @@ var subcmd = program.args[0];
 var args = process.argv.slice(3);
 var bin;
 
+var aliases = {
+  'ln': 'link',
+  'i': 'install',
+  'c': 'config',
+  'p': 'publish',
+  's': 'search',
+  'b': 'build'
+};
+if (aliases[subcmd]) {
+  subcmd = aliases[subcmd];
+}
+
 if (!subcmd) {
   program.help();
 } else if (subcmd === 'help') {
