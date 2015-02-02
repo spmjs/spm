@@ -24,6 +24,7 @@
     "browser"
   ],
   "dependencies": {
+    "6to5": "~3.3.3",
     "archy": "~1.0.0",
     "co": "3.1.0",
     "colorful": "~2.1.0",
