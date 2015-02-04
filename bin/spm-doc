@@ -21,6 +21,7 @@ program
   .option('clean', 'clean _site folder')
   .option('build', 'build documentation')
   .option('watch', 'start a server of watching source')
+  .option('server', 'start a server for documentation')
   .option('publish', 'publish documentation for public');
 
 program.on('--help', function() {
