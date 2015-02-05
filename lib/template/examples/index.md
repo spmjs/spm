@@ -5,7 +5,5 @@
 ## Normal usage
 
 ````javascript
-seajs.use('index', function(<%= varName %>) {
-
-});
+var <%= varName %> = require('index');
 ````
