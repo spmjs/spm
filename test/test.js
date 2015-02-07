@@ -1,18 +1,23 @@
 require('should');
 var join = require('path').join;
-var muk = require('muk');
 var stdout = require('test-console').stdout;
 var spmTest = require('../lib/test');
 
 describe('test', function() {
 
-  afterEach(muk.restore);
+  var oldCwd;
+
+  beforeEach(function() {
+    oldCwd = process.cwd();
+    process.chdir(join(__dirname, 'fixtures/normal'));
+  });
+
+  afterEach(function() {
+    process.chdir(oldCwd);
+  });
 
   it('should show testcase', function(done) {
     var inspect = stdout.inspect();
-    muk(process, 'cwd', function() {
-      return join(__dirname, 'fixtures/normal');
-    });
     spmTest({}, function(err) {
       if (err) {
         return done(err);
@@ -20,10 +25,7 @@ describe('test', function() {
       try {
         var output = inspect.output.join('');
         output.should.match(/should pass/);
-        output.should.match(/ % Stmts |% Branches/);
-        output.should.match(/ a.noext.js  |       100 |       100 /);
-        output.should.match(/ index.js    |       100 |        50 /);
-        output.should.match(/ relative.js |       100 |       100 /);
+        output.should.match(/You can see more detail in/);
       } catch(e) {
         err = e;
       }
@@ -34,9 +36,6 @@ describe('test', function() {
 
   it('should not show coverage', function(done) {
     var inspect = stdout.inspect();
-    muk(process, 'cwd', function() {
-      return join(__dirname, 'fixtures/normal');
-    });
     spmTest({nocoverage: true}, function(err) {
       if (err) {
         return done(err);
@@ -44,7 +43,7 @@ describe('test', function() {
       try {
         var output = inspect.output.join('');
         output.should.match(/should pass/);
-        output.should.not.match(/ % Stmts |% Branches/);
+        output.should.not.match(/You can see more detail in/);
       } catch(e) {
         err = e;
       }
@@ -55,9 +54,6 @@ describe('test', function() {
 
   it('should show lcov with coveralls', function(done) {
     var inspect = stdout.inspect();
-    muk(process, 'cwd', function() {
-      return join(__dirname, 'fixtures/normal');
-    });
     spmTest({coveralls: true}, function(err) {
       if (err) {
         return done(err);
@@ -65,7 +61,7 @@ describe('test', function() {
       try {
         var output = inspect.output.join('');
         output.should.match(/should pass/);
-        output.should.match(/ % Stmts |% Branches/);
+        output.should.match(/You can see more detail in/);
         output.should.match(/SF:.*test\/fixtures\/normal\/index.js/);
         output.should.match(/BRDA:3,1,0,1/);
       } catch(e) {
