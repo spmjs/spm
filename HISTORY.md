@@ -2,6 +2,10 @@
 
 ---
 
+## 3.4.1 (in dev)
+
+- improve doc style, [#1203](https://github.com/spmjs/spm/pull/1203)
+
 ## 3.4.0
 
 - add scripts hook for `build` and `publish`, [#1170](https://github.com/spmjs/spm/pull/1170)
