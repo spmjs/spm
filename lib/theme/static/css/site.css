@@ -45,8 +45,7 @@ body.spmjs {
   color: #787878;
   font-size: 14px;
   width: 20%;
-  padding: 0 3%;
-  padding-top: 40px;
+  padding: 40px 3% 20px;
   min-height: 100%;
   z-index: 1;
   background: #F9F9F8;
@@ -416,7 +415,9 @@ body.spmjs {
 }
 
 .qrcode-wrapper {
-  position:relative;
+  position: relative;
+  margin-top: 10px;
+  display: inline-block;
 }
 
 .qrcode-wrapper .icon {
@@ -512,15 +513,12 @@ body.spmjs {
   .spmjs .qrcode-wrapper .qrcode {
     left: -98px;
   }
-  .spmjs .sidenav {
-    padding-bottom: 30px;
-  }
   .spmjs .footer-wrapper {
     position: absolute;
     bottom: 20px;
     left: 3%;
   }
   body.spmjs {
-    position: absolute;
+    position: relative;
   }
 }
