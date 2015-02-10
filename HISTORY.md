@@ -15,6 +15,7 @@
 - doc
   - live editor, [#1135](https://github.com/spmjs/spm/pull/1135)
   - support write jsx in markdown, [#1113](https://github.com/spmjs/spm/issues/1113)
+  - improve css style
 - test
   - use istanbul instead of jscoverage, support branch coverage, [#1140](https://github.com/spmjs/spm/pull/1140)
 - ls
