@@ -2,7 +2,7 @@
 
 ---
 
-## 3.4.1 (in dev)
+## 3.4.1
 
 - improve doc style, [#1203](https://github.com/spmjs/spm/pull/1203)
 - do not handle jsx in doc live editor, [#1204](https://github.com/spmjs/spm/issues/1204)
