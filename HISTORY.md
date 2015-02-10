@@ -2,7 +2,7 @@
 
 ---
 
-## 3.4.0 (in dev)
+## 3.4.0
 
 - add scripts hook for `build` and `publish`, [#1170](https://github.com/spmjs/spm/pull/1170)
 - build
