@@ -64,6 +64,7 @@
     "win-spawn": "~2.0.0"
   },
   "devDependencies": {
+    "coveralls": "~2.11.2",
     "gulp-unzip": "~0.1.1",
     "jshint": "*",
     "ls-archive": "~1.0.2",
