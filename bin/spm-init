@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 var color = require('colorful').color;
+require('gnode');
+
 var fs = require('fs');
 var path = require('path');
 var program = require('commander');
@@ -11,7 +13,7 @@ var inquirer = require('inquirer');
 var semver = require('semver');
 var emptyDir = require('empty-dir').sync;
 
-var NAME_REGEX = require('../lib/sdk/iduri').NAME_REGEX;
+var NAME_REGEX = require('spm-client').util.NAME_REGEX;
 
 /*
   template directory

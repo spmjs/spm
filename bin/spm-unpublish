@@ -7,7 +7,7 @@ var program = require('commander');
 var inquirer = require('inquirer');
 var log = require('spm-log');
 var client = require('../lib/client');
-var iduri = require('../lib/sdk/iduri');
+var resolveid = require('spm-client').util.resolveid;
 
 program
   .usage('[options] name[@version]')
@@ -36,7 +36,7 @@ if (!program.args[0]) {
 console.log();
 log.config(program);
 
-var pkg = iduri.resolve(program.args[0]);
+var pkg = resolveid(program.args[0]);
 if (!pkg) {
   log.error('error', 'invalid module name');
   process.exit(2);
