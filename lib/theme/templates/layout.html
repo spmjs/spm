@@ -125,6 +125,11 @@
 
     $('.highlight').each(function(i, item) {
       if ($(item).prev().hasClass('spm-doc-textarea')) {
+        var code = $(item).prev().val();
+        // Do not handle jsx code
+        if (code && code.indexOf('/** @jsx React.DOM */') > -1) {
+          return;
+        }
         $(item).append('<div class="editor-toggle">Live Edit</div>');
       }
     });
@@ -204,7 +209,7 @@
       $(toggleButton).appendTo(toggleButton.cm.getWrapperElement());
       $(toggleButton.cm.getWrapperElement()).show();
       $(toggleButton).html('Quit edit');
-      toggleButton.editable = true; 
+      toggleButton.editable = true;
     }
 
     function quitEditor(toggleButton) {
