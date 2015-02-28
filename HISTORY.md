@@ -2,9 +2,13 @@
 
 ---
 
-## 3.4.2 (in dev)
+## 3.4.2
 
 - doc: fix crash when have js syntax error
+- build: upgrade to 1.3.x, [Changelog](https://github.com/spmjs/spm-build/blob/master/HISTORY.md#130)
+  - support hash suffix
+  - css resource: fix path problem if entry file is not in root directory
+  - css resource: don't handle css resource if entry file is js file, [#1206](https://github.com/spmjs/spm/issues/1206)
 
 ## 3.4.1
 
