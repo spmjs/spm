@@ -2,6 +2,10 @@
 
 ---
 
+## 3.4.2 (in dev)
+
+- doc: fix crash when have js syntax error
+
 ## 3.4.1
 
 - improve doc style, [#1203](https://github.com/spmjs/spm/pull/1203)
