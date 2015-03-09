@@ -2,6 +2,10 @@
 
 ---
 
+## 3.4.3
+
+- test: fix wrong test file's path in windows, [#1218](https://github.com/spmjs/spm/issues/1218)
+
 ## 3.4.2
 
 - doc: fix crash when have js syntax error
