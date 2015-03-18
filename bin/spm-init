@@ -29,15 +29,6 @@ template = template.replace(/^~/, homeDir);
   program init
 */
 
-program.on('--help', function() {
-  console.log();
-  console.log('  Change init default template in ~/.spm/spmrc-3x');
-  console.log();
-  console.log(color.magenta('  [init]'));
-  console.log('  template = ' + template);
-  console.log();
-});
-
 program.parse(process.argv);
 
 if (!emptyDir(process.cwd())) {
