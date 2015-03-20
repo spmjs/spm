@@ -2,9 +2,13 @@
 
 ---
 
+## 3.5.0
+
+- deps: 6to5 -> babel-core, Fix install problem at windows
+
 ## 3.4.3
 
-- deps: upgrade spm-client to 0.4.0, Fix #1104
+- deps: upgrade spm-client to 0.4.0, Fix [#1104](https://github.com/spmjs/spm/issues/1104)
 - test: fix wrong test file's path in windows, [#1218](https://github.com/spmjs/spm/issues/1218)
 
 ## 3.4.2
