@@ -4,6 +4,7 @@
 
 ## 3.5.0
 
+- deps: spm-build -> spm-webpack
 - deps: 6to5 -> babel-core, Fix install problem at windows
 
 ## 3.4.3
