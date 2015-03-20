@@ -55,6 +55,7 @@
     "serve-spm": "~0.10.0",
     "spm-client": "~0.4.0",
     "spm-log": "~0.1.1",
+    "spm-server": "~0.4.3",
     "spm-webpack": "~0.1.0",
     "spmrc": "~1.2.0",
     "tar": "~1.0.3",
