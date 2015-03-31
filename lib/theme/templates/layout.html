@@ -19,7 +19,10 @@
     {%- block afterstyle %}{% endblock %}
   </head>
   <body class="spmjs">
-    <div class="body-wrapper">
+  {%- set pkg = config.package %}
+  <script src="{{content_url('')}}dist/{{pkg.name}}/{{pkg.version}}/{{pkg.spm.main}}?nowrap"></script>
+
+  <div class="body-wrapper">
       {%- block body %}
       <aside class="sidebar-wrapper">
       <h1>
