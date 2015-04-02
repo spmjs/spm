@@ -9,8 +9,8 @@
   </head>
   <body>
 
-    <script src="{{static_url('js/mocha.js')}}"></script>
-    <script src="{{static_url('js/sinon.js')}}"></script>
+    <script src="{{static_url('js/mocha.js')}}?nowrap"></script>
+    <script src="{{static_url('js/sinon.js')}}?nowrap"></script>
 
     <div id="mocha"></div>
 
@@ -42,7 +42,7 @@
       }
     </script>
 
-    <script src="/dist/test.js"></script>
+    <script src="../dist/test.js?nowrap"></script>
 
     <script>
       if (window.mochaPhantomJS) {
