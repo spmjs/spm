@@ -19,6 +19,29 @@
       mocha.reporter('html');
     </script>
 
+    <script>
+      // polyfill for phantomjs 1.x
+      // https://github.com/webpack/style-loader/issues/31
+      if (typeof Function.prototype.bind != 'function') {
+        Function.prototype.bind = function bind(obj) {
+          var args = Array.prototype.slice.call(arguments, 1),
+            self = this,
+            nop = function() {
+            },
+            bound = function() {
+              return self.apply(
+                this instanceof nop ? this : (obj || {}), args.concat(
+                  Array.prototype.slice.call(arguments)
+                )
+              );
+            };
+          nop.prototype = this.prototype || {};
+          bound.prototype = new nop();
+          return bound;
+        };
+      }
+    </script>
+
     <script src="/dist/test.js"></script>
 
     <script>
