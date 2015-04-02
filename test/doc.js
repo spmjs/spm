@@ -1,3 +1,4 @@
+require('gnode');
 var sinon = require('sinon');
 var doc = require('../lib/doc');
 var nico = require('nico-spm');
@@ -22,7 +23,7 @@ describe('doc', function() {
     build.called.should.be.eql(true);
   });
 
-  it('watch', function() {
+  xit('watch', function() {
     doc({
       watch: true
     });
