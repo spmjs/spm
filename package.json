@@ -53,7 +53,6 @@
     "rimraf": "~2.2.8",
     "scripts-hook": "~0.1.3",
     "semver": "~4.1.0",
-    "serve-spm": "~0.12.0",
     "spm-client": "~0.4.0",
     "spm-log": "~0.1.1",
     "spm-webpack": "~0.1.0",
