@@ -20,7 +20,7 @@
   </head>
   <body class="spmjs">
   {%- set pkg = config.package %}
-  <script src="{{content_url('')}}dist/{{pkg.name}}/{{pkg.version}}/{{pkg.spm.main}}?nowrap"></script>
+  <script src="{{content_url('')}}dist/bundle.js?nowrap"></script>
 
   <div class="body-wrapper">
       {%- block body %}
