@@ -8,72 +8,49 @@
     <link href="{{static_url('css/mocha.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
   </head>
   <body>
-    {%- include "snippet/head.html" %}
+
     <script src="{{static_url('js/mocha.js')}}?nowrap"></script>
+    <script src="{{static_url('js/sinon.js')}}?nowrap"></script>
+
     <div id="mocha"></div>
+
     <script>
-      (function() {
-        var query = location.search.substring(1).split('&');
-        var contain = function(arr, value) {
-          for (var i in arr) {
-            if (arr[i] === value) {
-              return true;
-            }
-          }
-          return false;
-        };
-
-        seajs.config({
-          map: [function(url) {
-            if (!contain(query, 'cov')) {
-              return url;
-            }
-            var sources = [''
-            {%- if sourceFiles|length %}
-            {%- for file in sourceFiles %}
-              ,'{{file}}'
-            {%- endfor %}
-            {%- endif %}
-            ];
-            var matcher = url.match('http:\/\/(.*?)\/(.*)');
-            var file;
-            if (matcher) {
-              file = matcher[2].replace(/\.js$/, '');
-            } else {
-              return url;
-            }
-            sources = sources.slice(1);
-            for (var i=0; i<sources.length; i++) {
-              if (file === sources[i]) {
-                if (!/\.(handlebars|tpl|css|html)\.js$/.test(url)) {
-                  return url.replace(/\.js$/g, '-cov.js');
-                }
-              }
-            }
-            return url;
-          }]
-        });
-
-        mocha.ui('bdd');
-
-        {%- set specs = specFiles %}
-        var tests = {{specs|json_encode}};
-
-        var specs = [];
-        for (var i = 0; i < tests.length; i++) {
-          specs[i] = '../' + tests[i];
-        }
-
-        seajs.use(specs, function() {
-          if (window.mochaPhantomJS) {
-            mochaPhantomJS.run()
-          } else {
-            mocha.run(function() {
-              window.mocha_done = true;
-            })
-          }
-        })
-      })();
+      mocha.ui('bdd');
+      mocha.reporter('html');
     </script>
+
+    <script>
+      // polyfill for phantomjs 1.x
+      // https://github.com/webpack/style-loader/issues/31
+      if (typeof Function.prototype.bind != 'function') {
+        Function.prototype.bind = function bind(obj) {
+          var args = Array.prototype.slice.call(arguments, 1),
+            self = this,
+            nop = function() {
+            },
+            bound = function() {
+              return self.apply(
+                this instanceof nop ? this : (obj || {}), args.concat(
+                  Array.prototype.slice.call(arguments)
+                )
+              );
+            };
+          nop.prototype = this.prototype || {};
+          bound.prototype = new nop();
+          return bound;
+        };
+      }
+    </script>
+
+    <script src="../dist/test.js?nowrap"></script>
+
+    <script>
+      if (window.mochaPhantomJS) {
+        mochaPhantomJS.run();
+      } else {
+        mocha.run();
+      }
+    </script>
+
   </body>
 </html>
