@@ -25,7 +25,7 @@ var aliases = {
   'i': 'install',
   'c': 'config',
   'p': 'publish',
-  's': 'search',
+  's': 'server',
   'b': 'build'
 };
 if (aliases[subcmd]) {
