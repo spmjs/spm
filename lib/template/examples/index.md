@@ -5,5 +5,5 @@
 ## Normal usage
 
 ````javascript
-var <%= varName %> = require('index');
+var <%= varName %> = require('<%= name %>');
 ````

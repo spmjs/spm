@@ -10,6 +10,7 @@
     {%- include "snippet/head.html" %}
   </head>
   <body>
+    <script src="{{content_url('')}}dist/bundle.js?nowrap"></script>
     {{ iframe.code }}
     {{ post.html|replace_code }}
   </body>
