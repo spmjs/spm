@@ -20,8 +20,8 @@ $ npm install spm -g
 
 - Getting Started: http://spmjs.io/documentation
 - Develop a package: http://spmjs.io/documentation/develop-a-package
-- 中文文档：http://sorrycc.gitbooks.io/spm-handbook/content/
-- Use in simple project: https://github.com/spmjs/examples
+- 中文文档：https://github.com/spmjs/docs
+- Examples: https://github.com/spmjs/examples/tree/spm-webpack
 
 ## Packaging Server
 
