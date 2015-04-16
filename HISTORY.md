@@ -2,12 +2,16 @@
 
 ---
 
-## 3.6.0 (in dev)
+## 3.6.0
 
-- built-in spm-server
-- deps: spm-build -> spm-webpack
-- deps: 6to5 -> babel-core, Fix install problem at windows
-- deps:
+- refactor build with webpack
+- refactor doc, test, server based on build
+- built-in server
+- build: only support build in standalone, use spm-sea for cmd
+- css rule changed: use `@import '~foo'` for module, and `@import 'foo'` for relative file
+- use spm-argv to parse opts
+- [in detail](https://github.com/spmjs/docs/blob/master/misc/release-3.6.md)
+- [upgrade to 3.6](https://github.com/spmjs/docs/blob/master/misc/upgrade-to-3.6.md)gt
 
 ## 3.4.3
 
