@@ -11,7 +11,7 @@
 - css rule changed: use `@import '~foo'` for module, and `@import 'foo'` for relative file
 - use spm-argv to parse opts
 - [in detail](https://github.com/spmjs/docs/blob/master/misc/release-3.6.md)
-- [upgrade to 3.6](https://github.com/spmjs/docs/blob/master/misc/upgrade-to-3.6.md)gt
+- [upgrade to 3.6](https://github.com/spmjs/docs/blob/master/misc/upgrade-to-3.6.md)
 
 ## 3.4.3
 
