@@ -19,19 +19,32 @@ var NAME_REGEX = require('spm-client').util.NAME_REGEX;
   template directory
 */
 var homeDir = process.env.HOME || process.env.USERPROFILE;
+
 if (!homeDir) {
   homeDir = process.env.HOMEDRIVE + process.env.HOMEPATH;
 }
+
 var template = path.dirname(__dirname) + '/lib/template/';
+
 template = template.replace(/^~/, homeDir);
 
 /*
   program init
 */
 
-program.parse(process.argv);
 
-if (!emptyDir(process.cwd())) {
+program
+  .option('-p, --package','Just add a package.json into your project.')
+  .on('--help', function(){
+    console.log('  ' + 'Examples:');
+    console.log('  $', 'spm init           Initialize a package');
+    console.log('  $', 'spm init -p        Add a package.json into your project');
+    console.log('');
+  })
+  .parse(process.argv);
+
+
+if (!emptyDir(process.cwd()) && !program.package) {
   console.warn(color.yellow('Existing files here, please run init command in an empty folder!'));
   return;
 }
