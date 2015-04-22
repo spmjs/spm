@@ -87,6 +87,15 @@ inquirer.prompt([{
   });
   answers.yuanUrl = spmrc.get('registry');
 
+  if (program.package) {
+    vfs.src(path.join(template,'package.json'))
+      .pipe(gulpTemplate(answers))
+      .pipe(vfs.dest('./'))
+      .on('end', function(){
+        console.log(color.green('Initialize a package.json Succeccfully!'));
+      });
+    return
+  }
   vfs.src(path.join(template, '**'), { dot: true })
     .pipe(gulpTemplate(answers))
     .pipe(vfs.dest('./'))
@@ -100,4 +109,5 @@ inquirer.prompt([{
       console.log(color.green('Initialize a spm package Succeccfully!'));
       console.log();
     });
+
 });
