@@ -34,7 +34,7 @@
     "empty-dir": "~0.1.0",
     "exeq": "~2.0.0",
     "extend": "~2.0.0",
-    "father": "~0.11.0",
+    "father": "~1.0.0",
     "fs-extra": "~0.13.0",
     "fs-symlink": "1.1.0",
     "fstream": "~1.0.3",
