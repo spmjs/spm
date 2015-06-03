@@ -18,8 +18,8 @@ $ npm install spm -g
 
 ## Usage
 
-- Getting Started: http://spmjs.io/documentation
-- Develop a package: http://spmjs.io/documentation/develop-a-package
+- Getting Started: https://github.com/spmjs/docs/blob/master/en/getting-started.md
+- Develop a package: https://github.com/spmjs/docs/blob/master/en/develop-a-package.md
 - 中文文档：https://github.com/spmjs/docs
 - Examples: https://github.com/spmjs/examples/tree/spm-webpack
 
