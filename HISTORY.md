@@ -2,6 +2,13 @@
 
 ---
 
+## 3.6.1
+
+- feat: support force publish package with republish property
+- fix(doc): get md not only in examples
+- fix(doc): add source-map for test file build
+- deps: upgrade father to 1.0
+
 ## 3.6.0
 
 - refactor build with webpack
