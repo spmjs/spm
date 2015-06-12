@@ -2,6 +2,10 @@
 
 ---
 
+## 3.6.2
+
+- deps: upgrade spm-webpack and spm-webpack-server to 0.4.0
+
 ## 3.6.1
 
 - feat: support force publish package with republish property
