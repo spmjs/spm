@@ -2,6 +2,11 @@
 
 ---
 
+## 3.6.3
+
+- deps: upgrade spm-webpack and spm-webpack-server to 0.5.0
+- feat(doc): don't copy _site, node_modules and spm_modules folder
+
 ## 3.6.2
 
 - deps: upgrade spm-webpack and spm-webpack-server to 0.4.0
