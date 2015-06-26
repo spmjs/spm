@@ -2,6 +2,10 @@
 
 ---
 
+## 3.4.4
+
+- feat(doc): don't copy _site and node_modules, Close [#1330](https://github.com/spmjs/spm/issues/1330)
+
 ## 3.4.3
 
 - deps: upgrade spm-client to 0.4.0, Fix #1104
