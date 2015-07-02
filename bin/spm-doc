@@ -17,8 +17,8 @@ program
   .option('-f, --force', 'force build without cache')
   .option('-v, --verbose', 'show more logging')
   .option('-q, --quiet', 'show less logging')
+  .option('-c, --clean', 'clean _site first')
   .option('--no-color', 'disable colorful print')
-  .option('clean', 'clean _site folder')
   .option('build', 'build documentation')
   .option('watch', 'start a server of watching source')
   .option('server', 'start a server for documentation')
@@ -28,7 +28,6 @@ program.on('--help', function() {
   console.log('  Examples:'.to.bold.blue.color);
   console.log();
   console.log('    $', 'spm doc'.to.magenta.color + ' // alias of spm doc watch');
-  console.log('    $', 'spm doc'.to.magenta.color, 'clean');
   console.log('    $', 'spm doc'.to.magenta.color, 'build');
   console.log('    $', 'spm doc'.to.magenta.color, 'build -f');
   console.log('    $', 'spm doc'.to.magenta.color, 'watch');
@@ -42,10 +41,6 @@ program.parse(process.argv);
 
 log.config(program);
 
-if (!process.argv[2]) {
-  program.watch = true;
-}
-
 var pkg = exists('package.json') && readJSON('package.json');
 if (!pkg || !pkg.spm) {
   console.log();
@@ -54,5 +49,10 @@ if (!pkg || !pkg.spm) {
 }
 
 console.log();
-doc(program);
+doc(program, function() {
+  if (program.build || program.publish) {
+    console.log();
+    process.exit(0);
+  }
+});
 console.log();
