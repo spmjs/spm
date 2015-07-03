@@ -1,6 +1,7 @@
 require('should');
 var join = require('path').join;
 var stdout = require('test-console').stdout;
+require('gnode');
 var spmTest = require('../lib/test');
 
 describe('test', function() {
