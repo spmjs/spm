@@ -51,7 +51,6 @@ if (!pkg || !pkg.spm) {
 console.log();
 doc(program, function() {
   if (program.build || program.publish) {
-    console.log();
     process.exit(0);
   }
 });

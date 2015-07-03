@@ -63,6 +63,7 @@
     "tar": "~1.0.3",
     "test-console": "~0.7.1",
     "through2": "~2.0.0",
+    "uniq": "~1.0.1",
     "vinyl-fs": "~0.3.13",
     "whoami": "~0.0.3",
     "win-spawn": "~2.0.0"
