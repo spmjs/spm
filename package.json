@@ -10,18 +10,18 @@
     "url": "https://github.com/spmjs/spm.git"
   },
   "keywords": [
-    "seajs",
-    "module",
+    "bower",
+    "browser",
     "cmd",
-    "spmjs",
-    "package",
-    "tool",
     "command line",
     "commonjs",
     "component",
-    "bower",
+    "module",
     "npm",
-    "browser"
+    "package",
+    "seajs",
+    "spmjs",
+    "tool"
   ],
   "dependencies": {
     "archy": "~1.0.0",
@@ -50,6 +50,7 @@
     "istanbul-instrumenter-loader": "~0.1.2",
     "mocha-phantomjs": "~3.5.2",
     "nico-spm": "~0.5.2",
+    "phantomjs": "~1.9.17",
     "react-tools": "~0.12.2",
     "request": "~2.51.0",
     "rimraf": "~2.2.8",
@@ -85,7 +86,6 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "postinstall": "node scripts/postinstall.js",
     "test": "make test"
   }
 }
