@@ -2,6 +2,10 @@
 
 ---
 
+## 3.6.4
+
+- refactor(doc): fix lot's of problems, support html and iframe
+
 ## 3.6.3
 
 - deps: upgrade spm-webpack and spm-webpack-server to 0.5.0
