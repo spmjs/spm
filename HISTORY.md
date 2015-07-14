@@ -2,6 +2,10 @@
 
 ---
 
+## 3.6.6
+
+- deps: upgrade spm-webpack and spm-webpack-server to 0.7
+
 ## 3.6.5
 
 - deps: upgrade spm-webpack and spm-webpack-server to 0.6
