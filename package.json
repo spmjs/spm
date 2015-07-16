@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "3.6.6",
+  "version": "3.6.7",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -50,7 +50,7 @@
     "istanbul-instrumenter-loader": "~0.1.2",
     "mocha-phantomjs": "~3.5.2",
     "nico-spm": "~0.5.2",
-    "phantomjs": "~1.9.17",
+    "phantomjs": "1.9.7-15",
     "react-tools": "~0.12.2",
     "request": "~2.51.0",
     "rimraf": "~2.2.8",

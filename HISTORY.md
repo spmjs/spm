@@ -2,6 +2,10 @@
 
 ---
 
+## 3.6.7
+
+- fix: phantomjs version conflicts
+
 ## 3.6.6
 
 - deps: upgrade spm-webpack and spm-webpack-server to 0.7
