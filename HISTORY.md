@@ -2,6 +2,10 @@
 
 ---
 
+## 3.6.8
+
+- fix: phantomjs version conflicts (again) ..
+
 ## 3.6.7
 
 - fix: phantomjs version conflicts
