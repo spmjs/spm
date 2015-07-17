@@ -2,6 +2,10 @@
 
 ---
 
+## 3.6.9
+
+- fix: exit code problem, Close #1173
+
 ## 3.6.8
 
 - fix: phantomjs version conflicts (again) ..
