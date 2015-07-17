@@ -40,17 +40,23 @@ if (!subcmd) {
   if (!helpcmd || !bin) {
     process.stdout.write(program.helpInformation());
     program.emit('--help');
-    process.exit();
+    process.exit(0);
   }
-  spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
+  wrap(spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]}));
 } else {
   bin = executable(subcmd);
   if (bin) {
     run.record(subcmd);
-    spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]});
+    wrap(spawn(bin, args, {stdio: 'inherit', customFds: [0, 1, 2]}));
   } else {
     program.help();
   }
+}
+
+function wrap(sp) {
+  sp.on('close', function(code) {
+    process.exit(code);
+  });
 }
 
 function printHelp() {
