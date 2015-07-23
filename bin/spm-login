@@ -24,7 +24,15 @@ var info = {};
 if (program.authkey && program.username) {
   info.username = program.username;
   info.authkey = program.authkey;
-  login(info, done);
+  login(info).then(function(body) {
+    spmrc.set('auth', body.data);
+    console.log();
+    console.log('  login success.'.to.green.color);
+    console.log();
+  }, function(err){
+    log.error('exit', err.message);
+    process.exit(2);
+  });
   return;
 }
 
@@ -38,16 +46,13 @@ inquirer.prompt([{
 }], function(answers) {
   info.username = answers.username;
   info.authkey = answers.authkey;
-  login(info, {registry: program.registry}, done);
-});
-
-function done(err, body) {
-  if (err) {
+  login(info, {registry: program.registry}).then(function(body) {
+    spmrc.set('auth', body.data);
+    console.log();
+    console.log('  login success.'.to.green.color);
+    console.log();
+  }, function(err) {
     log.error('exit', err.message);
     process.exit(2);
-  }
-  spmrc.set('auth', body.data);
-  console.log();
-  console.log('  login success.'.to.green.color);
-  console.log();
-}
+  });
+});

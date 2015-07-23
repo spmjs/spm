@@ -53,17 +53,16 @@ if (!pkg.version) {
 function unpublish() {
   client.unpublish(pkg, {
     registry: program.registry
-  }, function(err) {
-    if (err) {
-      console.log();
-      log.error('exit', err.message);
-      console.log();
-      process.exit(2);
-    }
+  }).then(function() {
     var version = pkg.version ? '@' + pkg.version : '';
     console.log();
     log.info('unpublished', (pkg.name + version).to.green.color);
     console.log();
+  }, function(err) {
+    console.log();
+    log.error('exit', err.message);
+    console.log();
+    process.exit(2);
   });
 }
 

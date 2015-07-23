@@ -44,12 +44,11 @@ if (!pkg) {
 
 info(pkg, {
   registry: program.registry
-}, function(err, body) {
-  if (err) {
-    log.error('exit', err.message);
-    console.log('');
-    process.exit(2);
-  }
+}).then(function(body) {
   print(body, program);
   console.log('');
+}, function(err) {
+  log.error('exit', err.message);
+  console.log('');
+  process.exit(2);
 });

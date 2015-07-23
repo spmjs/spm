@@ -51,21 +51,20 @@ hook(pkg.spm.scripts || {}, 'publish', function(done) {
     tag: program.tag,
     registry: program.registry,
     force: program.force
-  }, function(err, pkg) {
-    if (err) {
-      if (err.statusCode === 401) {
-        log.error('exit', 'authorization is required. try `spm login`');
-      } else {
-        log.error('exit', err.message);
-      }
-      console.log();
-      process.exit(2);
-    }
+  }).then(function(pkg) {
     if (pkg.message && pkg.status) {
       log[pkg.status](pkg.status, pkg.message);
     }
     log.info('published', (pkg.name + '@' + pkg.version + ' ~ ' + pkg.tag).to.green.color);
     console.log();
     done();
+  }, function(err) {
+    if (err.statusCode === 401) {
+      log.error('exit', 'authorization is required. try `spm login`');
+    } else {
+      log.error('exit', err.message);
+    }
+    console.log();
+    process.exit(2);
   });
 });
