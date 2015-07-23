@@ -36,12 +36,7 @@ log.config(commander);
 search({
   name: commander.args[0],
   registry: commander.registry
-}, function(err, body) {
-  if (err) {
-    log.error('exit', err.message);
-    process.exit(2);
-  }
-
+}).then(function(body) {
   console.log(' ', (body.data.total + ' results').to.bold.color);
   console.log('');
 
@@ -50,4 +45,7 @@ search({
     print(pkg, commander);
     console.log('');
   });
+}, function(err) {
+  log.error('exit', err.message);
+  process.exit(2);
 });

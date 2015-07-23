@@ -48,11 +48,10 @@ install({
   save: program.save,
   saveDev: program.saveDev,
   name: program.args.length ? program.args : null
-}, function(err) {
-  if (err) {
-    log.error('exit', err.message);
-    console.log();
-    process.exit(2);
-  }
+}).then(function() {
   console.log();
+}, function(err) {
+  log.error('exit', err.message);
+  console.log();
+  process.exit(2);
 });
