@@ -2,6 +2,10 @@
 
 ---
 
+## 3.6.10
+
+- fix: test don't resolve loader properly
+
 ## 3.6.9
 
 - fix: exit code problem, Close #1173
