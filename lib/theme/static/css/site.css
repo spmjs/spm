@@ -211,7 +211,7 @@ body.spmjs {
 .spmjs .footer-wrapper {
   font-size: 10px;
   position: fixed;
-  bottom: 15px;
+  top: 660px;
   color: #ccc;
   font-family: Consolas;
 }
@@ -284,6 +284,8 @@ body.spmjs {
   visibility: visible;
 }
 .spmjs .sidenav {
+  max-height: 250px;
+  overflow: scroll;
   padding: 10px 0 10px 20px;
   margin-top: 0;
   font-size: 14px;

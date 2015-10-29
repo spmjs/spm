@@ -14,10 +14,10 @@
 {%- block subsidebar %}
 {%- set items = resource.pages|find_category(post.meta.category) %}
 {%- if items|length > 1 %}
-<ol class="sidenav">
+<ul class="sidenav">
   {%- for item in items %}
   <li><a href="{{permalink_url(item)}}">{{item.title|cleanTitle}}</a></li>
   {%- endfor %}
-</ol>
+</ul>
 {%- endif %}
 {%- endblock %}
