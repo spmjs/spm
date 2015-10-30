@@ -2,6 +2,10 @@
 
 ---
 
+## 3.6.12
+
+- fix: fix doc style and support demo sort by filename
+
 ## 3.6.10
 
 - fix: test don't resolve loader properly
