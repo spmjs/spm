@@ -21,10 +21,6 @@ var args = process.argv.slice(3);
 var bin;
 
 var aliases = {
-  'ln': 'link',
-  'i': 'install',
-  'c': 'config',
-  'p': 'publish',
   's': 'server',
   'b': 'build'
 };
@@ -60,23 +56,12 @@ function wrap(sp) {
 }
 
 function printHelp() {
-  console.log('  System Commands:'.to.bold.magenta.color);
-  console.log();
-  console.log('    config         configuration for spm');
-  console.log('    login          login your account');
-  console.log('    completion     output completion bash script');
-  console.log();
   console.log('  Package Commands:'.to.bold.green.color);
   console.log();
   console.log('    init           initialize a package');
-  console.log('    install        install a package');
-  console.log('    publish        publish a package');
-  console.log('    unpublish      unpublish a package');
-  console.log('    ls             show dependencies tree');
-  console.log('    info           information of a package');
-  console.log('    search         search packages');
   console.log('    test           test a package');
   console.log('    doc            documentation manager');
+  console.log('    server         debug a package');
   console.log('    build          build a package');
   console.log();
 }

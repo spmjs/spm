@@ -12,9 +12,9 @@ var exists = require('fs').existsSync;
 program.usage('[options]');
 
 program
-  .option('-r, --registry <url>', 'registry url of yuan server')
+  //.option('-r, --registry <url>', 'registry url of yuan server')
   .option('-p, --port <port>', 'local server port, default: 8000')
-  .option('-f, --force', 'force build without cache')
+  //.option('-f, --force', 'force build without cache')
   .option('-v, --verbose', 'show more logging')
   .option('-q, --quiet', 'show less logging')
   .option('-c, --clean', 'clean _site first')
@@ -22,18 +22,18 @@ program
   .option('build', 'build documentation')
   .option('watch', 'start a server of watching source')
   .option('server', 'start a server for documentation')
-  .option('publish', 'publish documentation for public');
+  //.option('publish', 'publish documentation for public');
 
 program.on('--help', function() {
   console.log('  Examples:'.to.bold.blue.color);
   console.log();
   console.log('    $', 'spm doc'.to.magenta.color + ' // alias of spm doc watch');
   console.log('    $', 'spm doc'.to.magenta.color, 'build');
-  console.log('    $', 'spm doc'.to.magenta.color, 'build -f');
+  //console.log('    $', 'spm doc'.to.magenta.color, 'build -f');
   console.log('    $', 'spm doc'.to.magenta.color, 'watch');
   console.log('    $', 'spm doc'.to.magenta.color, 'watch --port 8080');
-  console.log('    $', 'spm doc'.to.magenta.color, 'publish');
-  console.log('    $', 'spm doc'.to.magenta.color, 'publish -r http://spm.alipay.im');
+  //console.log('    $', 'spm doc'.to.magenta.color, 'publish');
+  //console.log('    $', 'spm doc'.to.magenta.color, 'publish -r http://spm.alipay.im');
   console.log();
 });
 
