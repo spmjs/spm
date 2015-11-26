@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "3.6.12",
+  "version": "3.7.0",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -41,7 +41,6 @@
     "fstream": "~1.0.3",
     "fstream-ignore": "~1.0.2",
     "glob": "~5.0.12",
-    "gnode": "~0.1.1",
     "gulp-template": "~1.1.1",
     "inherits": "~1.0.0",
     "inquirer": "~0.8.0",
@@ -84,7 +83,7 @@
     "spm": "bin/spm"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4.0.0"
   },
   "scripts": {
     "test": "make test"

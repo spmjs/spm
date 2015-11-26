@@ -2,6 +2,18 @@
 
 ---
 
+## 3.7.0
+
+- require node version >= 4.0
+- feat: brand new define
+- feat: use babel-loader for jsx, remove jsx-loader and jsx2-loader
+- feat: build dist name with chunkhash.
+- fix: windows path problem
+- fix: custom loader bug
+- fix:  adjust insert scripts position when html file exists doctype
+- deps: update deps css-loader@0.19.0 extract-text-webpack-plugin@0.8.2 该版本对引用 css 有严格顺序要求详见[链接](https://github.com/webpack/extract-text-webpack-plugin/issues/80)
+- deps: remove gnode
+
 ## 3.6.12
 
 - fix: fix doc style and support demo sort by filename

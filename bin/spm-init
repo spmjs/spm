@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var color = require('colorful').color;
-require('gnode');
+//require('gnode');
 
 var fs = require('fs');
 var path = require('path');
