@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
-//require('gnode');
+require('gnode');
 
 var program = require('commander');
 var install = require('../lib/client').install;

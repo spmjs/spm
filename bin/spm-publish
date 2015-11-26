@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 require('colorful').colorful();
-//require('gnode');
+require('gnode');
 require('babel-core/register')({
   ignore: '',
   only: /scripts-hook\/_index/

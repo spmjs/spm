@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "3.7.0-beta1",
+  "version": "3.6.12",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -41,6 +41,7 @@
     "fstream": "~1.0.3",
     "fstream-ignore": "~1.0.2",
     "glob": "~5.0.12",
+    "gnode": "~0.1.1",
     "gulp-template": "~1.1.1",
     "inherits": "~1.0.0",
     "inquirer": "~0.8.0",
@@ -58,8 +59,8 @@
     "sort-array": "~0.1.0",
     "spm-client": "~0.4.0",
     "spm-log": "~0.1.1",
-    "spm-webpack": "~0.8.1",
-    "spm-webpack-server": "~0.8.3",
+    "spm-webpack": "~0.7.0",
+    "spm-webpack-server": "~0.7.0",
     "spmrc": "~1.2.0",
     "tar": "~1.0.3",
     "test-console": "~0.7.1",
@@ -83,7 +84,7 @@
     "spm": "bin/spm"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=0.10.0"
   },
   "scripts": {
     "test": "make test"
