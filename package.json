@@ -1,6 +1,6 @@
 {
   "name": "spm",
-  "version": "3.7.0",
+  "version": "3.9.0-beta2",
   "preferGlobal": "true",
   "description": "Static Package Manager",
   "author": "Hsiaoming Yang <me@lepture.com>",
@@ -58,8 +58,8 @@
     "sort-array": "~0.1.0",
     "spm-client": "~0.4.0",
     "spm-log": "~0.1.1",
-    "spm-webpack": "~0.8.1",
-    "spm-webpack-server": "~0.8.3",
+    "spm-webpack": "~1.0.0",
+    "spm-webpack-server": "~1.0.0",
     "spmrc": "~1.2.0",
     "tar": "~1.0.3",
     "test-console": "~0.7.1",

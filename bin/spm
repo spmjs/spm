@@ -58,7 +58,6 @@ function wrap(sp) {
 function printHelp() {
   console.log('  Package Commands:'.to.bold.green.color);
   console.log();
-  console.log('    init           initialize a package');
   console.log('    test           test a package');
   console.log('    doc            documentation manager');
   console.log('    server         debug a package');
