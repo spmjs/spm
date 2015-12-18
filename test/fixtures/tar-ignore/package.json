@@ -1,7 +1,0 @@
-{
-  "name": "tar-ignore",
-  "version": "1.0.0",
-  "spm": {
-    "ignore": ["a"]
-  }
-}
