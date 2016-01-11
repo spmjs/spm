@@ -1,7 +1,0 @@
-#!/usr/bin/env node
-
-var readFile = require('fs').readFileSync;
-var join = require('path').join;
-
-var file = join(__dirname, '../scripts/.spm_completion');
-console.log(readFile(file, 'utf-8'));

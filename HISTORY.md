@@ -2,6 +2,10 @@
 
 ---
 
+## 3.9.0 - beta4
+
+- change spmjs.io to npm
+
 ## 3.7.0
 
 - require node version >= 4.0
