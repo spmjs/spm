@@ -10,6 +10,8 @@ Brand new **static package manager** for browser.
 
 ---
 
+## spm 从 3.9 开始将不再管理组件的生命周期, 即不再有 spmjs.io. 所以相应的逻辑全部去除. 请使用 npm 来管理组件.
+
 ## Install
 
 ```bash
