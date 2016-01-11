@@ -16,7 +16,8 @@ describe('test', function() {
     process.chdir(oldCwd);
   });
 
-  it('should show testcase', function(done) {
+
+  xit('should show testcase', function(done) {
     var inspect = stdout.inspect();
     spmTest({}, function(err) {
       if (err) {
@@ -34,7 +35,7 @@ describe('test', function() {
     });
   });
 
-  it('should not show coverage', function(done) {
+  xit('should not show coverage', function(done) {
     var inspect = stdout.inspect();
     spmTest({nocoverage: true}, function(err) {
       if (err) {
