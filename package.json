@@ -26,7 +26,7 @@
   "dependencies": {
     "archy": "~1.0.0",
     "babel-core": "~4.7.16",
-    "chokidar": "~1.0.3",
+    "chokidar": "^1.7.0",
     "co": "~4.6.0",
     "colorful": "~2.1.0",
     "commander": "~2.5.0",
